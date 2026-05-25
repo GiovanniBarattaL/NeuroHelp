@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- TEXTO SELECIONADO -->
+    <item
+        android:state_checked="true"
+        android:color="#47C777"/>
+
+    <!-- TEXTO NORMAL -->
+    <item
+        android:color="#7A7A7A"/>
+
+</selector>

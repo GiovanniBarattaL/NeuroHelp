@@ -24,6 +24,11 @@ class MainActivity3 : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+        val btnentrares = findViewById<TextView>(R.id.btnentrares)
+        btnentrares.setOnClickListener {
+            val intent = Intent(this, MainActivity4::class.java)
+            startActivity(intent)
+        }
 
     }
 }

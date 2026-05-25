@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NeuroHelp</string>
+    <string name="sexo">Sexo</string>
 </resources>
