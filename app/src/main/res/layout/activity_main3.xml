@@ -17,14 +17,26 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.296">
+        app:layout_constraintVertical_bias="0.235">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnvoltar1"
+            android:layout_width="9dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/btnvoltar" />
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="250dp"
-            android:layout_height="216dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/logo"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/aa"
             tools:layout_editor_absoluteX="115dp"
             tools:layout_editor_absoluteY="48dp" />
 
@@ -35,7 +47,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/nunito_black"
             android:gravity="center"
-            android:text="Bem-vindo(a)!"
+            android:text="Criar Conta"
             android:textColor="#000"
             android:textSize="28sp"
             android:textStyle="bold">
@@ -45,15 +57,62 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="254dp"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-
-            android:fontFamily="@font/nunito_black"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="@font/nunito"
             android:gravity="center"
-            android:text="Faça login para acessar uma experiência feita para você e seu filho"
+            android:text="Antes escolha a maneira de ingresso"
             android:textSize="14sp" />
 
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnentpro"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/botao_gradiente"
+            android:fontFamily="@font/nunito"
+            android:text="Ingressar como profissional capacitado"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ingressaricone"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="61dp"
+            app:iconTint="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnentres"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/botao_gradiente"
+            android:drawableStart="@drawable/responsavel"
+            android:fontFamily="@font/nunito"
+            android:text="Ingressar como responsável de criança com TEA"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/responsavel"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="61dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,58 +120,12 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:clickable="true"
+            android:drawableStart="@drawable/duvida"
             android:fontFamily="@font/nunito"
-            android:text="Esqueci minha senha"
+            android:text=" Portal de dúvidas"
             android:textColor="#47C777"
-            android:textSize="14dp" />
-
-        <Button
-            android:id="@+id/btnentpro"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableStart="@drawable/baseline_content_paste_24"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:layout_weight="1"
-            android:background="@drawable/botao_gradiente"
-            android:text="Ingressar como profissional capacitado"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-
-            app:backgroundTint="@null"
-            app:cornerRadius="10dp" />
-        <Button
-            android:id="@+id/btnentres"
-            android:drawableStart="@drawable/ingressaricone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:layout_weight="1"
-            android:background="@drawable/botao_gradiente"
-            android:text="Ingressar como responsável de criança com TEA"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-
-            app:backgroundTint="@null"
-            app:cornerRadius="10dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
-                android:text="Criar Conta"
-                android:textColor="#47C777"
-                android:textSize="14dp" />
+            android:textSize="14dp"
+            app:icon="@drawable/duvida" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

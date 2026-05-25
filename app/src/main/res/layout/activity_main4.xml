@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    tools:context=".MainActivity4">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/plinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,22 +20,29 @@
         app:layout_constraintVertical_bias="0.296">
 
         <ImageView
-            android:id="@+id/logo"
-            android:layout_width="250dp"
-            android:layout_height="216dp"
+            android:layout_width="232dp"
+            android:layout_height="82dp"
             android:layout_gravity="center"
-            android:src="@drawable/logo"
+            android:src="@drawable/logohoriz"
+            tools:layout_editor_absoluteX="115dp"
+            tools:layout_editor_absoluteY="48dp" />
+
+        <ImageView
+            android:layout_width="365dp"
+            android:layout_height="41dp"
+            android:layout_gravity="center"
+            android:src="@drawable/etapas"
             tools:layout_editor_absoluteX="115dp"
             tools:layout_editor_absoluteY="48dp" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/ptextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/nunito_black"
             android:gravity="center"
-            android:text="Bem-vindo(a)!"
+            android:text="Criar conta"
             android:textColor="#000"
             android:textSize="28sp"
             android:textStyle="bold">
@@ -43,19 +50,17 @@
         </TextView>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/ptextView2"
             android:layout_width="254dp"
-            android:layout_height="54dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-
-            android:fontFamily="@font/nunito_black"
+            android:fontFamily="@font/nunito"
             android:gravity="center"
-            android:text="Faça login para acessar uma experiência feita para você e seu filho"
+            android:text="Cadastro para país e responsáveis"
             android:textSize="14sp" />
 
         <LinearLayout
-            android:id="@+id/linearLayoutBotoes"
-            style="?android:attr/buttonBarStyle"
+            android:id="@+id/plinearLayoutBotoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -67,14 +72,30 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <Button
-                android:id="@+id/btnPai"
-                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/pbtnProfissional"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+
+                android:background="@drawable/botao_branco"
+                android:ellipsize="none"
+                android:gravity="center"
+                android:lines="1"
+                android:maxLines="1"
+                android:text="Sou pai/mãe"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                app:backgroundTint="@null" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/pbtnPai"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="13dp"
+                android:layout_marginStart="13dp"
                 android:layout_weight="1"
                 android:background="@drawable/botao_gradiente"
-                android:text="Sou pai/mãe"
+                android:text="Sou profissional"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
@@ -82,23 +103,6 @@
                 app:backgroundTint="@null"
 
                 app:cornerRadius="10dp" />
-
-            <Button
-                android:id="@+id/btnProfissional"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/botao_branco"
-                android:ellipsize="none"
-                android:gravity="center"
-                android:lines="1"
-                android:maxLines="1"
-                android:text="Sou profissional"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                app:backgroundTint="@null" />
         </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -125,6 +129,7 @@
                 android:textColorHint="#8A8A8A" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -149,6 +154,7 @@
                 android:textColorHint="#8A8A8A" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -158,10 +164,10 @@
             android:fontFamily="@font/nunito"
             android:text="Esqueci minha senha"
             android:textColor="#47C777"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnEntrar"
+        <Button
+            android:id="@+id/pbtnEntrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -189,7 +195,7 @@
             android:fontFamily="@font/nunito"
             android:text="ou continue com"
             android:textColor="#9C9C9C"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -207,10 +213,10 @@
                 android:fontFamily="@font/nunito"
                 android:text="Não tem uma conta? "
                 android:textColor="#9C9C9C"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/criarconta"
+                android:id="@+id/pcriarconta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -219,11 +225,10 @@
                 android:fontFamily="@font/nunito"
                 android:text="Criar Conta"
                 android:textColor="#47C777"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
