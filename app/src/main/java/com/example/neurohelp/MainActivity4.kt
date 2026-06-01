@@ -2,6 +2,7 @@ package com.example.neurohelp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +13,19 @@ class MainActivity4 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main4)
+
+    val btnirlogin= findViewById<TextView>(R.id.fazerlogin)
+    btnirlogin.setOnClickListener {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+        val btnprox= findViewById<Button>(R.id.btnprox)
+        btnprox.setOnClickListener {
+            val intent = Intent(this, MainActivity5::class.java)
+            startActivity(intent)
+
+
     }
 
-
+    }
 }

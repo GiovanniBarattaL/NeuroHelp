@@ -15,6 +15,7 @@
             android:id="@+id/plinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
@@ -76,55 +77,59 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    android:textColorHint="#9C9C9C"
+                    app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/nome"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:hint="Nome"
                         android:minHeight="48dp"
                         android:paddingStart="10dp"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#9C9C9C"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/telefone"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:hint="Telefone"
                         android:minHeight="48dp"
                         android:paddingStart="10dp"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -142,55 +147,59 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#9C9C9C"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/cpf"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:hint="CPF"
                         android:minHeight="48dp"
                         android:paddingStart="10dp"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginStart="5dp"
+                    android:textColorHint="#9C9C9C"
+                    android:layout_weight="1"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/data"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:hint="Data de Nasc."
                         android:minHeight="48dp"
                         android:paddingStart="10dp"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -208,28 +217,30 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:layout_marginEnd="5dp"
+                    android:layout_weight="3"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    android:textColorHint="#9C9C9C"
+                    app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/cidade"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:hint="Cidade"
                         android:minHeight="48dp"
                         android:paddingStart="10dp"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -238,24 +249,26 @@
                     android:layout_marginStart="5dp"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    android:textColorHint="#9C9C9C"
+                    app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/uf"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:hint="UF"
                         android:minHeight="48dp"
                         android:paddingStart="10dp"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -273,57 +286,58 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:layout_marginEnd="5dp"
+                    android:layout_weight="3"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    android:textColorHint="#9C9C9C"
+                    app:boxStrokeWidthFocused="2dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/email"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:hint="E-mail"
                         android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000"/>
+                        android:paddingStart="10dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
+                    android:textColorHint="#9C9C9C"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E"
                     app:boxCornerRadiusBottomEnd="10dp"
                     app:boxCornerRadiusBottomStart="10dp"
                     app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp">
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/nome"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:hint="Sexo"
                         android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:paddingStart="10dp" />
 
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
+
             <ImageView
                 android:layout_width="102dp"
                 android:layout_height="16dp"
@@ -331,6 +345,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/vinculo" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -359,8 +374,6 @@
 
                     <RadioButton
                         android:id="@+id/radioPai"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/nunito"
                         android:layout_width="110dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="10dp"
@@ -369,22 +382,24 @@
                         android:checked="true"
                         android:drawableStart="@drawable/paimae"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:gravity="center"
                         android:padding="10dp"
                         android:text="Pai/Mãe"
                         android:textAllCaps="false"
-                        android:textColor="@drawable/radio_text_selector" />
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/radioResponsavel"
                         android:layout_width="140dp"
                         android:layout_height="50dp"
                         android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/nunito"
                         android:background="@drawable/radio_selector"
                         android:button="@null"
                         android:drawableStart="@drawable/resle"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:gravity="center"
                         android:padding="10dp"
                         android:text="Responsável legal"
@@ -398,15 +413,15 @@
                         android:layout_height="50dp"
                         android:background="@drawable/radio_selector"
                         android:button="@null"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/nunito"
                         android:drawableStart="@drawable/outro"
                         android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
                         android:gravity="center"
                         android:padding="10dp"
                         android:text="Outro"
                         android:textAllCaps="false"
-                        android:textColor="@drawable/radio_text_selector" />
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textSize="12sp" />
 
                 </RadioGroup>
 
@@ -426,7 +441,7 @@
                     android:layout_marginTop="18dp"
                     android:buttonTint="#52D68C"
                     android:textColor="#8A8A8A"
-                    android:textSize="13sp"/>
+                    android:textSize="13sp" />
 
 
                 <TextView
@@ -480,7 +495,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/pbtnEntrar"
+                android:id="@+id/btnprox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -489,12 +504,12 @@
                 android:layout_marginEnd="30dp"
                 android:layout_weight="1"
                 android:background="@drawable/botao_gradiente"
+                android:drawableRight="@drawable/prox"
                 android:text="Próximo"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:backgroundTint="@null"
-                android:drawableRight="@drawable/prox"
                 app:cornerRadius="10dp" />
 
             <LinearLayout
