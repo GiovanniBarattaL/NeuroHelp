@@ -17,7 +17,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_marginTop="20dp"
             android:paddingBottom="20dp">
+
+            <Button
+                android:id="@+id/btnvoltar4"
+                android:layout_width="9dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/btnvoltar" />
 
             <ImageView
                 android:layout_width="232dp"

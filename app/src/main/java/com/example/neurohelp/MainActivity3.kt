@@ -29,6 +29,11 @@ class MainActivity3 : AppCompatActivity() {
             val intent = Intent(this, MainActivity4::class.java)
             startActivity(intent)
         }
+        val btnentrarpro = findViewById<TextView>(R.id.btnentrarpro)
+        btnentrares.setOnClickListener {
+            val intent = Intent(this, MainActivity7::class.java)
+            startActivity(intent)
+        }
 
     }
 }
