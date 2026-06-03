@@ -30,4 +30,4 @@ class MainActivity6 : AppCompatActivity() {
             startActivity(intent)
         }
     }
-}
+}}
