@@ -14,6 +14,12 @@ class MainActivity4 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main4)
 
+        val btnvoltar2 = findViewById<Button>(R.id.btnvoltar2)
+        btnvoltar2.setOnClickListener {
+            val intent = Intent(this, MainActivity3::class.java)
+            startActivity(intent)
+        }
+
     val txtlogin= findViewById<TextView>(R.id.fazerlogin)
     txtlogin.setOnClickListener {
         val intent = Intent(this, MainActivity::class.java)

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NeuroHelp">
         <activity
+            android:name=".MainActivity8"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity7"
             android:exported="false" />
         <activity

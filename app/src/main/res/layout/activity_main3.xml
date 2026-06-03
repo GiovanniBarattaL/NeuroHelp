@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.235">
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btnvoltar1"
             android:layout_width="9dp"
             android:layout_height="16dp"
