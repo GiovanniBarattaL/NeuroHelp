@@ -57,7 +57,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/nunito"
-                android:text="Cadastro para pais e responsáveis"
+                android:text="Cadastro para profissionais"
                 android:textColor="#555555"
                 android:textSize="14sp" />
 
@@ -457,7 +457,7 @@
 
 
             <Button
-                android:id="@+id/btnprox"
+                android:id="@+id/pbtnprox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -493,7 +493,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/fazerlogin"
+                    android:id="@+id/fazerlogin4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

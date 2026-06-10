@@ -2,9 +2,231 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity8">
+    android:background="#F7F7F7"
+    android:id="@+id/main"
+    tools:context=".MainActivity4">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/plinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="20dp">
+
+            <Button
+                android:id="@+id/btnvoltar6"
+                android:layout_width="9dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/btnvoltar" />
+
+            <ImageView
+                android:layout_width="232dp"
+                android:layout_height="82dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/logohoriz" />
+
+            <TextView
+                android:id="@+id/ptextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito_black"
+                android:text="Criar conta"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ptextView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/nunito"
+                android:text="Cadastro para profissionais"
+                android:textColor="#555555"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="365dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/petapas2" />
+
+            <ImageView
+                android:layout_width="178dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/formprof" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:boxStrokeColor="@color/textinput_stroke"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="15dp"
+                android:textColorHint="#9C9C9C"
+                android:hint="    Profissão"
+                app:endIconMode="dropdown_menu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/spProfissao"
+                    android:fontFamily="@font/nunito"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:boxStrokeColor="@color/textinput_stroke"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="15dp"
+                android:textColorHint="#9C9C9C"
+                android:hint="    Área de Atuação / Especialidade"
+                app:endIconMode="dropdown_menu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/areaatuacao"
+                    android:fontFamily="@font/nunito"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:boxStrokeColor="@color/textinput_stroke"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="15dp"
+                android:textColorHint="#9C9C9C"
+                android:hint="    Nº de Registro Profissional"
+                app:endIconMode="dropdown_menu">
+
+                <AutoCompleteTextView
+                    android:id="@+id/registprof"
+                    android:fontFamily="@font/nunito"
+                    android:textSize="13sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <ImageView
+                android:layout_width="178dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/documentos" />
+
+            <LinearLayout
+                android:id="@+id/layoutUpload"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/upload"
+                android:gravity="center"
+                android:orientation="vertical">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:fontFamily="@font/nunito"
+                android:text="*Coloque documentos que comprovem sua formação profissional e comprovante de atuação legal"
+                android:textColor="#9C9C9C"
+                android:textSize="12sp" />
+
+
+            <Button
+                android:id="@+id/btnprox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/botao_gradiente"
+                android:drawableRight="@drawable/prox"
+                android:text="Próximo"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:cornerRadius="10dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:fontFamily="@font/nunito"
+                    android:text="Já tem uma conta? "
+                    android:textColor="#9C9C9C"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/fazerlogin5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:fontFamily="@font/nunito"
+                    android:text="Fazer Login"
+                    android:textColor="#47C777"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
