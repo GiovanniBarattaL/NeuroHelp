@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +10,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
 
         <LinearLayout
             android:id="@+id/plinearLayout"
@@ -22,13 +26,11 @@
 
             <Button
                 android:id="@+id/btnvoltar2"
-                android:layout_width="9dp"
-                android:layout_height="16dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/btnvoltar" />
+                android:layout_width="13.5dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/btnvoltar"/>
 
             <ImageView
                 android:layout_width="232dp"
@@ -90,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
+                    android:textColorHint="#9C9C9C"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
@@ -99,7 +102,6 @@
                     app:boxStrokeColor="@color/textinput_stroke"
                     app:boxStrokeWidth="1dp"
                     app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
                     app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -188,8 +190,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:textColorHint="#9C9C9C"
                     android:layout_weight="1"
+                    android:textColorHint="#9C9C9C"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
@@ -230,6 +232,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="3"
+                    android:textColorHint="#9C9C9C"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
@@ -239,7 +242,6 @@
                     app:boxStrokeColor="@color/textinput_stroke"
                     app:boxStrokeWidth="1dp"
                     app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
                     app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -258,6 +260,7 @@
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
+                    android:textColorHint="#9C9C9C"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
@@ -267,7 +270,6 @@
                     app:boxStrokeColor="@color/textinput_stroke"
                     app:boxStrokeWidth="1dp"
                     app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
                     app:hintTextColor="#9E9E9E">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -299,6 +301,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="3"
+                    android:textColorHint="#9C9C9C"
                     app:boxBackgroundColor="#FFFFFF"
                     app:boxBackgroundMode="outline"
                     app:boxCornerRadiusBottomEnd="10dp"
@@ -307,7 +310,6 @@
                     app:boxCornerRadiusTopStart="10dp"
                     app:boxStrokeColor="@color/textinput_stroke"
                     app:boxStrokeWidth="1dp"
-                    android:textColorHint="#9C9C9C"
                     app:boxStrokeWidthFocused="2dp">
 
                     <com.google.android.material.textfield.TextInputEditText

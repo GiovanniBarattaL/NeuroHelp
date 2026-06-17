@@ -24,10 +24,11 @@ class MainActivity6 : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
-        val btnvoltar4= findViewById<Button>(R.id.btnvoltar4)
-        btnvoltar4.setOnClickListener {
-            val intent = Intent(this, MainActivity5::class.java)
-            startActivity(intent)
+            val btnvoltar4= findViewById<Button>(R.id.btnvoltar4)
+            btnvoltar4.setOnClickListener {
+                val intent = Intent(this, MainActivity5::class.java)
+                startActivity(intent)
+            }
         }
     }
-}}
+}

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F7F7"
-    android:id="@+id/main"
-    tools:context=".MainActivity4">
+    tools:context=".MainActivity8">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,18 +17,17 @@
             android:id="@+id/plinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="#FFFFFF"
             android:orientation="vertical"
-            android:layout_marginTop="20dp"
             android:paddingBottom="20dp">
 
             <Button
                 android:id="@+id/btnvoltar6"
-                android:layout_width="9dp"
-                android:layout_height="16dp"
+                android:layout_width="13.5dp"
+                android:layout_height="24dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
                 android:background="@drawable/btnvoltar" />
 
             <ImageView
@@ -38,7 +38,6 @@
                 android:src="@drawable/logohoriz" />
 
             <TextView
-                android:id="@+id/ptextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -46,11 +45,9 @@
                 android:fontFamily="@font/nunito_black"
                 android:text="Criar conta"
                 android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/ptextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -75,69 +72,85 @@
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/formprof" />
 
+            <!-- PROFISSÃO -->
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                app:boxStrokeColor="@color/textinput_stroke"
-                android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
-                android:textColorHint="#9C9C9C"
-                android:hint="    Profissão"
+                android:layout_marginEnd="20dp"
+                android:hint="Profissão"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/textinput_stroke"
                 app:endIconMode="dropdown_menu">
 
                 <AutoCompleteTextView
                     android:id="@+id/spProfissao"
-                    android:fontFamily="@font/nunito"
-                    android:textSize="13sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+                    android:fontFamily="@font/nunito"
+                    android:inputType="none"
+                    android:textSize="13sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ÁREA DE ATUAÇÃO -->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                app:boxStrokeColor="@color/textinput_stroke"
-                android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
-                android:textColorHint="#9C9C9C"
-                android:hint="    Área de Atuação / Especialidade"
+                android:layout_marginEnd="20dp"
+                android:hint="Área de Atuação / Especialidade"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/textinput_stroke"
                 app:endIconMode="dropdown_menu">
 
                 <AutoCompleteTextView
                     android:id="@+id/areaatuacao"
-                    android:fontFamily="@font/nunito"
-                    android:textSize="13sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+                    android:fontFamily="@font/nunito"
+                    android:inputType="none"
+                    android:textSize="13sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- REGISTRO -->
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                app:boxStrokeColor="@color/textinput_stroke"
-                android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
-                android:textColorHint="#9C9C9C"
-                android:hint="    Nº de Registro Profissional"
-                app:endIconMode="dropdown_menu">
+                android:layout_marginEnd="20dp"
+                android:hint="Nº de Registro Profissional"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxStrokeColor="@color/textinput_stroke">
 
-                <AutoCompleteTextView
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/registprof"
-                    android:fontFamily="@font/nunito"
-                    android:textSize="13sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+                    android:fontFamily="@font/nunito"
+                    android:inputType="text"
+                    android:textSize="13sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <ImageView
                 android:layout_width="178dp"
@@ -147,45 +160,43 @@
                 android:layout_marginBottom="10dp"
                 android:src="@drawable/documentos" />
 
+            <!-- UPLOAD -->
+
             <LinearLayout
                 android:id="@+id/layoutUpload"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/upload"
+                android:clickable="true"
+                android:focusable="true"
                 android:gravity="center"
                 android:orientation="vertical">
+
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
+                android:layout_marginEnd="20dp"
                 android:fontFamily="@font/nunito"
                 android:text="*Coloque documentos que comprovem sua formação profissional e comprovante de atuação legal"
                 android:textColor="#9C9C9C"
                 android:textSize="12sp" />
 
-
             <Button
                 android:id="@+id/btnprox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
-                android:layout_weight="1"
                 android:background="@drawable/botao_gradiente"
-                android:drawableRight="@drawable/prox"
+                android:drawableEnd="@drawable/prox"
                 android:text="Próximo"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
@@ -202,10 +213,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
                     android:fontFamily="@font/nunito"
                     android:text="Já tem uma conta? "
                     android:textColor="#9C9C9C"
@@ -215,9 +223,9 @@
                     android:id="@+id/fazerlogin5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:clickable="true"
+                    android:focusable="true"
                     android:fontFamily="@font/nunito"
                     android:text="Fazer Login"
                     android:textColor="#47C777"

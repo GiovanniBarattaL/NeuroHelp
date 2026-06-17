@@ -19,7 +19,7 @@ class MainActivity3 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val btnvoltar1= findViewById<Button>(R.id.btnvoltar1)
+        val btnvoltar1= findViewById<TextView>(R.id.btnvoltar1)
         btnvoltar1.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

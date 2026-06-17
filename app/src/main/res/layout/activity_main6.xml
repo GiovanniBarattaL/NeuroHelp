@@ -22,12 +22,12 @@
 
             <Button
                 android:id="@+id/btnvoltar4"
-                android:layout_width="9dp"
-                android:layout_height="16dp"
+                android:layout_width="13.5dp"
+                android:layout_height="24dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/btnvoltar" />
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/btnvoltar"/>
 
             <ImageView
                 android:layout_width="232dp"

@@ -14,24 +14,19 @@ class MainActivity4 : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main4)
 
-        val btnvoltar2 = findViewById<Button>(R.id.btnvoltar2)
+        val btnvoltar2 = findViewById<TextView>(R.id.btnvoltar2)
         btnvoltar2.setOnClickListener {
-            val intent = Intent(this, MainActivity3::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity3::class.java))
         }
 
-    val txtlogin= findViewById<TextView>(R.id.fazerlogin)
-    txtlogin.setOnClickListener {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
-        val btnprox= findViewById<Button>(R.id.btnprox)
+        val txtlogin = findViewById<TextView>(R.id.fazerlogin)
+        txtlogin.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        val btnprox = findViewById<Button>(R.id.btnprox)
         btnprox.setOnClickListener {
-            val intent = Intent(this, MainActivity5::class.java)
-            startActivity(intent)
-
-
-    }
-
+            startActivity(Intent(this, MainActivity5::class.java))
+        }
     }
 }

@@ -13,35 +13,46 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity8 : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main8)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(
+                systemBars.left,
+                systemBars.top,
+                systemBars.right,
+                systemBars.bottom
+            )
             insets
         }
 
-        val txtlogin5= findViewById<TextView>(R.id.fazerlogin5)
-        txtlogin5.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-
-        val btnvoltar6= findViewById<Button>(R.id.btnvoltar6)
-        btnvoltar6.setOnClickListener {
-            val intent = Intent(this, MainActivity3::class.java)
-            startActivity(intent)
+        // Fazer Login
+        val txtLogin = findViewById<TextView>(R.id.fazerlogin5)
+        txtLogin.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
+        // Voltar
+        val btnVoltar = findViewById<Button>(R.id.btnvoltar6)
+        btnVoltar.setOnClickListener {
+            startActivity(Intent(this, MainActivity3::class.java))
+            finish()
+        }
+
+        // Upload
         val upload = findViewById<LinearLayout>(R.id.layoutUpload)
-
         upload.setOnClickListener {
-
+            // Depois vamos abrir o seletor de arquivos aqui
         }
+
+        // Spinner Profissão
         val profissao = findViewById<AutoCompleteTextView>(R.id.spProfissao)
 
-        val itens = arrayOf(
+        val listaProfissoes = arrayOf(
             "Psicólogo",
             "Fonoaudiólogo",
             "Terapeuta Ocupacional",
@@ -49,12 +60,31 @@ class MainActivity8 : AppCompatActivity() {
             "Neuropediatra"
         )
 
-        val adapter = ArrayAdapter(
+        val adapterProfissao = ArrayAdapter(
             this,
             android.R.layout.simple_dropdown_item_1line,
-            itens
+            listaProfissoes
         )
 
-        profissao.setAdapter(adapter)
+        profissao.setAdapter(adapterProfissao)
+
+        // Spinner Área de Atuação
+        val areaAtuacao = findViewById<AutoCompleteTextView>(R.id.areaatuacao)
+
+        val listaAreas = arrayOf(
+            "Autismo",
+            "TDAH",
+            "Dislexia",
+            "Desenvolvimento Infantil",
+            "Neuropsicologia"
+        )
+
+        val adapterArea = ArrayAdapter(
+            this,
+            android.R.layout.simple_dropdown_item_1line,
+            listaAreas
+        )
+
+        areaAtuacao.setAdapter(adapterArea)
     }
-}}
+}
