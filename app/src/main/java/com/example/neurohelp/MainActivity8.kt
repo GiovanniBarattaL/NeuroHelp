@@ -7,38 +7,40 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity8 : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main8)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
-        val txtlogin5= findViewById<TextView>(R.id.fazerlogin5)
-        txtlogin5.setOnClickListener {
+        val txtLogin5 = findViewById<TextView>(R.id.fazerlogin5)
+        txtLogin5.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
 
-        val btnvoltar6= findViewById<Button>(R.id.btnvoltar6)
-        btnvoltar6.setOnClickListener {
+        val btnVoltar6 = findViewById<Button>(R.id.btnvoltar6)
+        btnVoltar6.setOnClickListener {
             val intent = Intent(this, MainActivity3::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
+        val pBtnProx2 = findViewById<Button>(R.id.Pbtnprox2)
+        pBtnProx2.setOnClickListener {
+            val intent = Intent(this, MainActivity9::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val upload = findViewById<LinearLayout>(R.id.layoutUpload)
-
         upload.setOnClickListener {
-
+            // Aqui depois colocaremos a seleção de arquivos.
         }
+
         val profissao = findViewById<AutoCompleteTextView>(R.id.spProfissao)
 
         val itens = arrayOf(
@@ -57,4 +59,4 @@ class MainActivity8 : AppCompatActivity() {
 
         profissao.setAdapter(adapter)
     }
-}}
+}

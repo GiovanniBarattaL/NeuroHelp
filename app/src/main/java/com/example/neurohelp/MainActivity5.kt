@@ -12,24 +12,25 @@ class MainActivity5 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main5)
 
-        val btnvoltar3= findViewById<Button>(R.id.btnvoltar3)
-        btnvoltar3.setOnClickListener {
+        val btnVoltar3 = findViewById<Button>(R.id.btnvoltar3)
+        btnVoltar3.setOnClickListener {
             val intent = Intent(this, MainActivity4::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
-        val btnprox2 = findViewById<Button>(R.id.btnProx2)
-        btnprox2.setOnClickListener{
+        val btnProx2 = findViewById<Button>(R.id.btnProx2)
+        btnProx2.setOnClickListener {
             val intent = Intent(this, MainActivity6::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
-        val txtlogin2 = findViewById<TextView>(R.id.fazerlogin2)
-        txtlogin2.setOnClickListener{
+
+        val txtLogin2 = findViewById<TextView>(R.id.fazerlogin2)
+        txtLogin2.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
-
-
-
     }
 }
