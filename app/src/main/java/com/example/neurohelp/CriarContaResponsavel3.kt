@@ -6,22 +6,22 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity6 : AppCompatActivity() {
+class CriarContaResponsavel3 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main6)
+        setContentView(R.layout.criarcontaresponsavel3)
 
         val txtLogin3 = findViewById<TextView>(R.id.fazerlogin3)
         txtLogin3.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
 
         val btnVoltar4 = findViewById<Button>(R.id.btnvoltar4)
         btnVoltar4.setOnClickListener {
-            val intent = Intent(this, MainActivity5::class.java)
+            val intent = Intent(this, CriarContaResponsavel2::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F7F7F7"
     android:id="@+id/main"
-    tools:context=".MainActivity4">
+    tools:context=".CriarContaResponsavel1">
 
     <ScrollView
         android:layout_width="match_parent"

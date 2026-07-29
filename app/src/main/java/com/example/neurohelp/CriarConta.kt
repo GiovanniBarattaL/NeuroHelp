@@ -6,29 +6,29 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity3 : AppCompatActivity() {
+class CriarConta : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main3)
+        setContentView(R.layout.criarconta)
 
         val btnVoltar1 = findViewById<Button>(R.id.btnvoltar1)
         btnVoltar1.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
 
         val btnEntrarRes = findViewById<TextView>(R.id.btnentrares)
         btnEntrarRes.setOnClickListener {
-            val intent = Intent(this, MainActivity4::class.java)
+            val intent = Intent(this, CriarContaResponsavel1::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
 
         val btnEntrarPro = findViewById<TextView>(R.id.btnentrarpro)
         btnEntrarPro.setOnClickListener {
-            val intent = Intent(this, MainActivity7::class.java)
+            val intent = Intent(this, CriarContaProfissional1::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }

@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity9 : AppCompatActivity() {
+class CriarContaProfissional3 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Não usar enableEdgeToEdge()
-        setContentView(R.layout.activity_main9)
+        setContentView(R.layout.criarcontaprofissional3)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -29,13 +29,13 @@ class MainActivity9 : AppCompatActivity() {
 
         val txtLogin6 = findViewById<TextView>(R.id.fazerlogin6)
         txtLogin6.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginResponsavel::class.java))
             overridePendingTransition(0, 0)
         }
 
         val btnVoltar7 = findViewById<Button>(R.id.btnvoltar7)
         btnVoltar7.setOnClickListener {
-            startActivity(Intent(this, MainActivity3::class.java))
+            startActivity(Intent(this, CriarConta::class.java))
             overridePendingTransition(0, 0)
         }
     }

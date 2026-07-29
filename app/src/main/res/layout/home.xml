@@ -304,6 +304,144 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="114dp"
+                        android:backgroundTint="#F2FAFF"
+                        android:layout_height="152dp"
+                        android:layout_marginEnd="15dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="114dp"
+                            android:layout_height="152dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/tea1"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:text="Entendendo o TEA"
+                                android:textStyle="bold"
+                                android:textSize="11sp"
+                                android:textColor="#000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+
+                                android:fontFamily="@font/nunito"
+                                android:gravity="center"
+                                android:text="O que é, principais características e sinais de alerta."
+                                android:textColor="#555555"
+                                android:textSize="9sp" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="114dp"
+                        android:layout_height="152dp"
+                        android:backgroundTint="#F0FFF6"
+                        android:layout_marginEnd="15dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="114dp"
+                            android:layout_height="152dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/maos"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:text="Estratégias para o
+dia a dia"
+                                android:textStyle="bold"
+                                android:textSize="11sp"
+                                android:textColor="#000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+
+                                android:fontFamily="@font/nunito"
+                                android:gravity="center"
+                                android:text="Dicas práticas para rotina, comunicação e comportamento."
+                                android:textColor="#555555"
+                                android:textSize="9sp" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="114dp"
+                        android:layout_height="152dp"
+                        android:layout_marginEnd="15dp"
+                        android:backgroundTint="#F2FAFF"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="114dp"
+                            android:layout_height="152dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/escola"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:text="Inclusão escolar"
+                                android:textStyle="bold"
+                                android:textSize="11sp"
+                                android:textColor="#000000"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+
+                                android:fontFamily="@font/nunito"
+                                android:gravity="center"
+                                android:text="Como apoiar o desenvolvimento da criança na escola"
+                                android:textColor="#555555"
+                                android:textSize="9sp" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="114dp"
                         android:layout_height="152dp"
                         android:layout_marginEnd="15dp"
                         app:cardCornerRadius="20dp"
@@ -349,9 +487,42 @@
 
                 </LinearLayout>
 
-
-
             </HorizontalScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Próximas Consultas"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/nunito_black"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/txtVerAgenda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:text="Ver agenda ->"
+                    android:textColor="#9C9C9C"
+                    android:textSize="10sp"
+                    android:fontFamily="@font/nunito"/>
+
+            </LinearLayout>
+
 
 
         </LinearLayout>

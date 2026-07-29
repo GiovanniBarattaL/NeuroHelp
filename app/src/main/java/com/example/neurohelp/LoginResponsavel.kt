@@ -7,23 +7,23 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class LoginResponsavel : AppCompatActivity() {
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.loginresponsavel)
 
         val btnProfessional = findViewById<Button>(R.id.btnProfissional)
         btnProfessional.setOnClickListener {
-            val intent = Intent(this, MainActivity2::class.java)
+            val intent = Intent(this, LoginProfissional::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
 
         val btnCriarConta = findViewById<TextView>(R.id.criarconta)
         btnCriarConta.setOnClickListener {
-            val intent = Intent(this, MainActivity3::class.java)
+            val intent = Intent(this, CriarConta::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
