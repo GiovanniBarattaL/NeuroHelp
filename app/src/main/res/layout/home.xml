@@ -43,7 +43,7 @@
                     android:layout_width="169dp"
                     android:layout_marginStart="10dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/logohome" />
+                    android:src="@drawable/logohoriz" />
 
 
                 <View
@@ -523,7 +523,155 @@ dia a dia"
 
             </LinearLayout>
 
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProximaConsulta"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="24dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="0dp">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- FOTO DO PROFISSIONAL -->
+                    <ImageView
+                        android:id="@+id/imgProfissionalConsulta"
+                        android:layout_width="62dp"
+                        android:layout_height="62dp"
+                        android:layout_marginStart="12dp"
+                        android:src="@drawable/perfil"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <!-- INFORMAÇÕES DO PROFISSIONAL -->
+                    <LinearLayout
+                        android:id="@+id/infoProfissional"
+                        android:layout_width="105dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toEndOf="@id/imgProfissionalConsulta"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <TextView
+                            android:id="@+id/txtNomeProfissional"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dra XXXX"
+                            android:textColor="#073B5C"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/nunito_black" />
+
+                        <TextView
+                            android:id="@+id/txtProfissao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="Psicóloga"
+                            android:textColor="#073B5C"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/nunito" />
+
+                        <TextView
+                            android:id="@+id/txtCRP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CRP 00/00000"
+                            android:textColor="#073B5C"
+                            android:textSize="10sp"
+                            android:fontFamily="@font/nunito" />
+
+                    </LinearLayout>
+
+                    <!-- CALENDÁRIO -->
+                    <ImageView
+                        android:id="@+id/imgCalendarioConsulta"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/calendariocons"
+                        app:layout_constraintStart_toEndOf="@id/infoProfissional"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintVertical_bias="0.35" />
+
+                    <TextView
+                        android:id="@+id/txtDataConsulta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:text="24 de maio, 2025"
+                        android:textColor="#073B5C"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/nunito"
+                        app:layout_constraintStart_toEndOf="@id/imgCalendarioConsulta"
+                        app:layout_constraintTop_toTopOf="@id/imgCalendarioConsulta"
+                        app:layout_constraintBottom_toBottomOf="@id/imgCalendarioConsulta" />
+
+
+                    <ImageView
+                        android:id="@+id/imgHorarioConsulta"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_clock"
+                        app:layout_constraintStart_toStartOf="@id/imgCalendarioConsulta"
+                        app:layout_constraintTop_toBottomOf="@id/imgCalendarioConsulta"
+                        android:layout_marginTop="12dp" />
+
+                    <TextView
+                        android:id="@+id/txtHorarioConsulta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:text="15:00"
+                        android:textColor="#073B5C"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/nunito"
+                        app:layout_constraintStart_toEndOf="@id/imgHorarioConsulta"
+                        app:layout_constraintTop_toTopOf="@id/imgHorarioConsulta"
+                        app:layout_constraintBottom_toBottomOf="@id/imgHorarioConsulta" />
+
+
+                    <ImageView
+                        android:id="@+id/imgSetaConsulta"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_voltar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginEnd="12dp" />
+
+
+                    <TextView
+                        android:id="@+id/txtDetalhesConsulta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ver detalhe da consulta"
+                        android:textColor="#35C979"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/nunito"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="8dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="90dp"/>
 
         </LinearLayout>
 
@@ -532,12 +680,20 @@ dia a dia"
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="85dp"
+        android:layout_height="100dp"
         android:background="@android:color/white"
         android:elevation="8dp"
+
         app:itemIconSize="24dp"
         app:itemIconTint="@color/bottom_nav_selector"
         app:itemTextColor="@color/bottom_nav_selector"
+
+        app:itemTextAppearanceActive="@style/BottomNavigationTextStyle"
+        app:itemTextAppearanceInactive="@style/BottomNavigationTextStyle"
+
+        app:itemPaddingTop="4dp"
+        app:itemPaddingBottom="4dp"
+
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
