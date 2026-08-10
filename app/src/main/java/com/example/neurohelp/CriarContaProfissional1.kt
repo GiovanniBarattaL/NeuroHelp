@@ -16,21 +16,18 @@ class CriarContaProfissional1 : AppCompatActivity() {
         pBtnProx.setOnClickListener {
             val intent = Intent(this, CriarContaProfissional2::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val txtLogin4 = findViewById<TextView>(R.id.fazerlogin4)
         txtLogin4.setOnClickListener {
             val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val btnVoltar5 = findViewById<Button>(R.id.btnvoltar5)
         btnVoltar5.setOnClickListener {
             val intent = Intent(this, CriarConta::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
     }
 }

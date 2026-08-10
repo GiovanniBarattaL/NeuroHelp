@@ -16,14 +16,12 @@ class CriarContaResponsavel3 : AppCompatActivity() {
         txtLogin3.setOnClickListener {
             val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val btnVoltar4 = findViewById<Button>(R.id.btnvoltar4)
         btnVoltar4.setOnClickListener {
             val intent = Intent(this, CriarContaResponsavel2::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
     }
 }
