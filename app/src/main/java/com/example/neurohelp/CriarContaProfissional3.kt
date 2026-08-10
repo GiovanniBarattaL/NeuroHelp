@@ -30,13 +30,12 @@ class CriarContaProfissional3 : AppCompatActivity() {
         val txtLogin6 = findViewById<TextView>(R.id.fazerlogin6)
         txtLogin6.setOnClickListener {
             startActivity(Intent(this, LoginResponsavel::class.java))
-            overridePendingTransition(0, 0)
+
         }
 
         val btnVoltar7 = findViewById<Button>(R.id.btnvoltar7)
         btnVoltar7.setOnClickListener {
             startActivity(Intent(this, CriarConta::class.java))
-            overridePendingTransition(0, 0)
         }
     }
 }

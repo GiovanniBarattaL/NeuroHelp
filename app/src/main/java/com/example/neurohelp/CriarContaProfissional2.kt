@@ -19,21 +19,18 @@ class CriarContaProfissional2 : AppCompatActivity() {
         txtLogin5.setOnClickListener {
             val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val btnVoltar6 = findViewById<Button>(R.id.btnvoltar6)
         btnVoltar6.setOnClickListener {
             val intent = Intent(this, CriarConta::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val pBtnProx2 = findViewById<Button>(R.id.Pbtnprox2)
         pBtnProx2.setOnClickListener {
             val intent = Intent(this, CriarContaProfissional3::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val upload = findViewById<LinearLayout>(R.id.layoutUpload)

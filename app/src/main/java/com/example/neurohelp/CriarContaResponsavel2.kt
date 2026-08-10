@@ -16,21 +16,18 @@ class CriarContaResponsavel2 : AppCompatActivity() {
         btnVoltar3.setOnClickListener {
             val intent = Intent(this, CriarContaResponsavel1::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val btnProx2 = findViewById<Button>(R.id.btnProx2)
         btnProx2.setOnClickListener {
             val intent = Intent(this, CriarContaResponsavel3::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val txtLogin2 = findViewById<TextView>(R.id.fazerlogin2)
         txtLogin2.setOnClickListener {
             val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
     }
 }
