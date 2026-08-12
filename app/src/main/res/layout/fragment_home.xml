@@ -2,29 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F7F7"
-    tools:context=".Home">
+    android:background="#F7F7F7">
 
     <ScrollView
         android:id="@+id/scrollHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="#FFFFFF"
+            android:orientation="vertical"
             android:paddingTop="18dp"
             android:paddingBottom="20dp">
 
@@ -41,8 +40,8 @@
                 <ImageView
                     android:id="@+id/imgLogo"
                     android:layout_width="169dp"
-                    android:layout_marginStart="10dp"
                     android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/logohoriz" />
 
 
@@ -56,8 +55,8 @@
                     android:id="@+id/imgNotificacao"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:clickable="true"
                     android:layout_marginEnd="16dp"
+                    android:clickable="true"
                     android:src="@drawable/sino" />
 
                 <!-- Perfil -->
@@ -65,8 +64,8 @@
                     android:id="@+id/imgPerfil"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:clickable="true"
                     android:layout_marginEnd="15dp"
+                    android:clickable="true"
                     android:src="@drawable/perfil" />
 
             </LinearLayout>
@@ -74,10 +73,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:backgroundTint="#F8F8F8"
-                android:background="#F8F8F8"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="40dp"
-                android:layout_marginTop="15dp">
+                android:background="#F8F8F8"
+                android:backgroundTint="#F8F8F8">
 
                 <!-- Texto -->
                 <LinearLayout
@@ -93,21 +92,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_black"
                         android:text="Olá, Ana!"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/nunito_black"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="@font/nunito"
                         android:text="Estamos aqui para caminhar\ncom você e sua família."
                         android:textColor="#555555"
-                        android:textStyle="bold"
                         android:textSize="12sp"
-                        android:fontFamily="@font/nunito"/>
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <!-- Foto -->
@@ -116,10 +115,10 @@
                     android:layout_width="210dp"
                     android:layout_height="170dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/familia"
                     android:scaleType="fitCenter"
+                    android:src="@drawable/familia"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imgCurva"
@@ -178,6 +177,7 @@
                             android:textSize="11sp" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -202,6 +202,7 @@
                             android:textSize="11sp" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -226,6 +227,7 @@
                             android:textSize="11sp" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -258,8 +260,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -267,35 +269,35 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_black"
                     android:text="Conteúdos para você"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
                     android:textColor="#000000"
-                    android:fontFamily="@font/nunito_black"/>
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/txtVerTodos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:fontFamily="@font/nunito"
                     android:text="Ver todos ->"
                     android:textColor="#9C9C9C"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/nunito"/>
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
                 android:paddingStart="20dp"
-                android:paddingTop="15dp">
+                android:paddingTop="15dp"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -304,9 +306,9 @@
 
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="114dp"
-                        android:backgroundTint="#F2FAFF"
                         android:layout_height="152dp"
                         android:layout_marginEnd="15dp"
+                        android:backgroundTint="#F2FAFF"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="2dp">
 
@@ -321,16 +323,16 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/tea1"/>
+                                android:src="@drawable/tea1" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="8dp"
                                 android:text="Entendendo o TEA"
-                                android:textStyle="bold"
+                                android:textColor="#000000"
                                 android:textSize="11sp"
-                                android:textColor="#000000"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -351,8 +353,8 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="114dp"
                         android:layout_height="152dp"
-                        android:backgroundTint="#F0FFF6"
                         android:layout_marginEnd="15dp"
+                        android:backgroundTint="#F0FFF6"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="2dp">
 
@@ -367,7 +369,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/maos"/>
+                                android:src="@drawable/maos" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -375,9 +377,9 @@
                                 android:layout_margin="8dp"
                                 android:text="Estratégias para o
 dia a dia"
-                                android:textStyle="bold"
+                                android:textColor="#000000"
                                 android:textSize="11sp"
-                                android:textColor="#000000"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -394,6 +396,7 @@ dia a dia"
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>
+
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="114dp"
                         android:layout_height="152dp"
@@ -413,16 +416,16 @@ dia a dia"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/escola"/>
+                                android:src="@drawable/escola" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="8dp"
                                 android:text="Inclusão escolar"
-                                android:textStyle="bold"
+                                android:textColor="#000000"
                                 android:textSize="11sp"
-                                android:textColor="#000000"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -458,16 +461,16 @@ dia a dia"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/tea1"/>
+                                android:src="@drawable/tea1" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="8dp"
                                 android:text="Entendendo o TEA"
-                                android:textStyle="bold"
+                                android:textColor="#000000"
                                 android:textSize="11sp"
-                                android:textColor="#000000"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -488,11 +491,12 @@ dia a dia"
                 </LinearLayout>
 
             </HorizontalScrollView>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="24dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -500,26 +504,26 @@ dia a dia"
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_black"
                     android:text="Próximas Consultas"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
                     android:textColor="#000000"
-                    android:fontFamily="@font/nunito_black"/>
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/txtVerAgenda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:fontFamily="@font/nunito"
                     android:text="Ver agenda ->"
                     android:textColor="#9C9C9C"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/nunito"/>
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
@@ -545,11 +549,11 @@ dia a dia"
                         android:layout_width="62dp"
                         android:layout_height="62dp"
                         android:layout_marginStart="12dp"
-                        android:src="@drawable/perfil"
                         android:scaleType="centerCrop"
+                        android:src="@drawable/perfil"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <!-- INFORMAÇÕES DO PROFISSIONAL -->
                     <LinearLayout
@@ -558,38 +562,38 @@ dia a dia"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/imgProfissionalConsulta"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent">
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             android:id="@+id/txtNomeProfissional"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_black"
                             android:text="Dra XXXX"
                             android:textColor="#073B5C"
                             android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/nunito_black" />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/txtProfissao"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
+                            android:fontFamily="@font/nunito"
                             android:text="Psicóloga"
                             android:textColor="#073B5C"
-                            android:textSize="11sp"
-                            android:fontFamily="@font/nunito" />
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/txtCRP"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
                             android:text="CRP 00/00000"
                             android:textColor="#073B5C"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/nunito" />
+                            android:textSize="10sp" />
 
                     </LinearLayout>
 
@@ -599,9 +603,9 @@ dia a dia"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/calendariocons"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/infoProfissional"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintVertical_bias="0.35" />
 
                     <TextView
@@ -609,61 +613,61 @@ dia a dia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="7dp"
+                        android:fontFamily="@font/nunito"
                         android:text="24 de maio, 2025"
                         android:textColor="#073B5C"
                         android:textSize="10sp"
-                        android:fontFamily="@font/nunito"
+                        app:layout_constraintBottom_toBottomOf="@id/imgCalendarioConsulta"
                         app:layout_constraintStart_toEndOf="@id/imgCalendarioConsulta"
-                        app:layout_constraintTop_toTopOf="@id/imgCalendarioConsulta"
-                        app:layout_constraintBottom_toBottomOf="@id/imgCalendarioConsulta" />
+                        app:layout_constraintTop_toTopOf="@id/imgCalendarioConsulta" />
 
 
                     <ImageView
                         android:id="@+id/imgHorarioConsulta"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        android:layout_marginTop="12dp"
                         android:src="@drawable/ic_clock"
                         app:layout_constraintStart_toStartOf="@id/imgCalendarioConsulta"
-                        app:layout_constraintTop_toBottomOf="@id/imgCalendarioConsulta"
-                        android:layout_marginTop="12dp" />
+                        app:layout_constraintTop_toBottomOf="@id/imgCalendarioConsulta" />
 
                     <TextView
                         android:id="@+id/txtHorarioConsulta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="7dp"
+                        android:fontFamily="@font/nunito"
                         android:text="15:00"
                         android:textColor="#073B5C"
                         android:textSize="10sp"
-                        android:fontFamily="@font/nunito"
+                        app:layout_constraintBottom_toBottomOf="@id/imgHorarioConsulta"
                         app:layout_constraintStart_toEndOf="@id/imgHorarioConsulta"
-                        app:layout_constraintTop_toTopOf="@id/imgHorarioConsulta"
-                        app:layout_constraintBottom_toBottomOf="@id/imgHorarioConsulta" />
+                        app:layout_constraintTop_toTopOf="@id/imgHorarioConsulta" />
 
 
                     <ImageView
                         android:id="@+id/imgSetaConsulta"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
+                        android:layout_marginEnd="12dp"
                         android:src="@drawable/ic_voltar"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginEnd="12dp" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <TextView
                         android:id="@+id/txtDetalhesConsulta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/nunito"
                         android:text="Ver detalhe da consulta"
                         android:textColor="#35C979"
                         android:textSize="10sp"
-                        android:fontFamily="@font/nunito"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginBottom="8dp" />
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -671,32 +675,10 @@ dia a dia"
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="90dp"/>
+                android:layout_height="90dp" />
 
         </LinearLayout>
 
     </ScrollView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:background="@android:color/white"
-        android:elevation="8dp"
-
-        app:itemIconSize="24dp"
-        app:itemIconTint="@color/bottom_nav_selector"
-        app:itemTextColor="@color/bottom_nav_selector"
-
-        app:itemTextAppearanceActive="@style/BottomNavigationTextStyle"
-        app:itemTextAppearanceInactive="@style/BottomNavigationTextStyle"
-
-        app:itemPaddingTop="4dp"
-        app:itemPaddingBottom="4dp"
-
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/menu_bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

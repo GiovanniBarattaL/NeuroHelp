@@ -27,7 +27,7 @@ class LoginResponsavel : AppCompatActivity() {
         }
         val btnEntrar = findViewById<Button>(R.id.btnEntrar)
         btnEntrar.setOnClickListener {
-            val intent = Intent(this, Home::class.java)
+            val intent = Intent(this, PrincipalActivity::class.java)
             startActivity(intent)
         }
     }

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+   >
+
+    <ScrollView
+        android:id="@+id/scrollProfissionais"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearProfissionais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F8F8F8"
+            android:orientation="vertical"
+            android:paddingTop="18dp"
+            android:paddingBottom="25dp">
+
+
+            <!-- ====================================================== -->
+            <!-- HEADER -->
+            <!-- ====================================================== -->
+
+            <LinearLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_width="169dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="Logo"
+                    android:src="@drawable/logohoriz" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/imgNotificacao"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:contentDescription="Notificações"
+                    android:focusable="true"
+                    android:src="@drawable/sino" />
+
+                <ImageView
+                    android:id="@+id/imgPerfil"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="15dp"
+                    android:clickable="true"
+                    android:contentDescription="Perfil"
+                    android:focusable="true"
+                    android:src="@drawable/perfil" />
+
+            </LinearLayout>
+
+
+            <!-- ====================================================== -->
+            <!-- BUSCA + FILTRO -->
+            <!-- ====================================================== -->
+
+            <LinearLayout
+                android:id="@+id/layoutBusca"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <!-- CAMPO DE BUSCA -->
+
+                <LinearLayout
+                    android:id="@+id/campoBusca"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_busca"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="9dp"
+                    android:paddingEnd="8dp">
+
+                    <ImageView
+                        android:id="@+id/imgBusca"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="Buscar"
+                        android:src="@drawable/iconbuscap" />
+
+                    <EditText
+                        android:id="@+id/edtBusca"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/nunito"
+                        android:hint="Buscar profissionais"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="5dp"
+                        android:singleLine="true"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+
+                <!-- FILTRO -->
+
+                <LinearLayout
+                    android:id="@+id/btnFiltros"
+                    android:layout_width="65dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_busca"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:contentDescription="Filtro"
+                        android:src="@drawable/filter" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="Filtros"
+                        android:textColor="#35C979"
+                        android:textSize="9sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/txtQuantidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito"
+                android:text="45 Profissionais encontrados"
+                android:textColor="#35C979"
+                android:textSize="8sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProfissional1"
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="16dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="9dp"
+                app:cardElevation="1dp"
+                app:strokeColor="#E5E5E5"
+                app:strokeWidth="1dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+
+                    <!-- AVATAR -->
+
+
+                    <ImageView
+                        android:id="@+id/imgAvatar1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:contentDescription="Profissional"
+                        android:src="@drawable/avatarverde"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.029"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.152" />
+
+                    <TextView
+                        android:id="@+id/txtcrp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="CRP 06/123456"
+                        android:textColor="#35C979"
+                        android:textSize="8sp"
+                        app:layout_constraintStart_toEndOf="@id/imgAvatar1"
+                        app:layout_constraintTop_toTopOf="@id/imgAvatar1" />
+
+                    <TextView
+                        android:id="@+id/txtNome1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:fontFamily="@font/nunito_black"
+                        android:text="Dra. XXXX"
+                        android:textColor="#073B5C"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/imgAvatar1"
+                        app:layout_constraintTop_toBottomOf="@id/txtcrp" />
+
+
+                    <!-- PROFISSÃO -->
+
+                    <TextView
+                        android:id="@+id/txtProfissao1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
+                        android:text="Psicóloga"
+                        android:textColor="#073B5C"
+                        android:textSize="9sp"
+                        app:layout_constraintStart_toStartOf="@id/txtNome1"
+                        app:layout_constraintTop_toBottomOf="@id/txtNome1" />
+
+
+                    <!-- FAVORITO -->
+
+                    <ImageView
+                        android:id="@+id/imgFavorito1"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:contentDescription="Favorito"
+                        android:src="@drawable/favorito"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <!-- ONLINE -->
+
+
+                    <!-- LOCAL -->
+
+                    <ImageView
+                        android:id="@+id/imgOnline1"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/online"
+                        app:layout_constraintStart_toStartOf="@+id/txtProfissao1"
+                        app:layout_constraintTop_toBottomOf="@+id/txtProfissao1" />
+
+                    <TextView
+                        android:id="@+id/txtOnline1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="Atende online"
+                        android:textColor="#35C979"
+                        android:textSize="7sp"
+                        app:layout_constraintStart_toEndOf="@+id/imgOnline1"
+                        app:layout_constraintTop_toTopOf="@+id/imgOnline1" />
+
+                    <ImageView
+                        android:id="@+id/imgLocal1"
+                        android:layout_width="8dp"
+                        android:layout_height="14dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/localizacao"
+                        app:layout_constraintStart_toStartOf="@+id/imgOnline1"
+                        app:layout_constraintTop_toBottomOf="@+id/imgOnline1" />
+
+
+                    <!-- BOTÃO VER PERFIL -->
+
+                    <TextView
+                        android:id="@+id/txtLocal1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="São Paulo - SP"
+                        android:textColor="#35C979"
+                        android:textSize="7sp"
+                        app:layout_constraintStart_toEndOf="@+id/imgLocal1"
+                        app:layout_constraintTop_toBottomOf="@+id/txtOnline1" />
+
+                    <TextView
+                        android:id="@+id/txtAvaliacao1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
+                        android:text="5.0 (27 avaliações)"
+                        android:textColor="#777777"
+                        android:textSize="7sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.696" />
+
+                    <TextView
+                        android:id="@+id/btnPerfil1"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/bg_btn_perfil"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/nunito"
+                        android:gravity="center"
+                        android:text="Ver Perfil"
+                        android:textColor="#073B5C"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/btnAgendar1"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+
+                    <!-- BOTÃO AGENDAR -->
+
+                    <TextView
+                        android:id="@+id/btnAgendar1"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/botao_gradiente"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/nunito"
+                        android:gravity="center"
+                        android:text="Agendar Consulta"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintStart_toEndOf="@id/btnPerfil1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
