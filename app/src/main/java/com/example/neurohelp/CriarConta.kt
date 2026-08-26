@@ -16,21 +16,18 @@ class CriarConta : AppCompatActivity() {
         btnVoltar1.setOnClickListener {
             val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val btnEntrarRes = findViewById<TextView>(R.id.btnentrares)
         btnEntrarRes.setOnClickListener {
             val intent = Intent(this, CriarContaResponsavel1::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
 
         val btnEntrarPro = findViewById<TextView>(R.id.btnentrarpro)
         btnEntrarPro.setOnClickListener {
             val intent = Intent(this, CriarContaProfissional1::class.java)
             startActivity(intent)
-            overridePendingTransition(0, 0)
         }
     }
 }
