@@ -66,7 +66,7 @@
                 android:layout_height="41dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/petapas2" />
+                android:src="@drawable/etapaspro2" />
 
             <ImageView
                 android:layout_width="178dp"
@@ -78,100 +78,220 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Profissão"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/textinput_stroke"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="15dp"
-                android:textColorHint="#9C9C9C"
-                android:hint="    Profissão"
-                app:endIconMode="dropdown_menu">
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
 
-                <AutoCompleteTextView
-                    android:id="@+id/spProfissao"
-                    android:fontFamily="@font/nunito"
-                    android:textSize="13sp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                android:textColorHint="#9C9C9C"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Profissao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/nunito"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:paddingStart="10dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#9C9C9C"/>
 
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Área de Atuação / Especialidade"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/textinput_stroke"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="15dp"
-                android:textColorHint="#9C9C9C"
-                android:hint="    Área de Atuação / Especialidade"
-                app:endIconMode="dropdown_menu">
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
 
-                <AutoCompleteTextView
-                    android:id="@+id/areaatuacao"
-                    android:fontFamily="@font/nunito"
-                    android:textSize="13sp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                android:textColorHint="#9C9C9C"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtareadeatuacao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/nunito"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:paddingStart="10dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#9C9C9C"/>
 
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Nº de Registro Profissional"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxBackgroundMode="outline"
                 app:boxStrokeColor="@color/textinput_stroke"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="15dp"
-                android:textColorHint="#9C9C9C"
-                android:hint="    Nº de Registro Profissional"
-                app:endIconMode="dropdown_menu">
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
 
-                <AutoCompleteTextView
-                    android:id="@+id/registprof"
-                    android:fontFamily="@font/nunito"
-                    android:textSize="13sp"
+                app:boxCornerRadiusTopStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                android:textColorHint="#9C9C9C"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusBottomEnd="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtnregistropro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"/>
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/nunito"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:paddingStart="10dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#9C9C9C"/>
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <ImageView
-                android:layout_width="178dp"
+                android:layout_width="177dp"
                 android:layout_height="18dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/documentos" />
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/segur" />
+
+
 
             <LinearLayout
-                android:id="@+id/layoutUpload"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/upload"
-                android:gravity="center"
                 android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="E-mail"
+
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:textColorHint="#9C9C9C"
+                    app:boxCornerRadiusBottomEnd="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Emailprofissional"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/email"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000"
+                        android:textColorHint="#9C9C9C"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Senha"
+
+                    app:endIconMode="password_toggle"
+
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:textColorHint="#9C9C9C"
+                    app:boxCornerRadiusBottomEnd="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/uf"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:inputType="textPassword"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000"
+                        android:textColorHint="#9C9C9C"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Confirmar Senha"
+
+                    app:endIconMode="password_toggle"
+
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    android:textColorHint="#9C9C9C"
+                    app:boxCornerRadiusBottomEnd="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/uf"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:inputType="textPassword"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000"
+                        android:textColorHint="#9C9C9C"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="10dp"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
-                android:text="*Coloque documentos que comprovem sua formação profissional e comprovante de atuação legal"
-                android:textColor="#9C9C9C"
-                android:textSize="12sp" />
+
+
 
 
             <Button
@@ -186,7 +306,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/botao_gradiente"
                 android:drawableRight="@drawable/prox"
-                android:text="Próximo"
+                android:text="Cadastre-se"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
