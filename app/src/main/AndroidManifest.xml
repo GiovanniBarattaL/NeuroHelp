@@ -22,9 +22,6 @@
             android:name=".CriarContaProfissional1"
             android:exported="false" />
         <activity
-            android:name=".CriarContaResponsavel3"
-            android:exported="false" />
-        <activity
             android:name=".CriarContaResponsavel2"
             android:exported="false" />
         <activity

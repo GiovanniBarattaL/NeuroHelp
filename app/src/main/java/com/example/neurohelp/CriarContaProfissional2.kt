@@ -29,31 +29,7 @@ class CriarContaProfissional2 : AppCompatActivity() {
 
         val pBtnProx2 = findViewById<Button>(R.id.Pbtnprox2)
         pBtnProx2.setOnClickListener {
-            val intent = Intent(this, CriarContaProfissional3::class.java)
+            val intent = Intent(this, LoginProfissional::class.java)
             startActivity(intent)
-        }
-
-        val upload = findViewById<LinearLayout>(R.id.layoutUpload)
-        upload.setOnClickListener {
-            // Aqui depois colocaremos a seleção de arquivos.
-        }
-
-        val profissao = findViewById<AutoCompleteTextView>(R.id.spProfissao)
-
-        val itens = arrayOf(
-            "Psicólogo",
-            "Fonoaudiólogo",
-            "Terapeuta Ocupacional",
-            "Pedagogo",
-            "Neuropediatra"
-        )
-
-        val adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_dropdown_item_1line,
-            itens
-        )
-
-        profissao.setAdapter(adapter)
-    }
+        }}
 }

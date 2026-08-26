@@ -3,6 +3,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -178,7 +179,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardProfissional1"
                 android:layout_width="match_parent"
-                android:layout_height="155dp"
+                android:layout_height="180dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="16dp"
@@ -199,8 +200,8 @@
 
                     <ImageView
                         android:id="@+id/imgAvatar1"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="66dp"
+                        android:layout_height="70dp"
                         android:contentDescription="Profissional"
                         android:src="@drawable/avatarverde"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -214,12 +215,12 @@
                         android:id="@+id/txtcrp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="9dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
                         android:fontFamily="@font/nunito"
                         android:text="CRP 06/123456"
                         android:textColor="#35C979"
-                        android:textSize="8sp"
+                        android:textSize="10sp"
                         app:layout_constraintStart_toEndOf="@id/imgAvatar1"
                         app:layout_constraintTop_toTopOf="@id/imgAvatar1" />
 
@@ -246,7 +247,7 @@
                         android:fontFamily="@font/nunito"
                         android:text="Psicóloga"
                         android:textColor="#073B5C"
-                        android:textSize="9sp"
+                        android:textSize="10sp"
                         app:layout_constraintStart_toStartOf="@id/txtNome1"
                         app:layout_constraintTop_toBottomOf="@id/txtNome1" />
 
@@ -270,8 +271,8 @@
 
                     <ImageView
                         android:id="@+id/imgOnline1"
-                        android:layout_width="11dp"
-                        android:layout_height="11dp"
+                        android:layout_width="13dp"
+                        android:layout_height="12dp"
                         android:layout_marginTop="8dp"
                         android:src="@drawable/online"
                         app:layout_constraintStart_toStartOf="@+id/txtProfissao1"
@@ -285,14 +286,14 @@
                         android:fontFamily="@font/nunito"
                         android:text="Atende online"
                         android:textColor="#35C979"
-                        android:textSize="7sp"
+                        android:textSize="9sp"
                         app:layout_constraintStart_toEndOf="@+id/imgOnline1"
                         app:layout_constraintTop_toTopOf="@+id/imgOnline1" />
 
                     <ImageView
                         android:id="@+id/imgLocal1"
-                        android:layout_width="8dp"
-                        android:layout_height="14dp"
+                        android:layout_width="13dp"
+                        android:layout_height="15dp"
                         android:layout_marginTop="3dp"
                         android:src="@drawable/localizacao"
                         app:layout_constraintStart_toStartOf="@+id/imgOnline1"
@@ -310,7 +311,7 @@
                         android:fontFamily="@font/nunito"
                         android:text="São Paulo - SP"
                         android:textColor="#35C979"
-                        android:textSize="7sp"
+                        android:textSize="9sp"
                         app:layout_constraintStart_toEndOf="@+id/imgLocal1"
                         app:layout_constraintTop_toBottomOf="@+id/txtOnline1" />
 
@@ -321,12 +322,13 @@
                         android:fontFamily="@font/nunito"
                         android:text="5.0 (27 avaliações)"
                         android:textColor="#777777"
-                        android:textSize="7sp"
+                        android:textSize="9sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.57"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.696" />
+                        app:layout_constraintVertical_bias="0.748" />
 
                     <TextView
                         android:id="@+id/btnPerfil1"
