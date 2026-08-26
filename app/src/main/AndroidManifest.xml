@@ -11,11 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NeuroHelp">
+
         <activity
             android:name=".CriarContaProfissional3"
-            android:exported="false" />
-        <activity
-            android:name=".Home"
             android:exported="false" />
         <activity
             android:name=".CriarContaProfissional2"
@@ -39,7 +37,7 @@
             android:name=".LoginProfissional"
             android:exported="false" />
         <activity
-            android:name=".LoginResponsavel"
+            android:name=".PrincipalActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
