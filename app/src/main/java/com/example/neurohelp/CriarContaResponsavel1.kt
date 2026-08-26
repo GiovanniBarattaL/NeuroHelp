@@ -26,7 +26,7 @@ class CriarContaResponsavel1 : AppCompatActivity() {
 
         val btnProx = findViewById<Button>(R.id.btnprox)
         btnProx.setOnClickListener {
-            val intent = Intent(this, CriarContaResponsavel2::class.java)
+            val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
         }
     }

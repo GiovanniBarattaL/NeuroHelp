@@ -29,7 +29,7 @@ class CriarContaProfissional2 : AppCompatActivity() {
 
         val pBtnProx2 = findViewById<Button>(R.id.Pbtnprox2)
         pBtnProx2.setOnClickListener {
-            val intent = Intent(this, LoginProfissional::class.java)
+            val intent = Intent(this, LoginResponsavel::class.java)
             startActivity(intent)
         }}
 }

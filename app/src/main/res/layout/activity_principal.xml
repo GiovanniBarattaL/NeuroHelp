@@ -19,25 +19,26 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="140dp"
         android:background="@android:color/white"
         android:elevation="8dp"
 
+        app:itemActiveIndicatorStyle="@style/Base.Theme.NeuroHelp"
         app:itemIconSize="24dp"
         app:itemIconTint="@color/bottom_nav_selector"
-        app:itemTextColor="@color/bottom_nav_selector"
+
+        app:itemPaddingBottom="4dp"
+        app:itemPaddingTop="4dp"
 
         app:itemTextAppearanceActive="@style/BottomNavigationTextStyle"
         app:itemTextAppearanceInactive="@style/BottomNavigationTextStyle"
 
-        app:itemPaddingTop="4dp"
-        app:itemPaddingBottom="4dp"
-
+        app:itemTextColor="@color/bottom_nav_selector"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/menu_bottom"
 
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:menu="@menu/menu_bottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

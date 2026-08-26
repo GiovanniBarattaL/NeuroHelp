@@ -196,38 +196,31 @@
             android:textColor="#9C9C9C"
             android:textSize="14dp" />
 
+        <!-- CONCLUSÃO DO TRECHO QUE FICOU CORTADO -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="?attr/selectableItemBackground"
-                android:clickable="true"
-                android:fontFamily="@font/nunito"
                 android:text="Não tem uma conta? "
                 android:textColor="#9C9C9C"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/criarconta"
+                android:id="@+id/txtCriarConta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
                 android:clickable="true"
-                android:fontFamily="@font/nunito"
                 android:text="Criar Conta"
                 android:textColor="#47C777"
-                android:textSize="14dp" />
-
+                android:textStyle="bold"
+                android:textSize="14sp" />
         </LinearLayout>
-
 
     </LinearLayout>
 

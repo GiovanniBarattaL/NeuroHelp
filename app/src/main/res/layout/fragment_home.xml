@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F7F7">
+    android:background="#F7F7F7"
+    tools:context=".HomeFragment">
 
     <ScrollView
         android:id="@+id/scrollHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
+        android:scrollbars="none"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:id="@+id/linearHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
             android:orientation="vertical"
+            android:background="#FFFFFF"
             android:paddingTop="18dp"
             android:paddingBottom="20dp">
 
@@ -31,11 +34,9 @@
             <LinearLayout
                 android:id="@+id/header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
+                android:layout_height="60dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-
 
                 <ImageView
                     android:id="@+id/imgLogo"
@@ -44,41 +45,38 @@
                     android:layout_marginStart="10dp"
                     android:src="@drawable/logohoriz" />
 
-
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="1" />
 
-
                 <ImageView
                     android:id="@+id/imgNotificacao"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginEnd="16dp"
                     android:clickable="true"
+                    android:layout_marginEnd="16dp"
                     android:src="@drawable/sino" />
 
-                <!-- Perfil -->
                 <ImageView
                     android:id="@+id/imgPerfil"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_marginEnd="15dp"
                     android:clickable="true"
+                    android:layout_marginEnd="15dp"
                     android:src="@drawable/perfil" />
 
             </LinearLayout>
 
+
+            <!-- BANNER -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="40dp"
                 android:background="#F8F8F8"
-                android:backgroundTint="#F8F8F8">
+                android:layout_marginBottom="40dp"
+                android:layout_marginTop="15dp">
 
-                <!-- Texto -->
                 <LinearLayout
                     android:id="@+id/layoutBoasVindas"
                     android:layout_width="wrap_content"
@@ -92,33 +90,33 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_black"
                         android:text="Olá, Ana!"
                         android:textColor="#000000"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/nunito_black"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:fontFamily="@font/nunito"
-                        android:text="Estamos aqui para caminhar\ncom você e sua família."
+                        android:text="Estamos aqui para caminhar&#10;com você e sua família."
                         android:textColor="#555555"
+                        android:textStyle="bold"
                         android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/nunito"/>
+
                 </LinearLayout>
 
-                <!-- Foto -->
                 <ImageView
                     android:id="@+id/imgFamilia"
                     android:layout_width="210dp"
                     android:layout_height="170dp"
                     android:layout_marginTop="15dp"
-                    android:scaleType="fitCenter"
                     android:src="@drawable/familia"
+                    android:scaleType="fitCenter"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <ImageView
                     android:id="@+id/imgCurva"
@@ -128,16 +126,17 @@
                     android:src="@drawable/curva_home"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgFamilia"
                     app:layout_constraintVertical_bias="0.588" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <!-- CARD ATALHOS -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAtalhos"
-                android:layout_width="370dp"
+                android:layout_width="match_parent"
                 android:layout_height="107dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="-85dp"
@@ -146,13 +145,12 @@
                 app:cardCornerRadius="20dp"
                 app:cardElevation="4dp">
 
-                <!-- LinearLayout HORIZONTAL que vai segurar os 4 itens -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <!-- PRIMEIRO ITEM -->
+                    <!-- PROFISSIONAIS -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -178,6 +176,8 @@
 
                     </LinearLayout>
 
+
+                    <!-- AGENDAR -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -203,6 +203,8 @@
 
                     </LinearLayout>
 
+
+                    <!-- BLOG -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -228,6 +230,8 @@
 
                     </LinearLayout>
 
+
+                    <!-- COMUNIDADE -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -257,11 +261,13 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+            <!-- CONTEÚDOS PARA VOCÊ -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -269,52 +275,56 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_black"
                     android:text="Conteúdos para você"
-                    android:textColor="#000000"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/nunito_black"/>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/txtVerTodos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:fontFamily="@font/nunito"
                     android:text="Ver todos ->"
                     android:textColor="#9C9C9C"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"
+                    android:fontFamily="@font/nunito"/>
 
             </LinearLayout>
 
+
+            <!-- CARDS -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:scrollbars="none"
                 android:paddingStart="20dp"
-                android:paddingTop="15dp"
-                android:scrollbars="none">
+                android:paddingTop="15dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+
+                    <!-- CARD 1 -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="114dp"
-                        android:layout_height="152dp"
+                        android:layout_width="145dp"
+                        android:layout_height="165dp"
                         android:layout_marginEnd="15dp"
                         android:backgroundTint="#F2FAFF"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="2dp">
 
                         <LinearLayout
-                            android:layout_width="114dp"
-                            android:layout_height="152dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:orientation="vertical">
 
                             <ImageView
@@ -323,23 +333,25 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/tea1" />
+                                android:src="@drawable/tea1"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:text="Entendendo o TEA"
-                                android:textColor="#000000"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
+                                android:text="Entendendo o TEA"
+                                android:textStyle="bold"
+                                android:textSize="11sp"
+                                android:textColor="#000000"/>
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="8dp"
                                 android:fontFamily="@font/nunito"
                                 android:gravity="center"
                                 android:text="O que é, principais características e sinais de alerta."
@@ -350,17 +362,19 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
+
+                    <!-- CARD 2 -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="114dp"
-                        android:layout_height="152dp"
+                        android:layout_width="145dp"
+                        android:layout_height="165dp"
                         android:layout_marginEnd="15dp"
                         android:backgroundTint="#F0FFF6"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="2dp">
 
                         <LinearLayout
-                            android:layout_width="114dp"
-                            android:layout_height="152dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:orientation="vertical">
 
                             <ImageView
@@ -369,24 +383,25 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/maos" />
+                                android:src="@drawable/maos"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:text="Estratégias para o
-dia a dia"
-                                android:textColor="#000000"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
+                                android:text="Estratégias para o&#10;dia a dia"
+                                android:textStyle="bold"
+                                android:textSize="11sp"
+                                android:textColor="#000000"/>
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="8dp"
                                 android:fontFamily="@font/nunito"
                                 android:gravity="center"
                                 android:text="Dicas práticas para rotina, comunicação e comportamento."
@@ -397,17 +412,19 @@ dia a dia"
 
                     </com.google.android.material.card.MaterialCardView>
 
+
+                    <!-- CARD 3 -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="114dp"
-                        android:layout_height="152dp"
+                        android:layout_width="145dp"
+                        android:layout_height="165dp"
                         android:layout_marginEnd="15dp"
                         android:backgroundTint="#F2FAFF"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="2dp">
 
                         <LinearLayout
-                            android:layout_width="114dp"
-                            android:layout_height="152dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:orientation="vertical">
 
                             <ImageView
@@ -416,23 +433,25 @@ dia a dia"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/escola" />
+                                android:src="@drawable/escola"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:text="Inclusão escolar"
-                                android:textColor="#000000"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
+                                android:text="Inclusão escolar"
+                                android:textStyle="bold"
+                                android:textSize="11sp"
+                                android:textColor="#000000"/>
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="8dp"
                                 android:fontFamily="@font/nunito"
                                 android:gravity="center"
                                 android:text="Como apoiar o desenvolvimento da criança na escola"
@@ -444,15 +463,16 @@ dia a dia"
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="114dp"
-                        android:layout_height="152dp"
+                        android:layout_width="145dp"
+                        android:layout_height="165dp"
                         android:layout_marginEnd="15dp"
+                        android:backgroundTint="#F2FAFF"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="2dp">
 
                         <LinearLayout
-                            android:layout_width="114dp"
-                            android:layout_height="152dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:orientation="vertical">
 
                             <ImageView
@@ -461,26 +481,28 @@ dia a dia"
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="10dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/tea1" />
+                                android:src="@drawable/escola"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:text="Entendendo o TEA"
-                                android:textColor="#000000"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
+                                android:text="Inclusão escolar"
+                                android:textStyle="bold"
+                                android:textSize="11sp"
+                                android:textColor="#000000"/>
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="8dp"
                                 android:fontFamily="@font/nunito"
                                 android:gravity="center"
-                                android:text="O que é, principais características e sinais de alerta."
+                                android:text="Como apoiar o desenvolvimento da criança na escola"
                                 android:textColor="#555555"
                                 android:textSize="9sp" />
 
@@ -488,15 +510,19 @@ dia a dia"
 
                     </com.google.android.material.card.MaterialCardView>
 
+
+
                 </LinearLayout>
 
             </HorizontalScrollView>
 
+
+            <!-- PRÓXIMAS CONSULTAS -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
                 android:layout_marginTop="30dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -504,29 +530,31 @@ dia a dia"
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_black"
                     android:text="Próximas Consultas"
-                    android:textColor="#000000"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/nunito_black"/>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/txtVerAgenda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:fontFamily="@font/nunito"
                     android:text="Ver agenda ->"
                     android:textColor="#9C9C9C"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"
+                    android:fontFamily="@font/nunito"/>
 
             </LinearLayout>
 
+
+            <!-- CARD CONSULTA -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardProximaConsulta"
                 android:layout_width="match_parent"
@@ -543,69 +571,67 @@ dia a dia"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <!-- FOTO DO PROFISSIONAL -->
                     <ImageView
                         android:id="@+id/imgProfissionalConsulta"
                         android:layout_width="62dp"
                         android:layout_height="62dp"
                         android:layout_marginStart="12dp"
-                        android:scaleType="centerCrop"
                         android:src="@drawable/perfil"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:scaleType="centerCrop"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
 
-                    <!-- INFORMAÇÕES DO PROFISSIONAL -->
                     <LinearLayout
                         android:id="@+id/infoProfissional"
                         android:layout_width="105dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/imgProfissionalConsulta"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
 
                         <TextView
                             android:id="@+id/txtNomeProfissional"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunito_black"
                             android:text="Dra XXXX"
                             android:textColor="#073B5C"
                             android:textSize="14sp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:fontFamily="@font/nunito_black" />
 
                         <TextView
                             android:id="@+id/txtProfissao"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
-                            android:fontFamily="@font/nunito"
                             android:text="Psicóloga"
                             android:textColor="#073B5C"
-                            android:textSize="11sp" />
+                            android:textSize="11sp"
+                            android:fontFamily="@font/nunito" />
 
                         <TextView
                             android:id="@+id/txtCRP"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunito"
                             android:text="CRP 00/00000"
                             android:textColor="#073B5C"
-                            android:textSize="10sp" />
+                            android:textSize="10sp"
+                            android:fontFamily="@font/nunito" />
 
                     </LinearLayout>
 
-                    <!-- CALENDÁRIO -->
+
                     <ImageView
                         android:id="@+id/imgCalendarioConsulta"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/calendariocons"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@id/infoProfissional"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintVertical_bias="0.35" />
 
                     <TextView
@@ -613,72 +639,71 @@ dia a dia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="7dp"
-                        android:fontFamily="@font/nunito"
                         android:text="24 de maio, 2025"
                         android:textColor="#073B5C"
                         android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="@id/imgCalendarioConsulta"
+                        android:fontFamily="@font/nunito"
                         app:layout_constraintStart_toEndOf="@id/imgCalendarioConsulta"
-                        app:layout_constraintTop_toTopOf="@id/imgCalendarioConsulta" />
-
+                        app:layout_constraintTop_toTopOf="@id/imgCalendarioConsulta"
+                        app:layout_constraintBottom_toBottomOf="@id/imgCalendarioConsulta" />
 
                     <ImageView
                         android:id="@+id/imgHorarioConsulta"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:layout_marginTop="12dp"
                         android:src="@drawable/ic_clock"
                         app:layout_constraintStart_toStartOf="@id/imgCalendarioConsulta"
-                        app:layout_constraintTop_toBottomOf="@id/imgCalendarioConsulta" />
+                        app:layout_constraintTop_toBottomOf="@id/imgCalendarioConsulta"
+                        android:layout_marginTop="12dp" />
 
                     <TextView
                         android:id="@+id/txtHorarioConsulta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="7dp"
-                        android:fontFamily="@font/nunito"
                         android:text="15:00"
                         android:textColor="#073B5C"
                         android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="@id/imgHorarioConsulta"
+                        android:fontFamily="@font/nunito"
                         app:layout_constraintStart_toEndOf="@id/imgHorarioConsulta"
-                        app:layout_constraintTop_toTopOf="@id/imgHorarioConsulta" />
-
+                        app:layout_constraintTop_toTopOf="@id/imgHorarioConsulta"
+                        app:layout_constraintBottom_toBottomOf="@id/imgHorarioConsulta" />
 
                     <ImageView
                         android:id="@+id/imgSetaConsulta"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:layout_marginEnd="12dp"
                         android:src="@drawable/ic_voltar"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginEnd="12dp" />
 
                     <TextView
                         android:id="@+id/txtDetalhesConsulta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/nunito"
                         android:text="Ver detalhe da consulta"
                         android:textColor="#35C979"
                         android:textSize="10sp"
+                        android:fontFamily="@font/nunito"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        android:layout_marginBottom="8dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="90dp" />
+                android:layout_height="90dp"/>
 
         </LinearLayout>
 
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

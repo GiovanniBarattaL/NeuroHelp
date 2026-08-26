@@ -13,28 +13,23 @@
         android:theme="@style/Theme.NeuroHelp">
 
         <activity
-            android:name=".CriarContaProfissional3"
-            android:exported="false" />
-        <activity
             android:name=".CriarContaProfissional2"
             android:exported="false" />
         <activity
             android:name=".CriarContaProfissional1"
             android:exported="false" />
         <activity
-            android:name=".CriarContaResponsavel2"
-            android:exported="false" />
-        <activity
-            android:name=".CriarContaResponsavel1"
+            android:name=".PrincipalActivity"
             android:exported="false" />
         <activity
             android:name=".CriarConta"
             android:exported="false" />
+
         <activity
-            android:name=".LoginProfissional"
+            android:name=".CriarContaResponsavel1"
             android:exported="false" />
         <activity
-            android:name=".PrincipalActivity"
+            android:name=".LoginResponsavel"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
