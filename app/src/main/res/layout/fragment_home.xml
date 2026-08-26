@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F7F7"
-    tools:context=".HomeFragment">
+    tools:context=".FragmentHome">
 
     <ScrollView
         android:id="@+id/scrollHome"

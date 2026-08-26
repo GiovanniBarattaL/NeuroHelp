@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class HomeFragment : Fragment() {
+class FragmentHome : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

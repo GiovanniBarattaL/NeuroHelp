@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class AgendaFragment : Fragment() {
+class FragmentComunidade : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -14,7 +14,7 @@ class AgendaFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(
-            R.layout.fragmentagenda,
+            R.layout.fragmentcomunidade,
             container,
             false
         )

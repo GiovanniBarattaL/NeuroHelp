@@ -17,7 +17,7 @@ class PrincipalActivity : AppCompatActivity() {
         bottomNavigation = findViewById(R.id.bottomNavigation)
 
         if (savedInstanceState == null) {
-            abrirFragment(HomeFragment())
+            abrirFragment(FragmentHome())
         }
 
         bottomNavigation.setOnItemSelectedListener { item ->
@@ -27,7 +27,7 @@ class PrincipalActivity : AppCompatActivity() {
                 R.id.nav_inicio -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.fragmentContainer, HomeFragment())
+                        .replace(R.id.fragmentContainer, FragmentHome())
                         .commit()
                     true
                 }
@@ -35,7 +35,7 @@ class PrincipalActivity : AppCompatActivity() {
                 R.id.nav_profissionais -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.fragmentContainer, ProfissionaisFragment())
+                        .replace(R.id.fragmentContainer, FragmentProfissionais())
                         .commit()
                     true
                 }
@@ -43,7 +43,7 @@ class PrincipalActivity : AppCompatActivity() {
                 R.id.nav_agenda -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.fragmentContainer, AgendaFragment())
+                        .replace(R.id.fragmentContainer, FragmentAgenda())
                         .commit()
                     true
                 }
@@ -51,7 +51,7 @@ class PrincipalActivity : AppCompatActivity() {
                 R.id.nav_comunidade -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.fragmentContainer, ComunidadeFragment())
+                        .replace(R.id.fragmentContainer, FragmentComunidade())
                         .commit()
                     true
                 }
@@ -59,7 +59,7 @@ class PrincipalActivity : AppCompatActivity() {
                 R.id.nav_perfil -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.fragmentContainer, PerfilFragment())
+                        .replace(R.id.fragmentContainer, FragmentPerfil())
                         .commit()
                     true
                 }

@@ -13,7 +13,7 @@ import android.view.Window
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
-class ProfissionaisFragment : Fragment() {
+class FragmentProfissionais : Fragment() {
 
     private var dialogFiltros: Dialog? = null
 
