@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardConsulta"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/agenda_borda"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/viewBarraCor"
+            android:layout_width="6dp"
+            android:layout_height="match_parent"
+            tools:background="@color/prof_psicologo" />
+
+        <ImageView
+            android:id="@+id/imgIconeEspecialidade"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/bg_circulo"
+            android:contentDescription="@string/agenda_especialidade"
+            android:padding="9dp"
+            android:src="@drawable/ic_cerebro"
+            tools:backgroundTint="@color/prof_psicologo" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTituloConsulta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_black"
+                android:textColor="@color/agenda_texto"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:text="Consultas com Psicólogo" />
+
+            <TextView
+                android:id="@+id/txtProfissional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito"
+                android:maxLines="1"
+                android:textColor="@color/agenda_texto_secundario"
+                android:textSize="11sp"
+                tools:text="Dr. XXXXX" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:contentDescription="@string/agenda_horario"
+                    android:src="@drawable/ic_relogio_agenda" />
+
+                <TextView
+                    android:id="@+id/txtHorario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/agenda_texto_secundario"
+                    android:textSize="10sp"
+                    tools:text="14h00" />
+
+                <ImageView
+                    android:id="@+id/imgModalidade"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginStart="12dp"
+                    android:contentDescription="@string/agenda_modalidade"
+                    android:src="@drawable/ic_online_agenda" />
+
+                <TextView
+                    android:id="@+id/txtModalidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/agenda_texto_secundario"
+                    android:textSize="10sp"
+                    tools:text="Online" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDetalhes"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="12dp"
+            android:fontFamily="@font/nunito"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="@string/agenda_detalhes"
+            android:textAllCaps="false"
+            android:textSize="10sp"
+            app:cornerRadius="8dp"
+            app:strokeWidth="1dp"
+            tools:strokeColor="@color/prof_psicologo" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

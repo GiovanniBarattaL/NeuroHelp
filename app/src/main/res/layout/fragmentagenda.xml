@@ -1,6 +1,364 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/agendaRoot"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/agenda_fundo"
+    tools:context=".FragmentAgenda">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollAgenda"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="18dp"
+            android:paddingBottom="24dp">
+
+            <!-- HEADER -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_width="169dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="@string/agenda_logo"
+                    android:src="@drawable/logohoriz" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/imgNotificacao"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:contentDescription="@string/agenda_notificacoes"
+                    android:focusable="true"
+                    android:src="@drawable/sino" />
+
+                <ImageView
+                    android:id="@+id/imgPerfil"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="15dp"
+                    android:clickable="true"
+                    android:contentDescription="@string/agenda_perfil"
+                    android:focusable="true"
+                    android:src="@drawable/perfil" />
+
+            </LinearLayout>
+
+            <!-- BANNER MÊS -->
+            <LinearLayout
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="14dp"
+                android:background="@drawable/bg_banner_agenda"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp">
+
+                <TextView
+                    android:id="@+id/txtAno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    tools:text="2026" />
+
+                <TextView
+                    android:id="@+id/txtMesBanner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_black"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="Abril" />
+
+            </LinearLayout>
+
+            <!-- LEMBRETE -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardLembrete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="14dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/agenda_borda"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp">
+
+                    <ImageView
+                        android:id="@+id/imgIconeLembrete"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_circulo"
+                        android:backgroundTint="@color/agenda_verde"
+                        android:contentDescription="@string/agenda_lembrete"
+                        android:padding="9dp"
+                        android:src="@drawable/ic_sino_agenda" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_black"
+                            android:text="@string/agenda_lembrete"
+                            android:textColor="@color/agenda_texto"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtLembrete"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/nunito"
+                            android:textColor="@color/agenda_texto_secundario"
+                            android:textSize="11sp"
+                            tools:text="Você possui uma consulta às 14h00 com Dr. XXX" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- CALENDÁRIO -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCalendario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/agenda_borda"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/btnMesAnterior"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:contentDescription="@string/agenda_mes_anterior"
+                            android:focusable="true"
+                            android:src="@drawable/ic_seta_esquerda_agenda" />
+
+                        <TextView
+                            android:id="@+id/txtMesCalendario"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/nunito_black"
+                            android:gravity="center"
+                            android:textColor="@color/agenda_texto"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            tools:text="Abril 2026" />
+
+                        <ImageView
+                            android:id="@+id/btnMesProximo"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:contentDescription="@string/agenda_proximo_mes"
+                            android:focusable="true"
+                            android:src="@drawable/ic_seta_direita_agenda" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linhaDiasSemana"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/AgendaDiaSemana"
+                            android:text="@string/agenda_dom" />
+
+                        <TextView
+                            style="@style/AgendaDiaSemana"
+                            android:text="@string/agenda_seg" />
+
+                        <TextView
+                            style="@style/AgendaDiaSemana"
+                            android:text="@string/agenda_ter" />
+
+                        <TextView
+                            style="@style/AgendaDiaSemana"
+                            android:text="@string/agenda_qua" />
+
+                        <TextView
+                            style="@style/AgendaDiaSemana"
+                            android:text="@string/agenda_qui" />
+
+                        <TextView
+                            style="@style/AgendaDiaSemana"
+                            android:text="@string/agenda_sex" />
+
+                        <TextView
+                            style="@style/AgendaDiaSemana"
+                            android:text="@string/agenda_sab" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvDias"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never"
+                        tools:itemCount="7"
+                        tools:listitem="@layout/item_dia_calendario" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- LEGENDA -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="14dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/agenda_borda"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_black"
+                        android:text="@string/agenda_cores_profissionais"
+                        android:textColor="@color/agenda_verde_escuro"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:id="@+id/gridLegenda"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:columnCount="3" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- LISTA DE CONSULTAS -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvConsultas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_consulta" />
+
+            <ProgressBar
+                android:id="@+id/progressAgenda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:indeterminateTint="@color/agenda_verde"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/txtEstadoLista"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/nunito"
+                android:gravity="center"
+                android:textColor="@color/agenda_verde_escuro"
+                android:textSize="11sp"
+                tools:text="@string/agenda_sem_mais_consultas" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
