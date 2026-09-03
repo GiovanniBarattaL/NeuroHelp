@@ -63,9 +63,14 @@ class AgendaViewModel(
 
     fun selecionarDia(data: Date) {
         diaSelecionado = data.inicioDoDia()
-        val calendarioDia = Calendar.getInstance().apply { time = diaSelecionado }
-        val mudouDeMes = calendarioDia.get(Calendar.MONTH) != mesExibido.get(Calendar.MONTH) ||
-            calendarioDia.get(Calendar.YEAR) != mesExibido.get(Calendar.YEAR)
+
+        val calendarioDia = Calendar.getInstance().apply {
+            time = diaSelecionado
+        }
+
+        val mudouDeMes =
+            calendarioDia.get(Calendar.MONTH) != mesExibido.get(Calendar.MONTH) ||
+                    calendarioDia.get(Calendar.YEAR) != mesExibido.get(Calendar.YEAR)
 
         if (mudouDeMes) {
             mesExibido.time = diaSelecionado
@@ -81,17 +86,22 @@ class AgendaViewModel(
     private fun carregarMes() {
         _carregando.value = true
         _erro.value = false
+
         val ano = mesExibido.get(Calendar.YEAR)
         val mes = mesExibido.get(Calendar.MONTH)
 
         viewModelScope.launch {
             try {
-                consultasDoMes = repository.consultasDoMes(ano, mes).sortedBy { it.inicio }
+                consultasDoMes = repository
+                    .consultasDoMes(ano, mes)
+                    .sortedBy { it.inicio }
+
                 _erro.value = false
             } catch (e: Exception) {
                 consultasDoMes = emptyList()
                 _erro.value = true
             }
+
             _carregando.value = false
             publicar()
         }
@@ -99,47 +109,155 @@ class AgendaViewModel(
 
     private fun publicar() {
         _tituloMes.value = formatar("MMMM yyyy", mesExibido.time)
-        _ano.value = mesExibido.get(Calendar.YEAR).toString()
+
+        _ano.value = mesExibido
+            .get(Calendar.YEAR)
+            .toString()
+
         _dias.value = montarDias()
+
         _itens.value = montarItens()
-        _proximaConsulta.value = consultasDoMes.firstOrNull { !it.inicio.before(Date()) }
-            ?: consultasDoMes.firstOrNull()
+
+        _proximaConsulta.value =
+            consultasDoMes.firstOrNull {
+                !it.inicio.before(Date())
+            } ?: consultasDoMes.firstOrNull()
     }
 
-    /** Semana (domingo a sábado) que contém o dia selecionado. */
+    /**
+     * Monta todos os dias necessários para exibir
+     * o mês inteiro no calendário.
+     *
+     * O calendário começa no domingo e termina no sábado,
+     * incluindo os dias do mês anterior ou seguinte necessários
+     * para completar as semanas.
+     */
     private fun montarDias(): List<DiaCalendario> {
-        val cursor = Calendar.getInstance().apply {
-            time = diaSelecionado
-            set(Calendar.DAY_OF_WEEK, firstDayOfWeek)
+
+        // Primeiro dia do mês que está sendo exibido
+        val primeiroDia = Calendar.getInstance().apply {
+            set(
+                mesExibido.get(Calendar.YEAR),
+                mesExibido.get(Calendar.MONTH),
+                1
+            )
         }
 
-        return (0 until 7).map {
+        // Descobre o domingo da semana onde começa o mês
+        primeiroDia.set(
+            Calendar.DAY_OF_MONTH,
+            1
+        )
+
+        val diaDaSemanaInicial =
+            primeiroDia.get(Calendar.DAY_OF_WEEK)
+
+        val diasAntesDoMes =
+            diaDaSemanaInicial - Calendar.SUNDAY
+
+        primeiroDia.add(
+            Calendar.DAY_OF_MONTH,
+            -diasAntesDoMes
+        )
+
+        // Último dia do mês
+        val ultimoDia = Calendar.getInstance().apply {
+            set(
+                mesExibido.get(Calendar.YEAR),
+                mesExibido.get(Calendar.MONTH),
+                mesExibido.getActualMaximum(Calendar.DAY_OF_MONTH)
+            )
+        }
+
+        // Descobre o sábado da última semana do mês
+        val diaDaSemanaFinal =
+            ultimoDia.get(Calendar.DAY_OF_WEEK)
+
+        val diasDepoisDoMes =
+            Calendar.SATURDAY - diaDaSemanaFinal
+
+        ultimoDia.add(
+            Calendar.DAY_OF_MONTH,
+            diasDepoisDoMes
+        )
+
+        // Calcula quantos dias existem entre o início e o final
+        // do calendário
+        val quantidadeDias =
+            ((ultimoDia.timeInMillis - primeiroDia.timeInMillis)
+                    / (24L * 60L * 60L * 1000L))
+                .toInt() + 1
+
+        val cursor = primeiroDia.clone() as Calendar
+
+        return (0 until quantidadeDias).map {
+
             val data = cursor.time
+
             val dia = DiaCalendario(
                 data = data,
+
                 dia = cursor.get(Calendar.DAY_OF_MONTH),
-                doMesExibido = cursor.get(Calendar.MONTH) == mesExibido.get(Calendar.MONTH),
-                temConsulta = consultasDoMes.any { consulta -> consulta.inicio.mesmoDiaQue(data) },
-                selecionado = data.mesmoDiaQue(diaSelecionado)
+
+                doMesExibido =
+                    cursor.get(Calendar.MONTH) ==
+                            mesExibido.get(Calendar.MONTH) &&
+                            cursor.get(Calendar.YEAR) ==
+                            mesExibido.get(Calendar.YEAR),
+
+                temConsulta =
+                    consultasDoMes.any { consulta ->
+                        consulta.inicio.mesmoDiaQue(data)
+                    },
+
+                selecionado =
+                    data.mesmoDiaQue(diaSelecionado)
             )
-            cursor.add(Calendar.DAY_OF_MONTH, 1)
+
+            cursor.add(
+                Calendar.DAY_OF_MONTH,
+                1
+            )
+
             dia
         }
     }
 
-    /** Consultas a partir do dia selecionado, agrupadas por dia. */
+    /**
+     * Monta a lista de consultas a partir
+     * do dia selecionado, agrupadas por dia.
+     */
     private fun montarItens(): List<ItemAgenda> {
+
         val itens = mutableListOf<ItemAgenda>()
+
         consultasDoMes
-            .filter { !it.inicio.inicioDoDia().before(diaSelecionado) }
-            .groupBy { it.inicio.inicioDoDia() }
+            .filter {
+                !it.inicio
+                    .inicioDoDia()
+                    .before(diaSelecionado)
+            }
+            .groupBy {
+                it.inicio.inicioDoDia()
+            }
             .toSortedMap()
             .forEach { (dia, consultas) ->
+
                 itens += ItemAgenda.Secao(
-                    "Consultas do dia ${formatar("dd", dia)} de ${formatar("MMMM", dia)}"
+                    "Consultas do dia ${
+                        formatar("dd", dia)
+                    } de ${
+                        formatar("MMMM", dia)
+                    }"
                 )
-                consultas.sortedBy { it.inicio }.forEach { itens += ItemAgenda.Item(it) }
+
+                consultas
+                    .sortedBy { it.inicio }
+                    .forEach {
+                        itens += ItemAgenda.Item(it)
+                    }
             }
+
         return itens
     }
 
@@ -147,19 +265,35 @@ class AgendaViewModel(
         Calendar.getInstance().apply {
             time = mesExibido.time
             set(Calendar.DAY_OF_MONTH, 1)
-        }.time.inicioDoDia()
+        }
+            .time
+            .inicioDoDia()
 
-    private fun formatar(padrao: String, data: Date): String =
-        SimpleDateFormat(padrao, localePtBr).format(data)
-            .replaceFirstChar { it.uppercase(localePtBr) }
+    private fun formatar(
+        padrao: String,
+        data: Date
+    ): String =
+        SimpleDateFormat(
+            padrao,
+            localePtBr
+        )
+            .format(data)
+            .replaceFirstChar {
+                it.uppercase(localePtBr)
+            }
 }
 
-/** Permite injetar a implementação real de [AgendaRepository] quando a API existir. */
+/**
+ * Permite injetar uma implementação real de AgendaRepository
+ * quando a API estiver conectada.
+ */
 class AgendaViewModelFactory(
     private val repository: AgendaRepository
 ) : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T =
+    override fun <T : ViewModel> create(
+        modelClass: Class<T>
+    ): T =
         AgendaViewModel(repository) as T
 }

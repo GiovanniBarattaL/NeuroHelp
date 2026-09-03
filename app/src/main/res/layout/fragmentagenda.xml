@@ -69,7 +69,6 @@
 
             </LinearLayout>
 
-            <!-- BANNER MÊS -->
             <LinearLayout
                 android:id="@+id/banner"
                 android:layout_width="match_parent"
@@ -104,7 +103,7 @@
 
             </LinearLayout>
 
-            <!-- LEMBRETE -->
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardLembrete"
                 android:layout_width="match_parent"
@@ -167,7 +166,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- CALENDÁRIO -->
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardCalendario"
                 android:layout_width="match_parent"

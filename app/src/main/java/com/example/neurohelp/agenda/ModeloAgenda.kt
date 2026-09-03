@@ -23,7 +23,7 @@ enum class ModalidadeConsulta(@StringRes val nomeRes: Int) {
     PRESENCIAL(R.string.agenda_presencial)
 }
 
-/** Consulta agendada. O `id` é o identificador vindo do backend. */
+
 data class Consulta(
     val id: String,
     val especialidade: Especialidade,
@@ -33,7 +33,7 @@ data class Consulta(
     val local: String? = null
 )
 
-/** Célula do calendário. */
+
 data class DiaCalendario(
     val data: Date,
     val dia: Int,
