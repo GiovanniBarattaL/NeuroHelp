@@ -1,4 +1,38 @@
 <resources>
     <string name="app_name">NeuroHelp</string>
     <string name="sexo">Sexo</string>
+
+    <!-- Agenda -->
+    <string name="agenda_logo">NeuroHelp</string>
+    <string name="agenda_notificacoes">Notificações</string>
+    <string name="agenda_perfil">Perfil</string>
+    <string name="agenda_lembrete">Lembrete</string>
+    <string name="agenda_mes_anterior">Mês anterior</string>
+    <string name="agenda_proximo_mes">Próximo mês</string>
+    <string name="agenda_cores_profissionais">Cores dos profissionais</string>
+    <string name="agenda_especialidade">Especialidade</string>
+    <string name="agenda_horario">Horário</string>
+    <string name="agenda_modalidade">Modalidade</string>
+    <string name="agenda_detalhes">Detalhes</string>
+    <string name="agenda_sem_mais_consultas">Você não tem mais consultas para visualizar</string>
+    <string name="agenda_sem_consultas">Você ainda não tem consultas agendadas neste mês</string>
+    <string name="agenda_erro">Não foi possível carregar sua agenda. Tente novamente.</string>
+    <string name="agenda_lembrete_descricao">Você possui uma consulta às %1$s com %2$s</string>
+    <string name="agenda_secao_dia">Consultas do dia %1$s de %2$s</string>
+    <string name="agenda_titulo_consulta">Consulta com %1$s</string>
+    <string name="agenda_dom">DOM</string>
+    <string name="agenda_seg">SEG</string>
+    <string name="agenda_ter">TER</string>
+    <string name="agenda_qua">QUA</string>
+    <string name="agenda_qui">QUI</string>
+    <string name="agenda_sex">SEX</string>
+    <string name="agenda_sab">SAB</string>
+    <string name="agenda_online">Online</string>
+    <string name="agenda_presencial">Presencial</string>
+    <string name="agenda_fonoaudiologo">Fonoaudiólogo</string>
+    <string name="agenda_terapeuta_ocupacional">T. Ocupacional</string>
+    <string name="agenda_psiquiatra">Psiquiatra</string>
+    <string name="agenda_psicologo">Psicólogo</string>
+    <string name="agenda_neuropediatra">Neuropediatra</string>
+    <string name="agenda_nutricionista">Nutricionista</string>
 </resources>

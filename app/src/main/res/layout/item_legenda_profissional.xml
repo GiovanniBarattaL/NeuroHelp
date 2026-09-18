@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="3dp"
+    android:paddingEnd="10dp"
+    android:paddingBottom="3dp">
+
+    <View
+        android:id="@+id/viewCorLegenda"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:background="@drawable/bg_circulo"
+        tools:backgroundTint="@color/prof_psicologo" />
+
+    <TextView
+        android:id="@+id/txtNomeLegenda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/nunito"
+        android:textColor="@color/agenda_texto_secundario"
+        android:textSize="9sp"
+        tools:text="Fonoaudiólogo" />
+
+</LinearLayout>

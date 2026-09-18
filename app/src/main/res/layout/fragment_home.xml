@@ -159,6 +159,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/profissionaisbtnaba"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:clickable="true"

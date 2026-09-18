@@ -3,4 +3,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="hint_color">#9C9C9C</color>
+
+    <!-- Agenda -->
+    <color name="agenda_fundo">#F7FBF8</color>
+    <color name="agenda_verde">#3ECF8E</color>
+    <color name="agenda_verde_escuro">#22A45D</color>
+    <color name="agenda_texto">#1C1C1C</color>
+    <color name="agenda_texto_secundario">#6B6B6B</color>
+    <color name="agenda_borda">#EDEDED</color>
+
+    <!-- Cores dos profissionais -->
+    <color name="prof_fonoaudiologo">#2F5AE0</color>
+    <color name="prof_terapeuta_ocupacional">#7B4FBF</color>
+    <color name="prof_psiquiatra">#B14BE0</color>
+    <color name="prof_psicologo">#22A45D</color>
+    <color name="prof_neuropediatra">#F5A623</color>
+    <color name="prof_nutricionista">#E91E8C</color>
 </resources>
