@@ -20,13 +20,13 @@ class CriarContaResponsavel1 : AppCompatActivity() {
 
         val txtLogin = findViewById<TextView>(R.id.fazerlogin)
         txtLogin.setOnClickListener {
-            val intent = Intent(this, LoginResponsavel::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
 
         val btnProx = findViewById<Button>(R.id.btnprox)
         btnProx.setOnClickListener {
-            val intent = Intent(this, LoginResponsavel::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
     }

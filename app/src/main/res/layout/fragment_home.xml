@@ -95,21 +95,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito_black"
                         android:text="Olá, Ana!"
-                        android:textColor="#000000"
+                        android:textColor="#04344E"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/nunito_black"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
+                        android:fontFamily="@font/nunito"
                         android:text="Estamos aqui para caminhar&#10;com você e sua família."
-                        android:textColor="#555555"
-                        android:textStyle="bold"
+                        android:textColor="#04344E"
                         android:textSize="12sp"
-                        android:fontFamily="@font/nunito"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -174,7 +174,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/nunito"
+                            android:fontFamily="@font/inter_light"
                             android:gravity="center"
                             android:text="Encontrar&#10;Profissionais"
                             android:textColor="#555555"
@@ -192,6 +192,7 @@
                         android:orientation="vertical">
 
                         <ImageView
+                            android:id="@+id/btnagendar"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:clickable="true"
@@ -201,7 +202,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/nunito"
+                            android:fontFamily="@font/inter_light"
                             android:gravity="center"
                             android:text="Agendar&#10;Consulta"
                             android:textColor="#555555"
@@ -228,7 +229,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/nunito"
+                            android:fontFamily="@font/inter_light"
                             android:gravity="center"
                             android:text="Aprendizagem"
                             android:textColor="#555555"
@@ -258,11 +259,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_black"
                     android:text="Conteúdos para você"
+                    android:textColor="#04344E"
                     android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000"
-                    android:fontFamily="@font/nunito_black"/>
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="0dp"
@@ -274,10 +275,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:fontFamily="@font/inter_light"
                     android:text="Ver todos >"
                     android:textColor="#9C9C9C"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/nunito"/>
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
@@ -324,10 +325,11 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="Entendendo o TEA"
-                                android:textStyle="bold"
+                                android:textColor="#04344E"
                                 android:textSize="11sp"
-                                android:textColor="#000000"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -335,9 +337,10 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="8dp"
-                                android:fontFamily="@font/nunito"
+                                android:fontFamily="@font/inter_light"
                                 android:gravity="center"
                                 android:text="O que é, principais características e sinais de alerta."
+                                android:textAlignment="textStart"
                                 android:textColor="#555555"
                                 android:textSize="9sp" />
 
@@ -374,10 +377,11 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="Estratégias para o&#10;dia a dia"
-                                android:textStyle="bold"
+                                android:textColor="#04344E"
                                 android:textSize="11sp"
-                                android:textColor="#000000"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -385,9 +389,10 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="8dp"
-                                android:fontFamily="@font/nunito"
+                                android:fontFamily="@font/inter_light"
                                 android:gravity="center"
                                 android:text="Dicas práticas para rotina, comunicação e comportamento."
+                                android:textAlignment="textStart"
                                 android:textColor="#555555"
                                 android:textSize="9sp" />
 
@@ -424,10 +429,11 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
+                                android:fontFamily="@font/inter_medium"
                                 android:text="Inclusão escolar"
-                                android:textStyle="bold"
+                                android:textColor="#04344E"
                                 android:textSize="11sp"
-                                android:textColor="#000000"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -435,9 +441,10 @@
                                 android:layout_marginStart="8dp"
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="8dp"
-                                android:fontFamily="@font/nunito"
+                                android:fontFamily="@font/inter_light"
                                 android:gravity="center"
                                 android:text="Como apoiar o desenvolvimento da criança na escola"
+                                android:textAlignment="textStart"
                                 android:textColor="#555555"
                                 android:textSize="9sp" />
 
@@ -529,10 +536,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
+                    android:fontFamily="@font/inter_light"
                     android:text="Ver agenda >"
                     android:textColor="#9C9C9C"
-                    android:textSize="10sp"
-                    android:fontFamily="@font/nunito"/>
+                    android:textSize="10sp" />
 
             </LinearLayout>
 

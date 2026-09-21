@@ -45,7 +45,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/nunito_black"
                 android:text="Criar conta"
-                android:textColor="#000000"
+                android:textColor="#04344E"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -58,7 +58,7 @@
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/nunito"
                 android:text="Cadastro para profissionais"
-                android:textColor="#555555"
+                android:textColor="#04344E"
                 android:textSize="14sp" />
 
             <ImageView

@@ -8,14 +8,13 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 
-class LoginResponsavel : AppCompatActivity() {
+class Login : AppCompatActivity() {
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.loginresponsavel)
+        setContentView(R.layout.login)
 
         // Variável de controle: inicia como PAI_MAE porque no XML o seu btnPai começa ativo com o gradiente
         var tipoUsuarioSelecionado = "PAI_MAE"

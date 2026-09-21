@@ -14,7 +14,7 @@ class CriarConta : AppCompatActivity() {
 
         val btnVoltar1 = findViewById<Button>(R.id.btnvoltar1)
         btnVoltar1.setOnClickListener {
-            val intent = Intent(this, LoginResponsavel::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
 

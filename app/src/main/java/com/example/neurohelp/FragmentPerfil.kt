@@ -32,6 +32,13 @@ class FragmentPerfil : Fragment() {
                     .addToBackStack(null)
                     .commit()
             }
+        val btnajuda = view.findViewById<LinearLayout>(R.id.itemAjuda)
+        btnajuda.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, FragmentAjuda())
+                .addToBackStack(null)
+                .commit()
+        }
 
         }
 }

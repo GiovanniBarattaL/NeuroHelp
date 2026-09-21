@@ -20,7 +20,7 @@ class CriarContaProfissional1 : AppCompatActivity() {
 
         val txtLogin4 = findViewById<TextView>(R.id.fazerlogin4)
         txtLogin4.setOnClickListener {
-            val intent = Intent(this, LoginResponsavel::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
 

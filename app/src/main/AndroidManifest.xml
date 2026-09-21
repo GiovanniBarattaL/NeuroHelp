@@ -29,7 +29,7 @@
             android:name=".CriarContaResponsavel1"
             android:exported="false" />
         <activity
-            android:name=".LoginResponsavel"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

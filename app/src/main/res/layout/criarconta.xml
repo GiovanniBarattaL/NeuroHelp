@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/nunito_black"
             android:text="Criar Conta"
-            android:textColor="#000000"
+            android:textColor="#04344E"
             android:textSize="28sp"
             android:textStyle="bold" />
 
@@ -58,6 +58,7 @@
             android:fontFamily="@font/nunito"
             android:gravity="center"
             android:text="Antes escolha a maneira de ingresso"
+            android:textColor="#04344E"
             android:textSize="14sp" />
 
 
@@ -103,8 +104,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:backgroundTint="@null"
+            app:iconTint="@android:color/white"
             app:cornerRadius="10dp"
-            app:icon="@drawable/responsavel"
+            app:icon="@drawable/ingressarresponsavel"
             app:iconGravity="textStart"
             app:iconPadding="12dp"
             app:iconSize="61dp" />
