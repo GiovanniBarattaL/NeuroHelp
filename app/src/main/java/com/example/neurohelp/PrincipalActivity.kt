@@ -48,13 +48,6 @@ class PrincipalActivity : AppCompatActivity() {
                     true
                 }
 
-                R.id.nav_comunidade -> {
-                    supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.fragmentContainer, FragmentComunidade())
-                        .commit()
-                    true
-                }
 
                 R.id.nav_perfil -> {
                     supportFragmentManager

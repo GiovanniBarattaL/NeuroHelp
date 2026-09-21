@@ -9,6 +9,7 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import com.example.neurohelp.agenda.DetalhesConsultaDialogFragment
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -133,19 +134,13 @@ class FragmentAgenda : Fragment() {
     }
 
     private fun abrirDetalhes(consulta: Consulta) {
-        val acao = aoAbrirDetalhes
-        if (acao != null) {
-            acao(consulta)
-            return
-        }
-        Toast.makeText(
-            requireContext(),
-            getString(
-                R.string.agenda_titulo_consulta,
-                getString(consulta.especialidade.nomeRes)
-            ),
-            Toast.LENGTH_SHORT
-        ).show()
+
+        val dialog = DetalhesConsultaDialogFragment()
+
+        dialog.show(
+            parentFragmentManager,
+            "DetalhesConsulta"
+        )
     }
 
     private companion object {

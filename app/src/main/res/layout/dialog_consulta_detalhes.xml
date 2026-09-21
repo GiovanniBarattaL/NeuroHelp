@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_dialog_consulta"
+    android:padding="18dp">
+
+    <!-- ================================================= -->
+    <!-- CABEÇALHO -->
+    <!-- ================================================= -->
+
+    <ImageView
+        android:id="@+id/iconSobre2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/obs_agenda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linha2" />
+
+    <ImageView
+        android:id="@+id/imgProfissional"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/bg_circulo"
+        android:backgroundTint="@color/agenda_verde"
+        android:src="@drawable/avatarverde"
+        android:contentDescription="Profissional"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/nunito_black"
+        android:text="Consulta com Psicólogo"
+        android:textColor="@color/agenda_texto"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgProfissional"
+        app:layout_constraintTop_toTopOf="@id/imgProfissional" />
+
+    <TextView
+        android:id="@+id/txtNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/nunito"
+        android:text="Dr. XXXXXXXXXX"
+        android:textColor="@color/agenda_verde"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgProfissional"
+        app:layout_constraintTop_toBottomOf="@id/txtTitulo" />
+
+    <TextView
+        android:id="@+id/txtProfissao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="1dp"
+        android:fontFamily="@font/nunito"
+        android:text="Psicólogo"
+        android:textColor="@color/agenda_texto_secundario"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@id/imgProfissional"
+        app:layout_constraintTop_toBottomOf="@id/txtNome" />
+
+    <TextView
+        android:id="@+id/txtCrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="3dp"
+        android:background="#E8FFF2"
+        android:fontFamily="@font/nunito"
+        android:paddingStart="5dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="2dp"
+        android:text="CRP 06/123456"
+        android:textColor="@color/agenda_verde"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/imgProfissional"
+        app:layout_constraintTop_toBottomOf="@id/txtProfissao" />
+
+    <!-- ================================================= -->
+    <!-- LINHA -->
+    <!-- ================================================= -->
+
+    <View
+        android:id="@+id/linha1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="#E8E8E8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgProfissional" />
+
+    <!-- ================================================= -->
+    <!-- INFORMAÇÕES DA CONSULTA -->
+    <!-- ================================================= -->
+
+    <!-- DATA -->
+
+    <ImageView
+        android:id="@+id/iconData"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/data_agenda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linha1" />
+
+    <TextView
+        android:id="@+id/labelData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/nunito_black"
+        android:text="Data"
+        android:textColor="@color/agenda_texto"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/iconData"
+        app:layout_constraintTop_toTopOf="@id/iconData" />
+
+    <TextView
+        android:id="@+id/txtData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/nunito"
+        android:text="01 de Abril de 2026"
+        android:textColor="@color/agenda_texto_secundario"
+        android:textSize="7sp"
+        app:layout_constraintStart_toEndOf="@id/iconData"
+        app:layout_constraintTop_toBottomOf="@id/labelData" />
+
+
+    <!-- HORÁRIO -->
+
+    <ImageView
+        android:id="@+id/iconHorario"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="32dp"
+        android:src="@drawable/time_agenda"
+        app:layout_constraintStart_toEndOf="@id/txtData"
+        app:layout_constraintTop_toTopOf="@id/iconData" />
+
+    <TextView
+        android:id="@+id/labelHorario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/nunito_black"
+        android:text="Horário"
+        android:textColor="@color/agenda_texto"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/iconHorario"
+        app:layout_constraintTop_toTopOf="@id/iconHorario" />
+
+    <TextView
+        android:id="@+id/txtHorario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/nunito"
+        android:text="14h00"
+        android:textColor="@color/agenda_texto_secundario"
+        android:textSize="7sp"
+        app:layout_constraintStart_toEndOf="@id/iconHorario"
+        app:layout_constraintTop_toBottomOf="@id/labelHorario" />
+
+
+    <!-- FORMATO -->
+
+    <ImageView
+        android:id="@+id/iconFormato"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/camera_agenda"
+        app:layout_constraintStart_toEndOf="@id/txtHorario"
+        app:layout_constraintTop_toTopOf="@id/iconHorario" />
+
+    <TextView
+        android:id="@+id/labelFormato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/nunito_black"
+        android:text="Formato"
+        android:textColor="@color/agenda_texto"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/iconFormato"
+        app:layout_constraintTop_toTopOf="@id/iconFormato" />
+
+    <TextView
+        android:id="@+id/txtFormato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/nunito"
+        android:text="Online"
+        android:textColor="@color/agenda_texto_secundario"
+        android:textSize="7sp"
+        app:layout_constraintStart_toEndOf="@id/iconFormato"
+        app:layout_constraintTop_toBottomOf="@id/labelFormato" />
+
+
+    <!-- STATUS -->
+    <ImageView
+        android:id="@+id/iconstatus"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="196dp"
+        android:src="@drawable/time_agenda"
+        app:layout_constraintStart_toEndOf="@id/txtData"
+        app:layout_constraintTop_toTopOf="@id/iconData" />
+
+    <TextView
+        android:id="@+id/labelStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:fontFamily="@font/nunito_black"
+        android:text="Status"
+        android:textColor="@color/agenda_texto"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/txtFormato"
+        app:layout_constraintTop_toTopOf="@id/labelFormato" />
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito"
+        android:text="Confirmada"
+        android:textColor="@color/agenda_verde"
+        android:textSize="7sp"
+        app:layout_constraintStart_toStartOf="@id/labelStatus"
+        app:layout_constraintTop_toBottomOf="@id/labelStatus" />
+
+
+    <!-- ================================================= -->
+    <!-- LINHA 2 -->
+    <!-- ================================================= -->
+
+    <View
+        android:id="@+id/linha2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="#E8E8E8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtData" />
+
+
+    <!-- ================================================= -->
+    <!-- SOBRE O PROFISSIONAL -->
+    <!-- ================================================= -->
+
+    <ImageView
+        android:id="@+id/iconSobre"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/pessoa_agenda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linha2" />
+
+
+    <!-- ================================================= -->
+    <!-- LINHA 3 -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/txtSobreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nunito_black"
+        android:text="Sobre o(a) profissional"
+        android:textColor="@color/agenda_texto"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/iconSobre"
+        app:layout_constraintTop_toTopOf="@id/iconSobre" />
+
+    <View
+        android:id="@+id/linha3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="25dp"
+        android:background="#E8E8E8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iconSobre" />
+
+
+    <!-- ================================================= -->
+    <!-- OBSERVAÇÕES -->
+    <!-- ================================================= -->
+
+    <TextView
+        android:id="@+id/txtObservacoesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/nunito_black"
+        android:text="Observações da consulta"
+        android:textColor="@color/agenda_texto"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linha3" />
+
+    <TextView
+        android:id="@+id/txtObservacoes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/nunito"
+        android:text="Acompanhamento psicológico semanal"
+        android:textColor="@color/agenda_texto_secundario"
+        android:textSize="7sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtObservacoesLabel" />
+
+    <TextView
+        android:id="@+id/txtFoco"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito"
+        android:layout_marginStart="4dp"
+        android:text="Foco: ansiedade e regulação emocional"
+        android:textColor="@color/agenda_verde"
+        android:textSize="7sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtObservacoes" />
+
+
+    <!-- ================================================= -->
+    <!-- LINHA 4 -->
+    <!-- ================================================= -->
+
+    <View
+        android:id="@+id/linha4"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="13dp"
+        android:background="#E8E8E8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtFoco" />
+
+
+    <!-- ================================================= -->
+    <!-- PRÓXIMAS CONSULTAS -->
+    <!-- ================================================= -->
+
+    <ImageView
+        android:id="@+id/iconProximas"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/data_agenda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linha4" />
+
+    <TextView
+        android:id="@+id/txtProximas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/nunito"
+        android:text="Próximas consultas"
+        android:textColor="@color/agenda_verde"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@id/iconProximas"
+        app:layout_constraintTop_toTopOf="@id/iconProximas" />
+
+
+    <!-- ================================================= -->
+    <!-- BOTÕES -->
+    <!-- ================================================= -->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnReagendar"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/nunito"
+        android:text="Reagendar"
+        android:textAllCaps="false"
+        android:textColor="@color/agenda_verde"
+        android:textSize="8sp"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="5dp"
+        app:strokeColor="@color/agenda_verde"
+        app:strokeWidth="1dp"
+        app:layout_constraintEnd_toStartOf="@id/btnCancelar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtProximas" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancelar"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="42dp"
+        android:fontFamily="@font/nunito"
+        android:text="Cancelar consulta"
+        android:textAllCaps="false"
+        android:textColor="@color/agenda_verde"
+        android:textSize="8sp"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="5dp"
+        app:strokeColor="@color/agenda_verde"
+        app:strokeWidth="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnReagendar"
+        app:layout_constraintTop_toBottomOf="@id/txtProximas" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

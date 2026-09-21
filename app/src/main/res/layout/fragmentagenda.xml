@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,8 +7,61 @@
     android:id="@+id/agendaRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/agenda_fundo"
+    android:background="#FFFFFF"
     tools:context=".FragmentAgenda">
+
+
+    <!-- ====================================================== -->
+    <!-- HEADER FIXO -->
+    <!-- ====================================================== -->
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FFFFFF"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="169dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/logohoriz" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/imgNotificacao"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:clickable="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/sino" />
+
+        <ImageView
+            android:id="@+id/imgPerfil"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:clickable="true"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/perfil" />
+
+    </LinearLayout>
+
+
+    <!-- ====================================================== -->
+    <!-- ÁREA QUE VAI ROLAR -->
+    <!-- ====================================================== -->
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollAgenda"
@@ -15,10 +69,11 @@
         android:layout_height="0dp"
         android:fillViewport="true"
         android:scrollbars="none"
+        android:background="@color/agenda_fundo"
+        app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,47 +82,10 @@
             android:paddingTop="18dp"
             android:paddingBottom="24dp">
 
-            <!-- HEADER -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imgLogo"
-                    android:layout_width="169dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:contentDescription="@string/agenda_logo"
-                    android:src="@drawable/logohoriz" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" />
-
-                <ImageView
-                    android:id="@+id/imgNotificacao"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="16dp"
-                    android:clickable="true"
-                    android:contentDescription="@string/agenda_notificacoes"
-                    android:focusable="true"
-                    android:src="@drawable/sino" />
-
-                <ImageView
-                    android:id="@+id/imgPerfil"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:clickable="true"
-                    android:contentDescription="@string/agenda_perfil"
-                    android:focusable="true"
-                    android:src="@drawable/perfil" />
-
-            </LinearLayout>
+            <!-- ====================================================== -->
+            <!-- BANNER -->
+            <!-- ====================================================== -->
 
             <LinearLayout
                 android:id="@+id/banner"
@@ -103,6 +121,10 @@
 
             </LinearLayout>
 
+
+            <!-- ====================================================== -->
+            <!-- LEMBRETE -->
+            <!-- ====================================================== -->
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardLembrete"
@@ -167,6 +189,10 @@
             </com.google.android.material.card.MaterialCardView>
 
 
+            <!-- ====================================================== -->
+            <!-- CALENDÁRIO -->
+            <!-- ====================================================== -->
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardCalendario"
                 android:layout_width="match_parent"
@@ -188,6 +214,8 @@
                     android:paddingTop="12dp"
                     android:paddingEnd="10dp"
                     android:paddingBottom="12dp">
+
+                    <!-- MÊS -->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -229,6 +257,9 @@
 
                     </LinearLayout>
 
+
+                    <!-- DIAS DA SEMANA -->
+
                     <LinearLayout
                         android:id="@+id/linhaDiasSemana"
                         android:layout_width="match_parent"
@@ -266,6 +297,9 @@
 
                     </LinearLayout>
 
+
+                    <!-- DIAS -->
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvDias"
                         android:layout_width="match_parent"
@@ -280,7 +314,11 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+            <!-- ====================================================== -->
             <!-- LEGENDA -->
+            <!-- ====================================================== -->
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -319,7 +357,11 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+
+            <!-- ====================================================== -->
             <!-- LISTA DE CONSULTAS -->
+            <!-- ====================================================== -->
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvConsultas"
                 android:layout_width="match_parent"
@@ -333,6 +375,11 @@
                 tools:itemCount="2"
                 tools:listitem="@layout/item_consulta" />
 
+
+            <!-- ====================================================== -->
+            <!-- PROGRESSO -->
+            <!-- ====================================================== -->
+
             <ProgressBar
                 android:id="@+id/progressAgenda"
                 android:layout_width="wrap_content"
@@ -342,6 +389,11 @@
                 android:indeterminateTint="@color/agenda_verde"
                 android:visibility="gone"
                 tools:visibility="visible" />
+
+
+            <!-- ====================================================== -->
+            <!-- ESTADO DA LISTA -->
+            <!-- ====================================================== -->
 
             <TextView
                 android:id="@+id/txtEstadoLista"

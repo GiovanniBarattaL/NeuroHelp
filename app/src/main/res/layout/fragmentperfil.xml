@@ -26,13 +26,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:paddingTop="18dp"
             android:paddingBottom="20dp">
 
             <!-- HEADER (botão voltar) -->
             <LinearLayout
                 android:id="@+id/header"
                 android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
