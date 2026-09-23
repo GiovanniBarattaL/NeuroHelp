@@ -21,7 +21,7 @@ class FragmentAjuda : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return inflater.inflate(
-            R.layout.fragment_ajuda,
+            R.layout.perfil_ajuda_fragment,
             container,
             false
         )

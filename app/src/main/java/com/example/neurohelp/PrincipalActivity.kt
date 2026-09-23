@@ -3,6 +3,10 @@ package com.example.neurohelp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.neurohelp.Home.FragmentHome
+import com.example.neurohelp.Perfil.FragmentPerfil
+import com.example.neurohelp.Profissionais.FragmentProfissionais
+import com.example.neurohelp.agenda.FragmentAgenda
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PrincipalActivity : AppCompatActivity() {

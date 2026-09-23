@@ -15,7 +15,7 @@ class DetalhesConsultaDialogFragment : DialogFragment() {
 
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
 
-        dialog.setContentView(R.layout.dialog_consulta_detalhes)
+        dialog.setContentView(R.layout.agenda_dialog_consulta_detalhes)
 
         dialog.setCanceledOnTouchOutside(true)
 

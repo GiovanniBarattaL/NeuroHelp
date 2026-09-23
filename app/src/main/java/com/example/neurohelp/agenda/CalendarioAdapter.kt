@@ -17,7 +17,7 @@ class CalendarioAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_dia_calendario, parent, false)
+            .inflate(R.layout.agenda_item_dia_calendario, parent, false)
         return DiaViewHolder(view)
     }
 

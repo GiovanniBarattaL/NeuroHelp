@@ -32,7 +32,7 @@ class ConsultasAdapter(
         return if (viewType == TIPO_SECAO) {
             SecaoViewHolder(
                 inflater.inflate(
-                    R.layout.item_secao_agenda,
+                    R.layout.agenda_item_secao,
                     parent,
                     false
                 )
@@ -40,7 +40,7 @@ class ConsultasAdapter(
         } else {
             ConsultaViewHolder(
                 inflater.inflate(
-                    R.layout.item_consulta,
+                    R.layout.agenda_item_consulta,
                     parent,
                     false
                 )

@@ -21,7 +21,7 @@ class FaqAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FaqViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_faq, parent, false)
+            .inflate(R.layout.perfil_ajuda_item_faq, parent, false)
         return FaqViewHolder(view)
     }
 

@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+
+    tools:context=".Cadastro.Cadastro_Responsavel">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:id="@+id/conteudoCadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp">
+
+            <!-- VOLTAR -->
+
+            <Button
+                android:id="@+id/btnVoltar"
+                android:layout_width="13.5dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/botao_voltar" />
+
+            <!-- LOGO -->
+
+            <ImageView
+                android:layout_width="232dp"
+                android:layout_height="82dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/logohoriz" />
+
+            <!-- TÍTULO -->
+
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/nunito_black"
+                android:text="Criar conta"
+                android:textColor="#04344E"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtSubtitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/nunito"
+                android:text="Cadastro para pais e responsáveis"
+                android:textColor="#04344E"
+                android:textSize="14sp" />
+
+            <!-- IDENTIFICAÇÃO -->
+
+            <ImageView
+                android:layout_width="178dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/img_informacoesresponsavel" />
+
+            <!-- NOME E TELEFONE -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_nome"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="Nome"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etTelefone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_telefone"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="Telefone"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- CPF E DATA -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCpf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_cpf"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="CPF"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDataNascimento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_data_cadastro"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="Data de Nasc."
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- CIDADE E UF -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="3"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCidade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_cidade"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="Cidade"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:hintTextColor="#9E9E9E">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_uf"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="UF"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- EMAIL E SEXO -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="3"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_email_cadastro"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="E-mail"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSexo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_nome"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:hint="Sexo"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- VÍNCULO -->
+
+            <ImageView
+                android:layout_width="102dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/img_tipo_vinculo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nunito"
+                android:text="Qual é o seu vínculo com a criança?"
+                android:textColor="#555555"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioPai"
+                        android:layout_width="110dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/radio_selector"
+                        android:button="@null"
+                        android:checked="true"
+                        android:drawableStart="@drawable/ic_duas_pessoas"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Pai/Mãe"
+                        android:textAllCaps="false"
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioResponsavel"
+                        android:layout_width="140dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/radio_selector"
+                        android:button="@null"
+                        android:drawableStart="@drawable/ic_duas_pessoas_azul"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Responsável legal"
+                        android:textAllCaps="false"
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/radioOutro"
+                        android:layout_width="90dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/radio_selector"
+                        android:button="@null"
+                        android:drawableStart="@drawable/ic_duas_pessoas_cadastro"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Outro"
+                        android:textAllCaps="false"
+                        android:textColor="@drawable/radio_text_selector"
+                        android:textSize="12sp" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <!-- SEGURANÇA -->
+
+            <ImageView
+                android:layout_width="177dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/img_seguranca" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical">
+
+                <!-- CONFIRMAR EMAIL -->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Confirmar E-mail"
+                    android:textColorHint="#9C9C9C"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etConfirmarEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_email_cadastro"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000"
+                        android:textColorHint="#9C9C9C" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- SENHA -->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Senha"
+                    android:textColorHint="#9C9C9C"
+                    app:endIconMode="password_toggle"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSenha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_uf"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:inputType="textPassword"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000"
+                        android:textColorHint="#9C9C9C" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- CONFIRMAR SENHA -->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="Confirmar Senha"
+                    android:textColorHint="#9C9C9C"
+                    app:endIconMode="password_toggle"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/textinput_stroke"
+                    app:boxStrokeWidth="1dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusBottomEnd="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etConfirmarSenha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_uf"
+                        android:drawablePadding="8dp"
+                        android:fontFamily="@font/nunito"
+                        android:inputType="textPassword"
+                        android:minHeight="48dp"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000"
+                        android:textColorHint="#9C9C9C" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- TERMOS -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkTermos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:buttonTint="#52D68C"
+                    android:textColor="#8A8A8A"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:fontFamily="@font/nunito"
+                    android:text="Li e aceito os "
+                    android:textColor="#9C9C9C"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtTermos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:fontFamily="@font/nunito"
+                    android:text="Termos de Uso "
+                    android:textColor="#47C777"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:fontFamily="@font/nunito"
+                    android:text="e as"
+                    android:textColor="#9C9C9C"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtPoliticas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:fontFamily="@font/nunito"
+                    android:text=" Políticas de privacidade"
+                    android:textColor="#47C777"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <!-- BOTÃO PRÓXIMO -->
+
+            <Button
+                android:id="@+id/btnProximo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/botao_gradiente"
+                android:drawableRight="@drawable/ic_proximo"
+                android:text="Próximo"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:backgroundTint="@null"
+                app:cornerRadius="10dp" />
+
+            <!-- LOGIN -->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingBottom="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:fontFamily="@font/nunito"
+                    android:text="Já tem uma conta? "
+                    android:textColor="#9C9C9C"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txtFazerLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:fontFamily="@font/nunito"
+                    android:text="Fazer Login"
+                    android:textColor="#47C777"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

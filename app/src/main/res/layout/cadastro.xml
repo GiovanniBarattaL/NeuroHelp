@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cadastroRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:id="@+id/conteudoCadastro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="13.5dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/botao_voltar"
+            app:backgroundTint="@null" />
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="282dp"
+            android:layout_height="135dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/logohoriz" />
+
+        <TextView
+            android:id="@+id/txtTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_black"
+            android:text="Criar Conta"
+            android:textColor="#04344E"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtSubtitulo"
+            android:layout_width="254dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp"
+            android:fontFamily="@font/nunito"
+            android:gravity="center"
+            android:text="Antes escolha a maneira de ingresso"
+            android:textColor="#04344E"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnProfissional"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/botao_gradiente"
+            android:fontFamily="@font/nunito"
+            android:text="Ingressar como profissional capacitado"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_ingressar"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="61dp"
+            app:iconTint="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnResponsavel"
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/botao_gradiente"
+            android:fontFamily="@font/nunito"
+            android:text="Ingressar como responsável de criança com TEA"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ingressarresponsavel"
+            app:iconGravity="textStart"
+            app:iconPadding="12dp"
+            app:iconSize="61dp"
+            app:iconTint="@android:color/white" />
+
+        <TextView
+            android:id="@+id/txtDuvidas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_duvida"
+            android:fontFamily="@font/nunito"
+            android:text=" Portal de dúvidas"
+            android:textColor="#47C777"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
