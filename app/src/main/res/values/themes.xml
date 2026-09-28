@@ -1,9 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.NeuroHelp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- Cor de controles ativos (cursor e alças em celulares mais antigos) -->
+        <item name="colorAccent">#47C777</item>
+
+        <!-- Cursor e alças em vetor: valem para qualquer EditText/TextInputEditText do app -->
+        <item name="android:textCursorDrawable">@drawable/cursor_verde</item>
+        <item name="android:textSelectHandle">@drawable/cursor_handle_meio</item>
+        <item name="android:textSelectHandleLeft">@drawable/cursor_handle_esquerda</item>
+        <item name="android:textSelectHandleRight">@drawable/cursor_handle_direita</item>
+
+        <!-- Fundo do texto selecionado (verde translúcido) -->
+        <item name="android:textColorHighlight">#5947C777</item>
+
+        <item name="colorPrimary">#47C777</item>
+        <item name="colorControlActivated">#47C777</item>
+
+
+        <item name="android:colorAccent">#47C777</item>
+
     </style>
 
     <style name="Theme.NeuroHelp" parent="Base.Theme.NeuroHelp" />
+
 </resources>

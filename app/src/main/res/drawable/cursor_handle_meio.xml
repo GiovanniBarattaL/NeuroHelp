@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Gota que aparece embaixo do cursor ao tocar no texto. Ponta no topo, centralizada. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="22dp"
+    android:height="22dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#47C777"
+        android:pathData="M12,2 L18.2,12.5 A7,7 0 1 1 5.8,12.5 Z" />
+</vector>

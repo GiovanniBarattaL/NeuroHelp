@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Alça esquerda da seleção de texto. Ponta no canto superior direito. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="22dp"
+    android:height="22dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#47C777"
+        android:pathData="M22,2 L22,13 A11,11 0 1 1 11,2 Z" />
+</vector>
