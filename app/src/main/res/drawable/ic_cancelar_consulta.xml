@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Calendário com "x" (botão Cancelar consulta) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M5,5.5h14a1.5,1.5 0 0 1 1.5,1.5v12a1.5,1.5 0 0 1 -1.5,1.5h-14a1.5,1.5 0 0 1 -1.5,-1.5v-12a1.5,1.5 0 0 1 1.5,-1.5z"
+        android:strokeColor="#3ECF8E"
+        android:strokeWidth="1.8"
+        android:strokeLineJoin="round" />
+    <path
+        android:pathData="M3.5,10h17M8,3v4M16,3v4M9.8,13l4.4,4.4M14.2,13l-4.4,4.4"
+        android:strokeColor="#3ECF8E"
+        android:strokeWidth="1.8"
+        android:strokeLineCap="round" />
+</vector>

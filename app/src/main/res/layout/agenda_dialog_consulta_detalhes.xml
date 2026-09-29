@@ -1,365 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Raiz ScrollView: se o conteúdo não couber (tela pequena / paisagem / fonte grande), o dialog rola -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@drawable/bg_dialog_consulta"
-    android:padding="18dp">
-
-    <!-- ================================================= -->
-    <!-- CABEÇALHO -->
-    <!-- ================================================= -->
+    android:fillViewport="false"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/imgProfissional"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@drawable/bg_circulo"
-            android:backgroundTint="@color/agenda_verde"
-            android:contentDescription="Profissional"
-            android:src="@drawable/avatar_verde" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="12dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txtTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_black"
-                android:text="Consulta com Psicólogo"
-                android:textColor="@color/agenda_texto"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/txtNome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/nunito"
-                android:text="Dr. XXXXXXXXXX"
-                android:textColor="@color/agenda_verde"
-                android:textSize="11sp" />
-
-            <TextView
-                android:id="@+id/txtProfissao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:fontFamily="@font/nunito"
-                android:text="Psicólogo"
-                android:textColor="@color/agenda_texto_secundario"
-                android:textSize="10sp" />
-
-            <TextView
-                android:id="@+id/txtCrp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:background="#E8FFF2"
-                android:fontFamily="@font/nunito"
-                android:paddingStart="5dp"
-                android:paddingTop="2dp"
-                android:paddingEnd="5dp"
-                android:paddingBottom="2dp"
-                android:text="CRP 06/123456"
-                android:textColor="@color/agenda_verde"
-                android:textSize="8sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- ================================================= -->
-    <!-- LINHA -->
-    <!-- ================================================= -->
-
-    <View
-        android:id="@+id/linhaCabecalho"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="#E8E8E8" />
-
-    <!-- ================================================= -->
-    <!-- INFORMAÇÕES DA CONSULTA -->
-    <!-- ================================================= -->
-
-    <LinearLayout
-        android:id="@+id/infoConsulta"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:orientation="vertical">
-
-        <!-- PRIMEIRA LINHA -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <!-- DATA -->
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iconData"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_data_agenda" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/labelData"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_black"
-                        android:text="Data"
-                        android:textColor="@color/agenda_texto"
-                        android:textSize="8sp" />
-
-                    <TextView
-                        android:id="@+id/txtData"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:text="01 de Abril de 2026"
-                        android:textColor="@color/agenda_texto_secundario"
-                        android:textSize="7sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- HORÁRIO -->
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iconHorario"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_relogio" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/labelHorario"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_black"
-                        android:text="Horário"
-                        android:textColor="@color/agenda_texto"
-                        android:textSize="8sp" />
-
-                    <TextView
-                        android:id="@+id/txtHorario"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:text="14h00"
-                        android:textColor="@color/agenda_texto_secundario"
-                        android:textSize="7sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- SEGUNDA LINHA -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal">
-
-            <!-- FORMATO -->
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iconFormato"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_camera" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/labelFormato"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_black"
-                        android:text="Formato"
-                        android:textColor="@color/agenda_texto"
-                        android:textSize="8sp" />
-
-                    <TextView
-                        android:id="@+id/txtFormato"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:text="Online"
-                        android:textColor="@color/agenda_texto_secundario"
-                        android:textSize="7sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- STATUS -->
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iconStatus"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/ic_relogio" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/labelStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito_black"
-                        android:text="Status"
-                        android:textColor="@color/agenda_texto"
-                        android:textSize="8sp" />
-
-                    <TextView
-                        android:id="@+id/txtStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:text="Confirmada"
-                        android:textColor="@color/agenda_verde"
-                        android:textSize="7sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- ================================================= -->
-    <!-- LINHA -->
-    <!-- ================================================= -->
-
-    <View
-        android:id="@+id/linhaInformacoes"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:background="#E8E8E8" />
-
-    <!-- ================================================= -->
-    <!-- SOBRE O PROFISSIONAL -->
-    <!-- ================================================= -->
-
-    <LinearLayout
-        android:id="@+id/sobreProfissional"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/iconSobre"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="4dp"
-            android:src="@drawable/ic_pessoa_agenda" />
-
-        <TextView
-            android:id="@+id/txtSobreLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/nunito_black"
-            android:text="Sobre o(a) profissional"
-            android:textColor="@color/agenda_texto"
-            android:textSize="8sp" />
-
-    </LinearLayout>
-
-    <!-- ================================================= -->
-    <!-- LINHA -->
-    <!-- ================================================= -->
-
-    <View
-        android:id="@+id/linhaSobre"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:background="#E8E8E8" />
-
-    <!-- ================================================= -->
-    <!-- OBSERVAÇÕES -->
-    <!-- ================================================= -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="vertical">
-
+        <!-- CABEÇALHO -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -367,139 +22,459 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/iconObservacao"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginStart="4dp"
-                android:src="@drawable/obs_agenda" />
+                android:id="@+id/imgProfissional"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/bg_circulo"
+                android:backgroundTint="@color/agenda_verde"
+                android:contentDescription="Profissional"
+                android:src="@drawable/avatar_verde" />
 
-            <TextView
-                android:id="@+id/txtObservacoesLabel"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:fontFamily="@font/nunito_black"
-                android:text="Observações da consulta"
-                android:textColor="@color/agenda_texto"
-                android:textSize="8sp" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtTitulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/nunito_black"
+                    android:maxLines="2"
+                    android:text="Consulta com Psicólogo"
+                    android:textColor="@color/agenda_texto"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/nunito"
+                    android:maxLines="1"
+                    android:text="Dr. XXXXXXXXXX"
+                    android:textColor="@color/agenda_verde"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtProfissao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/nunito"
+                    android:maxLines="1"
+                    android:text="Psicólogo"
+                    android:textColor="@color/agenda_texto_secundario"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtCrp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="#E8FFF2"
+                    android:fontFamily="@font/nunito"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="CRP 06/123456"
+                    android:textColor="@color/agenda_verde"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/txtObservacoes"
+        <View
+            android:id="@+id/linhaCabecalho"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="14dp"
+            android:background="#E8E8E8" />
+
+        <!-- INFORMAÇÕES DA CONSULTA (grade 2x2, colunas iguais) -->
+        <LinearLayout
+            android:id="@+id/infoConsulta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/nunito"
-            android:text="Acompanhamento psicológico semanal"
-            android:textColor="@color/agenda_texto_secundario"
-            android:textSize="7sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtFoco"
+            <!-- PRIMEIRA LINHA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <!-- DATA -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iconData"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_data_agenda" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/labelData"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_black"
+                            android:text="Data"
+                            android:textColor="@color/agenda_texto"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtData"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
+                            android:text="01 de Abril de 2026"
+                            android:textColor="@color/agenda_texto_secundario"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- HORÁRIO -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iconHorario"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_relogio" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/labelHorario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_black"
+                            android:text="Horário"
+                            android:textColor="@color/agenda_texto"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtHorario"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
+                            android:text="14h00"
+                            android:textColor="@color/agenda_texto_secundario"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- SEGUNDA LINHA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <!-- FORMATO -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iconFormato"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_camera" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/labelFormato"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_black"
+                            android:text="Formato"
+                            android:textColor="@color/agenda_texto"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtFormato"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
+                            android:text="Online"
+                            android:textColor="@color/agenda_texto_secundario"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- STATUS -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iconStatus"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_relogio" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/labelStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito_black"
+                            android:text="Status"
+                            android:textColor="@color/agenda_texto"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/txtStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
+                            android:text="Confirmada"
+                            android:textColor="@color/agenda_verde"
+                            android:textSize="11sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/linhaInformacoes"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="14dp"
+            android:background="#E8E8E8" />
+
+        <!-- SOBRE O PROFISSIONAL -->
+        <LinearLayout
+            android:id="@+id/sobreProfissional"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:fontFamily="@font/nunito"
-            android:text="Foco: ansiedade e regulação emocional"
-            android:textColor="@color/agenda_verde"
-            android:textSize="7sp" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/iconSobre"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_pessoa_agenda" />
 
-    <!-- ================================================= -->
-    <!-- LINHA -->
-    <!-- ================================================= -->
+            <TextView
+                android:id="@+id/txtSobreLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito_black"
+                android:text="Sobre o(a) profissional"
+                android:textColor="@color/agenda_texto"
+                android:textSize="12sp" />
 
-    <View
-        android:id="@+id/linhaObservacoes"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="13dp"
-        android:background="#E8E8E8" />
+        </LinearLayout>
 
-    <!-- ================================================= -->
-    <!-- PRÓXIMAS CONSULTAS -->
-    <!-- ================================================= -->
+        <View
+            android:id="@+id/linhaSobre"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="14dp"
+            android:background="#E8E8E8" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/iconProximas"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginStart="4dp"
-            android:src="@drawable/ic_data_agenda" />
-
-        <TextView
-            android:id="@+id/txtProximas"
-            android:layout_width="wrap_content"
+        <!-- OBSERVAÇÕES (textos alinhados com o título, depois do ícone) -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:fontFamily="@font/nunito"
-            android:text="Próximas consultas"
-            android:textColor="@color/agenda_verde"
-            android:textSize="8sp" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iconObservacao"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/obs_agenda" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtObservacoesLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nunito_black"
+                    android:text="Observações da consulta"
+                    android:textColor="@color/agenda_texto"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtObservacoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Acompanhamento psicológico semanal"
+                    android:textColor="@color/agenda_texto_secundario"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/txtFoco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/nunito"
+                    android:text="Foco: ansiedade e regulação emocional"
+                    android:textColor="@color/agenda_verde"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/linhaObservacoes"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="14dp"
+            android:background="#E8E8E8" />
+
+        <!-- PRÓXIMAS CONSULTAS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iconProximas"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_data_agenda" />
+
+            <TextView
+                android:id="@+id/txtProximas"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nunito"
+                android:text="Próximas consultas"
+                android:textColor="@color/agenda_verde"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <!-- BOTÕES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReagendar"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/nunito"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:maxLines="1"
+                android:paddingHorizontal="8dp"
+                android:text="Reagendar"
+                android:textAllCaps="false"
+                android:textColor="@color/agenda_verde"
+                android:textSize="13sp"
+                app:cornerRadius="10dp"
+                app:strokeColor="@color/agenda_verde"
+                app:strokeWidth="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancelar"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                android:fontFamily="@font/nunito"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:maxLines="1"
+                android:paddingHorizontal="8dp"
+                android:text="Cancelar consulta"
+                android:textAllCaps="false"
+                android:textColor="@color/agenda_verde"
+                android:textSize="13sp"
+                app:cornerRadius="10dp"
+                app:strokeColor="@color/agenda_verde"
+                app:strokeWidth="1dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <!-- ================================================= -->
-    <!-- ESPAÇO ANTES DOS BOTÕES -->
-    <!-- ================================================= -->
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="60dp" />
-
-    <!-- ================================================= -->
-    <!-- BOTÕES -->
-    <!-- ================================================= -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:orientation="horizontal">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnReagendar"
-            android:layout_width="0dp"
-            android:layout_height="34dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/nunito"
-            android:text="Reagendar"
-            android:textAllCaps="false"
-            android:textColor="@color/agenda_verde"
-            android:textSize="8sp"
-            android:backgroundTint="@android:color/transparent"
-            app:cornerRadius="5dp"
-            app:strokeColor="@color/agenda_verde"
-            app:strokeWidth="1dp" />
-
-        <Space
-            android:layout_width="10dp"
-            android:layout_height="match_parent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCancelar"
-            android:layout_width="0dp"
-            android:layout_height="34dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/nunito"
-            android:text="Cancelar consulta"
-            android:textAllCaps="false"
-            android:textColor="@color/agenda_verde"
-            android:textSize="8sp"
-            android:backgroundTint="@android:color/transparent"
-            app:cornerRadius="5dp"
-            app:strokeColor="@color/agenda_verde"
-            app:strokeWidth="1dp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

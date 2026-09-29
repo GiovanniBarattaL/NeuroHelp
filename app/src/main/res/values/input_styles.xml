@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TextInputLayout: mesmo visual do login (contorno arredondado 12dp, verde ao focar) -->
+    <style name="Widget.App.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+        <item name="boxStrokeColor">@color/textinput_stroke</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="android:textColorHint">#9C9C9C</item>
+        <item name="hintTextColor">#47C777</item>
+        <item name="placeholderTextColor">#47C777</item>
+    </style>
+
+    <!-- TextInputEditText: mesma cor de texto, cursor, seleção e padding do login -->
+    <style name="Widget.App.TextInputEditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:fontFamily">@font/nunito</item>
+        <item name="android:textColor">#04344E</item>
+        <item name="android:textColorHint">#8A8A8A</item>
+        <item name="android:textColorHighlight">#4747C777</item>
+        <item name="android:textColorLink">#47C777</item>
+        <item name="android:textSelectHandle">@drawable/cursor_handle_meio</item>
+        <item name="android:textSelectHandleLeft">@drawable/cursor_handle_esquerda</item>
+        <item name="android:textSelectHandleRight">@drawable/cursor_handle_direita</item>
+        <item name="cursorColor">#47C777</item>
+        <item name="android:paddingTop">18dp</item>
+        <item name="android:paddingBottom">18dp</item>
+    </style>
+
+</resources>

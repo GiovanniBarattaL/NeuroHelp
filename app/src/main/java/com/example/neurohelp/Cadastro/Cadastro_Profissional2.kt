@@ -3,6 +3,7 @@ package com.example.neurohelp.Cadastro
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.neurohelp.Login.Login
@@ -28,7 +29,7 @@ class Cadastro_Profissional2 : AppCompatActivity() {
         }
 
         val btnVoltar =
-            findViewById<Button>(R.id.btnVoltar)
+            findViewById<ImageView>(R.id.btnVoltar)
 
         btnVoltar.setOnClickListener {
             val intent = Intent(

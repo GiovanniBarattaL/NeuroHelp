@@ -11,6 +11,12 @@
     <color name="agenda_texto">#1C1C1C</color>
     <color name="agenda_texto_secundario">#6B6B6B</color>
     <color name="agenda_borda">#EDEDED</color>
+        <color name="azul_titulo">#073B5C</color>
+        <color name="tela_fundo_claro">#F8F8F8</color>
+        <color name="campo_texto">#6B6B6B</color>
+        <color name="campo_hint">#A9A9A9</color>
+        <color name="divisor_claro">#E8E8E8</color>
+
 
     <!-- Cores dos profissionais -->
     <color name="prof_fonoaudiologo">#2F5AE0</color>

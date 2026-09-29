@@ -1,12 +1,16 @@
 package com.example.neurohelp.Perfil
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.example.neurohelp.FragmentAjuda
+import com.example.neurohelp.Login.Login
 import com.example.neurohelp.R
 
 class FragmentPerfil : Fragment() {
@@ -21,7 +25,9 @@ class FragmentPerfil : Fragment() {
             container,
             false
         )
+
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,6 +45,5 @@ class FragmentPerfil : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
-
         }
 }

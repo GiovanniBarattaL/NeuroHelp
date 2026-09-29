@@ -2,39 +2,52 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cadastroProfissionalRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F7F7"
-    android:id="@+id/cadastroProfissionalRoot"
-    tools:context=".Cadastro.Cadastro_Responsavel">
+    android:background="#FFFFFF"
+    tools:context=".Cadastro.Cadastro_Profissional1">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollCadastro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/conteudoCadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
             android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:paddingBottom="20dp">
+            android:paddingTop="30dp"
+            android:paddingBottom="24dp">
 
-            <Button
+            <!-- VOLTAR (padrão em todas as telas) -->
+            <ImageView
                 android:id="@+id/btnVoltar"
-                android:layout_width="13.5dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/botao_voltar" />
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="Voltar"
+                android:focusable="true"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/botao_voltar" />
 
+            <!-- LOGO -->
             <ImageView
                 android:layout_width="232dp"
-                android:layout_height="82dp"
+                android:layout_height="72dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/logohoriz" />
 
             <TextView
@@ -42,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/nunito_black"
                 android:text="Criar conta"
                 android:textColor="#04344E"
@@ -54,417 +67,272 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/nunito"
                 android:text="Cadastro para profissionais"
                 android:textColor="#04344E"
                 android:textSize="14sp" />
 
+            <!-- BARRA DE ETAPAS -->
             <ImageView
-                android:layout_width="365dp"
+                android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/etapasprofissional1" />
 
+            <!-- INFORMAÇÕES PESSOAIS -->
             <ImageView
                 android:layout_width="178dp"
                 android:layout_height="18dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitStart"
                 android:src="@drawable/img_informacoespessoais" />
 
             <!-- NOME E TELEFONE -->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
                     android:layout_weight="1"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
-                    app:hintTextColor="#9E9E9E">
+                    android:hint="Nome">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNome"
+                        style="@style/Widget.App.TextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_nome"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nunito"
-                        android:hint="Nome"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000" />
+                        android:inputType="textPersonName" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    android:textColorHint="#9C9C9C"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E">
+                    android:hint="Telefone">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etTelefone"
+                        style="@style/Widget.App.TextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_telefone"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nunito"
-                        android:hint="Telefone"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000" />
+                        android:inputType="phone" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
-            <LinearLayout
+            <!-- E-MAIL -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="vertical">
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="E-mail">
 
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="E-mail"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
+            <!-- SENHA -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="Senha"
+                app:endIconMode="password_toggle">
 
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    android:textColorHint="#9C9C9C"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusBottomEnd="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etConfirmarEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_email_cadastro"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nunito"
-                        android:inputType="textEmailAddress"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000"
-                        android:textColorHint="#9C9C9C"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSenha"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Senha"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    app:endIconMode="password_toggle"
+            <!-- CONFIRMAR SENHA -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="Confirmar Senha"
+                app:endIconMode="password_toggle">
 
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    android:textColorHint="#9C9C9C"
-                    app:boxCornerRadiusBottomEnd="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_uf"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nunito"
-                        android:inputType="textPassword"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000"
-                        android:textColorHint="#9C9C9C"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfirmarSenha"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Confirmar Senha"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    app:endIconMode="password_toggle"
-
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    android:textColorHint="#9C9C9C"
-                    app:boxCornerRadiusBottomEnd="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_uf"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nunito"
-                        android:inputType="textPassword"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000"
-                        android:textColorHint="#9C9C9C"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
+            <!-- ENDEREÇO -->
             <ImageView
                 android:layout_width="178dp"
                 android:layout_height="18dp"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
+                android:scaleType="fitStart"
                 android:src="@drawable/ic_endereco" />
 
+            <!-- CEP E UF -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:layout_weight="3"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
-                    app:hintTextColor="#9E9E9E">
+                    android:layout_weight="2"
+                    android:hint="CEP">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCep"
+                        style="@style/Widget.App.TextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:hint="CEP"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000" />
+                        android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="110dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
-                    app:hintTextColor="#9E9E9E">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:hint="UF"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="horizontal">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
-                    app:hintTextColor="#9E9E9E">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:hint="Cidade"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_weight="1"
-                    android:textColorHint="#9C9C9C"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:hintTextColor="#9E9E9E">
+                    android:hint="UF">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUf"
+                        style="@style/Widget.App.TextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:hint="Bairro"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000" />
+                        android:inputType="textCapCharacters"
+                        android:maxLength="2" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
+            <!-- CIDADE E BAIRRO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="5dp"
-                    android:layout_weight="3"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
-                    app:hintTextColor="#9E9E9E">
+                    android:layout_weight="1"
+                    android:hint="Cidade">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCidade"
+                        style="@style/Widget.App.TextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:hint="Logradouro"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000" />
+                        android:inputType="textCapWords" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="110dp"
+                    style="@style/Widget.App.TextInputLayout"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    android:textColorHint="#9C9C9C"
-                    app:hintTextColor="#9E9E9E">
+                    android:layout_weight="1"
+                    android:hint="Bairro">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBairro"
+                        style="@style/Widget.App.TextInputEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/nunito"
-                        android:hint="Nº"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000" />
+                        android:inputType="textCapWords" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
+            <!-- LOGRADOURO E Nº -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="2"
+                    android:hint="Logradouro">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLogradouro"
+                        style="@style/Widget.App.TextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapWords" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:hint="Nº">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNumero"
+                        style="@style/Widget.App.TextInputEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <!-- BOTÃO PRÓXIMO -->
             <Button
                 android:id="@+id/btnProximo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:layout_weight="1"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/botao_gradiente"
                 android:drawableRight="@drawable/ic_proximo"
                 android:text="Próximo"
@@ -474,20 +342,18 @@
                 app:backgroundTint="@null"
                 app:cornerRadius="10dp" />
 
+            <!-- RODAPÉ -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingBottom="30dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
                     android:fontFamily="@font/nunito"
                     android:text="Já tem uma conta? "
                     android:textColor="#9C9C9C"
@@ -497,10 +363,11 @@
                     android:id="@+id/txtFazerLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    android:background="?attr/selectableItemBackground"
                     android:clickable="true"
+                    android:focusable="true"
                     android:fontFamily="@font/nunito"
+                    android:padding="4dp"
                     android:text="Fazer Login"
                     android:textColor="#47C777"
                     android:textSize="14sp" />
@@ -509,6 +376,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

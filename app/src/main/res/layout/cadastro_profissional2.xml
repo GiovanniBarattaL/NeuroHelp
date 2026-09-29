@@ -1,44 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:id="@+id/cadastroProfissionalRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F7F7"
-
+    android:background="#FFFFFF"
     tools:context=".Cadastro.Cadastro_Profissional2">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollCadastro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/conteudoCadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
             android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:paddingBottom="20dp">
+            android:paddingTop="30dp"
+            android:paddingBottom="24dp">
 
-            <Button
+            <!-- VOLTAR (padrão em todas as telas) -->
+            <ImageView
                 android:id="@+id/btnVoltar"
-                android:layout_width="13.5dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/botao_voltar" />
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:contentDescription="Voltar"
+                android:focusable="true"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/botao_voltar" />
 
+            <!-- LOGO -->
             <ImageView
                 android:layout_width="232dp"
-                android:layout_height="82dp"
+                android:layout_height="72dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/logohoriz" />
 
             <TextView
@@ -46,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/nunito_black"
                 android:text="Criar conta"
                 android:textColor="#04344E"
@@ -58,252 +67,150 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/nunito"
                 android:text="Cadastro para profissionais"
                 android:textColor="#04344E"
                 android:textSize="14sp" />
 
+            <!-- BARRA DE ETAPAS -->
             <ImageView
-                android:layout_width="365dp"
+                android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/etapasprofissionais2" />
 
+            <!-- FORMAÇÃO PROFISSIONAL -->
             <ImageView
                 android:layout_width="178dp"
                 android:layout_height="18dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitStart"
                 android:src="@drawable/imgformacaoprofissional" />
 
             <!-- PROFISSÃO -->
-
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="20dp"
-                android:hint="Profissão"
-                android:textColorHint="#9C9C9C"
-                app:boxBackgroundColor="#FFFFFF"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/textinput_stroke"
-                app:boxStrokeWidth="1dp"
-                app:boxStrokeWidthFocused="2dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusBottomEnd="10dp">
+                android:layout_marginTop="10dp"
+                android:hint="Profissão">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etProfissao"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:fontFamily="@font/nunito"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:paddingStart="10dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#9C9C9C" />
-
+                    android:inputType="textCapWords" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- ÁREA DE ATUAÇÃO -->
-
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="20dp"
-                android:hint="Área de Atuação / Especialidade"
-                android:textColorHint="#9C9C9C"
-                app:boxBackgroundColor="#FFFFFF"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/textinput_stroke"
-                app:boxStrokeWidth="1dp"
-                app:boxStrokeWidthFocused="2dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusBottomEnd="10dp">
+                android:layout_marginTop="10dp"
+                android:hint="Área de Atuação / Especialidade">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAreaAtuacao"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:fontFamily="@font/nunito"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:paddingStart="10dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#9C9C9C" />
-
+                    android:inputType="textCapSentences" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- REGISTRO PROFISSIONAL -->
-
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginHorizontal="20dp"
-                android:hint="Nº de Registro Profissional"
-                android:textColorHint="#9C9C9C"
-                app:boxBackgroundColor="#FFFFFF"
-                app:boxBackgroundMode="outline"
-                app:boxStrokeColor="@color/textinput_stroke"
-                app:boxStrokeWidth="1dp"
-                app:boxStrokeWidthFocused="2dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusBottomEnd="10dp">
+                android:layout_marginTop="10dp"
+                android:hint="Nº de Registro Profissional">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etRegistroProfissional"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:fontFamily="@font/nunito"
-                    android:inputType="text"
-                    android:minHeight="48dp"
-                    android:paddingStart="10dp"
-                    android:textColor="#000000"
-                    android:textColorHint="#9C9C9C" />
-
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- SEGURANÇA -->
             <ImageView
                 android:layout_width="177dp"
                 android:layout_height="18dp"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:scaleType="fitStart"
                 android:src="@drawable/img_seguranca" />
 
-            <LinearLayout
+            <!-- E-MAIL -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:orientation="vertical">
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="E-mail">
 
-                <!-- E-MAIL -->
-
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="E-mail"
-                    android:textColorHint="#9C9C9C"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusBottomEnd="10dp">
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_email_cadastro"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nunito"
-                        android:inputType="textEmailAddress"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000"
-                        android:textColorHint="#9C9C9C" />
+            <!-- SENHA -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="Senha"
+                app:endIconMode="password_toggle">
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- SENHA -->
-
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSenha"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Senha"
-                    android:textColorHint="#9C9C9C"
-                    app:endIconMode="password_toggle"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusBottomEnd="10dp">
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_uf"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nunito"
-                        android:inputType="textPassword"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000"
-                        android:textColorHint="#9C9C9C" />
+            <!-- CONFIRMAR SENHA -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="Confirmar Senha"
+                app:endIconMode="password_toggle">
 
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- CONFIRMAR SENHA -->
-
-                <com.google.android.material.textfield.TextInputLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etConfirmarSenha"
+                    style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="Confirmar Senha"
-                    android:textColorHint="#9C9C9C"
-                    app:endIconMode="password_toggle"
-                    app:boxBackgroundColor="#FFFFFF"
-                    app:boxBackgroundMode="outline"
-                    app:boxStrokeColor="@color/textinput_stroke"
-                    app:boxStrokeWidth="1dp"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusBottomEnd="10dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_uf"
-                        android:drawablePadding="8dp"
-                        android:fontFamily="@font/nunito"
-                        android:inputType="textPassword"
-                        android:minHeight="48dp"
-                        android:paddingStart="10dp"
-                        android:textColor="#000000"
-                        android:textColorHint="#9C9C9C" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- BOTÃO CADASTRAR -->
-
             <Button
                 android:id="@+id/btnCadastrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="30dp"
-                android:layout_weight="1"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/botao_gradiente"
                 android:drawableRight="@drawable/ic_proximo"
                 android:text="Cadastre-se"
@@ -313,21 +220,18 @@
                 app:backgroundTint="@null"
                 app:cornerRadius="10dp" />
 
-            <!-- LOGIN -->
-
+            <!-- RODAPÉ -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
                     android:fontFamily="@font/nunito"
                     android:text="Já tem uma conta? "
                     android:textColor="#9C9C9C"
@@ -337,10 +241,11 @@
                     android:id="@+id/txtFazerLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    android:background="?attr/selectableItemBackground"
                     android:clickable="true"
+                    android:focusable="true"
                     android:fontFamily="@font/nunito"
+                    android:padding="4dp"
                     android:text="Fazer Login"
                     android:textColor="#47C777"
                     android:textSize="14sp" />
@@ -349,6 +254,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
