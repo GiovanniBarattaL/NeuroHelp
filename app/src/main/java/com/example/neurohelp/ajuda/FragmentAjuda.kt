@@ -1,4 +1,4 @@
-package com.example.neurohelp
+package com.example.neurohelp.ajuda
 
 import android.content.Intent
 import android.net.Uri
@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.neurohelp.ajuda.FaqItem
+import com.example.neurohelp.R
 
 class FragmentAjuda : Fragment() {
 

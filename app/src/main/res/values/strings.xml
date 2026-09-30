@@ -35,4 +35,18 @@
     <string name="agenda_psicologo">Psicólogo</string>
     <string name="agenda_neuropediatra">Neuropediatra</string>
     <string name="agenda_nutricionista">Nutricionista</string>
+
+    <!-- Privacidade e Segurança -->
+    <string name="privacidade_editar">Editar</string>
+    <string name="privacidade_salvar">Salvar</string>
+
+    <!-- Perfil do profissional -->
+    <string name="profissional_favoritar">Favoritar</string>
+    <string name="profissional_favoritado">Favoritado</string>
+    <string name="profissional_total_avaliacoes">(%1$d Avaliações)</string>
+    <string name="profissional_abordagem">Abordagem:</string>
+    <string name="profissional_publico_alvo">Público alvo:</string>
+    <string name="profissional_sobre_mim">Sobre mim:</string>
+    <string name="profissional_mensagem_whatsapp">Olá, %1$s! Encontrei seu perfil no EspectroCare e gostaria de agendar uma consulta.</string>
+    <string name="profissional_whatsapp_indisponivel">Não foi possível abrir o WhatsApp.</string>
 </resources>

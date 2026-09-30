@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Botão "Editar" / "Salvar" da tela Privacidade e Segurança (gradiente do Figma) -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#3ECF8E" />
+    <gradient
+        android:angle="0"
+        android:endColor="#20C9A8"
+        android:startColor="#3ECF8E" />
     <corners android:radius="6dp" />
 </shape>

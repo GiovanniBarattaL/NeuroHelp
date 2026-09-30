@@ -42,6 +42,14 @@ class FragmentProfissionais : Fragment() {
             abrirFiltros()
         }
 
+        // "Ver Perfil" abre a tela de perfil do profissional
+        view.findViewById<View>(R.id.btnPerfil1).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, FragmentPerfilProfissional.newInstance(1))
+                .addToBackStack(null)
+                .commit()
+        }
+
         return view
     }
 

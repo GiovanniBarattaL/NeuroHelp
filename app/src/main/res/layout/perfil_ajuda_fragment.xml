@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F7F7"
-    tools:context=".FragmentAjuda">
+    tools:context=".ajuda.FragmentAjuda">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollAjuda"

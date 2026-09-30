@@ -19,10 +19,10 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
-        android:layout_height="140dp"
+        android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:elevation="8dp"
-        app:itemActiveIndicatorStyle="@style/Base.Theme.NeuroHelp"
+        app:itemActiveIndicatorStyle="@style/Widget.App.BottomNavigation.ActiveIndicator"
         app:itemIconSize="24dp"
         app:itemIconTint="@color/bottom_nav_selector"
         app:itemPaddingBottom="4dp"

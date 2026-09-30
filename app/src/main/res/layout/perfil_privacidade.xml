@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Tela Privacidade e Segurança — layout conforme o Figma -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -26,530 +27,566 @@
             android:paddingTop="30dp"
             android:paddingBottom="24dp">
 
-            <!-- VOLTAR (padrão em todas as telas) -->
+            <!-- CABEÇALHO: seta de voltar + título centralizado -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/imgVoltar"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:contentDescription="Voltar"
+                    android:focusable="true"
+                    android:padding="14dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/botao_voltar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:fontFamily="@font/nunito_black"
+                    android:text="Privacidade e Segurança"
+                    android:textColor="@color/azul_titulo"
+                    android:textSize="18sp" />
+            </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="22dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:contentDescription="Responsável"
+            android:src="@drawable/ic_secao_responsavel" />
+
+        <TextView
+            style="@style/TituloSecaoPerfil"
+            android:layout_marginStart="6dp"
+            android:text="Informações do responsável" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="4.5dp"
+            android:layout_weight="3"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
             <ImageView
-                android:id="@+id/imgVoltar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:contentDescription="Voltar"
-                android:focusable="true"
-                android:padding="12dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/botao_voltar" />
-
-            <!-- TÍTULO -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/nunito_black"
-                android:text="Privacidade e Segurança"
-                android:textColor="@color/azul_titulo"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <!-- ====================================================== -->
-            <!-- INFORMAÇÕES DO RESPONSÁVEL -->
-            <!-- ====================================================== -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="Responsável"
-                    android:src="@drawable/ic_pessoa_agenda"
-                    app:tint="@color/azul_titulo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/nunito_black"
-                    android:text="Informações do responsável"
-                    android:textColor="@color/azul_titulo"
-                    android:textSize="13sp" />
-
-            </LinearLayout>
-
-            <!-- NOME + SEXO -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="3"
-                    android:background="@drawable/bg_campo_perfil"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="14dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_nome" />
-
-                    <EditText
-                        android:id="@+id/etRespNome"
-                        style="@style/CampoPerfil"
-                        android:hint="XXXXXXXXXXXX"
-                        android:inputType="textPersonName|textCapWords" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_campo_perfil"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="12dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_nome" />
-
-                    <EditText
-                        android:id="@+id/etRespSexo"
-                        style="@style/CampoPerfil"
-                        android:hint="Fem"
-                        android:inputType="text" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- TELEFONE -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_campo_perfil"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="14dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_telefone" />
-
-                <EditText
-                    android:id="@+id/etRespTelefone"
-                    style="@style/CampoPerfil"
-                    android:hint="(11) 99999-9999"
-                    android:inputType="phone" />
-            </LinearLayout>
-
-            <!-- CPF + DATA DE NASCIMENTO -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_campo_perfil"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="14dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_cpf" />
-
-                    <EditText
-                        android:id="@+id/etRespCpf"
-                        style="@style/CampoPerfil"
-                        android:hint="***.***.***-**"
-                        android:inputType="number" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_campo_perfil"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="14dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_data_cadastro" />
-
-                    <EditText
-                        android:id="@+id/etRespDataNasc"
-                        style="@style/CampoPerfil"
-                        android:hint="dd/mm/aaaa"
-                        android:inputType="date" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- CIDADE + UF -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="3"
-                    android:background="@drawable/bg_campo_perfil"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="14dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_cidade" />
-
-                    <EditText
-                        android:id="@+id/etRespCidade"
-                        style="@style/CampoPerfil"
-                        android:hint="Rio de Janeiro"
-                        android:inputType="textCapWords" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_campo_perfil"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="12dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_uf" />
-
-                    <EditText
-                        android:id="@+id/etRespUf"
-                        style="@style/CampoPerfil"
-                        android:hint="RJ"
-                        android:inputType="textCapCharacters"
-                        android:maxLength="2" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- EDITAR (responsável) -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEditarResponsavel"
-                style="@style/BotaoEditarPerfil"
-                android:layout_gravity="end"
-                android:layout_marginTop="14dp" />
-
-            <!-- ====================================================== -->
-            <!-- INFORMAÇÕES DO DEPENDENTE -->
-            <!-- ====================================================== -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="16dp"
-                    android:contentDescription="Dependente"
-                    android:src="@drawable/ic_duas_pessoas_azul" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/nunito_black"
-                    android:text="Informações do dependente"
-                    android:textColor="@color/azul_titulo"
-                    android:textSize="13sp" />
-
-            </LinearLayout>
-
-            <!-- NOME -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_campo_perfil"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="14dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_nome" />
-
-                <EditText
-                    android:id="@+id/etDepNome"
-                    style="@style/CampoPerfil"
-                    android:hint="XXXXXXXXXXX"
-                    android:inputType="textPersonName|textCapWords" />
-            </LinearLayout>
-
-            <!-- CPF + SEXO -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_campo_perfil"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="14dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_cpf" />
-
-                    <EditText
-                        android:id="@+id/etDepCpf"
-                        style="@style/CampoPerfil"
-                        android:hint="***.***.***-**"
-                        android:inputType="number" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_campo_perfil"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="14dp">
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_nome" />
-
-                    <EditText
-                        android:id="@+id/etDepSexo"
-                        style="@style/CampoPerfil"
-                        android:hint="Masc"
-                        android:inputType="text" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <!-- DATA DE NASCIMENTO -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_campo_perfil"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="14dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_data_cadastro" />
-
-                <EditText
-                    android:id="@+id/etDepDataNasc"
-                    style="@style/CampoPerfil"
-                    android:hint="dd/mm/aaaa"
-                    android:inputType="date" />
-            </LinearLayout>
-
-            <!-- DIAGNÓSTICO -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="18dp"
-                android:fontFamily="@font/nunito_black"
-                android:text="Ele/ela possui diagnóstico?"
-                android:textColor="@color/azul_titulo"
-                android:textSize="14sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:orientation="vertical">
-
-                <CheckBox
-                    android:id="@+id/checkDiagSim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/checkbox_tint"
-                    android:checked="true"
-                    android:enabled="false"
-                    android:fontFamily="@font/nunito"
-                    android:minHeight="36dp"
-                    android:text="Sim, possui diagnóstico"
-                    android:textColor="@color/text_selector_diagnostico"
-                    android:textSize="12sp" />
-
-                <CheckBox
-                    android:id="@+id/checkDiagAnalise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/checkbox_tint"
-                    android:enabled="false"
-                    android:fontFamily="@font/nunito"
-                    android:minHeight="36dp"
-                    android:text="Não, mas está em análise"
-                    android:textColor="@color/text_selector_diagnostico"
-                    android:textSize="12sp" />
-
-                <CheckBox
-                    android:id="@+id/checkDiagNao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/checkbox_tint"
-                    android:enabled="false"
-                    android:fontFamily="@font/nunito"
-                    android:minHeight="36dp"
-                    android:text="Não, não possui diagnóstico"
-                    android:textColor="@color/text_selector_diagnostico"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
-
-            <!-- EDITAR (dependente) -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEditarDependente"
-                style="@style/BotaoEditarPerfil"
-                android:layout_gravity="end"
-                android:layout_marginTop="8dp" />
-
-            <!-- ====================================================== -->
-            <!-- SEGURANÇA -->
-            <!-- ====================================================== -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="22dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="Segurança"
-                    android:src="@drawable/ic_privacidade"
-                    app:tint="@color/azul_titulo" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/nunito_black"
-                    android:text="Segurança"
-                    android:textColor="@color/azul_titulo"
-                    android:textSize="13sp" />
-
-            </LinearLayout>
-
-            <!-- E-MAIL -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_campo_perfil"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="14dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_email_cadastro" />
-
-                <EditText
-                    android:id="@+id/etEmail"
-                    style="@style/CampoPerfil"
-                    android:hint="xxx******@gmail.com"
-                    android:inputType="textEmailAddress" />
-            </LinearLayout>
-
-            <!-- SENHA -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_campo_perfil"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="14dp">
-
-                <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/ic_uf" />
-
-                <EditText
-                    android:id="@+id/etSenha"
-                    style="@style/CampoPerfil"
-                    android:hint="************"
-                    android:inputType="textPassword" />
-            </LinearLayout>
-
-            <!-- EDITAR (segurança) -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEditarSeguranca"
-                style="@style/BotaoEditarPerfil"
-                android:layout_gravity="end"
-                android:layout_marginTop="14dp" />
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_pessoa" />
+
+            <EditText
+                android:id="@+id/etRespNome"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="XXXXXXXXXXXX"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName|textCapWords" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="4.5dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_pessoa" />
+
+            <EditText
+                android:id="@+id/etRespSexo"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="Fem"
+                android:importantForAutofill="no"
+                android:inputType="text" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="14dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_telefone" />
+
+            <EditText
+                android:id="@+id/etRespTelefone"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="(11) 99999-9999"
+                android:importantForAutofill="no"
+                android:inputType="phone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="4.5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_cpf" />
+
+            <EditText
+                android:id="@+id/etRespCpf"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="***.***.***-**"
+                android:importantForAutofill="no"
+                android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="4.5dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_calendario" />
+
+            <EditText
+                android:id="@+id/etRespDataNasc"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="dd/mm/aaaa"
+                android:importantForAutofill="no"
+                android:inputType="date" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="4.5dp"
+            android:layout_weight="3"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_local" />
+
+            <EditText
+                android:id="@+id/etRespCidade"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="Rio de Janeiro"
+                android:importantForAutofill="no"
+                android:inputType="textCapWords" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="4.5dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_cadeado" />
+
+            <EditText
+                android:id="@+id/etRespUf"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="RJ"
+                android:importantForAutofill="no"
+                android:inputType="textCapCharacters"
+                android:maxLength="2" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnEditarResponsavel"
+        style="@style/BotaoEditarPerfil"
+        android:layout_gravity="end"
+        android:layout_marginTop="14dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:contentDescription="Dependente"
+            android:src="@drawable/ic_secao_dependente" />
+
+        <TextView
+            style="@style/TituloSecaoPerfil"
+            android:layout_marginStart="6dp"
+            android:text="Informações do dependente" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_pessoa" />
+
+            <EditText
+                android:id="@+id/etDepNome"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="XXXXXXXXXXX"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName|textCapWords" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="4.5dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_cpf" />
+
+            <EditText
+                android:id="@+id/etDepCpf"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="***.***.***-**"
+                android:importantForAutofill="no"
+                android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="4.5dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_pessoa" />
+
+            <EditText
+                android:id="@+id/etDepSexo"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="Masc"
+                android:importantForAutofill="no"
+                android:inputType="text" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_calendario" />
+
+            <EditText
+                android:id="@+id/etDepDataNasc"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="dd/aa/mmmm"
+                android:importantForAutofill="no"
+                android:inputType="date" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/nunito_black"
+        android:text="Ele/ela possui diagnóstico?"
+        android:textColor="@color/azul_titulo"
+        android:textSize="11sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="6dp"
+        android:orientation="vertical">
+
+        <CheckBox
+            android:id="@+id/checkDiagSim"
+            style="@style/CheckDiagnostico"
+            android:enabled="false" 
+            android:checked="true"
+            android:text="Sim, possui diagnóstico" />
+
+        <CheckBox
+            android:id="@+id/checkDiagAnalise"
+            style="@style/CheckDiagnostico"
+            android:enabled="false"
+            android:text="Não, mas está em análise" />
+
+        <CheckBox
+            android:id="@+id/checkDiagNao"
+            style="@style/CheckDiagnostico"
+            android:enabled="false"
+            android:text="Não, não possui diagnóstico" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnEditarDependente"
+        style="@style/BotaoEditarPerfil"
+        android:layout_gravity="end"
+        android:layout_marginTop="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:contentDescription="Segurança"
+            android:src="@drawable/ic_secao_seguranca" />
+
+        <TextView
+            style="@style/TituloSecaoPerfil"
+            android:layout_marginStart="6dp"
+            android:text="Segurança" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="10dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_email" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="xxx******@gmail.com"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="26dp"
+        android:layout_marginTop="8dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_campo_perfil"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_campo_cadeado" />
+
+            <EditText
+                android:id="@+id/etSenha"
+                style="@style/CampoPerfil"
+                android:enabled="false"
+                android:hint="************"
+                android:importantForAutofill="no"
+                android:inputType="textPassword" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnEditarSeguranca"
+        style="@style/BotaoEditarPerfil"
+        android:layout_gravity="end"
+        android:layout_marginTop="14dp" />
 
         </LinearLayout>
 
