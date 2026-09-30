@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tela de visualização do perfil de um profissional — layout conforme o Figma -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/perfilProfissionalRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".Profissionais.FragmentPerfilProfissional">
+
+    <!-- HEADER FIXO: voltar + logo + sino + avatar (mesmo espaço de 30dp do topo das outras telas) -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="30dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgVoltar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Voltar"
+            android:focusable="true"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/botao_voltar" />
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:contentDescription="Logo"
+            android:scaleType="fitStart"
+            android:src="@drawable/logohoriz" />
+
+        <ImageView
+            android:id="@+id/imgNotificacao"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Notificações"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/ic_sino" />
+
+        <ImageView
+            android:id="@+id/imgPerfil"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            android:contentDescription="Perfil"
+            android:focusable="true"
+            android:src="@drawable/avatar_perfil" />
+
+    </LinearLayout>
+
+    <!-- ÁREA QUE ROLA -->
+    <ScrollView
+        android:id="@+id/scrollPerfilProfissional"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#F7F7F7"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <!-- ====================== TOPO: FOTO + DADOS ====================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="14dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgFotoProfissional"
+                    android:layout_width="114dp"
+                    android:layout_height="114dp"
+                    android:layout_marginTop="6dp"
+                    android:contentDescription="Foto do profissional"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/avatar_verde" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- FAVORITAR -->
+                    <LinearLayout
+                        android:id="@+id/btnFavoritar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtFavoritar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nunito"
+                            android:text="Favoritar"
+                            android:textColor="#35C979"
+                            android:textSize="10sp" />
+
+                        <ImageView
+                            android:id="@+id/imgFavoritar"
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginStart="4dp"
+                            android:contentDescription="Favoritar"
+                            android:src="@drawable/ic_favorito" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txtNomeProfissional"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/nunito_black"
+                        android:maxLines="1"
+                        android:text="Dra. XXXXXXXXXXXX"
+                        android:textColor="@color/azul_titulo"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/txtProfissaoProfissional"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="Psicóloga"
+                        android:textColor="@color/azul_titulo"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/txtRegistroProfissional"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/bg_crp_badge"
+                        android:fontFamily="@font/nunito"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="1dp"
+                        android:text="CRP 06/123456"
+                        android:textColor="#35C979"
+                        android:textSize="11sp" />
+
+                    <!-- ATENDIMENTO -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_online" />
+
+                        <TextView
+                            android:id="@+id/txtAtendimentoProfissional"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/nunito"
+                            android:text="Atende online e presencial"
+                            android:textColor="@color/azul_titulo"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- LOCALIZAÇÃO -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_localizacao" />
+
+                        <TextView
+                            android:id="@+id/txtLocalProfissional"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/nunito"
+                            android:text="São Paulo - SP"
+                            android:textColor="@color/azul_titulo"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- ESTRELAS + TOTAL DE AVALIAÇÕES -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/estrelasProfissional"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" />
+
+                        <TextView
+                            android:id="@+id/txtTotalAvaliacoes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:fontFamily="@font/nunito"
+                            android:text="(97 Avaliações)"
+                            android:textColor="@color/azul_titulo"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ====================== TEXTOS ====================== -->
+            <TextView
+                android:id="@+id/txtAbordagem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/nunito"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#1F2D3D"
+                android:textSize="10sp"
+                tools:text="Abordagem: Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
+
+            <TextView
+                android:id="@+id/txtPublicoAlvo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#1F2D3D"
+                android:textSize="10sp"
+                tools:text="Público alvo: Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
+
+            <TextView
+                android:id="@+id/txtSobreMim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#1F2D3D"
+                android:textSize="10sp"
+                tools:text="Sobre mim: Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
+
+            <!-- ====================== AGENDAR CONSULTA (WhatsApp) ====================== -->
+            <LinearLayout
+                android:id="@+id/btnAgendarConsulta"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/botao_gradiente"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_whatsapp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/nunito_black"
+                    android:text="Agendar Consulta"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- ====================== COMENTÁRIO ====================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="60dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:contentDescription="Sua foto"
+                    android:src="@drawable/avatar_perfil" />
+
+                <EditText
+                    android:id="@+id/edtComentario"
+                    android:layout_width="0dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_linha_comentario"
+                    android:fontFamily="@font/nunito"
+                    android:hint="Digite seu comentário"
+                    android:imeOptions="actionSend"
+                    android:importantForAutofill="no"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
+                    android:paddingHorizontal="2dp"
+                    android:singleLine="true"
+                    android:textColor="@color/azul_titulo"
+                    android:textColorHint="#1F2D3D"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <!-- ====================== NOTA MÉDIA + FILTROS ====================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="22dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card_branco"
+                    android:elevation="1dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtNotaMedia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/nunito"
+                        android:text="3,5"
+                        android:textColor="#FFA914"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="de 5"
+                        android:textColor="#6B6B6B"
+                        android:textSize="11sp" />
+
+                    <LinearLayout
+                        android:id="@+id/estrelasResumo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnFiltrosAvaliacoes"
+                    android:layout_width="104dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/bg_card_branco"
+                    android:clickable="true"
+                    android:elevation="1dp"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_filtro" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="@font/nunito"
+                        android:text="Filtros"
+                        android:textColor="#35C979"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ====================== LISTA DE AVALIAÇÕES ====================== -->
+            <LinearLayout
+                android:id="@+id/containerAvaliacoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="6dp"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/btnVerMais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/nunito"
+                android:padding="10dp"
+                android:text="Ver mais"
+                android:textColor="#6B6B6B"
+                android:textSize="10sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
