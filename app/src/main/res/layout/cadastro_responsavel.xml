@@ -64,6 +64,15 @@
                 android:textColor="#04344E"
                 android:textSize="14sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Nesta etapa são salvos os dados de identificação, contato e acesso. Informações adicionais estarão disponíveis em uma atualização futura."
+                android:textColor="#04344E"
+                android:textSize="12sp" />
+
             <!-- INFORMAÇÕES DO RESPONSÁVEL -->
             <ImageView
                 android:layout_width="178dp"
@@ -253,82 +262,7 @@
                 android:scaleType="fitStart"
                 android:src="@drawable/img_tipo_vinculo" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nunito"
-                android:text="Qual é o seu vínculo com a criança?"
-                android:textColor="#555555"
-                android:textSize="14sp" />
-
             <!-- Os 3 botões dividem a largura igualmente e o texto quebra em 2 linhas se precisar -->
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="12dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radioPai"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/radio_selector"
-                    android:button="@null"
-                    android:checked="true"
-                    android:drawableStart="@drawable/ic_duas_pessoas"
-                    android:drawablePadding="4dp"
-                    android:fontFamily="@font/nunito"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:paddingHorizontal="6dp"
-                    android:text="Pai/Mãe"
-                    android:textAllCaps="false"
-                    android:textColor="@drawable/radio_text_selector"
-                    android:textSize="12sp" />
-
-                <RadioButton
-                    android:id="@+id/radioResponsavel"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/radio_selector"
-                    android:button="@null"
-                    android:drawableStart="@drawable/ic_duas_pessoas_azul"
-                    android:drawablePadding="4dp"
-                    android:fontFamily="@font/nunito"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:paddingHorizontal="6dp"
-                    android:text="Responsável legal"
-                    android:textAllCaps="false"
-                    android:textColor="@drawable/radio_text_selector"
-                    android:textSize="12sp" />
-
-                <RadioButton
-                    android:id="@+id/radioOutro"
-                    android:layout_width="0dp"
-                    android:layout_height="56dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/radio_selector"
-                    android:button="@null"
-                    android:drawableStart="@drawable/ic_duas_pessoas_cadastro"
-                    android:drawablePadding="4dp"
-                    android:fontFamily="@font/nunito"
-                    android:gravity="center"
-                    android:maxLines="2"
-                    android:paddingHorizontal="6dp"
-                    android:text="Outro"
-                    android:textAllCaps="false"
-                    android:textColor="@drawable/radio_text_selector"
-                    android:textSize="12sp" />
-
-            </RadioGroup>
 
             <!-- SEGURANÇA -->
             <ImageView

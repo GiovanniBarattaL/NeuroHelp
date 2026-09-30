@@ -46,6 +46,7 @@ class FragmentPerfil : Fragment() {
 
         // Sair da conta: volta para o Login e limpa as telas anteriores
         view.findViewById<View>(R.id.btnSairConta).setOnClickListener {
+            com.example.neurohelp.auth.SessionStore(requireContext()).clear()
             val intent = Intent(requireContext(), Login::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }

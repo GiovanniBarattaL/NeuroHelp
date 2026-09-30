@@ -15,8 +15,15 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        val apiUrl = providers.gradleProperty("ESPECTROCARE_API_URL")
+            .getOrElse("https://espectrocare.onrender.com")
+        require(apiUrl.startsWith("https://") && !apiUrl.contains('"') && !apiUrl.contains('\\'))
+        buildConfigField("String", "API_BASE_URL", "\"${apiUrl.trimEnd('/')}\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    buildFeatures { buildConfig = true }
 
     buildTypes {
         release {
@@ -34,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation("androidx.cardview:cardview:1.0.0")

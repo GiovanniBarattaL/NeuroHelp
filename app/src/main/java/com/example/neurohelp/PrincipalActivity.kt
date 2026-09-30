@@ -16,11 +16,32 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PrincipalActivity : AppCompatActivity() {
 
+    private val expiryHandler = android.os.Handler(android.os.Looper.getMainLooper())
+    private val expiryCheck = object : Runnable {
+        override fun run() {
+            if (com.example.neurohelp.auth.SessionStore(this@PrincipalActivity).token() == null) {
+                com.example.neurohelp.auth.goLoginFromPrincipal(this@PrincipalActivity)
+            } else expiryHandler.postDelayed(this, 1000)
+        }
+    }
+    override fun onResume() {
+        super.onResume()
+        expiryHandler.post(expiryCheck)
+    }
+    override fun onPause() {
+        expiryHandler.removeCallbacks(expiryCheck)
+        super.onPause()
+    }
+
     private lateinit var bottomNavigation: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if (com.example.neurohelp.auth.SessionStore(this).token() == null) {
+            com.example.neurohelp.auth.goLoginFromPrincipal(this)
+            return
+        }
         setContentView(R.layout.activity_principal)
 
         bottomNavigation = findViewById(R.id.bottomNavigation)

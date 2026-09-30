@@ -1,5 +1,6 @@
 package com.example.neurohelp.Cadastro
 
+import com.example.neurohelp.auth.*
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,15 +17,19 @@ class Cadastro_Profissional1 : AppCompatActivity() {
 
         setContentView(R.layout.cadastro_profissional1)
 
+        // Credenciais coletadas apenas na segunda etapa, sem senhas em extras do Intent.
+        hideFields(R.id.etEmail, R.id.etSenha, R.id.etConfirmarSenha, R.id.etCep,
+            R.id.etCidade, R.id.etBairro, R.id.etLogradouro, R.id.etNumero)
         val btnProximo = findViewById<Button>(R.id.btnProximo)
 
         btnProximo.setOnClickListener {
-            val intent = Intent(
-                this,
-                Cadastro_Profissional2::class.java
-            )
-
-            startActivity(intent)
+            if (!validatePersonal()) return@setOnClickListener
+            startActivity(Intent(this, Cadastro_Profissional2::class.java).apply {
+                putExtra("nome", input(R.id.etNome))
+                putExtra("cpf", input(R.id.etCpf))
+                putExtra("telefone", input(R.id.etTelefone))
+                putExtra("estado", input(R.id.etUf))
+            })
         }
 
         val txtFazerLogin =
