@@ -3,8 +3,8 @@ package com.example.neurohelp.Cadastro
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.neurohelp.Login.Login
 import com.example.neurohelp.R
 
 class Cadastro : AppCompatActivity() {
@@ -13,11 +13,10 @@ class Cadastro : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.cadastro)
 
-        val btnVoltar = findViewById<Button>(R.id.btnVoltar)
+        val btnVoltar = findViewById<ImageView>(R.id.btnVoltar)
 
         btnVoltar.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
+            onBackPressedDispatcher.onBackPressed()
         }
 
         val btnResponsavel =

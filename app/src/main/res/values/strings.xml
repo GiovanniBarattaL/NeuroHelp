@@ -49,4 +49,10 @@
     <string name="profissional_sobre_mim">Sobre mim:</string>
     <string name="profissional_mensagem_whatsapp">Olá, %1$s! Encontrei seu perfil no EspectroCare e gostaria de agendar uma consulta.</string>
     <string name="profissional_whatsapp_indisponivel">Não foi possível abrir o WhatsApp.</string>
+
+    <!-- Geral -->
+    <string name="voltar">Voltar</string>
+
+    <!-- Home -->
+    <string name="home_erro_abrir_link">Não foi possível abrir a página de aprendizagem.</string>
 </resources>

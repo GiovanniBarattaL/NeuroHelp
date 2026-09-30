@@ -34,17 +34,8 @@
 
                 <ImageView
                     android:id="@+id/imgVoltar"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
-                    android:layout_gravity="top|start"
-                    android:layout_marginStart="8dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:contentDescription="Voltar"
-                    android:focusable="true"
-                    android:padding="14dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/botao_voltar" />
+                    style="@style/BotaoVoltar"
+                    android:layout_gravity="top|start" />
 
                 <TextView
                     android:layout_width="wrap_content"

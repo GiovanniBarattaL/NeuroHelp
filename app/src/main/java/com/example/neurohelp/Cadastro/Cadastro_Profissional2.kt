@@ -32,12 +32,7 @@ class Cadastro_Profissional2 : AppCompatActivity() {
             findViewById<ImageView>(R.id.btnVoltar)
 
         btnVoltar.setOnClickListener {
-            val intent = Intent(
-                this,
-                Cadastro_Profissional1::class.java
-            )
-
-            startActivity(intent)
+            onBackPressedDispatcher.onBackPressed()
         }
 
         val btnCadastrar =

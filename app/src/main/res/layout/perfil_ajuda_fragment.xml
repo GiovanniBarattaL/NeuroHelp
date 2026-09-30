@@ -36,16 +36,9 @@
 
                 <ImageView
                     android:id="@+id/imgVoltar"
-                    android:layout_width="13.5dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="16dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:src="@drawable/botao_voltar"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    style="@style/BotaoVoltar"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:layout_width="wrap_content"

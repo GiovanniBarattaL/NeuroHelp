@@ -30,16 +30,7 @@
             <!-- VOLTAR (padrão em todas as telas) -->
             <ImageView
                 android:id="@+id/imgVoltar"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:contentDescription="Voltar"
-                android:focusable="true"
-                android:padding="12dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/botao_voltar" />
+                style="@style/BotaoVoltar" />
 
             <!-- NOSSA MISSÃO -->
             <LinearLayout

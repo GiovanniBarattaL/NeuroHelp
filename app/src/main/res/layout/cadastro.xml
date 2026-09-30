@@ -18,15 +18,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <ImageView
             android:id="@+id/btnVoltar"
-            android:layout_width="13.5dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/botao_voltar"
-            app:backgroundTint="@null" />
+            style="@style/BotaoVoltar"
+            android:layout_marginTop="30dp" />
 
         <ImageView
             android:id="@+id/imgLogo"
@@ -34,6 +29,7 @@
             android:layout_height="135dp"
             android:layout_gravity="center"
             android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="-15dp"
             android:layout_marginBottom="20dp"
             android:src="@drawable/logohoriz" />
 

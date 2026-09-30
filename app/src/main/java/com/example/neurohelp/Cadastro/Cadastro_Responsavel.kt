@@ -20,12 +20,7 @@ class Cadastro_Responsavel : AppCompatActivity() {
             findViewById<ImageView>(R.id.btnVoltar)
 
         btnVoltar.setOnClickListener {
-            val intent = Intent(
-                this,
-                Cadastro::class.java
-            )
-
-            startActivity(intent)
+            onBackPressedDispatcher.onBackPressed()
         }
 
         val txtFazerLogin =
