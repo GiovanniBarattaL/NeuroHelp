@@ -1,5 +1,8 @@
 package com.example.neurohelp.Cadastro
 
+import com.example.neurohelp.auth.*
+import android.widget.EditText
+import android.widget.Toast
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -16,6 +19,10 @@ class Cadastro_Profissional2 : AppCompatActivity() {
 
         setContentView(R.layout.cadastro_profissional2)
 
+        hideFields(R.id.etProfissao, R.id.etAreaAtuacao)
+        findViewById<EditText>(R.id.etSenha).isSaveEnabled = false
+        findViewById<EditText>(R.id.etConfirmarSenha).isSaveEnabled = false
+        if (intent.getStringExtra("cpf").isNullOrBlank()) { finish(); return }
         val txtFazerLogin =
             findViewById<TextView>(R.id.txtFazerLogin)
 
@@ -38,13 +45,21 @@ class Cadastro_Profissional2 : AppCompatActivity() {
         val btnCadastrar =
             findViewById<Button>(R.id.btnCadastrar)
 
+        bindSubmission(btnCadastrar) {
+            Toast.makeText(this, "Cadastro realizado. Entre com seu e-mail e senha.", Toast.LENGTH_LONG).show()
+            goLogin()
+        }
         btnCadastrar.setOnClickListener {
-            val intent = Intent(
-                this,
-                Login::class.java
+            if (!credentials(R.id.etEmail, R.id.etSenha, R.id.etConfirmarSenha)) return@setOnClickListener
+            val fields = mapOf(
+                "nome" to intent.getStringExtra("nome").orEmpty(),
+                "cpf" to intent.getStringExtra("cpf").orEmpty(),
+                "telefone" to intent.getStringExtra("telefone").orEmpty(),
+                "estado" to intent.getStringExtra("estado").orEmpty(),
+                "email" to input(R.id.etEmail), "senha" to password(),
+                "numRegistro" to input(R.id.etRegistroProfissional)
             )
-
-            startActivity(intent)
+            submit(btnCadastrar) { it.register(true, fields) }
         }
     }
 }

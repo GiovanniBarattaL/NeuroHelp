@@ -1,11 +1,12 @@
 package com.example.neurohelp.Login
 
+import com.example.neurohelp.auth.*
+import android.widget.EditText
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.neurohelp.Cadastro.Cadastro
 import com.example.neurohelp.PrincipalActivity
@@ -19,7 +20,7 @@ class Login : AppCompatActivity() {
 
         setContentView(R.layout.login)
 
-        var tipoUsuarioSelecionado = "PAI_MAE"
+        // A API autentica ambos os perfis por e-mail e senha; o seletor é apenas visual.
 
         val btnPai =
             findViewById<Button>(R.id.btnPai)
@@ -36,7 +37,6 @@ class Login : AppCompatActivity() {
 
         btnPai.setOnClickListener {
 
-            tipoUsuarioSelecionado = "PAI_MAE"
 
             btnPai.setBackgroundResource(
                 R.drawable.botao_gradiente
@@ -54,7 +54,6 @@ class Login : AppCompatActivity() {
 
         btnProfissional.setOnClickListener {
 
-            tipoUsuarioSelecionado = "PROFISSIONAL"
 
             btnProfissional.setBackgroundResource(
                 R.drawable.botao_gradiente
@@ -70,35 +69,25 @@ class Login : AppCompatActivity() {
         }
 
 
-        btnEntrar.setOnClickListener {
-
-            if (tipoUsuarioSelecionado == "PAI_MAE") {
-
-                Toast.makeText(
-                    this,
-                    "Logando como Pai/Mãe",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                val intent = Intent(
-                    this,
-                    PrincipalActivity::class.java
-                )
-
-                startActivity(intent)
-
-            } else {
-
-                Toast.makeText(
-                    this,
-                    "Logando como Profissional",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-
-            }
+        if (SessionStore(this).token() != null) {
+            startActivity(Intent(this, PrincipalActivity::class.java))
+            finish()
+            return
         }
-
+        findViewById<EditText>(R.id.edtSenha).isSaveEnabled = false
+        bindSubmission(btnEntrar) {
+            findViewById<EditText>(R.id.edtSenha).text.clear()
+            startActivity(Intent(this, PrincipalActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            })
+            finish()
+        }
+        btnEntrar.setOnClickListener {
+            if (!credentials(R.id.edtEmail, R.id.edtSenha)) return@setOnClickListener
+            val email = input(R.id.edtEmail)
+            val senha = findViewById<EditText>(R.id.edtSenha).text.toString()
+            submit(btnEntrar) { it.login(email, senha) }
+        }
 
         btnCriarConta.setOnClickListener {
 

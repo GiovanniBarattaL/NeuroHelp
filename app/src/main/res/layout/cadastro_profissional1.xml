@@ -64,6 +64,15 @@
                 android:textColor="#04344E"
                 android:textSize="14sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                android:text="Nesta etapa são salvos os dados de identificação, contato e acesso. Informações adicionais estarão disponíveis em uma atualização futura."
+                android:textColor="#04344E"
+                android:textSize="12sp" />
+
             <!-- BARRA DE ETAPAS -->
             <ImageView
                 android:layout_width="match_parent"
@@ -81,6 +90,22 @@
                 android:layout_marginTop="20dp"
                 android:scaleType="fitStart"
                 android:src="@drawable/img_informacoespessoais" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.App.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="CPF">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCpf"
+                    style="@style/Widget.App.TextInputEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="11" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- NOME E TELEFONE -->
             <LinearLayout
