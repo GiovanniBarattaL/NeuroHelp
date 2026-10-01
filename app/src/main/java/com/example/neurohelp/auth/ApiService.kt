@@ -10,7 +10,7 @@ import java.net.URI
 
 class ApiException(val status: Int, message: String) : IOException(message)
 class ApiService(private val session: SessionStore, private val baseUrl: String = BuildConfig.API_BASE_URL,
-    private val openConnection: (java.net.URL) -> HttpURLConnection = { it.openConnection() as HttpURLConnection }) {
+                 private val openConnection: (java.net.URL) -> HttpURLConnection = { it.openConnection() as HttpURLConnection }) {
     suspend fun login(email: String, senha: String) {
         val body = request("/auth/login", "POST", JSONObject().put("email", email).put("senha", senha))
         val token = try { JSONObject(body).getString("token") } catch (_: Exception) {
@@ -20,7 +20,7 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
     }
     suspend fun register(profissional: Boolean, fields: Map<String, String>) {
         val accepted = setOf("nome", "email", "senha", "cpf", "telefone", "estado") +
-            if (profissional) setOf("numRegistro") else emptySet()
+                if (profissional) setOf("numRegistro") else emptySet()
         require(fields.keys.all { it in accepted })
         request(if (profissional) "/cadastro/profissional" else "/cadastro/responsavel", "POST", JSONObject(fields))
     }
@@ -50,6 +50,7 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
             val stream = if (status in 200..299) connection.inputStream else connection.errorStream
             val response = stream?.bufferedReader(Charsets.UTF_8)?.use { it.readText() }.orEmpty()
             if (status !in 200..299) {
+                if (BuildConfig.DEBUG) android.util.Log.e("ApiService", "HTTP $status em $method $path | enviado=${body?.toString()?.replace(Regex("\"senha\":\"[^\"]*\""), "\"senha\":\"***\"")} | resposta=$response")
                 if (isProtected && status == 401) session.clear()
                 throw ApiException(status, errorMessage(status, isProtected))
             }

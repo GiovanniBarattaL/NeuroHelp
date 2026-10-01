@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardNotificacao"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginBottom="14dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="#F6FFF9"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:strokeColor="#E6F4EA"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="14dp">
+
+        <ImageView
+            android:id="@+id/imgAvatarNotificacao"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_circulo"
+            android:backgroundTint="#7B5EA7"
+            android:contentDescription="Profissional"
+            android:padding="8dp"
+            android:src="@drawable/ic_avatar_pessoa" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtNomeNotificacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito_black"
+                android:maxLines="1"
+                android:textColor="@color/azul_titulo"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtMensagemNotificacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito"
+                android:maxLines="2"
+                android:textColor="#6B6B6B"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

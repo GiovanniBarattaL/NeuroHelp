@@ -17,6 +17,7 @@ import androidx.core.text.buildSpannedString
 import androidx.fragment.app.Fragment
 import com.example.neurohelp.Perfil.FragmentPerfil
 import com.example.neurohelp.R
+import com.example.neurohelp.notificacoes.abrirNotificacoes
 import java.util.Locale
 
 class FragmentPerfilProfissional : Fragment() {
@@ -66,6 +67,10 @@ class FragmentPerfilProfissional : Fragment() {
     private fun configurarCabecalho(view: View) {
         view.findViewById<ImageView>(R.id.imgVoltar).setOnClickListener {
             parentFragmentManager.popBackStack()
+        }
+
+        view.findViewById<ImageView>(R.id.imgNotificacao).setOnClickListener {
+            abrirNotificacoes()
         }
 
         view.findViewById<ImageView>(R.id.imgPerfil).setOnClickListener {

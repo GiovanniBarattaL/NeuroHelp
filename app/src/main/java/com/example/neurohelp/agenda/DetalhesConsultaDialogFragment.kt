@@ -1,53 +1,71 @@
 package com.example.neurohelp.agenda
 
-import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import com.example.neurohelp.R
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class DetalhesConsultaDialogFragment : DialogFragment() {
+/**
+ * Bottom sheet com os detalhes da consulta (Figma).
+ * Aberto ao tocar numa notificação de consulta e também pela Agenda.
+ *
+ * O resultado volta pelo [REQUEST_KEY] (FragmentResult) com a consulta no bundle e
+ * [EXTRA_ACAO] = [ACAO_CONFIRMAR] ou [ACAO_ALTERAR_CANCELAR].
+ */
+class DetalhesConsultaDialogFragment : BottomSheetDialogFragment() {
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+    companion object {
+        const val REQUEST_KEY = "detalhes_consulta"
+        const val EXTRA_ACAO = "acao"
+        const val ACAO_CONFIRMAR = "confirmar"
+        const val ACAO_ALTERAR_CANCELAR = "alterar_cancelar"
+        const val TAG = "DetalhesConsulta"
 
-        val dialog = Dialog(requireContext())
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-        dialog.setContentView(R.layout.agenda_dialog_consulta_detalhes)
-
-        dialog.setCanceledOnTouchOutside(true)
-
-        dialog.window?.apply {
-
-            // Fundo transparente para aparecer somente o
-            // bg_dialog_consulta do layout
-            setBackgroundDrawableResource(
-                android.R.color.transparent
-            )
-
-            // Escurece a agenda atrás do popup
-            setDimAmount(0.60f)
-
-            addFlags(
-                android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND
-            )
+        fun newInstance(consulta: Consulta) = DetalhesConsultaDialogFragment().apply {
+            arguments = consulta.toBundle()
         }
+    }
 
-        return dialog
+    // Tema com fundo transparente: o layout desenha o próprio fundo arredondado
+    override fun getTheme(): Int = R.style.TemaBottomSheetConsulta
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View = inflater.inflate(R.layout.agenda_dialog_consulta_detalhes, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val consulta = requireArguments().toConsulta()
+        view.preencherDetalhesConsulta(consulta)
+
+        view.findViewById<View>(R.id.btnConfirmar).setOnClickListener {
+            devolverAcao(consulta, ACAO_CONFIRMAR)
+        }
+        view.findViewById<View>(R.id.btnAlterarCancelar).setOnClickListener {
+            devolverAcao(consulta, ACAO_ALTERAR_CANCELAR)
+        }
     }
 
     override fun onStart() {
         super.onStart()
-
-        dialog?.window?.apply {
-
-            // Largura do popup
-            setLayout(
-                (resources.displayMetrics.widthPixels * 0.88).toInt(),
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
+        // Abre já totalmente expandido (sem parar na metade da altura)
+        (dialog as? BottomSheetDialog)?.behavior?.apply {
+            state = BottomSheetBehavior.STATE_EXPANDED
+            skipCollapsed = true
         }
+    }
+
+    private fun devolverAcao(consulta: Consulta, acao: String) {
+        val resultado = consulta.toBundle().apply { putString(EXTRA_ACAO, acao) }
+        parentFragmentManager.setFragmentResult(REQUEST_KEY, resultado)
+        dismiss()
     }
 }

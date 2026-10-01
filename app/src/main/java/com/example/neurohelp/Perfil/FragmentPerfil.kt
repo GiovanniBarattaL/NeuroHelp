@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.neurohelp.ajuda.FragmentAjuda
 import com.example.neurohelp.Login.Login
 import com.example.neurohelp.R
+import com.example.neurohelp.notificacoes.FragmentNotificacoes
 
 class FragmentPerfil : Fragment() {
 
@@ -28,6 +29,11 @@ class FragmentPerfil : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Notificações
+        view.findViewById<LinearLayout>(R.id.itemNotificacoes).setOnClickListener {
+            abrirFragment(FragmentNotificacoes())
+        }
 
         // Privacidade e Segurança
         view.findViewById<LinearLayout>(R.id.itemPrivacidade).setOnClickListener {

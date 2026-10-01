@@ -30,7 +30,12 @@ data class Consulta(
     val profissional: String,
     val inicio: Date,
     val modalidade: ModalidadeConsulta,
-    val local: String? = null
+    val local: String? = null,
+    // Dados exibidos nos detalhes da consulta (vêm do backend quando a API estiver ligada)
+    val crp: String? = null,
+    val sobreProfissional: String? = null,
+    val observacoes: String? = null,
+    val foco: String? = null
 )
 
 

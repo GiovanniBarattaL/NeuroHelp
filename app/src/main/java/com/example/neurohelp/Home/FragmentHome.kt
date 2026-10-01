@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.example.neurohelp.Perfil.FragmentPerfil
 import com.example.neurohelp.PrincipalActivity
 import com.example.neurohelp.R
+import com.example.neurohelp.notificacoes.abrirNotificacoes
 
 class FragmentHome : Fragment() {
 
@@ -47,6 +48,10 @@ class FragmentHome : Fragment() {
                 )
                 .addToBackStack(null)
                 .commit()
+        }
+
+        view.findViewById<ImageView>(R.id.imgNotificacao).setOnClickListener {
+            abrirNotificacoes()
         }
 
         // Encontrar profissionais -> aba Profissionais

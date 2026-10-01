@@ -95,4 +95,17 @@
         <item name="android:scaleType">fitCenter</item>
         <item name="android:src">@drawable/botao_voltar</item>
     </style>
+
+    <!-- ===== Bottom sheet de detalhes da consulta (Figma) ===== -->
+    <style name="TemaBottomSheetConsulta" parent="Theme.Material3.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/EstiloBottomSheetConsulta</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!-- O fundo arredondado é desenhado pelo layout (bg_bottom_sheet_consulta) -->
+    <style name="EstiloBottomSheetConsulta" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
 </resources>

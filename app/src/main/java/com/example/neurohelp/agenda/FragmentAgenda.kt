@@ -9,6 +9,7 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.neurohelp.Perfil.FragmentPerfil
 import com.example.neurohelp.R
+import com.example.neurohelp.notificacoes.abrirNotificacoes
 import com.google.android.material.card.MaterialCardView
 
 class FragmentAgenda : Fragment() {
@@ -71,11 +73,28 @@ class FragmentAgenda : Fragment() {
         view.findViewById<ImageView>(R.id.btnMesProximo).setOnClickListener {
             viewModel.proximoMes()
         }
+        view.findViewById<ImageView>(R.id.imgNotificacao).setOnClickListener {
+            abrirNotificacoes()
+        }
         view.findViewById<ImageView>(R.id.imgPerfil).setOnClickListener {
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainer, FragmentPerfil())
                 .addToBackStack(null)
                 .commit()
+        }
+
+        // Resultado do bottom sheet de detalhes da consulta
+        parentFragmentManager.setFragmentResultListener(
+            DetalhesConsultaDialogFragment.REQUEST_KEY,
+            viewLifecycleOwner
+        ) { _, resultado ->
+            when (resultado.getString(DetalhesConsultaDialogFragment.EXTRA_ACAO)) {
+                DetalhesConsultaDialogFragment.ACAO_CONFIRMAR ->
+                    // TODO: confirmar presença na API
+                    Toast.makeText(requireContext(), "Consulta confirmada!", Toast.LENGTH_SHORT).show()
+                DetalhesConsultaDialogFragment.ACAO_ALTERAR_CANCELAR ->
+                    abrirDetalheConsulta(resultado.toConsulta())
+            }
         }
 
         viewModel.ano.observe(viewLifecycleOwner) { txtAno.text = it }
@@ -129,12 +148,8 @@ class FragmentAgenda : Fragment() {
 
     private fun abrirDetalhes(consulta: Consulta) {
 
-        val dialog = DetalhesConsultaDialogFragment()
-
-        dialog.show(
-            parentFragmentManager,
-            "DetalhesConsulta"
-        )
+        DetalhesConsultaDialogFragment.newInstance(consulta)
+            .show(parentFragmentManager, DetalhesConsultaDialogFragment.TAG)
     }
 
     private companion object {

@@ -28,7 +28,11 @@ class AgendaRepositoryMemoria : AgendaRepository {
         }.getActualMaximum(Calendar.DAY_OF_MONTH)
 
         return listOf(
-            criarConsulta(ano, mes, 1, 14, 0, Especialidade.PSICOLOGO, "Dr. Marcelo Prado", ModalidadeConsulta.ONLINE),
+            criarConsulta(ano, mes, 1, 14, 0, Especialidade.PSICOLOGO, "Dr. Marcelo Prado", ModalidadeConsulta.ONLINE).copy(
+                crp = "CRP 06/123456",
+                observacoes = "Acompanhamento psicológico semanal",
+                foco = "ansiedade e regulação emocional"
+            ),
             criarConsulta(ano, mes, 1, 16, 30, Especialidade.FONOAUDIOLOGO, "Dra. Helena Souza", ModalidadeConsulta.PRESENCIAL, "Clínica Central"),
             criarConsulta(ano, mes, 4, 13, 30, Especialidade.TERAPEUTA_OCUPACIONAL, "Dra. Camila Reis", ModalidadeConsulta.PRESENCIAL, "Clínica Central"),
             criarConsulta(ano, mes, 4, 15, 30, Especialidade.NEUROPEDIATRA, "Dr. Rafael Antunes", ModalidadeConsulta.PRESENCIAL, "Hospital Vida"),

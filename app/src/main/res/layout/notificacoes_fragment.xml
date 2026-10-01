@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notificacoesRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tela_fundo_claro"
+    tools:context=".notificacoes.FragmentNotificacoes">
+
+    <!-- Voltar (mesmo estilo das outras telas) -->
+    <ImageView
+        android:id="@+id/imgVoltar"
+        style="@style/BotaoVoltar"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTituloNotificacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_black"
+        android:text="Notificações"
+        android:textColor="@color/azul_titulo"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgVoltar"
+        android:layout_marginTop="4dp" />
+
+    <!-- ABAS: Não Visto / Essa Semana / Todos -->
+    <LinearLayout
+        android:id="@+id/abas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtTituloNotificacoes">
+
+        <LinearLayout
+            android:id="@+id/abaNaoVisto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtAbaNaoVisto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="Não Visto"
+                android:textSize="13sp" />
+
+            <View
+                android:id="@+id/linhaAbaNaoVisto"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="3dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/abaEssaSemana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtAbaEssaSemana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="Essa Semana"
+                android:textSize="13sp" />
+
+            <View
+                android:id="@+id/linhaAbaEssaSemana"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="3dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/abaTodos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtAbaTodos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito"
+                android:text="Todos"
+                android:textSize="13sp" />
+
+            <View
+                android:id="@+id/linhaAbaTodos"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="3dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNotificacoes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="22dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/abas" />
+
+    <TextView
+        android:id="@+id/txtSemNotificacoes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/nunito"
+        android:gravity="center"
+        android:paddingHorizontal="32dp"
+        android:text="Você não tem notificações por aqui."
+        android:textColor="@color/agenda_texto_secundario"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/abas" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

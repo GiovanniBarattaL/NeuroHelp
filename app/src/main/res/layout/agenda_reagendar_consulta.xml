@@ -96,6 +96,7 @@
                 android:orientation="horizontal">
 
                 <FrameLayout
+                    android:id="@+id/frameProfissional"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/bg_circulo"
@@ -524,7 +525,7 @@
                     android:hint="Digite aqui suas considerações."
                     android:importantForAutofill="no"
                     android:inputType="textMultiLine|textCapSentences"
-                    android:minHeight="140dp"
+                    android:minHeight="170dp"
                     android:padding="16dp"
                     android:textColor="@color/azul_titulo"
                     android:textColorHint="@color/campo_hint"
@@ -533,76 +534,49 @@
             </com.google.android.material.card.MaterialCardView>
 
             <!-- ================= BOTÕES ================= -->
-            <Button
-                android:id="@+id/btnInformarInconformidades"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSolicitarAlteracoes"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="44dp"
                 android:layout_marginTop="28dp"
                 android:background="@drawable/botao_gradiente"
                 android:fontFamily="@font/nunito_black"
-                android:text="Informar inconformidades"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Solicitar alterações"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                app:backgroundTint="@null" />
+                android:textSize="13sp"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_reagendar"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconSize="20dp"
+                app:iconTint="#FFFFFF" />
 
-            <LinearLayout
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancelarConsulta"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:orientation="horizontal">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnReagendar"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginEnd="6dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/nunito"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:maxLines="1"
-                    android:paddingHorizontal="8dp"
-                    android:text="Reagendar"
-                    android:textAllCaps="false"
-                    android:textColor="@color/agenda_verde_escuro"
-                    android:textSize="13sp"
-                    app:cornerRadius="10dp"
-                    app:icon="@drawable/ic_reagendar"
-                    app:iconGravity="textStart"
-                    app:iconPadding="6dp"
-                    app:iconSize="20dp"
-                    app:iconTint="@null"
-                    app:strokeColor="@color/agenda_verde"
-                    app:strokeWidth="1dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnCancelarConsulta"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="6dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/nunito"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:maxLines="1"
-                    android:paddingHorizontal="8dp"
-                    android:text="Cancelar consulta"
-                    android:textAllCaps="false"
-                    android:textColor="@color/agenda_verde_escuro"
-                    android:textSize="13sp"
-                    app:cornerRadius="10dp"
-                    app:icon="@drawable/ic_cancelar_consulta"
-                    app:iconGravity="textStart"
-                    app:iconPadding="6dp"
-                    app:iconSize="20dp"
-                    app:iconTint="@null"
-                    app:strokeColor="@color/agenda_verde"
-                    app:strokeWidth="1dp" />
-
-            </LinearLayout>
+                android:layout_height="44dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#FFFFFF"
+                android:fontFamily="@font/nunito"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:maxLines="1"
+                android:paddingHorizontal="8dp"
+                android:text="Cancelar consulta"
+                android:textAllCaps="false"
+                android:textColor="@color/agenda_verde_escuro"
+                android:textSize="13sp"
+                app:cornerRadius="10dp"
+                app:icon="@drawable/ic_cancelar_consulta"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconSize="20dp"
+                app:iconTint="@null"
+                app:strokeColor="@color/agenda_verde"
+                app:strokeWidth="1dp" />
 
         </LinearLayout>
 

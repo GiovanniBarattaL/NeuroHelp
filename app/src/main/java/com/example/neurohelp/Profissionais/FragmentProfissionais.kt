@@ -15,6 +15,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.neurohelp.R
+import com.example.neurohelp.notificacoes.abrirNotificacoes
 
 class FragmentProfissionais : Fragment() {
 
@@ -40,6 +41,10 @@ class FragmentProfissionais : Fragment() {
 
         btnFiltros.setOnClickListener {
             abrirFiltros()
+        }
+
+        view.findViewById<View>(R.id.imgNotificacao).setOnClickListener {
+            abrirNotificacoes()
         }
 
         // "Ver Perfil" abre a tela de perfil do profissional

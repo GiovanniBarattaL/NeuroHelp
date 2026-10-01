@@ -11,6 +11,8 @@ import com.example.neurohelp.Perfil.FragmentSobre
 import com.example.neurohelp.Profissionais.FragmentPerfilProfissional
 import com.example.neurohelp.Profissionais.FragmentProfissionais
 import com.example.neurohelp.agenda.FragmentAgenda
+import com.example.neurohelp.agenda.FragmentConsultaDetalhe
+import com.example.neurohelp.notificacoes.FragmentNotificacoes
 import com.example.neurohelp.ajuda.FragmentAjuda
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -110,9 +112,11 @@ class PrincipalActivity : AppCompatActivity() {
         is FragmentProfissionais,
         is FragmentPerfilProfissional -> R.id.nav_profissionais
 
-        is FragmentAgenda -> R.id.nav_agenda
+        is FragmentAgenda,
+        is FragmentConsultaDetalhe -> R.id.nav_agenda
 
         is FragmentPerfil,
+        is FragmentNotificacoes,
         is FragmentSobre,
         is FragmentAjuda,
         is FragmentPrivacidade -> R.id.nav_perfil
