@@ -9,7 +9,9 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import com.example.neurohelp.ajuda.FragmentAjuda
 import com.example.neurohelp.Login.Login
+import com.example.neurohelp.PrincipalActivity
 import com.example.neurohelp.R
+import com.example.neurohelp.configurarCabecalhoPadrao
 import com.example.neurohelp.notificacoes.FragmentNotificacoes
 
 class FragmentPerfil : Fragment() {
@@ -29,6 +31,10 @@ class FragmentPerfil : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        configurarCabecalhoPadrao(view, abrirPerfil = false) {
+            (activity as? PrincipalActivity)?.irParaAba(R.id.nav_inicio)
+        }
 
         // Notificações
         view.findViewById<LinearLayout>(R.id.itemNotificacoes).setOnClickListener {

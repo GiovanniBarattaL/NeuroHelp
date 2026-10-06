@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">NeuroHelp</string>
+    <string name="app_name">EspectroCare</string>
     <string name="sexo">Sexo</string>
 
     <!-- Agenda -->
-    <string name="agenda_logo">NeuroHelp</string>
+    <string name="agenda_logo">EspectroCare</string>
     <string name="agenda_notificacoes">Notificações</string>
     <string name="agenda_perfil">Perfil</string>
     <string name="agenda_lembrete">Lembrete</string>
@@ -49,6 +49,7 @@
     <string name="profissional_sobre_mim">Sobre mim:</string>
     <string name="profissional_mensagem_whatsapp">Olá, %1$s! Encontrei seu perfil no EspectroCare e gostaria de agendar uma consulta.</string>
     <string name="profissional_whatsapp_indisponivel">Não foi possível abrir o WhatsApp.</string>
+    <string name="profissional_sem_avaliacoes">Nenhuma avaliação com essa nota.</string>
 
     <!-- Geral -->
     <string name="voltar">Voltar</string>

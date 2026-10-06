@@ -16,9 +16,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.neurohelp.Perfil.FragmentPerfil
+import com.example.neurohelp.PrincipalActivity
 import com.example.neurohelp.R
-import com.example.neurohelp.notificacoes.abrirNotificacoes
+import com.example.neurohelp.configurarCabecalhoPadrao
 import com.google.android.material.card.MaterialCardView
 
 class FragmentAgenda : Fragment() {
@@ -46,6 +46,10 @@ class FragmentAgenda : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        configurarCabecalhoPadrao(view) {
+            (activity as? PrincipalActivity)?.irParaAba(R.id.nav_inicio)
+        }
+
         val txtAno = view.findViewById<TextView>(R.id.txtAno)
         val txtMesBanner = view.findViewById<TextView>(R.id.txtMesBanner)
         val txtMesCalendario = view.findViewById<TextView>(R.id.txtMesCalendario)
@@ -72,15 +76,6 @@ class FragmentAgenda : Fragment() {
         }
         view.findViewById<ImageView>(R.id.btnMesProximo).setOnClickListener {
             viewModel.proximoMes()
-        }
-        view.findViewById<ImageView>(R.id.imgNotificacao).setOnClickListener {
-            abrirNotificacoes()
-        }
-        view.findViewById<ImageView>(R.id.imgPerfil).setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FragmentPerfil())
-                .addToBackStack(null)
-                .commit()
         }
 
         // Resultado do bottom sheet de detalhes da consulta

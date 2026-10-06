@@ -8,6 +8,16 @@
     android:background="#FFFFFF"
     tools:context=".Perfil.FragmentPerfil">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/header_padrao"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:id="@+id/scrollPerfil"
         android:layout_width="0dp"
@@ -17,17 +27,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <LinearLayout
             android:id="@+id/linearPerfil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="30dp"
+            android:paddingTop="8dp"
             android:paddingBottom="20dp">
-
-
 
             <!-- AVATAR + DADOS -->
             <LinearLayout
@@ -247,7 +255,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:background="#F0F0F0" />
 
-                    <!-- Sobre o NeuroHelp -->
+                    <!-- Sobre o EspectroCare -->
                     <LinearLayout
                         android:id="@+id/itemSobre"
                         android:layout_width="match_parent"
@@ -272,7 +280,7 @@
                             android:layout_marginStart="14dp"
                             android:layout_weight="1"
                             android:fontFamily="@font/nunito"
-                            android:text="Sobre o NeuroHelp"
+                            android:text="Sobre o EspectroCare"
                             android:textColor="#073B5C"
                             android:textSize="14sp" />
 

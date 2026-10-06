@@ -16,6 +16,9 @@
         android:theme="@style/Theme.NeuroHelp">
 
         <activity
+            android:name=".Login.RecuperarSenha"
+            android:exported="false" />
+        <activity
             android:name=".Cadastro.Cadastro_Profissional2"
             android:exported="false" />
         <activity

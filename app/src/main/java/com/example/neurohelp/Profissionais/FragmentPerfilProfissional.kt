@@ -1,23 +1,25 @@
 package com.example.neurohelp.Profissionais
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
+import android.graphics.Color
+import android.graphics.RenderEffect
+import android.graphics.Shader
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.PopupWindow
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.fragment.app.Fragment
-import com.example.neurohelp.Perfil.FragmentPerfil
 import com.example.neurohelp.R
-import com.example.neurohelp.notificacoes.abrirNotificacoes
+import com.example.neurohelp.configurarCabecalhoPadrao
 import java.util.Locale
 
 class FragmentPerfilProfissional : Fragment() {
@@ -26,6 +28,11 @@ class FragmentPerfilProfissional : Fragment() {
 
     private var favoritado = false
     private var avaliacoesExibidas = 0
+
+    /** Notas (1 a 5) marcadas no filtro das avaliações. Vazio = sem filtro. */
+    private var notasFiltradas: Set<Int> = emptySet()
+    private var popupFiltros: PopupWindow? = null
+    private var telaPerfil: View? = null
 
     companion object {
         private const val ARG_ID = "profissional_id"
@@ -53,6 +60,7 @@ class FragmentPerfilProfissional : Fragment() {
 
         val id = arguments?.getInt(ARG_ID, 0) ?: 0
         profissional = ProfissionalMock.exemplo(id) // TODO: buscar na API pelo id
+        telaPerfil = view
 
         configurarCabecalho(view)
         preencherDados(view)
@@ -65,20 +73,7 @@ class FragmentPerfilProfissional : Fragment() {
     // Cabeçalho (voltar + sino + avatar)
     // ---------------------------------------------------------------
     private fun configurarCabecalho(view: View) {
-        view.findViewById<ImageView>(R.id.imgVoltar).setOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
-
-        view.findViewById<ImageView>(R.id.imgNotificacao).setOnClickListener {
-            abrirNotificacoes()
-        }
-
-        view.findViewById<ImageView>(R.id.imgPerfil).setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FragmentPerfil())
-                .addToBackStack(null)
-                .commit()
-        }
+        configurarCabecalhoPadrao(view)
     }
 
     // ---------------------------------------------------------------
@@ -153,20 +148,7 @@ class FragmentPerfilProfissional : Fragment() {
     // ---------------------------------------------------------------
     private fun configurarAgendar(view: View) {
         view.findViewById<View>(R.id.btnAgendarConsulta).setOnClickListener {
-            val mensagem = getString(R.string.profissional_mensagem_whatsapp, profissional.nome)
-            val uri = Uri.parse(
-                "https://wa.me/${profissional.whatsapp}?text=${Uri.encode(mensagem)}"
-            )
-
-            try {
-                startActivity(Intent(Intent.ACTION_VIEW, uri))
-            } catch (e: ActivityNotFoundException) {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.profissional_whatsapp_indisponivel),
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            abrirWhatsAppProfissional(profissional.nome, profissional.whatsapp)
         }
     }
 
@@ -178,7 +160,7 @@ class FragmentPerfilProfissional : Fragment() {
         val btnVerMais = view.findViewById<TextView>(R.id.btnVerMais)
 
         fun mostrarMais() {
-            val lista = profissional.avaliacoes
+            val lista = avaliacoesFiltradas()
             val fim = minOf(avaliacoesExibidas + AVALIACOES_POR_PAGINA, lista.size)
 
             for (i in avaliacoesExibidas until fim) {
@@ -190,15 +172,113 @@ class FragmentPerfilProfissional : Fragment() {
                 if (avaliacoesExibidas >= lista.size) View.GONE else View.VISIBLE
         }
 
+        // Recomeça a lista do zero (primeira exibição e sempre que o filtro muda)
+        fun recarregar() {
+            container.removeAllViews()
+            avaliacoesExibidas = 0
+
+            if (avaliacoesFiltradas().isEmpty()) {
+                container.addView(criarAvisoSemAvaliacoes(container))
+                btnVerMais.visibility = View.GONE
+            } else {
+                mostrarMais()
+            }
+        }
+
         btnVerMais.setOnClickListener { mostrarMais() }
 
-        // Mostra as primeiras avaliações (só na primeira vez que a tela é criada)
-        container.removeAllViews()
-        avaliacoesExibidas = 0
-        mostrarMais()
+        view.findViewById<View>(R.id.btnFiltrosAvaliacoes).setOnClickListener { botao ->
+            abrirFiltrosAvaliacoes(botao) { recarregar() }
+        }
+
+        recarregar()
 
         // TODO: enviar o comentário digitado em R.id.edtComentario (actionSend)
-        // TODO: aplicar os filtros das avaliações em R.id.btnFiltrosAvaliacoes
+    }
+
+    private fun avaliacoesFiltradas(): List<Avaliacao> =
+        if (notasFiltradas.isEmpty()) profissional.avaliacoes
+        else profissional.avaliacoes.filter { it.nota.toInt() in notasFiltradas }
+
+    private fun criarAvisoSemAvaliacoes(pai: ViewGroup): View =
+        TextView(requireContext()).apply {
+            text = getString(R.string.profissional_sem_avaliacoes)
+            setTextColor(Color.parseColor("#6B6B6B"))
+            textSize = 12f
+            typeface = androidx.core.content.res.ResourcesCompat.getFont(requireContext(), R.font.nunito)
+            setPadding(0, dp(12), 0, dp(12))
+        }
+
+    // ---------------------------------------------------------------
+    // Filtro das avaliações (mesmo painel do filtro de Profissionais)
+    // ---------------------------------------------------------------
+    private fun abrirFiltrosAvaliacoes(ancora: View, aoAplicar: () -> Unit) {
+        // Evita abrir dois filtros ao mesmo tempo
+        if (popupFiltros?.isShowing == true) return
+
+        val conteudo = layoutInflater.inflate(R.layout.profissionais_filtros_avaliacoes, null)
+
+        val checks = listOf(
+            5 to R.id.check5Estrelas,
+            4 to R.id.check4Estrelas,
+            3 to R.id.check3Estrelas,
+            2 to R.id.check2Estrelas,
+            1 to R.id.check1Estrela
+        ).map { (nota, idCheck) ->
+            nota to conteudo.findViewById<CheckBox>(idCheck).also { it.isChecked = nota in notasFiltradas }
+        }
+
+        val largura = dp(200)
+        val popup = PopupWindow(conteudo, largura, ViewGroup.LayoutParams.WRAP_CONTENT, true).apply {
+            elevation = dp(8).toFloat()
+            isOutsideTouchable = true
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+        popupFiltros = popup
+
+        conteudo.findViewById<View>(R.id.btnAplicarFiltros).setOnClickListener {
+            notasFiltradas = checks.filter { it.second.isChecked }.map { it.first }.toSet()
+            popup.dismiss()
+            aoAplicar()
+        }
+
+        conteudo.findViewById<View>(R.id.btnLimparFiltros).setOnClickListener {
+            checks.forEach { it.second.isChecked = false }
+        }
+
+        popup.setOnDismissListener {
+            removerBlur()
+            popupFiltros = null
+        }
+
+        aplicarBlur()
+
+        // Painel alinhado à direita do botão "Filtros", logo abaixo dele
+        popup.showAsDropDown(ancora, ancora.width - largura, dp(4))
+    }
+
+    private fun aplicarBlur() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            telaPerfil?.setRenderEffect(
+                RenderEffect.createBlurEffect(7f, 7f, Shader.TileMode.CLAMP)
+            )
+        }
+    }
+
+    private fun removerBlur() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            telaPerfil?.setRenderEffect(null)
+        }
+    }
+
+    private fun dp(valor: Int): Int = (valor * resources.displayMetrics.density).toInt()
+
+    override fun onDestroyView() {
+        popupFiltros?.dismiss()
+        removerBlur()
+        popupFiltros = null
+        telaPerfil = null
+        super.onDestroyView()
     }
 
     private fun criarItemAvaliacao(pai: ViewGroup, avaliacao: Avaliacao): View {

@@ -31,6 +31,8 @@ data class Consulta(
     val inicio: Date,
     val modalidade: ModalidadeConsulta,
     val local: String? = null,
+    // Id do profissional (a API preenche); usado para abrir o perfil dele a partir da Home
+    val profissionalId: Int? = null,
     // Dados exibidos nos detalhes da consulta (vêm do backend quando a API estiver ligada)
     val crp: String? = null,
     val sobreProfissional: String? = null,

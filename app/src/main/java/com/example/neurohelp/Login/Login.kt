@@ -89,6 +89,10 @@ class Login : AppCompatActivity() {
             submit(btnEntrar) { it.login(email, senha) }
         }
 
+        findViewById<TextView>(R.id.txtEsqueciSenha).setOnClickListener {
+            startActivity(Intent(this, RecuperarSenha::class.java))
+        }
+
         btnCriarConta.setOnClickListener {
 
             val intent = Intent(

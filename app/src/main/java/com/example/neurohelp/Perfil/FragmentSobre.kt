@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.neurohelp.R
+import com.example.neurohelp.configurarCabecalhoPadrao
 
 class FragmentSobre : Fragment() {
 
@@ -28,15 +28,12 @@ class FragmentSobre : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imgVoltar = view.findViewById<ImageView>(R.id.imgVoltar)
         val txtPoliticaPrivacidade = view.findViewById<TextView>(R.id.txtPoliticaPrivacidade)
         val txtTermosUso = view.findViewById<TextView>(R.id.txtTermosUso)
         val txtLgpd = view.findViewById<TextView>(R.id.txtLgpd)
 
-        // Botão voltar: fecha esse fragment e volta pro anterior na back stack
-        imgVoltar.setOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
+        // Cabeçalho padrão (voltar fecha esse fragment e volta pro anterior na back stack)
+        configurarCabecalhoPadrao(view)
 
         // Links do rodapé: abrem uma URL externa no navegador
         txtPoliticaPrivacidade.setOnClickListener {
