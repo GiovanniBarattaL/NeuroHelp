@@ -16,6 +16,15 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.neurohelp.R
 import com.example.neurohelp.notificacoes.abrirNotificacoes
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.CancellationException
+import android.widget.LinearLayout
+import android.widget.ImageView
+import org.json.JSONArray
+import com.example.neurohelp.auth.ApiService
+import com.example.neurohelp.auth.SessionStore
+import com.example.neurohelp.auth.ProfilePhoto
 
 class FragmentProfissionais : Fragment() {
 
@@ -48,14 +57,52 @@ class FragmentProfissionais : Fragment() {
         }
 
         // "Ver Perfil" abre a tela de perfil do profissional
-        view.findViewById<View>(R.id.btnPerfil1).setOnClickListener {
+        view.findViewById<View>(R.id.imgPerfil).setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FragmentPerfilProfissional.newInstance(1))
+                .replace(R.id.fragmentContainer, com.example.neurohelp.Perfil.FragmentPerfil())
                 .addToBackStack(null)
                 .commit()
         }
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val quantity = view.findViewById<TextView>(R.id.txtQuantidade)
+        val container = view.findViewById<LinearLayout>(R.id.listaProfissionaisApi)
+        quantity.text = "Carregando profissionais..."
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val list = JSONArray(ApiService(SessionStore(requireContext())).publicRequest("/api/profissionais"))
+                quantity.text = "${list.length()} profissionais encontrados"
+                for (index in 0 until list.length()) {
+                    val professional = list.getJSONObject(index)
+                    val id = professional.getString("id").toInt()
+                    val card = layoutInflater.inflate(R.layout.profissional_card_api, container, false)
+                    card.findViewById<TextView>(R.id.txtNome1).text = professional.optString("nome")
+                    card.findViewById<TextView>(R.id.txtProfissao1).text = professional.optString("formacao", "")
+                    card.findViewById<TextView>(R.id.txtLocal1).text = listOf(professional.optString("cidade", ""), professional.optString("estado", ""))
+                        .filter { it.isNotBlank() && it != "null" }.joinToString(" - ")
+                    // A API não fornece avaliações ou modalidades. Evita apresentar os exemplos como dados reais.
+                    card.findViewById<View>(R.id.txtcrp).visibility = View.GONE
+                    card.findViewById<View>(R.id.layoutAvaliacao1).visibility = View.GONE
+                    card.findViewById<View>(R.id.txtOnline1).visibility = View.GONE
+                    card.findViewById<View>(R.id.imgOnline1).visibility = View.GONE
+                    card.findViewById<View>(R.id.layoutFavorito1).visibility = View.GONE
+                    card.findViewById<View>(R.id.btnAgendar1).visibility = View.GONE
+                    card.findViewById<View>(R.id.btnPerfil1).setOnClickListener {
+                        parentFragmentManager.beginTransaction()
+                            .replace(R.id.fragmentContainer, FragmentPerfilProfissional.newInstance(id))
+                            .addToBackStack(null).commit()
+                    }
+                    ProfilePhoto.professional(this@FragmentProfissionais, card.findViewById<ImageView>(R.id.imgAvatar1),
+                        professional.optString("fotoPerfilUrl").takeIf { it.startsWith("/") })
+                    container.addView(card)
+                }
+            } catch (e: CancellationException) { throw e }
+            catch (_: Exception) { quantity.text = "Não foi possível carregar os profissionais. Abra a aba novamente para tentar." }
+        }
     }
 
     private fun abrirFiltros() {

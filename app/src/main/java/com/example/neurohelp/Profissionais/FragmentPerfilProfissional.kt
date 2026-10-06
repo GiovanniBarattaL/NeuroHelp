@@ -19,6 +19,11 @@ import com.example.neurohelp.Perfil.FragmentPerfil
 import com.example.neurohelp.R
 import com.example.neurohelp.notificacoes.abrirNotificacoes
 import java.util.Locale
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.CancellationException
+import com.example.neurohelp.auth.*
+import org.json.JSONObject
 
 class FragmentPerfilProfissional : Fragment() {
 
@@ -52,13 +57,40 @@ class FragmentPerfilProfissional : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val id = arguments?.getInt(ARG_ID, 0) ?: 0
-        profissional = ProfissionalMock.exemplo(id) // TODO: buscar na API pelo id
-
         configurarCabecalho(view)
-        preencherDados(view)
-        configurarFavoritar(view)
-        configurarAgendar(view)
-        configurarAvaliacoes(view)
+        for (element in listOf(R.id.txtProfissaoProfissional, R.id.txtRegistroProfissional,
+            R.id.txtAtendimentoProfissional, R.id.txtLocalProfissional, R.id.txtTotalAvaliacoes,
+            R.id.txtAbordagem, R.id.txtPublicoAlvo, R.id.txtSobreMim, R.id.txtNotaMedia)) {
+            view.findViewById<TextView>(element).text = ""
+        }
+        for (element in listOf(R.id.estrelasProfissional, R.id.estrelasResumo,
+            R.id.btnFiltrosAvaliacoes, R.id.edtComentario, R.id.btnVerMais)) view.findViewById<View>(element).visibility = View.GONE
+        view.findViewById<TextView>(R.id.txtNomeProfissional).text = "Carregando..."
+        view.findViewById<View>(R.id.btnAgendarConsulta).isEnabled = false
+        view.findViewById<View>(R.id.btnFavoritar).isEnabled = false
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val data = JSONObject(ApiService(SessionStore(requireContext())).protectedRequest("/api/profissionais/$id"))
+                fun text(field: String) = data.optString(field, "").takeUnless { it == "null" }.orEmpty()
+                profissional = ProfissionalPerfil(id, text("nome"), text("formacao"), text("numRegistro"),
+                    "Não informado", listOf(text("cidade"), text("estado")).filter { it.isNotBlank() }.joinToString(" - "),
+                    0.0, 0, "Não informado", "Não informado", text("bio"),
+                    text("telefone").filter { it.isDigit() }.let { if (it.length in 10..11) "55$it" else it }, emptyList())
+                preencherDados(view)
+                ProfilePhoto.professional(this@FragmentPerfilProfissional, view.findViewById(R.id.imgFotoProfissional),
+                    text("fotoPerfilUrl").takeIf { it.startsWith("/") })
+                configurarFavoritar(view); view.findViewById<View>(R.id.btnFavoritar).isEnabled = true
+                configurarAgendar(view)
+                view.findViewById<View>(R.id.btnAgendarConsulta).isEnabled = profissional.whatsapp.isNotBlank()
+                configurarAvaliacoes(view)
+                // Não há contrato de avaliações na API atual; não exibe notas demonstrativas.
+                for (element in listOf(R.id.estrelasProfissional, R.id.txtTotalAvaliacoes, R.id.txtNotaMedia,
+                    R.id.estrelasResumo, R.id.btnFiltrosAvaliacoes, R.id.edtComentario)) view.findViewById<View>(element).visibility = View.GONE
+            } catch (e: CancellationException) { throw e }
+            catch (e: ApiException) {
+                view.findViewById<TextView>(R.id.txtNomeProfissional).text = e.message
+            } catch (_: Exception) { view.findViewById<TextView>(R.id.txtNomeProfissional).text = "Não foi possível carregar este perfil." }
+        }
     }
 
     // ---------------------------------------------------------------
