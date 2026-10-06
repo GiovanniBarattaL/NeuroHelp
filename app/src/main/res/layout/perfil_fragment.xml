@@ -53,10 +53,14 @@
                     app:cardElevation="0dp">
 
                     <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:id="@+id/fotoConta"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:contentDescription="Foto do perfil"
+                        android:contentDescription="Alterar sua foto de perfil"
                         android:src="@drawable/ic_person"
                         app:tint="#FFFFFF" />
 
