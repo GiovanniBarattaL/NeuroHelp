@@ -59,6 +59,9 @@ class PrincipalActivity : AppCompatActivity() {
             object : FragmentManager.FragmentLifecycleCallbacks() {
                 override fun onFragmentResumed(fm: FragmentManager, f: Fragment) {
                     abaDoFragment(f)?.let { marcarAba(it) }
+                    f.view?.findViewById<android.widget.ImageView>(R.id.imgPerfil)?.let {
+                        com.example.neurohelp.auth.ProfilePhoto.own(f, it)
+                    }
                 }
             },
             false

@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import com.example.neurohelp.ajuda.FragmentAjuda
 import com.example.neurohelp.Login.Login
 import com.example.neurohelp.PrincipalActivity
@@ -15,6 +17,19 @@ import com.example.neurohelp.configurarCabecalhoPadrao
 import com.example.neurohelp.notificacoes.FragmentNotificacoes
 
 class FragmentPerfil : Fragment() {
+    private val photoPicker = registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.GetContent()) { uri ->
+        if (uri != null && view != null) viewLifecycleOwner.lifecycleScope.launch {
+            val avatar = requireView().findViewById<android.widget.ImageView>(R.id.fotoConta)
+            avatar.isEnabled = false
+            try {
+                val bitmap = com.example.neurohelp.auth.ProfilePhoto.upload(this@FragmentPerfil, uri)
+                avatar.imageTintList = null; avatar.setImageBitmap(bitmap)
+                android.widget.Toast.makeText(requireContext(), "Foto atualizada.", android.widget.Toast.LENGTH_SHORT).show()
+            } catch (e: kotlinx.coroutines.CancellationException) { throw e }
+            catch (_: Exception) { android.widget.Toast.makeText(requireContext(), "Não foi possível salvar. Escolha JPG, PNG ou WebP de até 5 MB e verifique sua conexão.", android.widget.Toast.LENGTH_LONG).show() }
+            finally { avatar.isEnabled = true }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +46,22 @@ class FragmentPerfil : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val avatar = view.findViewById<android.widget.ImageView>(R.id.fotoConta)
+        com.example.neurohelp.auth.ProfilePhoto.own(this, avatar)
+        avatar.setOnClickListener { photoPicker.launch("image/*") }
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val user = org.json.JSONObject(com.example.neurohelp.auth.ApiService(com.example.neurohelp.auth.SessionStore(requireContext())).protectedRequest("/api/auth/me"))
+                view.findViewById<android.widget.TextView>(R.id.txtNomeUsuario).text = user.optString("nome")
+                view.findViewById<android.widget.TextView>(R.id.txtEmailUsuario).text = user.optString("email")
+                avatar.isEnabled = user.optString("tipoPerfil") in setOf("RESPONSAVEL", "PROFISSIONAL")
+            } catch (e: kotlinx.coroutines.CancellationException) { throw e }
+            catch (_: Exception) { avatar.isEnabled = false }
+        }
+
+        configurarCabecalhoPadrao(view, abrirPerfil = false) {
+            (activity as? PrincipalActivity)?.irParaAba(R.id.nav_inicio)
+        }
 
         configurarCabecalhoPadrao(view, abrirPerfil = false) {
             (activity as? PrincipalActivity)?.irParaAba(R.id.nav_inicio)

@@ -34,6 +34,24 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
     }
     suspend fun protectedRequest(path: String, method: String = "GET", body: JSONObject? = null): String =
         request(path, method, body, true)
+    suspend fun publicRequest(path: String): String = request(path, "GET", null)
+
+    suspend fun professionalPhoto(path: String): ByteArray = withContext(Dispatchers.IO) {
+        require(Regex("/api/profissionais/[0-9]+/foto").matches(path))
+        val base = URI(baseUrl)
+        require(base.scheme == "https")
+        val connection = openConnection(base.resolve(path).toURL())
+        try {
+            connection.instanceFollowRedirects = false
+            connection.connectTimeout = 30000; connection.readTimeout = 60000
+            connection.useCaches = false
+            connection.setRequestProperty("Cache-Control", "no-cache")
+            if (connection.responseCode !in 200..299) throw ApiException(connection.responseCode, "Foto não disponível.")
+            require(connection.contentType?.startsWith("image/jpeg") == true)
+            val bytes = connection.inputStream.use { it.readBytesLimited(256 * 1024) }
+            bytes
+        } finally { connection.disconnect() }
+    }
 
     private suspend fun request(path: String, method: String, body: JSONObject?, isProtected: Boolean = false): String = withContext(Dispatchers.IO) {
         require(path.startsWith("/") && !path.startsWith("//") && !path.contains('\\'))
@@ -45,6 +63,7 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
         try {
             connection.requestMethod = method
             connection.instanceFollowRedirects = false
+            connection.useCaches = false
             connection.connectTimeout = 30000
             connection.readTimeout = 60000
             connection.setRequestProperty("Accept", "application/json, text/plain")
@@ -58,7 +77,6 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
             val stream = if (status in 200..299) connection.inputStream else connection.errorStream
             val response = stream?.bufferedReader(Charsets.UTF_8)?.use { it.readText() }.orEmpty()
             if (status !in 200..299) {
-                if (BuildConfig.DEBUG) android.util.Log.e("ApiService", "HTTP $status em $method $path | enviado=${body?.toString()?.replace(Regex("\"senha\":\"[^\"]*\""), "\"senha\":\"***\"")} | resposta=$response")
                 if (isProtected && status == 401) session.clear()
                 throw ApiException(status, errorMessage(status, isProtected))
             }
@@ -76,4 +94,16 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
             else -> "Não foi possível concluir a solicitação. Tente novamente mais tarde."
         }
     }
+}
+
+internal fun java.io.InputStream.readBytesLimited(limit: Int): ByteArray {
+    val output = java.io.ByteArrayOutputStream()
+    val buffer = ByteArray(8192)
+    while (true) {
+        val count = read(buffer)
+        if (count == -1) break
+        require(output.size() + count <= limit) { "Arquivo maior que o limite permitido." }
+        output.write(buffer, 0, count)
+    }
+    return output.toByteArray()
 }
