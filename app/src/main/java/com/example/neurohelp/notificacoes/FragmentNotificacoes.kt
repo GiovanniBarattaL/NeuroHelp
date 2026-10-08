@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -12,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.neurohelp.R
+import com.example.neurohelp.configurarCabecalhoPadrao
 import com.example.neurohelp.agenda.DetalhesConsultaDialogFragment
 import com.example.neurohelp.agenda.abrirDetalheConsulta
 import com.example.neurohelp.agenda.toConsulta
@@ -34,9 +34,7 @@ class FragmentNotificacoes : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<ImageView>(R.id.imgVoltar).setOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
+        configurarCabecalhoPadrao(view, abrirSino = false)
 
         txtVazio = view.findViewById(R.id.txtSemNotificacoes)
 

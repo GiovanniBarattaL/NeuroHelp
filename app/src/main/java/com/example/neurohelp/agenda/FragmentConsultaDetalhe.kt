@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.example.neurohelp.Perfil.FragmentPerfil
 import com.example.neurohelp.R
-import com.example.neurohelp.notificacoes.abrirNotificacoes
+import com.example.neurohelp.configurarCabecalhoPadrao
 
 /**
  * Tela "Reagendar ou confirmar consulta" (Figma).
@@ -37,18 +35,7 @@ class FragmentConsultaDetalhe : Fragment() {
         val consulta = requireArguments().toConsulta()
         view.preencherDetalhesConsulta(consulta)
 
-        view.findViewById<ImageView>(R.id.imgVoltar).setOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
-        view.findViewById<ImageView>(R.id.imgNotificacao).setOnClickListener {
-            abrirNotificacoes()
-        }
-        view.findViewById<ImageView>(R.id.imgPerfil).setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FragmentPerfil())
-                .addToBackStack(null)
-                .commit()
-        }
+        configurarCabecalhoPadrao(view)
 
         val etConsideracoes = view.findViewById<EditText>(R.id.etConsideracoes)
 

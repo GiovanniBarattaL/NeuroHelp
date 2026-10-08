@@ -28,15 +28,15 @@ class AgendaRepositoryMemoria : AgendaRepository {
         }.getActualMaximum(Calendar.DAY_OF_MONTH)
 
         return listOf(
-            criarConsulta(ano, mes, 1, 14, 0, Especialidade.PSICOLOGO, "Dr. Marcelo Prado", ModalidadeConsulta.ONLINE).copy(
+            criarConsulta(ano, mes, 1, 14, 0, Especialidade.PSICOLOGO, "Dr. Marcelo Prado", ModalidadeConsulta.ONLINE, paciente = "Lucas Almeida").copy(
                 crp = "CRP 06/123456",
                 observacoes = "Acompanhamento psicológico semanal",
                 foco = "ansiedade e regulação emocional"
             ),
-            criarConsulta(ano, mes, 1, 16, 30, Especialidade.FONOAUDIOLOGO, "Dra. Helena Souza", ModalidadeConsulta.PRESENCIAL, "Clínica Central"),
-            criarConsulta(ano, mes, 4, 13, 30, Especialidade.TERAPEUTA_OCUPACIONAL, "Dra. Camila Reis", ModalidadeConsulta.PRESENCIAL, "Clínica Central"),
-            criarConsulta(ano, mes, 4, 15, 30, Especialidade.NEUROPEDIATRA, "Dr. Rafael Antunes", ModalidadeConsulta.PRESENCIAL, "Hospital Vida"),
-            criarConsulta(ano, mes, minOf(18, ultimoDia), 9, 0, Especialidade.NUTRICIONISTA, "Dra. Paula Lima", ModalidadeConsulta.ONLINE)
+            criarConsulta(ano, mes, 1, 16, 30, Especialidade.FONOAUDIOLOGO, "Dra. Helena Souza", ModalidadeConsulta.PRESENCIAL, "Clínica Central", paciente = "Sofia Martins"),
+            criarConsulta(ano, mes, 4, 13, 30, Especialidade.TERAPEUTA_OCUPACIONAL, "Dra. Camila Reis", ModalidadeConsulta.PRESENCIAL, "Clínica Central", paciente = "Miguel Rocha"),
+            criarConsulta(ano, mes, 4, 15, 30, Especialidade.NEUROPEDIATRA, "Dr. Rafael Antunes", ModalidadeConsulta.PRESENCIAL, "Hospital Vida", paciente = "Helena Costa"),
+            criarConsulta(ano, mes, minOf(18, ultimoDia), 9, 0, Especialidade.NUTRICIONISTA, "Dra. Paula Lima", ModalidadeConsulta.ONLINE, paciente = "Davi Ferreira")
         ).sortedBy { it.inicio }
     }
 
@@ -49,7 +49,8 @@ class AgendaRepositoryMemoria : AgendaRepository {
         especialidade: Especialidade,
         profissional: String,
         modalidade: ModalidadeConsulta,
-        local: String? = null
+        local: String? = null,
+        paciente: String? = null
     ): Consulta {
         val calendario = Calendar.getInstance().apply {
             set(ano, mes, dia, hora, minuto, 0)
@@ -61,7 +62,11 @@ class AgendaRepositoryMemoria : AgendaRepository {
             profissional = profissional,
             inicio = calendario.time,
             modalidade = modalidade,
-            local = local
+            local = local,
+            paciente = paciente,
+            // TODO: CPF e "sobre" do paciente virão da API
+            pacienteCpf = PacientesMock.porNome(paciente)?.cpf,
+            sobrePaciente = PacientesMock.porNome(paciente)?.sobre
         )
     }
 }

@@ -39,6 +39,12 @@ class SessionStore(context: Context) {
         }
     } catch (_: Exception) { clear(); null }
     fun clear() { prefs.edit().clear().commit() }
+
+    // Papel (responsável/profissional): não é segredo, mas some junto com a sessão (clear()).
+    fun papel(): PapelUsuario = try {
+        PapelUsuario.valueOf(prefs.getString("papel", null).orEmpty())
+    } catch (_: IllegalArgumentException) { PapelUsuario.RESPONSAVEL }
+    fun salvarPapel(papel: PapelUsuario) { prefs.edit().putString("papel", papel.name).commit() }
     companion object {
         // Expiração local melhora o fluxo; assinatura e autorização são verificadas pelo servidor.
         fun isValid(token: String, nowSeconds: Long = System.currentTimeMillis() / 1000): Boolean = try {

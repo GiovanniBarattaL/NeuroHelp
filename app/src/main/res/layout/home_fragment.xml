@@ -9,51 +9,15 @@
     tools:context=".Home.FragmentHome">
 
     <!-- HEADER FIXO (igual ao de Profissionais; topo a 30dp) -->
-    <LinearLayout
+    <include
         android:id="@+id/header"
+        layout="@layout/header_padrao"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="60dp"
         android:layout_marginTop="30dp"
-        android:background="#FFFFFF"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="0dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:contentDescription="Logo"
-            android:scaleType="fitStart"
-            android:src="@drawable/logohoriz" />
-
-        <ImageView
-            android:id="@+id/imgNotificacao"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="Notificações"
-            android:focusable="true"
-            android:padding="8dp"
-            android:src="@drawable/ic_sino" />
-
-        <ImageView
-            android:id="@+id/imgPerfil"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="16dp"
-            android:clickable="true"
-            android:contentDescription="Perfil"
-            android:focusable="true"
-            android:src="@drawable/avatar_perfil" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollHome"
@@ -281,7 +245,7 @@
                     android:focusable="true"
                     android:fontFamily="@font/nunito"
                     android:padding="4dp"
-                    android:text="Ver todos >"
+                    android:text="Ver todos →"
                     android:textColor="#9C9C9C"
                     android:textSize="12sp" />
 
@@ -500,7 +464,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/nunito_black"
-                    android:text="Próximas Consultas"
+                    android:text="Próximas consultas"
                     android:textColor="#04344E"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -514,7 +478,7 @@
                     android:focusable="true"
                     android:fontFamily="@font/nunito"
                     android:padding="4dp"
-                    android:text="Ver agenda >"
+                    android:text="Ver agenda →"
                     android:textColor="#9C9C9C"
                     android:textSize="12sp" />
 
@@ -603,7 +567,10 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:layout_marginStart="8dp"
-                            android:contentDescription="Abrir consulta"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:contentDescription="Ver perfil do profissional"
+                            android:focusable="true"
                             android:src="@drawable/botao_ir" />
 
                     </LinearLayout>
@@ -682,4 +649,4 @@
 
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

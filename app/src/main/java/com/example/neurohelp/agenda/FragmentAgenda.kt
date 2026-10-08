@@ -9,16 +9,18 @@ import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.neurohelp.Perfil.FragmentPerfil
+import com.example.neurohelp.PrincipalActivity
+import com.example.neurohelp.Home.abrirDetalhesConsultaSheet
+import com.example.neurohelp.Home.ouvirResultadoDetalhesConsulta
 import com.example.neurohelp.R
-import com.example.neurohelp.notificacoes.abrirNotificacoes
+import com.example.neurohelp.auth.ehProfissional
+import com.example.neurohelp.configurarCabecalhoPadrao
 import com.google.android.material.card.MaterialCardView
 
 class FragmentAgenda : Fragment() {
@@ -30,6 +32,9 @@ class FragmentAgenda : Fragment() {
 
     private lateinit var calendarioAdapter: CalendarioAdapter
     private lateinit var consultasAdapter: ConsultasAdapter
+
+    /** Agenda do profissional: mostra pacientes e o botão "+". */
+    private var modoProfissional = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +51,12 @@ class FragmentAgenda : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        modoProfissional = ehProfissional()
+
+        configurarCabecalhoPadrao(view) {
+            (activity as? PrincipalActivity)?.irParaAba(R.id.nav_inicio)
+        }
+
         val txtAno = view.findViewById<TextView>(R.id.txtAno)
         val txtMesBanner = view.findViewById<TextView>(R.id.txtMesBanner)
         val txtMesCalendario = view.findViewById<TextView>(R.id.txtMesCalendario)
@@ -61,11 +72,13 @@ class FragmentAgenda : Fragment() {
         rvDias.layoutManager = GridLayoutManager(requireContext(), DIAS_POR_SEMANA)
         rvDias.adapter = calendarioAdapter
 
-        consultasAdapter = ConsultasAdapter { consulta -> abrirDetalhes(consulta) }
+        consultasAdapter = ConsultasAdapter(modoProfissional) { consulta -> abrirDetalhesConsultaSheet(consulta) }
         rvConsultas.layoutManager = LinearLayoutManager(requireContext())
         rvConsultas.adapter = consultasAdapter
 
         preencherLegenda(gridLegenda)
+
+        if (modoProfissional) configurarNovaConsulta(view, txtEstadoLista)
 
         view.findViewById<ImageView>(R.id.btnMesAnterior).setOnClickListener {
             viewModel.mesAnterior()
@@ -73,29 +86,9 @@ class FragmentAgenda : Fragment() {
         view.findViewById<ImageView>(R.id.btnMesProximo).setOnClickListener {
             viewModel.proximoMes()
         }
-        view.findViewById<ImageView>(R.id.imgNotificacao).setOnClickListener {
-            abrirNotificacoes()
-        }
-        view.findViewById<ImageView>(R.id.imgPerfil).setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FragmentPerfil())
-                .addToBackStack(null)
-                .commit()
-        }
 
-        // Resultado do bottom sheet de detalhes da consulta
-        parentFragmentManager.setFragmentResultListener(
-            DetalhesConsultaDialogFragment.REQUEST_KEY,
-            viewLifecycleOwner
-        ) { _, resultado ->
-            when (resultado.getString(DetalhesConsultaDialogFragment.EXTRA_ACAO)) {
-                DetalhesConsultaDialogFragment.ACAO_CONFIRMAR ->
-                    // TODO: confirmar presença na API
-                    Toast.makeText(requireContext(), "Consulta confirmada!", Toast.LENGTH_SHORT).show()
-                DetalhesConsultaDialogFragment.ACAO_ALTERAR_CANCELAR ->
-                    abrirDetalheConsulta(resultado.toConsulta())
-            }
-        }
+        // Resultado dos bottom sheets de detalhes (responsável e profissional)
+        ouvirResultadoDetalhesConsulta()
 
         viewModel.ano.observe(viewLifecycleOwner) { txtAno.text = it }
         viewModel.tituloMes.observe(viewLifecycleOwner) { titulo ->
@@ -114,7 +107,9 @@ class FragmentAgenda : Fragment() {
                 txtLembrete.text = getString(
                     R.string.agenda_lembrete_descricao,
                     consulta.inicio.horaFormatada(),
-                    consulta.profissional
+                    // Para o profissional o lembrete cita o paciente
+                    if (modoProfissional) consulta.paciente ?: consulta.profissional
+                    else consulta.profissional
                 )
             }
         }
@@ -128,6 +123,21 @@ class FragmentAgenda : Fragment() {
         viewModel.erro.observe(viewLifecycleOwner) { erro ->
             if (erro) txtEstadoLista.setText(R.string.agenda_erro)
         }
+    }
+
+    /** Botão "+" da agenda do profissional. */
+    private fun configurarNovaConsulta(view: View, txtEstadoLista: TextView) {
+        val fab = view.findViewById<View>(R.id.fabNovaConsulta)
+        fab.visibility = View.VISIBLE
+
+        // Deixa espaço no fim da lista para o botão não cobrir o último texto
+        (txtEstadoLista.layoutParams as? ViewGroup.MarginLayoutParams)?.let {
+            it.bottomMargin = (80 * resources.displayMetrics.density).toInt()
+            txtEstadoLista.layoutParams = it
+        }
+
+        // "+" -> Selecione o paciente -> Agendar consulta
+        fab.setOnClickListener { abrirSelecionarPaciente() }
     }
 
     private fun preencherLegenda(grid: GridLayout) {
@@ -144,12 +154,6 @@ class FragmentAgenda : Fragment() {
                 .setText(especialidade.nomeRes)
             grid.addView(item)
         }
-    }
-
-    private fun abrirDetalhes(consulta: Consulta) {
-
-        DetalhesConsultaDialogFragment.newInstance(consulta)
-            .show(parentFragmentManager, DetalhesConsultaDialogFragment.TAG)
     }
 
     private companion object {

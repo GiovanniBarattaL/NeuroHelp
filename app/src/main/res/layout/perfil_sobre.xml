@@ -8,6 +8,16 @@
     android:background="#FFFFFF"
     tools:context=".Perfil.FragmentSobre">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/header_padrao"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:id="@+id/scrollSobre"
         android:layout_width="0dp"
@@ -17,20 +27,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <LinearLayout
             android:id="@+id/linearSobre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="30dp"
+            android:paddingTop="8dp"
             android:paddingBottom="20dp">
-
-            <!-- VOLTAR (padrão em todas as telas) -->
-            <ImageView
-                android:id="@+id/imgVoltar"
-                style="@style/BotaoVoltar" />
 
             <!-- NOSSA MISSÃO -->
             <LinearLayout

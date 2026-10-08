@@ -14,8 +14,10 @@ import android.view.WindowManager
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.neurohelp.PrincipalActivity
 import com.example.neurohelp.R
-import com.example.neurohelp.notificacoes.abrirNotificacoes
+import com.example.neurohelp.auth.ehProfissional
+import com.example.neurohelp.configurarCabecalhoPadrao
 
 class FragmentProfissionais : Fragment() {
 
@@ -43,8 +45,8 @@ class FragmentProfissionais : Fragment() {
             abrirFiltros()
         }
 
-        view.findViewById<View>(R.id.imgNotificacao).setOnClickListener {
-            abrirNotificacoes()
+        configurarCabecalhoPadrao(view) {
+            (activity as? PrincipalActivity)?.irParaAba(R.id.nav_inicio)
         }
 
         // "Ver Perfil" abre a tela de perfil do profissional
@@ -53,6 +55,20 @@ class FragmentProfissionais : Fragment() {
                 .replace(R.id.fragmentContainer, FragmentPerfilProfissional.newInstance(1))
                 .addToBackStack(null)
                 .commit()
+        }
+
+        val btnAgendar = view.findViewById<View>(R.id.btnAgendar1)
+        if (ehProfissional()) {
+            // Figma do profissional: "Agendar Consulta" aparece cinza e sem ação
+            btnAgendar.setBackgroundResource(R.drawable.botao_desabilitado)
+            btnAgendar.isEnabled = false
+            btnAgendar.isClickable = false
+        } else {
+            // "Agendar Consulta" abre o WhatsApp do profissional
+            btnAgendar.setOnClickListener {
+                val p = ProfissionalMock.exemplo(1) // TODO: buscar o profissional do card na API
+                abrirWhatsAppProfissional(p.nome, p.whatsapp)
+            }
         }
 
         return view

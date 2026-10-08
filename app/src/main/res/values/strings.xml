@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">NeuroHelp</string>
+    <string name="app_name">EspectroCare</string>
     <string name="sexo">Sexo</string>
 
     <!-- Agenda -->
-    <string name="agenda_logo">NeuroHelp</string>
+    <string name="agenda_logo">EspectroCare</string>
     <string name="agenda_notificacoes">Notificações</string>
     <string name="agenda_perfil">Perfil</string>
     <string name="agenda_lembrete">Lembrete</string>
@@ -19,6 +19,21 @@
     <string name="agenda_erro">Não foi possível carregar sua agenda. Tente novamente.</string>
     <string name="agenda_lembrete_descricao">Você possui uma consulta às %1$s com %2$s</string>
     <string name="agenda_secao_dia">Consultas do dia %1$s de %2$s</string>
+    <string name="agenda_paciente">Pcte. %1$s</string>
+    <string name="agenda_nova_consulta">Nova consulta</string>
+    <string name="agendar_tipo_consulta">Tipo de Consulta</string>
+    <string name="agendar_formato_consulta">Formato da Consulta</string>
+    <string name="agendar_data">Data</string>
+    <string name="agendar_horario">Horário</string>
+    <string name="agendar_preencha_campos">Preencha o tipo, o formato, a data e o horário da consulta.</string>
+    <string name="agendar_consulta_agendada">Consulta agendada!</string>
+    <string name="agendar_consulta_alterada">Consulta alterada!</string>
+    <string name="agendar_tipo_fonoaudiologia">Fonoaudiologia</string>
+    <string name="agendar_tipo_terapia_ocupacional">Terapia Ocupacional</string>
+    <string name="agendar_tipo_psiquiatria">Psiquiatria</string>
+    <string name="agendar_tipo_psicologia">Psicologia</string>
+    <string name="agendar_tipo_neuropediatria">Neuropediatria</string>
+    <string name="agendar_tipo_nutricao">Nutrição</string>
     <string name="agenda_titulo_consulta">Consulta com %1$s</string>
     <string name="agenda_dom">DOM</string>
     <string name="agenda_seg">SEG</string>
@@ -49,6 +64,7 @@
     <string name="profissional_sobre_mim">Sobre mim:</string>
     <string name="profissional_mensagem_whatsapp">Olá, %1$s! Encontrei seu perfil no EspectroCare e gostaria de agendar uma consulta.</string>
     <string name="profissional_whatsapp_indisponivel">Não foi possível abrir o WhatsApp.</string>
+    <string name="profissional_sem_avaliacoes">Nenhuma avaliação com essa nota.</string>
 
     <!-- Geral -->
     <string name="voltar">Voltar</string>

@@ -14,6 +14,8 @@ import com.example.neurohelp.R
 import com.google.android.material.button.MaterialButton
 
 class ConsultasAdapter(
+    /** true na agenda do profissional: a linha de baixo mostra o paciente em vez do profissional. */
+    private val modoProfissional: Boolean = false,
     private val aoClicarDetalhes: (Consulta) -> Unit
 ) : ListAdapter<ItemAgenda, RecyclerView.ViewHolder>(Diff) {
 
@@ -60,7 +62,7 @@ class ConsultasAdapter(
 
             is ItemAgenda.Item ->
                 (holder as ConsultaViewHolder)
-                    .vincular(item.consulta, aoClicarDetalhes)
+                    .vincular(item.consulta, modoProfissional, aoClicarDetalhes)
         }
     }
 
@@ -106,6 +108,7 @@ class ConsultasAdapter(
 
         fun vincular(
             consulta: Consulta,
+            modoProfissional: Boolean,
             aoClicarDetalhes: (Consulta) -> Unit
         ) {
 
@@ -129,7 +132,12 @@ class ConsultasAdapter(
                 )
             )
 
-            txtProfissional.text = consulta.profissional
+            txtProfissional.text =
+                if (modoProfissional) {
+                    contexto.getString(R.string.agenda_paciente, consulta.paciente ?: "—")
+                } else {
+                    consulta.profissional
+                }
 
             txtHorario.text =
                 consulta.inicio.horaFormatada()

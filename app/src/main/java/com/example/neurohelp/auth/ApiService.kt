@@ -24,6 +24,14 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
         require(fields.keys.all { it in accepted })
         request(if (profissional) "/cadastro/profissional" else "/cadastro/responsavel", "POST", JSONObject(fields))
     }
+    /**
+     * Pede o e-mail de redefinição de senha.
+     * CONFIRME COM O BACK-END: aqui usa POST /auth/esqueci-senha com {"email": ...}.
+     * Se o caminho ou o formato forem outros, ajuste só esta função.
+     */
+    suspend fun requestPasswordReset(email: String) {
+        request("/auth/esqueci-senha", "POST", JSONObject().put("email", email))
+    }
     suspend fun protectedRequest(path: String, method: String = "GET", body: JSONObject? = null): String =
         request(path, method, body, true)
 

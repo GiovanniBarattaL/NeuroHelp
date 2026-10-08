@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.neurohelp.R
+import com.example.neurohelp.configurarCabecalhoPadrao
 
 class FragmentPrivacidade : Fragment() {
 
@@ -30,10 +30,8 @@ class FragmentPrivacidade : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Seta de voltar: fecha esse fragment e volta pro anterior na back stack
-        view.findViewById<ImageView>(R.id.imgVoltar).setOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
+        // Cabeçalho padrão (voltar fecha esse fragment e volta pro anterior na back stack)
+        configurarCabecalhoPadrao(view)
 
         // ---------- Responsável ----------
         val camposResponsavel = listOf<View>(

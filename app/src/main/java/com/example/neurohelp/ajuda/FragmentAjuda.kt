@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.neurohelp.R
+import com.example.neurohelp.configurarCabecalhoPadrao
 
 class FragmentAjuda : Fragment() {
 
@@ -30,15 +30,12 @@ class FragmentAjuda : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imgVoltar = view.findViewById<ImageView>(R.id.imgVoltar)
         val rvFaq = view.findViewById<RecyclerView>(R.id.rvFaq)
         val itemEmailSuporte = view.findViewById<LinearLayout>(R.id.itemEmailSuporte)
         val itemInstagramSuporte = view.findViewById<LinearLayout>(R.id.itemInstagramSuporte)
 
-        // Voltar: fecha esse fragment e volta pro anterior na back stack
-        imgVoltar.setOnClickListener {
-            parentFragmentManager.popBackStack()
-        }
+        // Cabeçalho padrão (voltar fecha esse fragment e volta pro anterior na back stack)
+        configurarCabecalhoPadrao(view)
 
         // TODO: trocar essa lista fixa por dados vindos da sua API/Firestore/Room
         val listaFaq = mutableListOf(

@@ -50,6 +50,10 @@ private const val K_CRP = "consulta_crp"
 private const val K_SOBRE = "consulta_sobre"
 private const val K_OBS = "consulta_obs"
 private const val K_FOCO = "consulta_foco"
+private const val K_PROF_ID = "consulta_profissional_id"
+private const val K_PACIENTE = "consulta_paciente"
+private const val K_PACIENTE_CPF = "consulta_paciente_cpf"
+private const val K_SOBRE_PACIENTE = "consulta_sobre_paciente"
 
 fun Consulta.toBundle(): Bundle = Bundle().apply {
     putString(K_ID, id)
@@ -62,6 +66,10 @@ fun Consulta.toBundle(): Bundle = Bundle().apply {
     putString(K_SOBRE, sobreProfissional)
     putString(K_OBS, observacoes)
     putString(K_FOCO, foco)
+    profissionalId?.let { putInt(K_PROF_ID, it) }
+    putString(K_PACIENTE, paciente)
+    putString(K_PACIENTE_CPF, pacienteCpf)
+    putString(K_SOBRE_PACIENTE, sobrePaciente)
 }
 
 fun Bundle.toConsulta(): Consulta = Consulta(
@@ -74,7 +82,11 @@ fun Bundle.toConsulta(): Consulta = Consulta(
     crp = getString(K_CRP),
     sobreProfissional = getString(K_SOBRE),
     observacoes = getString(K_OBS),
-    foco = getString(K_FOCO)
+    foco = getString(K_FOCO),
+    profissionalId = if (containsKey(K_PROF_ID)) getInt(K_PROF_ID) else null,
+    paciente = getString(K_PACIENTE),
+    pacienteCpf = getString(K_PACIENTE_CPF),
+    sobrePaciente = getString(K_SOBRE_PACIENTE)
 )
 
 /**

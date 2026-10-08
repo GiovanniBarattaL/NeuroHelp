@@ -5,15 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.neurohelp.Home.FragmentHome
+import com.example.neurohelp.Home.FragmentHomeProfissional
+import com.example.neurohelp.auth.PapelUsuario
 import com.example.neurohelp.Perfil.FragmentPerfil
 import com.example.neurohelp.Perfil.FragmentPrivacidade
 import com.example.neurohelp.Perfil.FragmentSobre
 import com.example.neurohelp.Profissionais.FragmentPerfilProfissional
 import com.example.neurohelp.Profissionais.FragmentProfissionais
 import com.example.neurohelp.agenda.FragmentAgenda
+import com.example.neurohelp.agenda.FragmentAgendarConsulta
 import com.example.neurohelp.agenda.FragmentConsultaDetalhe
+import com.example.neurohelp.agenda.FragmentSelecionarPaciente
 import com.example.neurohelp.notificacoes.FragmentNotificacoes
 import com.example.neurohelp.ajuda.FragmentAjuda
+import com.example.neurohelp.auth.papelUsuario
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PrincipalActivity : AppCompatActivity() {
@@ -85,7 +90,10 @@ class PrincipalActivity : AppCompatActivity() {
     private fun abrirAba(itemId: Int): Boolean {
 
         val fragment: Fragment = when (itemId) {
-            R.id.nav_inicio -> FragmentHome()
+            // Cada perfil tem a sua Home
+            R.id.nav_inicio ->
+                if (papelUsuario() == PapelUsuario.PROFISSIONAL) FragmentHomeProfissional()
+                else FragmentHome()
             R.id.nav_profissionais -> FragmentProfissionais()
             R.id.nav_agenda -> FragmentAgenda()
             R.id.nav_perfil -> FragmentPerfil()
@@ -107,13 +115,16 @@ class PrincipalActivity : AppCompatActivity() {
 
     /** Qual aba do menu de baixo "é dona" de cada tela. */
     private fun abaDoFragment(fragment: Fragment): Int? = when (fragment) {
-        is FragmentHome -> R.id.nav_inicio
+        is FragmentHome,
+        is FragmentHomeProfissional -> R.id.nav_inicio
 
         is FragmentProfissionais,
         is FragmentPerfilProfissional -> R.id.nav_profissionais
 
         is FragmentAgenda,
-        is FragmentConsultaDetalhe -> R.id.nav_agenda
+        is FragmentConsultaDetalhe,
+        is FragmentSelecionarPaciente,
+        is FragmentAgendarConsulta -> R.id.nav_agenda
 
         is FragmentPerfil,
         is FragmentNotificacoes,
