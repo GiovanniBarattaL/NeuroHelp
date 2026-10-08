@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    CABEÇALHO PADRÃO do app (igual ao da Agenda): voltar + logo + sino + avatar.
+    Use nas telas com <include android:id="@+id/header" layout="@layout/header_padrao" ... />
+    informando layout_width, layout_height, margem de 30dp no topo e as constraints.
+    Ligações de clique: Fragment.configurarCabecalhoPadrao() em CabecalhoPadrao.kt
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#FFFFFF"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingBottom="6dp">
+
+    <ImageView
+        android:id="@+id/imgVoltar"
+        style="@style/BotaoVoltar" />
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="169dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:contentDescription="EspectroCare"
+        android:src="@drawable/logohoriz" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:id="@+id/imgNotificacao"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:contentDescription="Notificações"
+        android:focusable="true"
+        android:src="@drawable/ic_sino" />
+
+    <ImageView
+        android:id="@+id/imgPerfil"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
+        android:clickable="true"
+        android:contentDescription="Perfil"
+        android:focusable="true"
+        android:src="@drawable/avatar_perfil" />
+
+</LinearLayout>

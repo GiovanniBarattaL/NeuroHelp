@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Painel de filtro das avaliações do profissional: mesmo visual do profissionais_filtros -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:paddingStart="10dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="6dp"
+    android:paddingBottom="8dp">
+
+    <!-- AVALIAÇÃO -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_black"
+        android:text="Avaliação"
+        android:textColor="#35C979"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/check5Estrelas"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="@font/nunito"
+            android:padding="0dp"
+            android:text="★★★★★  (5)"
+            android:textColor="#FFA500"
+            android:textSize="9sp" />
+
+        <CheckBox
+            android:id="@+id/check4Estrelas"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="@font/nunito"
+            android:padding="0dp"
+            android:text="★★★★☆  (4)"
+            android:textColor="#FFA500"
+            android:textSize="9sp" />
+
+        <CheckBox
+            android:id="@+id/check3Estrelas"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="@font/nunito"
+            android:padding="0dp"
+            android:text="★★★☆☆  (3)"
+            android:textColor="#FFA500"
+            android:textSize="9sp" />
+
+        <CheckBox
+            android:id="@+id/check2Estrelas"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="@font/nunito"
+            android:padding="0dp"
+            android:text="★★☆☆☆  (2)"
+            android:textColor="#FFA500"
+            android:textSize="9sp" />
+
+        <CheckBox
+            android:id="@+id/check1Estrela"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:fontFamily="@font/nunito"
+            android:padding="0dp"
+            android:text="★☆☆☆☆  (1)"
+            android:textColor="#FFA500"
+            android:textSize="9sp" />
+
+    <!-- APLICAR FILTROS -->
+    <TextView
+        android:id="@+id/btnAplicarFiltros"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/botao_gradiente"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/nunito"
+        android:gravity="center"
+        android:text="Aplicar Filtros"
+        android:textColor="#FFFFFF"
+        android:textSize="8sp"
+        android:textStyle="bold" />
+
+    <!-- LIMPAR FILTROS -->
+    <TextView
+        android:id="@+id/btnLimparFiltros"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_btn_perfil"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/nunito"
+        android:gravity="center"
+        android:text="Limpar Filtros"
+        android:textColor="#073B5C"
+        android:textSize="8sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
