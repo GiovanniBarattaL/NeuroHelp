@@ -67,6 +67,11 @@ class FragmentPerfil : Fragment() {
             (activity as? PrincipalActivity)?.irParaAba(R.id.nav_inicio)
         }
 
+        view.findViewById<View>(R.id.btnAlterarSenha).setOnClickListener {
+            startActivity(Intent(requireContext(), com.example.neurohelp.Login.RecuperarSenha::class.java)
+                .putExtra("perfil", true))
+        }
+
         // Notificações
         view.findViewById<LinearLayout>(R.id.itemNotificacoes).setOnClickListener {
             abrirFragment(
