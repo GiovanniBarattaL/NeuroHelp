@@ -51,10 +51,7 @@ class Cadastro_Profissional2 : AppCompatActivity() {
         val btnCadastrar =
             findViewById<Button>(R.id.btnCadastrar)
 
-        bindSubmission(btnCadastrar) {
-            Toast.makeText(this, "Cadastro realizado. Entre com seu e-mail e senha.", Toast.LENGTH_LONG).show()
-            goLogin()
-        }
+        bindCadastroEmail(btnCadastrar)
         btnCadastrar.setOnClickListener {
             if (!credentials(R.id.etEmail, R.id.etSenha, R.id.etConfirmarSenha)) return@setOnClickListener
             val fields = mapOf(
@@ -65,7 +62,7 @@ class Cadastro_Profissional2 : AppCompatActivity() {
                 "email" to input(R.id.etEmail), "senha" to password(),
                 "numRegistro" to input(R.id.etRegistroProfissional)
             )
-            submit(btnCadastrar) { it.register(true, fields) }
+            iniciarConfirmacaoCadastro(true, fields)
         }
     }
 }

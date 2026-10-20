@@ -22,10 +22,20 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
         val cpf = fields["cpf"]
         if (cpf != null && cpf.isNotBlank() && !Cpf.valido(cpf))
             throw ApiException(400, "CPF inválido. Confira os números informados.")
-        val accepted = setOf("nome", "email", "senha", "cpf", "telefone", "estado") +
+        val accepted = setOf("nome", "email", "senha", "cpf", "telefone", "estado", "codigoEmail") +
                 if (profissional) setOf("numRegistro") else emptySet()
         require(fields.keys.all { it in accepted })
-        request(if (profissional) "/cadastro/profissional" else "/cadastro/responsavel", "POST", JSONObject(fields))
+        if (!Regex("[0-9]{8}").matches(fields["codigoEmail"].orEmpty()))
+            throw ApiException(422, "Informe os 8 dígitos do código enviado ao seu e-mail.")
+        try {
+            request(if (profissional) "/cadastro/profissional" else "/cadastro/responsavel", "POST", JSONObject(fields))
+        } catch (e: ApiException) {
+            if (e.status == 422) throw ApiException(422, "E-mail não confirmado. Código inválido, expirado ou já utilizado. Confira o código ou solicite outro.")
+            throw e
+        }
+    }
+    suspend fun requestRegistrationEmail(email: String) {
+        request("/cadastro/email/solicitar", "POST", JSONObject().put("email", email.trim().lowercase(java.util.Locale.ROOT)))
     }
     suspend fun requestPasswordReset(email: String) {
         request("/auth/esqueci-senha", "POST", JSONObject().put("email", email))
