@@ -71,4 +71,7 @@
 
     <!-- Home -->
     <string name="home_erro_abrir_link">Não foi possível abrir a página de aprendizagem.</string>
+
+    <!-- Notificações do profissional: "Pct." = paciente -->
+    <string name="notificacao_prof_paciente">Pct. %1$s</string>
 </resources>

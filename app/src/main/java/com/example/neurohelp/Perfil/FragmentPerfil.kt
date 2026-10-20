@@ -69,12 +69,22 @@ class FragmentPerfil : Fragment() {
 
         // Notificações
         view.findViewById<LinearLayout>(R.id.itemNotificacoes).setOnClickListener {
-            abrirFragment(FragmentNotificacoes())
+            abrirFragment(
+                if (com.example.neurohelp.auth.SessionStore(requireContext()).papel() ==
+                    com.example.neurohelp.auth.PapelUsuario.PROFISSIONAL
+                ) com.example.neurohelp.notificacoes.FragmentNotificacoesProfissional()
+                else FragmentNotificacoes()
+            )
         }
 
         // Privacidade e Segurança
         view.findViewById<LinearLayout>(R.id.itemPrivacidade).setOnClickListener {
-            abrirFragment(FragmentPrivacidade())
+            abrirFragment(
+                if (com.example.neurohelp.auth.SessionStore(requireContext()).papel() ==
+                    com.example.neurohelp.auth.PapelUsuario.PROFISSIONAL
+                ) FragmentPrivacidadeProfissional()
+                else FragmentPrivacidade()
+            )
         }
 
         // Ajuda e suporte

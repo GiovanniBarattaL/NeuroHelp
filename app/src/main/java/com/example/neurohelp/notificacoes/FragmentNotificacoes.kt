@@ -15,6 +15,7 @@ import com.example.neurohelp.configurarCabecalhoPadrao
 import com.example.neurohelp.agenda.DetalhesConsultaDialogFragment
 import com.example.neurohelp.agenda.abrirDetalheConsulta
 import com.example.neurohelp.agenda.toConsulta
+import com.example.neurohelp.auth.ehProfissional
 
 /** Tela de Notificações (Figma): abas Não Visto / Essa Semana / Todos. */
 class FragmentNotificacoes : Fragment() {
@@ -116,10 +117,14 @@ class FragmentNotificacoes : Fragment() {
     }
 }
 
-/** Abre a tela de Notificações empilhando na aba atual (usada pelo sino do cabeçalho). */
+/**
+ * Abre a tela de Notificações empilhando na aba atual (usada pelo sino do cabeçalho).
+ * Cada perfil tem a sua: o profissional vê os avisos dos pacientes.
+ */
 fun Fragment.abrirNotificacoes() {
+    val tela: Fragment = if (ehProfissional()) FragmentNotificacoesProfissional() else FragmentNotificacoes()
     parentFragmentManager.beginTransaction()
-        .replace(R.id.fragmentContainer, FragmentNotificacoes())
+        .replace(R.id.fragmentContainer, tela)
         .addToBackStack(null)
         .commit()
 }

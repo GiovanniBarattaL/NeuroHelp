@@ -9,25 +9,40 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+    <!-- Rola quando a tela é baixa (paisagem, fonte grande); antes o conteúdo era cortado -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollCadastro"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     <LinearLayout
         android:id="@+id/conteudoCadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingBottom="16dp">
 
         <ImageView
             android:id="@+id/btnVoltar"
             style="@style/BotaoVoltar"
-            android:layout_marginTop="30dp" />
+            android:layout_marginTop="8dp" />
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="282dp"
-            android:layout_height="135dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:contentDescription="EspectroCare"
+            android:maxWidth="282dp"
+            android:maxHeight="135dp"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="-15dp"
             android:layout_marginBottom="20dp"
@@ -46,10 +61,12 @@
 
         <TextView
             android:id="@+id/txtSubtitulo"
-            android:layout_width="254dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="25dp"
+            android:maxWidth="300dp"
             android:fontFamily="@font/nunito"
             android:gravity="center"
             android:text="Antes escolha a maneira de ingresso"
@@ -59,7 +76,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnProfissional"
             android:layout_width="match_parent"
-            android:layout_height="136dp"
+            android:layout_height="wrap_content"
+            android:minHeight="136dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
@@ -82,12 +100,12 @@
         <Button
             android:id="@+id/btnResponsavel"
             android:layout_width="match_parent"
-            android:layout_height="136dp"
+            android:layout_height="wrap_content"
+            android:minHeight="136dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="15dp"
-            android:layout_weight="1"
             android:background="@drawable/botao_gradiente"
             android:fontFamily="@font/nunito"
             android:text="Ingressar como responsável de criança com TEA"
@@ -118,5 +136,7 @@
             android:textSize="14sp" />
 
     </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

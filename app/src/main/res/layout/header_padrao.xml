@@ -2,13 +2,14 @@
 <!--
     CABEÇALHO PADRÃO do app (igual ao da Agenda): voltar + logo + sino + avatar.
     Use nas telas com <include android:id="@+id/header" layout="@layout/header_padrao" ... />
-    informando layout_width, layout_height, margem de 30dp no topo e as constraints.
-    Ligações de clique: Fragment.configurarCabecalhoPadrao() em CabecalhoPadrao.kt
+    informando layout_width, layout_height (@dimen/altura_cabecalho) e as constraints.
+    NÃO use margem fixa no topo: o espaço da barra de status é somado automaticamente por
+    Fragment.configurarCabecalhoPadrao() (CabecalhoPadrao.kt), que também liga os cliques.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/header"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="@dimen/altura_cabecalho"
     android:background="#FFFFFF"
     android:gravity="center_vertical"
     android:orientation="horizontal"
@@ -18,34 +19,36 @@
         android:id="@+id/imgVoltar"
         style="@style/BotaoVoltar" />
 
+    <!-- A logo ocupa o espaço que sobra e ENCOLHE em telas estreitas (fitStart mantém a proporção) -->
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="169dp"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
         android:contentDescription="EspectroCare"
+        android:scaleType="fitStart"
         android:src="@drawable/logohoriz" />
 
-    <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1" />
-
+    <!-- Área de toque de 48dp (ícone continua com 24dp) -->
     <ImageView
         android:id="@+id/imgNotificacao"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:contentDescription="Notificações"
         android:focusable="true"
+        android:padding="12dp"
         android:src="@drawable/ic_sino" />
 
     <ImageView
         android:id="@+id/imgPerfil"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="16dp"
         android:clickable="true"
         android:contentDescription="Perfil"
         android:focusable="true"

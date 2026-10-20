@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- HOME DO PROFISSIONAL (Figma "Group 233"): mesma estrutura da home_fragment, com conteúdo para quem atende -->
+<!--
+    HOME DO PROFISSIONAL (Figma "Group 233"): mesma estrutura da home_fragment, com conteúdo para quem atende.
+
+    RESPONSIVIDADE
+    - Cabeçalho: altura + barra de status somadas em configurarCabecalhoPadrao (sem margem fixa).
+    - Margens, tamanhos de texto e proporção do banner vêm de @dimen (values / values-sw600dp / values-sw840dp).
+    - Conteúdo fica centralizado com largura máxima em tablets (FragmentHomeProfissional).
+    - Os 3 cards de aprendizagem viram uma coluna em telas estreitas ou com fonte muito grande (FragmentHomeProfissional).
+    - A consulta usa duas linhas (paciente / data e horário) para não espremer o nome em telas estreitas.
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,8 +23,7 @@
         android:id="@+id/header"
         layout="@layout/header_padrao"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="@dimen/altura_cabecalho"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +34,7 @@
         android:layout_height="0dp"
         android:background="#FFFFFF"
         android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,6 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/header">
 
         <LinearLayout
+            android:id="@+id/conteudoHomeProfissional"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -49,22 +59,28 @@
                     android:id="@+id/layoutBoasVindas"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="@dimen/margem_tela"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="@dimen/home_banner_texto_margem_inferior"
                     android:orientation="vertical"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/imgBannerProfissional"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0">
 
                     <TextView
                         android:id="@+id/txtBoasVindas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:ellipsize="end"
                         android:fontFamily="@font/nunito_black"
+                        android:maxLines="2"
                         android:text="Olá, Dr.(a) XXX"
                         android:textColor="#04344E"
-                        android:textSize="22sp"
+                        android:textSize="@dimen/home_titulo_tamanho"
                         android:textStyle="bold" />
 
                     <TextView
@@ -74,17 +90,18 @@
                         android:fontFamily="@font/nunito"
                         android:text="Estamos aqui para conectar você a famílias que precisam do seu cuidado."
                         android:textColor="#04344E"
-                        android:textSize="13sp"
+                        android:textSize="@dimen/home_subtitulo_tamanho"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
+                <!-- Largura = % da tela (0,5 no celular, menor em tablet) para a imagem não ficar gigante -->
                 <ImageView
                     android:id="@+id/imgBannerProfissional"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:layout_marginBottom="56dp"
+                    android:layout_marginBottom="@dimen/home_banner_margem_inferior"
                     android:adjustViewBounds="true"
                     android:contentDescription="Profissional atendendo uma criança"
                     android:scaleType="fitCenter"
@@ -92,7 +109,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5" />
+                    app:layout_constraintWidth_percent="@dimen/home_banner_imagem_percent" />
 
                 <ImageView
                     android:id="@+id/imgCurva"
@@ -107,13 +124,24 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!--
+                BLOCO CENTRAL: tudo abaixo do banner. Em tablets o FragmentHomeProfissional limita a largura
+                (padding lateral) para o conteúdo não esticar. A sobreposição ao banner (-44dp) fica NO bloco,
+                assim a parte do card sobre o banner continua clicável.
+            -->
+            <LinearLayout
+                android:id="@+id/blocoConteudo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-44dp"
+                android:orientation="vertical">
+
             <!-- CARD APRENDIZAGEM (sobrepõe o banner) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAprendizagem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="-44dp"
+                android:layout_marginHorizontal="@dimen/margem_tela"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardBackgroundColor="#FFFFFF"
@@ -155,10 +183,12 @@
 
                     </LinearLayout>
 
+                    <!-- Divisor: acompanha a altura do conteúdo (texto pode quebrar em mais linhas) -->
                     <View
                         android:layout_width="1dp"
-                        android:layout_height="52dp"
+                        android:layout_height="match_parent"
                         android:layout_marginHorizontal="14dp"
+                        android:layout_marginVertical="2dp"
                         android:background="#E0E0E0" />
 
                     <TextView
@@ -178,7 +208,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="@dimen/margem_tela"
                 android:layout_marginTop="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -190,38 +220,48 @@
                     android:fontFamily="@font/nunito_black"
                     android:text="Conteúdos de Aprendizagem"
                     android:textColor="#04344E"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/home_secao_tamanho"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtVerTodos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
                     android:fontFamily="@font/nunito"
+                    android:minHeight="48dp"
+                    android:gravity="center_vertical"
                     android:padding="4dp"
                     android:text="Ver todos →"
-                    android:textColor="#9C9C9C"
+                    android:textColor="#757575"
                     android:textSize="12sp" />
 
             </LinearLayout>
 
-            <!-- 3 CARDS (cabem na tela, todos com a mesma altura) -->
+            <!--
+                3 CARDS lado a lado, todos com a mesma altura.
+                Em telas estreitas / fonte grande o FragmentHomeProfissional troca para coluna.
+            -->
             <LinearLayout
+                android:id="@+id/listaConteudos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
-                android:paddingHorizontal="20dp"
-                android:paddingTop="12dp">
+                android:paddingHorizontal="@dimen/margem_tela"
+                android:paddingTop="4dp">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardConteudoTea"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:cardBackgroundColor="#F2FAFF"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
@@ -235,8 +275,8 @@
                         android:padding="10dp">
 
                         <ImageView
-                            android:layout_width="34dp"
-                            android:layout_height="34dp"
+                            android:layout_width="@dimen/home_card_icone"
+                            android:layout_height="@dimen/home_card_icone"
                             android:importantForAccessibility="no"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_cerebro_card" />
@@ -245,29 +285,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:breakStrategy="simple"
                             android:fontFamily="@font/nunito_black"
+                            android:hyphenationFrequency="normal"
                             android:text="Entendendo o TEA"
                             android:textColor="#04344E"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/home_card_titulo_tamanho" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito"
+                            android:hyphenationFrequency="normal"
                             android:text="O que é, principais características e sinais de alerta."
                             android:textColor="#555555"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/home_card_texto_tamanho" />
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardConteudoEstrategias"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:cardBackgroundColor="#F0FFF6"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
@@ -281,8 +327,8 @@
                         android:padding="10dp">
 
                         <ImageView
-                            android:layout_width="34dp"
-                            android:layout_height="34dp"
+                            android:layout_width="@dimen/home_card_icone"
+                            android:layout_height="@dimen/home_card_icone"
                             android:importantForAccessibility="no"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_maos" />
@@ -291,29 +337,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:breakStrategy="simple"
                             android:fontFamily="@font/nunito_black"
+                            android:hyphenationFrequency="normal"
                             android:text="Estratégias para o dia a dia"
                             android:textColor="#04344E"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/home_card_titulo_tamanho" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito"
+                            android:hyphenationFrequency="normal"
                             android:text="Dicas práticas para rotina, comunicação e comportamento."
                             android:textColor="#555555"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/home_card_texto_tamanho" />
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardConteudoEscola"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="0dp"
                     android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:cardBackgroundColor="#F2FAFF"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp"
@@ -327,8 +379,8 @@
                         android:padding="10dp">
 
                         <ImageView
-                            android:layout_width="34dp"
-                            android:layout_height="34dp"
+                            android:layout_width="@dimen/home_card_icone"
+                            android:layout_height="@dimen/home_card_icone"
                             android:importantForAccessibility="no"
                             android:scaleType="centerCrop"
                             android:src="@drawable/ic_escola" />
@@ -337,19 +389,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:breakStrategy="simple"
                             android:fontFamily="@font/nunito_black"
+                            android:hyphenationFrequency="normal"
                             android:text="Inclusão escolar"
                             android:textColor="#04344E"
-                            android:textSize="12sp" />
+                            android:textSize="@dimen/home_card_titulo_tamanho" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/nunito"
+                            android:hyphenationFrequency="normal"
                             android:text="Como apoiar o desenvolvimento da criança na escola."
                             android:textColor="#555555"
-                            android:textSize="10sp" />
+                            android:textSize="@dimen/home_card_texto_tamanho" />
 
                     </LinearLayout>
 
@@ -361,7 +416,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginHorizontal="@dimen/margem_tela"
                 android:layout_marginTop="24dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -373,20 +428,23 @@
                     android:fontFamily="@font/nunito_black"
                     android:text="Próximas consultas"
                     android:textColor="#04344E"
-                    android:textSize="15sp"
+                    android:textSize="@dimen/home_secao_tamanho"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txtVerAgenda"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
                     android:fontFamily="@font/nunito"
+                    android:gravity="center_vertical"
+                    android:minHeight="48dp"
                     android:padding="4dp"
                     android:text="Ver agenda →"
-                    android:textColor="#9C9C9C"
+                    android:textColor="#757575"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -396,8 +454,8 @@
                 android:id="@+id/cardProximaConsulta"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="@dimen/margem_tela"
+                android:layout_marginTop="4dp"
                 app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp"
@@ -410,6 +468,7 @@
                     android:orientation="vertical"
                     android:padding="14dp">
 
+                    <!-- LINHA 1: paciente (ocupa todo o espaço que sobra) + seta -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -453,80 +512,87 @@
                                 android:maxLines="1"
                                 android:text="CPF XXX.XXX.XXX-XX"
                                 android:textColor="#6B6B6B"
-                                android:textSize="11sp" />
+                                android:textSize="12sp" />
 
                         </LinearLayout>
 
-                        <!-- DATA + HORÁRIO (um embaixo do outro) -->
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:importantForAccessibility="no"
-                                    android:src="@drawable/ic_calendario" />
-
-                                <TextView
-                                    android:id="@+id/txtDataConsulta"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="6dp"
-                                    android:fontFamily="@font/nunito"
-                                    android:maxLines="1"
-                                    android:text="24 de maio, 2025"
-                                    android:textColor="#073B5C"
-                                    android:textSize="11sp" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="6dp"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:importantForAccessibility="no"
-                                    android:src="@drawable/ic_clock" />
-
-                                <TextView
-                                    android:id="@+id/txtHorarioConsulta"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="6dp"
-                                    android:fontFamily="@font/nunito"
-                                    android:maxLines="1"
-                                    android:text="15:00"
-                                    android:textColor="#073B5C"
-                                    android:textSize="11sp" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
+                        <!-- Área de toque de 48dp (ícone visível com 22dp) -->
                         <ImageView
                             android:id="@+id/imgSetaConsulta"
-                            android:layout_width="22dp"
-                            android:layout_height="22dp"
-                            android:layout_marginStart="8dp"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="4dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
                             android:clickable="true"
                             android:contentDescription="Ver detalhe da consulta"
                             android:focusable="true"
+                            android:padding="13dp"
                             android:src="@drawable/botao_ir" />
+
+                    </LinearLayout>
+
+                    <!-- LINHA 2: data à esquerda, horário à direita (não disputa espaço com o nome) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:baselineAligned="false"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_calendario" />
+
+                            <TextView
+                                android:id="@+id/txtDataConsulta"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:layout_weight="1"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/nunito"
+                                android:maxLines="1"
+                                android:text="24 de maio, 2025"
+                                android:textColor="#073B5C"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_clock" />
+
+                            <TextView
+                                android:id="@+id/txtHorarioConsulta"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:fontFamily="@font/nunito"
+                                android:maxLines="1"
+                                android:text="15:00"
+                                android:textColor="#073B5C"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -535,20 +601,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="6dp"
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
                         android:fontFamily="@font/nunito_black"
-                        android:maxLines="1"
+                        android:gravity="center"
+                        android:minHeight="48dp"
                         android:padding="2dp"
                         android:text="Ver detalhe da consulta"
-                        android:textColor="#35C979"
+                        android:textColor="#1F9E57"
                         android:textSize="12sp" />
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
 
         </LinearLayout>
 

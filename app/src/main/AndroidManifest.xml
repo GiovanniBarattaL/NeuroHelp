@@ -17,25 +17,32 @@
 
         <activity
             android:name=".Login.RecuperarSenha"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".Cadastro.Cadastro_Profissional2"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".Cadastro.Cadastro_Profissional1"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".PrincipalActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".Cadastro.Cadastro"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
         <activity
             android:name=".Cadastro.Cadastro_Responsavel"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".Login.Login"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

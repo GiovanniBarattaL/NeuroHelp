@@ -17,10 +17,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/conteudoRecuperarSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="30dp"
+            android:paddingTop="8dp"
             android:paddingBottom="24dp">
 
             <!-- VOLTAR (padrão em todas as telas) -->

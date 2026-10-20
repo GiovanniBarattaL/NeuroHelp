@@ -1,5 +1,8 @@
 package com.example.neurohelp.Cadastro
 
+import com.example.neurohelp.ativarTelaCheia
+import com.example.neurohelp.aplicarInsetsNaRaiz
+import com.example.neurohelp.limitarLarguraDoConteudo
 import com.example.neurohelp.auth.*
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +18,10 @@ class Cadastro_Profissional1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        ativarTelaCheia()
         setContentView(R.layout.cadastro_profissional1)
+        aplicarInsetsNaRaiz(findViewById(R.id.cadastroProfissionalRoot))
+        limitarLarguraDoConteudo(findViewById(R.id.conteudoCadastro))
 
         // Credenciais coletadas apenas na segunda etapa, sem senhas em extras do Intent.
         hideFields(R.id.etEmail, R.id.etSenha, R.id.etConfirmarSenha, R.id.etCep,

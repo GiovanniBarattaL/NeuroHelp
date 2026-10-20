@@ -1,5 +1,8 @@
 package com.example.neurohelp.Login
 
+import com.example.neurohelp.ativarTelaCheia
+import com.example.neurohelp.aplicarInsetsNaRaiz
+import com.example.neurohelp.limitarLarguraDoConteudo
 import com.example.neurohelp.auth.*
 import android.widget.EditText
 import android.content.Intent
@@ -18,7 +21,10 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        ativarTelaCheia()
         setContentView(R.layout.login)
+        aplicarInsetsNaRaiz(findViewById(R.id.loginRoot))
+        limitarLarguraDoConteudo(findViewById(R.id.conteudoLogin))
 
         // A API autentica ambos os perfis por e-mail e senha; o seletor é apenas visual.
 

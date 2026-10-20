@@ -1,5 +1,8 @@
 package com.example.neurohelp.Login
 
+import com.example.neurohelp.ativarTelaCheia
+import com.example.neurohelp.aplicarInsetsNaRaiz
+import com.example.neurohelp.limitarLarguraDoConteudo
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
@@ -17,7 +20,10 @@ class RecuperarSenha : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ativarTelaCheia()
         setContentView(R.layout.recuperar_senha)
+        aplicarInsetsNaRaiz(findViewById(R.id.recuperarSenhaRoot))
+        limitarLarguraDoConteudo(findViewById(R.id.conteudoRecuperarSenha))
 
         findViewById<ImageView>(R.id.btnVoltar).setOnClickListener {
             onBackPressedDispatcher.onBackPressed()

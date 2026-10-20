@@ -9,26 +9,39 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF">
 
+    <!-- Rola quando a tela é baixa (paisagem, teclado aberto, fonte grande); centraliza quando sobra espaço -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollLogin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
     <LinearLayout
         android:id="@+id/conteudoLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.296">
+        android:paddingTop="16dp"
+        android:paddingBottom="56dp">
 
         <ImageView
             android:id="@+id/imgLogo"
-            android:layout_width="250dp"
-            android:layout_height="216dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
             android:layout_gravity="center"
-            android:src="@drawable/logo"
-            tools:layout_editor_absoluteX="115dp"
-            tools:layout_editor_absoluteY="48dp" />
+            android:adjustViewBounds="true"
+            android:contentDescription="EspectroCare"
+            android:maxWidth="250dp"
+            android:maxHeight="216dp"
+            android:src="@drawable/logo" />
 
         <TextView
             android:id="@+id/txtTitulo"
@@ -44,9 +57,12 @@
 
         <TextView
             android:id="@+id/txtSubtitulo"
-            android:layout_width="254dp"
-            android:layout_height="54dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="4dp"
+            android:maxWidth="300dp"
             android:fontFamily="@font/nunito_black"
             android:gravity="center"
             android:text="Faça login para acessar uma experiência feita para você e seu filho"
@@ -239,5 +255,7 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

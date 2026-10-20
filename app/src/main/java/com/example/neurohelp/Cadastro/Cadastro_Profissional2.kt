@@ -1,5 +1,8 @@
 package com.example.neurohelp.Cadastro
 
+import com.example.neurohelp.ativarTelaCheia
+import com.example.neurohelp.aplicarInsetsNaRaiz
+import com.example.neurohelp.limitarLarguraDoConteudo
 import com.example.neurohelp.auth.*
 import android.widget.EditText
 import android.widget.Toast
@@ -17,7 +20,10 @@ class Cadastro_Profissional2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        ativarTelaCheia()
         setContentView(R.layout.cadastro_profissional2)
+        aplicarInsetsNaRaiz(findViewById(R.id.cadastroProfissionalRoot))
+        limitarLarguraDoConteudo(findViewById(R.id.conteudoCadastro))
 
         hideFields(R.id.etProfissao, R.id.etAreaAtuacao)
         findViewById<EditText>(R.id.etSenha).isSaveEnabled = false

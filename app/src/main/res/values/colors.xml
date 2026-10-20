@@ -12,6 +12,10 @@
     <color name="agenda_texto_secundario">#6B6B6B</color>
     <color name="agenda_borda">#EDEDED</color>
     <color name="notificacao_nao_vista">#7B5EA7</color>
+    <!-- Notificações do profissional: cor do avatar conforme o que o paciente fez -->
+    <color name="notificacao_solicitou">#7B5EA7</color>
+    <color name="notificacao_desmarcou">#F5A623</color>
+    <color name="notificacao_confirmou">#22A45D</color>
         <color name="azul_titulo">#073B5C</color>
         <color name="tela_fundo_claro">#F8F8F8</color>
         <color name="campo_texto">#6B6B6B</color>

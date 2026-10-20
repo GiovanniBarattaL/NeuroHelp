@@ -1,5 +1,8 @@
 package com.example.neurohelp.Cadastro
 
+import com.example.neurohelp.ativarTelaCheia
+import com.example.neurohelp.aplicarInsetsNaRaiz
+import com.example.neurohelp.limitarLarguraDoConteudo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -11,7 +14,10 @@ class Cadastro : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ativarTelaCheia()
         setContentView(R.layout.cadastro)
+        aplicarInsetsNaRaiz(findViewById(R.id.cadastroRoot))
+        limitarLarguraDoConteudo(findViewById(R.id.conteudoCadastro))
 
         val btnVoltar = findViewById<ImageView>(R.id.btnVoltar)
 

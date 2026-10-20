@@ -9,6 +9,7 @@ import com.example.neurohelp.Home.FragmentHomeProfissional
 import com.example.neurohelp.auth.PapelUsuario
 import com.example.neurohelp.Perfil.FragmentPerfil
 import com.example.neurohelp.Perfil.FragmentPrivacidade
+import com.example.neurohelp.Perfil.FragmentPrivacidadeProfissional
 import com.example.neurohelp.Perfil.FragmentSobre
 import com.example.neurohelp.Profissionais.FragmentPerfilProfissional
 import com.example.neurohelp.Profissionais.FragmentProfissionais
@@ -17,6 +18,7 @@ import com.example.neurohelp.agenda.FragmentAgendarConsulta
 import com.example.neurohelp.agenda.FragmentConsultaDetalhe
 import com.example.neurohelp.agenda.FragmentSelecionarPaciente
 import com.example.neurohelp.notificacoes.FragmentNotificacoes
+import com.example.neurohelp.notificacoes.FragmentNotificacoesProfissional
 import com.example.neurohelp.ajuda.FragmentAjuda
 import com.example.neurohelp.auth.papelUsuario
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -49,7 +51,9 @@ class PrincipalActivity : AppCompatActivity() {
             com.example.neurohelp.auth.goLoginFromPrincipal(this)
             return
         }
+        ativarTelaCheia()
         setContentView(R.layout.activity_principal)
+        aplicarInsetsLateraisNaRaiz(findViewById(R.id.principalRoot))
 
         bottomNavigation = findViewById(R.id.bottomNavigation)
 
@@ -131,9 +135,11 @@ class PrincipalActivity : AppCompatActivity() {
 
         is FragmentPerfil,
         is FragmentNotificacoes,
+        is FragmentNotificacoesProfissional,
         is FragmentSobre,
         is FragmentAjuda,
-        is FragmentPrivacidade -> R.id.nav_perfil
+        is FragmentPrivacidade,
+        is FragmentPrivacidadeProfissional -> R.id.nav_perfil
 
         else -> null
     }

@@ -1,5 +1,8 @@
 package com.example.neurohelp.Cadastro
 
+import com.example.neurohelp.ativarTelaCheia
+import com.example.neurohelp.aplicarInsetsNaRaiz
+import com.example.neurohelp.limitarLarguraDoConteudo
 import com.example.neurohelp.auth.*
 import android.widget.EditText
 import android.widget.CheckBox
@@ -18,7 +21,10 @@ class Cadastro_Responsavel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        ativarTelaCheia()
         setContentView(R.layout.cadastro_responsavel)
+        aplicarInsetsNaRaiz(findViewById(R.id.cadastroResponsavelRoot))
+        limitarLarguraDoConteudo(findViewById(R.id.conteudoCadastro))
 
         hideFields(R.id.etDataNascimento, R.id.etCidade, R.id.etSexo)
         findViewById<EditText>(R.id.etSenha).isSaveEnabled = false
