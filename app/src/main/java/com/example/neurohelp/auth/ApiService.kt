@@ -19,18 +19,29 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
         session.save(token)
     }
     suspend fun register(profissional: Boolean, fields: Map<String, String>) {
+        val cpf = fields["cpf"]
+        if (cpf != null && cpf.isNotBlank() && !Cpf.valido(cpf))
+            throw ApiException(400, "CPF inválido. Confira os números informados.")
         val accepted = setOf("nome", "email", "senha", "cpf", "telefone", "estado") +
                 if (profissional) setOf("numRegistro") else emptySet()
         require(fields.keys.all { it in accepted })
         request(if (profissional) "/cadastro/profissional" else "/cadastro/responsavel", "POST", JSONObject(fields))
     }
-    /**
-     * Pede o e-mail de redefinição de senha.
-     * CONFIRME COM O BACK-END: aqui usa POST /auth/esqueci-senha com {"email": ...}.
-     * Se o caminho ou o formato forem outros, ajuste só esta função.
-     */
     suspend fun requestPasswordReset(email: String) {
         request("/auth/esqueci-senha", "POST", JSONObject().put("email", email))
+    }
+    suspend fun requestOwnPasswordReset() {
+        request("/api/conta/recuperacao-senha", "POST", null, true)
+    }
+    suspend fun resetPassword(email: String, codigo: String, novaSenha: String) {
+        try {
+            request("/auth/redefinir-senha", "POST", JSONObject().put("email", email)
+                .put("codigo", codigo).put("novaSenha", novaSenha))
+        } catch (e: ApiException) {
+            if (e.status == 400) throw ApiException(400, "Código inválido ou expirado. Confira a senha e o código; após cinco tentativas, solicite outro respeitando o intervalo mínimo de 60 segundos e os limites por período.")
+            throw e
+        }
+        session.clear()
     }
     suspend fun protectedRequest(path: String, method: String = "GET", body: JSONObject? = null): String =
         request(path, method, body, true)

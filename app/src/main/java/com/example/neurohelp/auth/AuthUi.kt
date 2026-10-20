@@ -64,7 +64,7 @@ class AuthSubmissionViewModel : ViewModel() {
 }
 
 // A requisição sobrevive à rotação; o ViewModel não mantém referências às telas.
-fun AppCompatActivity.bindSubmission(button: Button, success: () -> Unit) {
+fun AppCompatActivity.bindSubmission(button: Button, stateChange: (SubmissionState) -> Unit = {}, success: () -> Unit) {
     val model = ViewModelProvider(this)[AuthSubmissionViewModel::class.java]
     val label = button.text
     val parent = button.parent as ViewGroup
@@ -77,6 +77,7 @@ fun AppCompatActivity.bindSubmission(button: Button, success: () -> Unit) {
     lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
             model.state.collect { state ->
+                stateChange(state)
                 button.isEnabled = !state.busy
                 button.text = if (state.busy) "Aguarde…" else label
                 progress.visibility = if (state.busy) View.VISIBLE else View.GONE
@@ -96,7 +97,7 @@ fun AppCompatActivity.registrationFields(): Map<String, String> = mapOf(
 )
 fun AppCompatActivity.validatePersonal(): Boolean {
     val name = validate(R.id.etNome, input(R.id.etNome).isNotBlank(), "Informe o nome")
-    val cpf = validate(R.id.etCpf, input(R.id.etCpf).replace(Regex("[^0-9]"), "").length == 11, "Informe um CPF com 11 dígitos")
+    val cpf = validate(R.id.etCpf, Cpf.valido(input(R.id.etCpf)), "CPF inválido. Confira os números informados.")
     return name && cpf
 }
 fun AppCompatActivity.hideFields(vararg ids: Int) {

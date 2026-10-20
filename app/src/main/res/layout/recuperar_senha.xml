@@ -58,7 +58,7 @@
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/nunito"
                 android:lineSpacingExtra="2dp"
-                android:text="•  Digite seu e-mail cadastrado no campo abaixo\n•  Clique em &quot;Enviar link de redefinição&quot;\n•  Verifique sua caixa de entrada e também a pasta de spam"
+                android:text="•  Digite seu e-mail cadastrado no campo abaixo\n•  Clique em &quot;Enviar código&quot;\n•  Verifique sua caixa de entrada e também a pasta de spam. O código vale por 15 minutos."
                 android:textColor="#04344E"
                 android:textSize="14sp" />
 
@@ -100,12 +100,24 @@
                 android:background="@drawable/botao_gradiente"
                 android:fontFamily="@font/nunito_black"
                 android:minHeight="50dp"
-                android:text="Enviar link de redefinição"
+                android:text="Enviar código"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 app:backgroundTint="@null" />
 
+            <TextView
+                android:id="@+id/txtJaTenhoCodigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:minHeight="48dp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:text="Já tenho um código"
+                android:textColor="#04344E" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

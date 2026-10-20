@@ -16,6 +16,10 @@
         android:theme="@style/Theme.NeuroHelp">
 
         <activity
+            android:name=".Login.RedefinirSenha"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" />
+        <activity
             android:name=".Login.RecuperarSenha"
             android:windowSoftInputMode="adjustResize"
             android:exported="false" />
