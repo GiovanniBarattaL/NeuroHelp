@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Medidas que mudam conforme a largura da tela (sw = menor lado em dp).
+    Celular: valores abaixo | tablet pequeno: values-sw600dp | tablet grande: values-sw840dp
+-->
+<resources>
+    <!-- Margem lateral do conteúdo das telas -->
+    <dimen name="margem_tela_formulario">26dp</dimen>
+    <dimen name="margem_tela">20dp</dimen>
+    <!-- Largura máxima de formulários (login/cadastro) -->
+    <dimen name="largura_max_formulario">480dp</dimen>
+    <!-- Altura do cabeçalho padrão (sem a barra de status) -->
+    <dimen name="altura_cabecalho">60dp</dimen>
+
+    <!-- Home do profissional -->
+    <item name="home_banner_imagem_percent" format="float" type="dimen">0.5</item>
+    <!-- Reserva embaixo do texto do banner: altura da curva branca (80dp) para não cobrir a frase -->
+    <dimen name="home_banner_texto_margem_inferior">80dp</dimen>
+    <dimen name="home_banner_margem_inferior">56dp</dimen>
+    <dimen name="home_titulo_tamanho">22sp</dimen>
+    <dimen name="home_subtitulo_tamanho">13sp</dimen>
+    <dimen name="home_secao_tamanho">15sp</dimen>
+    <dimen name="home_card_titulo_tamanho">12sp</dimen>
+    <dimen name="home_card_texto_tamanho">11sp</dimen>
+    <dimen name="home_card_icone">34dp</dimen>
+</resources>

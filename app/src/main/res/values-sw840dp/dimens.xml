@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margem_tela_formulario">64dp</dimen>
+    <dimen name="margem_tela">120dp</dimen>
+    <dimen name="largura_max_formulario">600dp</dimen>
+
+    <item name="home_banner_imagem_percent" format="float" type="dimen">0.28</item>
+    <dimen name="home_titulo_tamanho">32sp</dimen>
+    <dimen name="home_subtitulo_tamanho">18sp</dimen>
+</resources>

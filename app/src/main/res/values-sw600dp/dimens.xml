@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margem_tela_formulario">48dp</dimen>
+    <dimen name="margem_tela">48dp</dimen>
+    <dimen name="largura_max_formulario">560dp</dimen>
+
+    <item name="home_banner_imagem_percent" format="float" type="dimen">0.34</item>
+    <!-- Reserva embaixo do texto do banner: altura da curva branca (80dp) para não cobrir a frase -->
+    <dimen name="home_banner_texto_margem_inferior">80dp</dimen>
+    <dimen name="home_banner_margem_inferior">64dp</dimen>
+    <dimen name="home_titulo_tamanho">28sp</dimen>
+    <dimen name="home_subtitulo_tamanho">16sp</dimen>
+    <dimen name="home_secao_tamanho">18sp</dimen>
+    <dimen name="home_card_titulo_tamanho">15sp</dimen>
+    <dimen name="home_card_texto_tamanho">13sp</dimen>
+    <dimen name="home_card_icone">44dp</dimen>
+</resources>
