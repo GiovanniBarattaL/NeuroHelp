@@ -52,10 +52,7 @@ class Cadastro_Responsavel : AppCompatActivity() {
             findViewById<Button>(R.id.btnProximo)
 
         btnProximo.text = "Cadastre-se"
-        bindSubmission(btnProximo) {
-            Toast.makeText(this, "Cadastro realizado. Entre com seu e-mail e senha.", Toast.LENGTH_LONG).show()
-            goLogin()
-        }
+        bindCadastroEmail(btnProximo)
         btnProximo.setOnClickListener {
             val personal = validatePersonal()
             val credentialsOk = credentials(R.id.etEmail, R.id.etSenha, R.id.etConfirmarSenha)
@@ -66,7 +63,7 @@ class Cadastro_Responsavel : AppCompatActivity() {
                 return@setOnClickListener
             }
             val fields = registrationFields()
-            submit(btnProximo) { it.register(false, fields) }
+            iniciarConfirmacaoCadastro(false, fields)
         }
     }
 }
