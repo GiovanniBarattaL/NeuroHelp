@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tag_limite_largura" type="id" />
+    <item name="tag_inset_topo" type="id" />
+    <item name="tag_photo_binding" type="id" />
+</resources>

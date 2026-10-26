@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="profissoes_cadastro">
+        <item>Fonoaudiólogo</item>
+        <item>Psicólogo</item>
+        <item>Terapeuta ocupacional</item>
+        <item>Neuropediatria</item>
+        <item>Psiquiatra</item>
+        <item>Nutricionista</item>
+    </string-array>
+</resources>
