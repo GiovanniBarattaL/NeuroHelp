@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.example.neurohelp.Login.Login
@@ -64,7 +65,11 @@ class AuthSubmissionViewModel : ViewModel() {
 }
 
 // A requisição sobrevive à rotação; o ViewModel não mantém referências às telas.
-fun AppCompatActivity.bindSubmission(button: Button, success: () -> Unit) {
+fun AppCompatActivity.bindSubmission(
+    button: Button,
+    stateChange: ((SubmissionState) -> Unit)? = null,
+    success: () -> Unit
+) {
     val model = ViewModelProvider(this)[AuthSubmissionViewModel::class.java]
     val label = button.text
     val parent = button.parent as ViewGroup
@@ -87,6 +92,7 @@ fun AppCompatActivity.bindSubmission(button: Button, success: () -> Unit) {
                 button.isEnabled = !state.busy
                 button.text = if (state.busy) "Aguarde…" else label
                 progress.visibility = if (state.busy) View.VISIBLE else View.GONE
+                stateChange?.invoke(state)
                 if (state.success) { model.consume(); success() }
                 state.error?.let { model.consume(); Toast.makeText(this@bindSubmission, it, Toast.LENGTH_LONG).show() }
             }
@@ -103,7 +109,7 @@ fun AppCompatActivity.registrationFields(): Map<String, String> = mapOf(
 )
 fun AppCompatActivity.validatePersonal(): Boolean {
     val name = validate(R.id.etNome, input(R.id.etNome).isNotBlank(), "Informe o nome")
-    val cpf = validate(R.id.etCpf, input(R.id.etCpf).replace(Regex("[^0-9]"), "").length == 11, "Informe um CPF com 11 dígitos")
+    val cpf = validate(R.id.etCpf, Cpf.valido(input(R.id.etCpf)), "CPF inválido")
     val telefone = input(R.id.etTelefone)
     val phoneOk = validate(R.id.etTelefone, telefone.isBlank() || telefone.length in 10..11,
         "Informe o telefone com DDD (10 ou 11 dígitos)")

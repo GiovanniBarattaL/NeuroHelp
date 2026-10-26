@@ -8,12 +8,18 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.neurohelp.R
+import com.example.neurohelp.ativarTelaCheia
+import com.example.neurohelp.aplicarInsetsNaRaiz
+import com.example.neurohelp.limitarLarguraDoConteudo
 import com.example.neurohelp.auth.*
 
 class RedefinirSenha : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ativarTelaCheia()
         setContentView(R.layout.redefinir_senha)
+        aplicarInsetsNaRaiz(findViewById(R.id.redefinirSenhaRoot))
+        limitarLarguraDoConteudo(findViewById(R.id.conteudoRedefinirSenha))
         val email = intent.getStringExtra("email").orEmpty()
         if (email.isBlank()) { finish(); return }
         findViewById<TextView>(R.id.txtDestinoCodigo).text = "Se o e-mail estiver cadastrado, você receberá um código em $email. Verifique o spam. O código expira em 15 minutos. Para solicitar outro, aguarde ao menos 60 segundos. Há limites de solicitações por período."
@@ -24,9 +30,12 @@ class RedefinirSenha : AppCompatActivity() {
         // Código e senhas não entram no estado salvo, extras, logs ou preferências.
         listOf(senha, confirmar, codigo).forEach { it.isSaveEnabled = false }
         val button = findViewById<Button>(R.id.btnRedefinirSenha)
-        bindSubmission(button) {
+        bindSubmission(button, stateChange = { state ->
+            listOf(senha, confirmar, codigo).forEach { it.isEnabled = !state.busy }
+        }) {
             senha.text.clear(); confirmar.text.clear(); codigo.text.clear()
             Toast.makeText(this, "Senha alterada. Entre novamente em seus dispositivos.", Toast.LENGTH_LONG).show()
+            SessionStore(applicationContext).clear()
             goLogin()
         }
         button.setOnClickListener {

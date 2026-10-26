@@ -10,6 +10,7 @@ import androidx.core.view.children
 import androidx.lifecycle.*
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
@@ -101,10 +102,10 @@ fun AppCompatActivity.bindCadastroEmail(button: Button) {
         hint = "Código de confirmação (8 dígitos)"
         contentDescription = "Código de confirmação de e-mail, 8 dígitos"
         inputType = InputType.TYPE_CLASS_NUMBER
-        filters = arrayOf(InputFilter.LengthFilter(8), InputFilter { source, start, end, _, _, _ ->
+        filters = arrayOf(InputFilter { source, start, end, _, _, _ ->
             val trecho = source.subSequence(start, end).toString()
             if (trecho.all { it in '0'..'9' }) null else trecho.filter { it in '0'..'9' }
-        })
+        }, InputFilter.LengthFilter(8))
         isSaveEnabled = false
     }
     val feedback = TextView(this).apply { accessibilityLiveRegion = View.ACCESSIBILITY_LIVE_REGION_POLITE }

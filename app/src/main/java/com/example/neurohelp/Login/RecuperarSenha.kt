@@ -35,6 +35,8 @@ class RecuperarSenha : AppCompatActivity() {
         val emailField = findViewById<EditText>(R.id.etEmail)
         val perfil = intent.getBooleanExtra("perfil", false)
         var profileReady = !perfil
+        var submissionBusy = false
+        val jaTenhoCodigo = findViewById<android.widget.TextView>(R.id.txtJaTenhoCodigo)
         if (perfil) {
             // O e-mail é lido da API e o envio usa a identidade autenticada, sem destinatário no corpo.
             emailField.isEnabled = false
@@ -44,12 +46,15 @@ class RecuperarSenha : AppCompatActivity() {
                     val user = JSONObject(ApiService(SessionStore(applicationContext)).protectedRequest("/api/auth/me"))
                     emailField.setText(user.getString("email"))
                     profileReady = true
-                    btnEnviar.isEnabled = true
+                    btnEnviar.isEnabled = !submissionBusy
+                    jaTenhoCodigo.isEnabled = !submissionBusy
                 } catch (e: CancellationException) { throw e }
                 catch (_: Exception) { emailField.error = "Não foi possível carregar seu perfil. Volte e tente novamente." }
             }
         }
         bindSubmission(btnEnviar, stateChange = { state ->
+            submissionBusy = state.busy
+            jaTenhoCodigo.isEnabled = profileReady && !state.busy
             emailField.isEnabled = !perfil && !state.busy
             btnEnviar.isEnabled = profileReady && !state.busy
         }) {
@@ -57,7 +62,7 @@ class RecuperarSenha : AppCompatActivity() {
             finish()
         }
         btnEnviar.setOnClickListener {
-            if (!profileReady) return@setOnClickListener
+            if (!profileReady || submissionBusy) return@setOnClickListener
             val email = input(R.id.etEmail)
             if (!validate(R.id.etEmail, Patterns.EMAIL_ADDRESS.matcher(email).matches(), "Informe um e-mail válido")) return@setOnClickListener
             // O e-mail não pode mudar enquanto a requisição está em andamento.
@@ -65,8 +70,8 @@ class RecuperarSenha : AppCompatActivity() {
             emailField.isEnabled = false
             submit(btnEnviar) { if (perfil) it.requestOwnPasswordReset() else it.requestPasswordReset(email) }
         }
-        findViewById<android.widget.TextView>(R.id.txtJaTenhoCodigo).setOnClickListener {
-            if (!profileReady) return@setOnClickListener
+        jaTenhoCodigo.setOnClickListener {
+            if (!profileReady || submissionBusy) return@setOnClickListener
             val email = input(R.id.etEmail)
             if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 startActivity(Intent(this, RedefinirSenha::class.java).putExtra("email", email))

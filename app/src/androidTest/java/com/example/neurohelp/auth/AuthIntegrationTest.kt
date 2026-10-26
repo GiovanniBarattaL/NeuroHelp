@@ -150,4 +150,41 @@ class AuthIntegrationTest {
             assertTrue(photoFailureMessage(e).contains("404"))
         }
     }
+
+    @Test fun passwordResetUsesThePublicContract() = runBlocking {
+        val response = Response(200, "{}")
+        var path = ""
+        val service = ApiService(session, "https://test.invalid", { path = it.path; response })
+        service.resetPassword("user@example.com", "12345678", "Senha!234")
+        assertEquals("/auth/redefinir-senha", path)
+        assertEquals("POST", response.requestMethod)
+        val body = JSONObject(response.sent.toString("UTF-8"))
+        assertEquals("12345678", body.getString("codigo"))
+        assertEquals("Senha!234", body.getString("novaSenha"))
+        assertNull(response.getRequestProperty("Authorization"))
+    }
+
+    @Test fun ownPasswordResetUsesBearerAndNoRecipientBody() = runBlocking {
+        session.save(jwt())
+        val response = Response(200, "{}")
+        var path = ""
+        val service = ApiService(session, "https://test.invalid", { path = it.path; response })
+        service.requestOwnPasswordReset()
+        assertEquals("/api/conta/recuperacao-senha", path)
+        assertEquals("POST", response.requestMethod)
+        assertNotNull(response.getRequestProperty("Authorization"))
+        assertEquals(0, response.sent.size())
+    }
+
+    @Test fun registrationCodeIsRequestedAndIncludedInRegistration() = runBlocking {
+        val first = Response(200, "{}")
+        var path = ""
+        ApiService(session, "https://test.invalid", { path = it.path; first })
+            .requestRegistrationEmail("user@example.com")
+        assertEquals("/cadastro/email/solicitar", path)
+        assertEquals("user@example.com", JSONObject(first.sent.toString("UTF-8")).getString("email"))
+        val second = Response(200, "ok")
+        api(second).register(false, mapOf("email" to "user@example.com", "codigoEmail" to "12345678"))
+        assertEquals("12345678", JSONObject(second.sent.toString("UTF-8")).getString("codigoEmail"))
+    }
 }

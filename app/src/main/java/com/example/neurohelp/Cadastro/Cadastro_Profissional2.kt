@@ -61,10 +61,7 @@ class Cadastro_Profissional2 : AppCompatActivity() {
         val btnCadastrar =
             findViewById<Button>(R.id.btnCadastrar)
 
-        bindSubmission(btnCadastrar) {
-            Toast.makeText(this, "Cadastro realizado. Entre com seu e-mail e senha.", Toast.LENGTH_LONG).show()
-            goLogin()
-        }
+        bindCadastroEmail(btnCadastrar)
         btnCadastrar.setOnClickListener {
             val professionOk = validate(R.id.etProfissao, input(R.id.etProfissao) in profissoes, "Selecione uma profissão da lista")
             val registroOk = validate(R.id.etRegistroProfissional, input(R.id.etRegistroProfissional).isNotBlank(), "Informe o número do registro profissional")
@@ -80,7 +77,7 @@ class Cadastro_Profissional2 : AppCompatActivity() {
                 "profissao" to input(R.id.etProfissao)
             )
             val completeFields = fields + ADDRESS_KEYS.associateWith { intent.getStringExtra(it).orEmpty() }
-            submit(btnCadastrar) { it.register(true, completeFields) }
+            iniciarConfirmacaoCadastro(true, completeFields)
         }
     }
 }
