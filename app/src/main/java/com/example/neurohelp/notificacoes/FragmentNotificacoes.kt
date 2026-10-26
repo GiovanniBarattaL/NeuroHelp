@@ -72,7 +72,7 @@ class FragmentNotificacoes : Fragment() {
             when (resultado.getString(DetalhesConsultaDialogFragment.EXTRA_ACAO)) {
                 DetalhesConsultaDialogFragment.ACAO_CONFIRMAR -> {
                     // TODO: confirmar presença na API (consulta.id)
-                    Toast.makeText(requireContext(), "Consulta confirmada!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, Toast.LENGTH_LONG).show()
                 }
                 DetalhesConsultaDialogFragment.ACAO_ALTERAR_CANCELAR -> abrirDetalheConsulta(consulta)
             }

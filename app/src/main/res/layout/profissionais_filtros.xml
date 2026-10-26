@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version='1.0' encoding='utf-8'?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:paddingStart="10dp"
@@ -11,10 +10,7 @@
     android:paddingBottom="8dp"
     android:scrollbars="none">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
         <!-- ESPECIALIDADE -->
 
@@ -23,59 +19,64 @@
             android:layout_height="wrap_content"
             android:text="Especialidade"
             android:textColor="#35C979"
-            android:textSize="10sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:fontFamily="@font/nunito_black" />
 
         <CheckBox
             android:id="@+id/checkEspecialidade1"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Exemplo de Especialidade"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/checkEspecialidade2"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Exemplo de Especialidade"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/checkEspecialidade3"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Exemplo de Especialidade"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/checkEspecialidade4"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Exemplo de Especialidade"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/checkEspecialidade5"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Exemplo de Especialidade"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <!-- TIPO DE ATENDIMENTO -->
 
@@ -85,39 +86,42 @@
             android:layout_marginTop="5dp"
             android:text="Tipo de atendimento"
             android:textColor="#35C979"
-            android:textSize="10sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:fontFamily="@font/nunito_black" />
 
         <CheckBox
             android:id="@+id/checkOnline"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Online"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/checkPresencial"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Presencial"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/checkHibrido"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Híbrido"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:textColor="#000000"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <!-- LOCALIZAÇÃO -->
 
@@ -127,7 +131,7 @@
             android:layout_marginTop="5dp"
             android:text="Localização"
             android:textColor="#35C979"
-            android:textSize="10sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:fontFamily="@font/nunito_black" />
 
@@ -145,66 +149,71 @@
             android:layout_marginTop="5dp"
             android:text="Avaliação"
             android:textColor="#35C979"
-            android:textSize="10sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:fontFamily="@font/nunito_black" />
 
         <CheckBox
             android:id="@+id/check5Estrelas"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="★★★★★  (5)"
             android:textColor="#FFA500"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/check4Estrelas"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="★★★★☆  (4)"
             android:textColor="#FFA500"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/check3Estrelas"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="★★★☆☆  (3)"
             android:textColor="#FFA500"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/check2Estrelas"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="★★☆☆☆  (2)"
             android:textColor="#FFA500"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/check1Estrela"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="★☆☆☆☆  (1)"
             android:textColor="#FFA500"
-            android:textSize="9sp"
+            android:textSize="12sp"
             android:fontFamily="@font/nunito"
-            android:padding="0dp" />
+            android:padding="0dp"
+            android:minHeight="48dp" />
 
         <!-- APLICAR FILTROS -->
 
         <TextView
             android:id="@+id/btnAplicarFiltros"
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:background="@drawable/botao_gradiente"
             android:clickable="true"
@@ -213,15 +222,18 @@
             android:gravity="center"
             android:text="Aplicar Filtros"
             android:textColor="#FFFFFF"
-            android:textSize="8sp"
-            android:textStyle="bold" />
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:minHeight="48dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
         <!-- LIMPAR FILTROS -->
 
         <TextView
             android:id="@+id/btnLimparFiltros"
             android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@drawable/bg_btn_perfil"
             android:clickable="true"
@@ -230,8 +242,11 @@
             android:gravity="center"
             android:text="Limpar Filtros"
             android:textColor="#073B5C"
-            android:textSize="8sp"
-            android:textStyle="bold" />
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:minHeight="48dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
     </LinearLayout>
 

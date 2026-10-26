@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Tela Privacidade e Segurança — layout conforme o Figma -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/privacidadeRoot"
@@ -23,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:descendantFocusability="afterDescendants"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,10 +62,7 @@
             android:contentDescription="Responsável"
             android:src="@drawable/ic_secao_responsavel" />
 
-        <TextView
-            style="@style/TituloSecaoPerfil"
-            android:layout_marginStart="6dp"
-            android:text="Informações do responsável" />
+        <TextView style="@style/TituloSecaoPerfil" android:layout_marginStart="6dp" android:text="Informações do responsável"/>
     </LinearLayout>
 
     <LinearLayout
@@ -77,14 +75,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="4.5dp"
             android:layout_weight="3"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -98,18 +97,22 @@
                 android:enabled="false"
                 android:hint="XXXXXXXXXXXX"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName|textCapWords" />
+                android:inputType="textPersonName|textCapWords"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4.5dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -123,7 +126,10 @@
                 android:enabled="false"
                 android:hint="Fem"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="text"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 
@@ -137,14 +143,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -158,7 +165,12 @@
                 android:enabled="false"
                 android:hint="(11) 99999-9999"
                 android:importantForAutofill="no"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content"     android:maxLength="11"
+                    android:digits="0123456789"
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -172,14 +184,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="4.5dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -189,22 +202,28 @@
 
             <EditText
                 android:id="@+id/etRespCpf"
+                    android:maxLength="11"
+                    android:digits="0123456789"
                 style="@style/CampoPerfil"
                 android:enabled="false"
                 android:hint="***.***.***-**"
                 android:importantForAutofill="no"
-                android:inputType="number" />
+                android:inputType="number"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4.5dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -218,7 +237,11 @@
                 android:enabled="false"
                 android:hint="dd/mm/aaaa"
                 android:importantForAutofill="no"
-                android:inputType="date" />
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content"     android:maxLength="10"
+                    android:inputType="date"
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -232,14 +255,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="4.5dp"
             android:layout_weight="3"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -253,18 +277,22 @@
                 android:enabled="false"
                 android:hint="Rio de Janeiro"
                 android:importantForAutofill="no"
-                android:inputType="textCapWords" />
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4.5dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -279,7 +307,11 @@
                 android:hint="RJ"
                 android:importantForAutofill="no"
                 android:inputType="textCapCharacters"
-                android:maxLength="2" />
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content"     android:maxLength="2"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -303,10 +335,7 @@
             android:contentDescription="Dependente"
             android:src="@drawable/ic_secao_dependente" />
 
-        <TextView
-            style="@style/TituloSecaoPerfil"
-            android:layout_marginStart="6dp"
-            android:text="Informações do dependente" />
+        <TextView style="@style/TituloSecaoPerfil" android:layout_marginStart="6dp" android:text="Informações do dependente"/>
     </LinearLayout>
 
     <LinearLayout
@@ -319,14 +348,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -340,7 +370,10 @@
                 android:enabled="false"
                 android:hint="XXXXXXXXXXX"
                 android:importantForAutofill="no"
-                android:inputType="textPersonName|textCapWords" />
+                android:inputType="textPersonName|textCapWords"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 
@@ -354,14 +387,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="4.5dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -371,22 +405,28 @@
 
             <EditText
                 android:id="@+id/etDepCpf"
+                    android:maxLength="11"
+                    android:digits="0123456789"
                 style="@style/CampoPerfil"
                 android:enabled="false"
                 android:hint="***.***.***-**"
                 android:importantForAutofill="no"
-                android:inputType="number" />
+                android:inputType="number"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="4.5dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -400,7 +440,10 @@
                 android:enabled="false"
                 android:hint="Masc"
                 android:importantForAutofill="no"
-                android:inputType="text" />
+                android:inputType="text"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 
@@ -414,14 +457,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -433,9 +477,13 @@
                 android:id="@+id/etDepDataNasc"
                 style="@style/CampoPerfil"
                 android:enabled="false"
-                android:hint="dd/aa/mmmm"
+                android:hint="dd/mm/aaaa"
                 android:importantForAutofill="no"
-                android:inputType="date" />
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content"     android:maxLength="10"
+                    android:inputType="date"
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -459,7 +507,7 @@
         <CheckBox
             android:id="@+id/checkDiagSim"
             style="@style/CheckDiagnostico"
-            android:enabled="false" 
+            android:enabled="false"
             android:checked="true"
             android:text="Sim, possui diagnóstico" />
 
@@ -497,10 +545,7 @@
             android:contentDescription="Segurança"
             android:src="@drawable/ic_secao_seguranca" />
 
-        <TextView
-            style="@style/TituloSecaoPerfil"
-            android:layout_marginStart="6dp"
-            android:text="Segurança" />
+        <TextView style="@style/TituloSecaoPerfil" android:layout_marginStart="6dp" android:text="Segurança"/>
     </LinearLayout>
 
     <LinearLayout
@@ -513,14 +558,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -534,7 +580,11 @@
                 android:enabled="false"
                 android:hint="xxx******@gmail.com"
                 android:importantForAutofill="no"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content"     android:maxLength="254"
+                />
         </LinearLayout>
     </LinearLayout>
 
@@ -548,14 +598,15 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_campo_perfil"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:minHeight="48dp">
 
             <ImageView
                 android:layout_width="16dp"
@@ -569,7 +620,10 @@
                 android:enabled="false"
                 android:hint="************"
                 android:importantForAutofill="no"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 

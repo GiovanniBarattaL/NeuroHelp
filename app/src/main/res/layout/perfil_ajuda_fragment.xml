@@ -126,41 +126,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="neurohelp.suporte@gmail.com"
+                        android:text="@string/email_suporte"
                         android:textColor="#073B5C"
                         android:textSize="12sp"
                         android:fontFamily="@font/nunito" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/itemInstagramSuporte"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_insta"
-                        app:tint="#47C777" />
-
-                    <TextView
-                        android:id="@+id/txtInstagramSuporte"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="@NeuroHelp"
-                        android:textColor="#073B5C"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/nunito" />
-
-                </LinearLayout>
 
             </LinearLayout>
 

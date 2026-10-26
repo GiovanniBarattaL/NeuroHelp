@@ -239,12 +239,11 @@ class FragmentAgendarConsulta : Fragment() {
         //       na edição, atualizar a consulta existente em vez de criar outra)
         Toast.makeText(
             requireContext(),
-            if (edicao) R.string.agendar_consulta_alterada else R.string.agendar_consulta_agendada,
-            Toast.LENGTH_SHORT
+            R.string.recurso_nao_disponivel,
+            Toast.LENGTH_LONG
         ).show()
 
-        // Volta para a Agenda
-        irParaAba(R.id.nav_agenda)
+        // Mantém o formulário e os dados digitados: nenhuma consulta foi salva.
     }
 
     // ---------------------------------------------------------------

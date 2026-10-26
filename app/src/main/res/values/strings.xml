@@ -74,4 +74,10 @@
 
     <!-- Notificações do profissional: "Pct." = paciente -->
     <string name="notificacao_prof_paciente">Pct. %1$s</string>
+    <string name="recurso_nao_disponivel">Esta função ainda não está disponível. Nenhuma alteração foi salva.</string>
+    <string name="email_suporte">espectrocare@gmail.com</string>
+    <string name="sair_app_titulo">Sair do app</string>
+    <string name="sair_app_pergunta">Quer mesmo sair do app?</string>
+    <string name="sair_app_confirmar">Sair</string>
+    <string name="sair_app_cancelar">Cancelar</string>
 </resources>

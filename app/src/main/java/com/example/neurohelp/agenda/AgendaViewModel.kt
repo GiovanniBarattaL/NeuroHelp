@@ -97,6 +97,8 @@ class AgendaViewModel(
                     .sortedBy { it.inicio }
 
                 _erro.value = false
+            } catch (e: kotlinx.coroutines.CancellationException) {
+                throw e
             } catch (e: Exception) {
                 consultasDoMes = emptyList()
                 _erro.value = true
@@ -121,7 +123,7 @@ class AgendaViewModel(
         _proximaConsulta.value =
             consultasDoMes.firstOrNull {
                 !it.inicio.before(Date())
-            } ?: consultasDoMes.firstOrNull()
+            }
     }
 
     /**
@@ -181,17 +183,9 @@ class AgendaViewModel(
             diasDepoisDoMes
         )
 
-        // Calcula quantos dias existem entre o início e o final
-        // do calendário
-        val quantidadeDias =
-            ((ultimoDia.timeInMillis - primeiroDia.timeInMillis)
-                    / (24L * 60L * 60L * 1000L))
-                .toInt() + 1
-
         val cursor = primeiroDia.clone() as Calendar
-
-        return (0 until quantidadeDias).map {
-
+        val datas = mutableListOf<DiaCalendario>()
+        while (!cursor.time.inicioDoDia().after(ultimoDia.time.inicioDoDia())) {
             val data = cursor.time
 
             val dia = DiaCalendario(
@@ -219,8 +213,9 @@ class AgendaViewModel(
                 1
             )
 
-            dia
+            datas += dia
         }
+        return datas
     }
 
     /**

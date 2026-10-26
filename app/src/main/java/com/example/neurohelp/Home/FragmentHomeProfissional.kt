@@ -36,9 +36,8 @@ class FragmentHomeProfissional : Fragment() {
 
         // Cabeçalho padrão (a Home é a tela raiz, então não mostra a seta de voltar)
         configurarCabecalhoPadrao(view, mostrarVoltar = false)
+        carregarSaudacao(view, R.id.txtBoasVindas)
 
-        // TODO: trocar "XXX" pelo nome do profissional quando a API informar
-        // view.findViewById<TextView>(R.id.txtBoasVindas).text = "Olá, Dr.(a) ${nome}"
 
         // Card "Aprendizagem" -> página de aprendizagem do site
         view.findViewById<View>(R.id.cardAprendizagem).setOnClickListener { abrirAprendizagem() }

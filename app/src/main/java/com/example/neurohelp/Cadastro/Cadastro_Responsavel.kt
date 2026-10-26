@@ -26,7 +26,7 @@ class Cadastro_Responsavel : AppCompatActivity() {
         aplicarInsetsNaRaiz(findViewById(R.id.cadastroResponsavelRoot))
         limitarLarguraDoConteudo(findViewById(R.id.conteudoCadastro))
 
-        hideFields(R.id.etDataNascimento, R.id.etCidade, R.id.etSexo)
+        hideFields(R.id.etDataNascimento, R.id.etSexo)
         findViewById<EditText>(R.id.etSenha).isSaveEnabled = false
         findViewById<EditText>(R.id.etConfirmarSenha).isSaveEnabled = false
         val btnVoltar =
@@ -52,18 +52,22 @@ class Cadastro_Responsavel : AppCompatActivity() {
             findViewById<Button>(R.id.btnProximo)
 
         btnProximo.text = "Cadastre-se"
-        bindCadastroEmail(btnProximo)
+        bindSubmission(btnProximo) {
+            Toast.makeText(this, "Cadastro realizado. Entre com seu e-mail e senha.", Toast.LENGTH_LONG).show()
+            goLogin()
+        }
         btnProximo.setOnClickListener {
             val personal = validatePersonal()
+            val addressOk = validateAddress()
             val credentialsOk = credentials(R.id.etEmail, R.id.etSenha, R.id.etConfirmarSenha)
             val emailOk = validate(R.id.etConfirmarEmail, input(R.id.etEmail) == input(R.id.etConfirmarEmail), "Os e-mails não coincidem")
-            if (!personal || !credentialsOk || !emailOk) return@setOnClickListener
+            if (!personal || !credentialsOk || !emailOk || !addressOk) return@setOnClickListener
             if (!findViewById<CheckBox>(R.id.checkTermos).isChecked) {
                 Toast.makeText(this, "Aceite os termos para continuar.", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            val fields = registrationFields()
-            iniciarConfirmacaoCadastro(false, fields)
+            val fields = registrationFields() + addressFields()
+            submit(btnProximo) { it.register(false, fields) }
         }
     }
 }

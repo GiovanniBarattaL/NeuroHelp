@@ -21,6 +21,8 @@ fun Fragment.configurarCabecalhoPadrao(
     abrirPerfil: Boolean = true,
     aoVoltar: () -> Unit = { parentFragmentManager.popBackStack() }
 ) {
+    view.configurarCamposNumericos()
+    view.ajustarConteudoResponsivo()
     // Soma a altura real da barra de status/notch ao cabeçalho (antes era uma margem fixa de 30dp)
     view.findViewById<View>(R.id.header)?.aplicarInsetNoTopo()
 

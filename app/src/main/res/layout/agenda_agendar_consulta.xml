@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Agendar / editar consulta do profissional (Figma "Group 234", telas 3 e 4).
-     Criar: botão "Agendar consulta". Editar: botão "Confirmar e alterar". -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -422,7 +421,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnAgendarConsulta"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:background="@drawable/botao_gradiente"
                 android:fontFamily="@font/nunito_black"
@@ -437,12 +436,17 @@
                 app:iconGravity="textStart"
                 app:iconPadding="6dp"
                 app:iconSize="16dp"
-                app:iconTint="#FFFFFF" />
+                app:iconTint="#FFFFFF"
+                android:minHeight="48dp"
+                android:minWidth="0dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:gravity="center" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnConfirmarAlteracao"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:backgroundTint="#FFFFFF"
                 android:fontFamily="@font/nunito"
@@ -460,7 +464,12 @@
                 app:iconSize="18dp"
                 app:iconTint="@null"
                 app:strokeColor="@color/agenda_verde"
-                app:strokeWidth="1dp" />
+                app:strokeWidth="1dp"
+                android:minHeight="48dp"
+                android:minWidth="0dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:gravity="center" />
 
         </LinearLayout>
 

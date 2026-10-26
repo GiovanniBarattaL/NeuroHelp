@@ -403,6 +403,10 @@
                     android:textSize="14sp" />
 
                 <LinearLayout
+                    android:id="@+id/itemEmailSobre"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -421,36 +425,13 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/nunito"
-                        android:text="espectrocare.suporte@gmail.com"
+                        android:text="@string/email_suporte"
                         android:textColor="#555555"
                         android:textSize="13sp" />
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        android:src="@drawable/ic_insta"
-                        app:tint="#1D8348" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/nunito"
-                        android:text="EspectroCare"
-                        android:textColor="#555555"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
 
             </LinearLayout>
 

@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-    Tela Privacidade e Segurança do PROFISSIONAL (Figma "Group 235"):
-    Informações pessoais, Endereço, Formação profissional, Documentos e Segurança.
-    A versão do responsável é a perfil_privacidade.xml.
--->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/privacidadeProfRoot"
@@ -27,6 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:descendantFocusability="afterDescendants"
         android:overScrollMode="ifContentScrolls"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,10 +68,7 @@
             android:contentDescription="Informações pessoais"
             android:src="@drawable/ic_secao_responsavel" />
 
-        <TextView
-            style="@style/TituloSecaoPerfil"
-            android:layout_marginStart="6dp"
-            android:text="Informações pessoais" />
+        <TextView style="@style/TituloSecaoPerfil" android:layout_marginStart="6dp" android:text="Informações pessoais"/>
     </LinearLayout>
 
     <LinearLayout
@@ -113,11 +107,12 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="Nome completo"
                     android:importantForAutofill="no"
-                    android:inputType="textPersonName|textCapWords" />
+                    android:inputType="textPersonName|textCapWords"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -159,11 +154,14 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="(11) 99999-9999"
                     android:importantForAutofill="no"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:singleLine="true"     android:maxLength="11"
+                    android:digits="0123456789"
+                />
             </LinearLayout>
         </LinearLayout>
 
@@ -202,14 +200,17 @@
 
                 <EditText
                     android:id="@+id/etProfCpf"
+                    android:maxLength="11"
+                    android:digits="0123456789"
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="***.***.***-**"
                     android:importantForAutofill="no"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -242,11 +243,13 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="Data de Nasc."
                     android:importantForAutofill="no"
-                    android:inputType="date" />
+                    android:singleLine="true"     android:maxLength="10"
+                    android:inputType="date"
+                />
             </LinearLayout>
         </LinearLayout>
 
@@ -274,10 +277,7 @@
             android:contentDescription="Endereço"
             android:src="@drawable/ic_secao_endereco" />
 
-        <TextView
-            style="@style/TituloSecaoPerfil"
-            android:layout_marginStart="6dp"
-            android:text="Endereço" />
+        <TextView style="@style/TituloSecaoPerfil" android:layout_marginStart="6dp" android:text="Endereço"/>
     </LinearLayout>
 
     <LinearLayout
@@ -319,11 +319,14 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="00000-000"
                     android:importantForAutofill="no"
-                    android:inputType="number" />
+                    android:singleLine="true"     android:maxLength="8"
+                    android:digits="0123456789"
+                    android:inputType="number"
+                />
             </LinearLayout>
         </LinearLayout>
 
@@ -359,11 +362,14 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="SP"
                     android:importantForAutofill="no"
-                    android:inputType="textCapCharacters" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true"     android:maxLength="2"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+                />
             </LinearLayout>
         </LinearLayout>
 
@@ -408,11 +414,12 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="São Paulo"
                     android:importantForAutofill="no"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapWords"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -448,11 +455,12 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="Bairro"
                     android:importantForAutofill="no"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapWords"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -497,11 +505,12 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="Rua, avenida..."
                     android:importantForAutofill="no"
-                    android:inputType="textPostalAddress" />
+                    android:inputType="textPostalAddress"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -537,11 +546,12 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="598"
                     android:importantForAutofill="no"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -569,10 +579,7 @@
             android:contentDescription="Formação profissional"
             android:src="@drawable/ic_secao_formacao" />
 
-        <TextView
-            style="@style/TituloSecaoPerfil"
-            android:layout_marginStart="6dp"
-            android:text="Formação profissional" />
+        <TextView style="@style/TituloSecaoPerfil" android:layout_marginStart="6dp" android:text="Formação profissional"/>
     </LinearLayout>
 
     <LinearLayout
@@ -605,11 +612,12 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="Ex.: Psicólogo(a) · CRP 06/123456"
                     android:importantForAutofill="no"
-                    android:inputType="textCapSentences" />
+                    android:inputType="textCapSentences"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 
@@ -637,10 +645,7 @@
             android:contentDescription="Documentos"
             android:src="@drawable/ic_secao_documentos" />
 
-        <TextView
-            style="@style/TituloSecaoPerfil"
-            android:layout_marginStart="6dp"
-            android:text="Documentos" />
+        <TextView style="@style/TituloSecaoPerfil" android:layout_marginStart="6dp" android:text="Documentos"/>
     </LinearLayout>
 
     <!-- Área de envio do documento: só responde ao toque depois de tocar em "Editar" -->
@@ -716,10 +721,7 @@
             android:contentDescription="Segurança"
             android:src="@drawable/ic_secao_seguranca" />
 
-        <TextView
-            style="@style/TituloSecaoPerfil"
-            android:layout_marginStart="6dp"
-            android:text="Segurança" />
+        <TextView style="@style/TituloSecaoPerfil" android:layout_marginStart="6dp" android:text="Segurança"/>
     </LinearLayout>
 
     <LinearLayout
@@ -758,11 +760,13 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="xxx******@gmail.com"
                     android:importantForAutofill="no"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"     android:maxLength="254"
+                />
             </LinearLayout>
         </LinearLayout>
 
@@ -804,11 +808,12 @@
                     style="@style/CampoPerfil"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:minHeight="40dp"
+                    android:minHeight="48dp"
                     android:enabled="false"
                     android:hint="************"
                     android:importantForAutofill="no"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
             </LinearLayout>
         </LinearLayout>
 

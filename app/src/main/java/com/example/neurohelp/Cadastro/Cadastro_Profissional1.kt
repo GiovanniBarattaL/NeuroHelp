@@ -24,17 +24,18 @@ class Cadastro_Profissional1 : AppCompatActivity() {
         limitarLarguraDoConteudo(findViewById(R.id.conteudoCadastro))
 
         // Credenciais coletadas apenas na segunda etapa, sem senhas em extras do Intent.
-        hideFields(R.id.etEmail, R.id.etSenha, R.id.etConfirmarSenha, R.id.etCep,
-            R.id.etCidade, R.id.etBairro, R.id.etLogradouro, R.id.etNumero)
+        hideFields(R.id.etEmail, R.id.etSenha, R.id.etConfirmarSenha)
         val btnProximo = findViewById<Button>(R.id.btnProximo)
 
         btnProximo.setOnClickListener {
-            if (!validatePersonal()) return@setOnClickListener
+            val personalOk = validatePersonal()
+            val addressOk = validateAddress()
+            if (!personalOk || !addressOk) return@setOnClickListener
             startActivity(Intent(this, Cadastro_Profissional2::class.java).apply {
                 putExtra("nome", input(R.id.etNome))
                 putExtra("cpf", input(R.id.etCpf))
                 putExtra("telefone", input(R.id.etTelefone))
-                putExtra("estado", input(R.id.etUf))
+                addressFields().forEach { (key, value) -> putExtra(key, value) }
             })
         }
 

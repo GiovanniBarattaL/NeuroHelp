@@ -41,6 +41,7 @@ class FragmentHome : Fragment() {
 
         // Cabeçalho padrão (a Home é a tela raiz, então não mostra a seta de voltar)
         configurarCabecalhoPadrao(view, mostrarVoltar = false)
+        carregarSaudacao(view, R.id.txtBoasVindasResponsavel)
 
         // Encontrar profissionais -> aba Profissionais
         configurarAtalho(view.findViewById(R.id.btnProfissionais)) {
@@ -67,6 +68,10 @@ class FragmentHome : Fragment() {
             irParaAba(R.id.nav_agenda)
         }
 
+        val conteudos = view.findViewById<android.widget.LinearLayout>(R.id.listaConteudosResponsavel)
+        for (i in 0 until conteudos.childCount) {
+            conteudos.getChildAt(i).setOnClickListener { abrirAprendizagem() }
+        }
         configurarProximaConsulta(view)
     }
 

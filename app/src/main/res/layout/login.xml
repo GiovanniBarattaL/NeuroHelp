@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+<?xml version='1.0' encoding='utf-8'?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -71,7 +70,6 @@
 
         <LinearLayout
             android:id="@+id/botoesTipoUsuario"
-            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -82,9 +80,8 @@
 
             <Button
                 android:id="@+id/btnPai"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:background="@drawable/botao_gradiente"
@@ -93,24 +90,42 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:backgroundTint="@null"
-                app:cornerRadius="10dp" />
+                app:cornerRadius="10dp"
+                android:minHeight="48dp"
+                android:minWidth="0dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:gravity="center"
+                android:fontFamily="@font/nunito_black"
+                android:textSize="14sp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp" />
 
             <Button
                 android:id="@+id/btnProfissional"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/botao_branco"
                 android:ellipsize="none"
                 android:gravity="center"
-                android:lines="1"
-                android:maxLines="1"
                 android:text="Sou profissional"
                 android:textAllCaps="false"
                 android:textColor="#04344E"
                 android:textStyle="bold"
-                app:backgroundTint="@null" />
+                app:backgroundTint="@null"
+                android:minHeight="48dp"
+                android:minWidth="0dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:fontFamily="@font/nunito_black"
+                android:textSize="14sp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp" />
 
         </LinearLayout>
 
@@ -146,7 +161,13 @@
                 android:textSelectHandle="@drawable/cursor_handle_meio"
                 android:textSelectHandleLeft="@drawable/cursor_handle_esquerda"
                 android:textSelectHandleRight="@drawable/cursor_handle_direita"
-                app:cursorColor="#47C777" />
+                app:cursorColor="#47C777"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
+                android:autofillHints="emailAddress"     android:maxLength="254"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,7 +187,8 @@
             app:cursorColor="#47C777"
             app:hintEnabled="true"
             app:hintTextColor="#47C777"
-            app:placeholderTextColor="#47C777">
+            app:placeholderTextColor="#47C777"
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtSenha"
@@ -182,7 +204,12 @@
                 android:textSelectHandle="@drawable/cursor_handle_meio"
                 android:textSelectHandleLeft="@drawable/cursor_handle_esquerda"
                 android:textSelectHandleRight="@drawable/cursor_handle_direita"
-                app:cursorColor="#47C777" />
+                app:cursorColor="#47C777"
+                android:singleLine="true"
+                android:minHeight="48dp"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone"
+                android:autofillHints="password" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -207,26 +234,20 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
-            android:layout_weight="1"
             android:background="@drawable/botao_gradiente"
             android:text="Entrar"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             app:backgroundTint="@null"
-            app:cornerRadius="10dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:fontFamily="@font/nunito"
-            android:text="ou continue com"
-            android:textColor="#9C9C9C"
-            android:textSize="14sp" />
+            app:cornerRadius="10dp"
+            android:minHeight="48dp"
+            android:minWidth="0dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:gravity="center" />
 
         <LinearLayout
             android:layout_width="wrap_content"

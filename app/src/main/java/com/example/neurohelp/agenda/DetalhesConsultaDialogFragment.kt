@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResult
+import com.example.neurohelp.ajustarConteudoResponsivo
 import com.example.neurohelp.R
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -42,6 +43,7 @@ class DetalhesConsultaDialogFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.ajustarConteudoResponsivo()
 
         val consulta = requireArguments().toConsulta()
         view.preencherDetalhesConsulta(consulta)

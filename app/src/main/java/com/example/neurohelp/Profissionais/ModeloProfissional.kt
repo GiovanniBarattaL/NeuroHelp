@@ -48,7 +48,7 @@ object ProfissionalMock {
         abordagem = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         publicoAlvo = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         sobreMim = LOREM,
-        whatsapp = "5511999999999", // TODO: número real do profissional (DDI + DDD + número)
+        whatsapp = "", // TODO: número real do profissional (DDI + DDD + número)
         avaliacoes = listOf(
             Avaliacao("XXXXXXX", 3.5, "2026-04-06", LOREM),
             Avaliacao("XXXXXXX", 3.5, "2026-04-06", LOREM),

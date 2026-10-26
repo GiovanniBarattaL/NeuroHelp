@@ -34,6 +34,13 @@ class FragmentSobre : Fragment() {
 
         // Cabeçalho padrão (voltar fecha esse fragment e volta pro anterior na back stack)
         configurarCabecalhoPadrao(view)
+        view.findViewById<View>(R.id.itemEmailSobre).setOnClickListener {
+            try {
+                startActivity(Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + getString(R.string.email_suporte))))
+            } catch (_: android.content.ActivityNotFoundException) {
+                android.widget.Toast.makeText(requireContext(), "Nenhum aplicativo de e-mail disponível.", android.widget.Toast.LENGTH_LONG).show()
+            }
+        }
 
         // Links do rodapé: abrem uma URL externa no navegador
         txtPoliticaPrivacidade.setOnClickListener {
@@ -51,6 +58,10 @@ class FragmentSobre : Fragment() {
 
     private fun abrirLink(url: String) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
+        try {
+            startActivity(intent)
+        } catch (_: android.content.ActivityNotFoundException) {
+            android.widget.Toast.makeText(requireContext(), "Nenhum navegador disponível para abrir este link.", android.widget.Toast.LENGTH_LONG).show()
+        }
     }
 }

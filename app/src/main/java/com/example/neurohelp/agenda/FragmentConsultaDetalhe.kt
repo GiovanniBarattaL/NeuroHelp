@@ -46,8 +46,7 @@ class FragmentConsultaDetalhe : Fragment() {
                 return@setOnClickListener
             }
             // TODO: enviar a solicitação para a API (consulta.id + texto)
-            Toast.makeText(requireContext(), "Solicitação enviada ao profissional", Toast.LENGTH_SHORT).show()
-            parentFragmentManager.popBackStack()
+            Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, Toast.LENGTH_LONG).show()
         }
 
         view.findViewById<View>(R.id.btnCancelarConsulta).setOnClickListener {
@@ -57,9 +56,8 @@ class FragmentConsultaDetalhe : Fragment() {
                 .setNegativeButton("Voltar", null)
                 .setPositiveButton("Cancelar consulta") { _, _ ->
                     // TODO: cancelar na API (consulta.id)
-                    Toast.makeText(requireContext(), "Consulta cancelada", Toast.LENGTH_SHORT).show()
-                    parentFragmentManager.popBackStack()
-                }
+                    Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, Toast.LENGTH_LONG).show()
+                        }
                 .show()
         }
     }

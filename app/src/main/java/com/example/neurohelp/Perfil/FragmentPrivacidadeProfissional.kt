@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.example.neurohelp.configurarDataNascimento
 import com.example.neurohelp.R
 import com.example.neurohelp.auth.ApiService
 import com.example.neurohelp.auth.SessionStore
@@ -59,6 +60,8 @@ class FragmentPrivacidadeProfissional : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         configurarCabecalhoPadrao(view)
+        configurarDataNascimento(view, R.id.etProfDataNasc)
+        view.findViewById<EditText>(R.id.etProfSenha).isSaveEnabled = false
 
         // Tablet/paisagem: formulário centralizado com largura máxima
         val maxPx = (LARGURA_MAX_DP * resources.displayMetrics.density).toInt()
@@ -117,10 +120,10 @@ class FragmentPrivacidadeProfissional : Fragment() {
                 val conta = JSONObject(api.protectedRequest("/api/auth/me"))
 
                 preencher(view, R.id.etProfNome, conta.optString("nome"))
-                preencher(view, R.id.etProfTelefone, conta.optString("telefone"))
-                preencher(view, R.id.etProfCpf, conta.optString("cpf"))
+                preencher(view, R.id.etProfTelefone, conta.optString("telefone").filter { it in '0'..'9' })
+                preencher(view, R.id.etProfCpf, conta.optString("cpf").filter { it in '0'..'9' })
                 preencher(view, R.id.etProfDataNasc, conta.optString("dataNascimento"))
-                preencher(view, R.id.etProfCep, conta.optString("cep"))
+                preencher(view, R.id.etProfCep, conta.optString("cep").filter { it in '0'..'9' })
                 preencher(view, R.id.etProfUf, conta.optString("estado"))
                 preencher(view, R.id.etProfCidade, conta.optString("cidade"))
                 preencher(view, R.id.etProfBairro, conta.optString("bairro"))
@@ -145,7 +148,8 @@ class FragmentPrivacidadeProfissional : Fragment() {
     private fun preencher(view: View, id: Int, texto: String) {
         // optString devolve "null" como texto quando o campo é nulo no JSON
         if (texto.isBlank() || texto == "null") return
-        view.findViewById<EditText>(id).setText(texto)
+        val campo = view.findViewById<EditText>(id)
+        if (!campo.isEnabled) campo.setText(texto)
     }
 
     private fun ids(view: View, vararg ids: Int): List<View> = ids.map { view.findViewById<View>(it) }
@@ -163,6 +167,10 @@ class FragmentPrivacidadeProfissional : Fragment() {
         var editando = false
 
         botao.setOnClickListener {
+            if (editando) {
+                android.widget.Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, android.widget.Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
             editando = !editando
 
             campos.forEach { it.isEnabled = editando }
@@ -193,6 +201,10 @@ class FragmentPrivacidadeProfissional : Fragment() {
         }
 
         botao.setOnClickListener {
+            if (editandoDocumentos) {
+                Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
             editandoDocumentos = !editandoDocumentos
             area.isEnabled = editandoDocumentos
             area.alpha = if (editandoDocumentos) 1f else 0.6f
@@ -207,11 +219,17 @@ class FragmentPrivacidadeProfissional : Fragment() {
     }
 
     private fun nomeDoArquivo(uri: Uri): String {
-        requireContext().contentResolver.query(uri, null, null, null, null)?.use { cursor ->
-            val coluna = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-            if (coluna >= 0 && cursor.moveToFirst()) return cursor.getString(coluna)
+        return try {
+            requireContext().contentResolver.query(uri, null, null, null, null)?.use { cursor ->
+                val coluna = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                if (coluna >= 0 && cursor.moveToFirst()) return cursor.getString(coluna)
+            }
+            "Arquivo selecionado"
+        } catch (_: SecurityException) {
+            "Arquivo indisponível"
+        } catch (_: IllegalArgumentException) {
+            "Arquivo indisponível"
         }
-        return uri.lastPathSegment ?: "Arquivo selecionado"
     }
 
     private fun esconderTeclado(view: View) {

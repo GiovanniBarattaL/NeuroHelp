@@ -78,7 +78,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/nunito_black"
                         android:maxLines="2"
-                        android:text="Olá, Dr.(a) XXX"
+                        android:text="Olá!"
                         android:textColor="#04344E"
                         android:textSize="@dimen/home_titulo_tamanho"
                         android:textStyle="bold" />

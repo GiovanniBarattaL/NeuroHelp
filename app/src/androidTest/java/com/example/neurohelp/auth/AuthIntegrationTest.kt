@@ -47,7 +47,14 @@ class AuthIntegrationTest {
             val response = Response(200, "Cadastrado com sucesso")
             var path = ""
             val service = ApiService(session, "https://test.invalid", { path = it.path; response })
-            service.register(professional, mapOf("nome" to "Teste", "cpf" to "12345678901", "email" to "a@b.com", "senha" to "senha"))
+            val fields = mapOf("nome" to "Teste", "cpf" to "12345678901", "email" to "a@b.com", "senha" to "senha",
+                "cep" to "01122000", "estado" to "SP", "cidade" to "São Paulo", "bairro" to "Bom Retiro",
+                "logradouro" to "Alameda Nothmann", "numero" to "598") +
+                if (professional) mapOf("profissao" to "Psicólogo", "numRegistro" to "06/123456") else emptyMap()
+            service.register(professional, fields)
+            val body = JSONObject(response.sent.toString("UTF-8"))
+            fields.forEach { (key, value) -> assertEquals(value, body.getString(key)) }
+            assertFalse(body.has("tipoVinculo"))
             assertEquals(if (professional) "/cadastro/profissional" else "/cadastro/responsavel", path)
             assertNull(session.token())
             assertNull(response.getRequestProperty("Authorization"))
@@ -108,4 +115,39 @@ class AuthIntegrationTest {
         } catch (_: IllegalArgumentException) { assertNull(session.token()) }
     }
 
+
+    @Test fun photoPutWithoutBodyIsConfirmedByGetWithoutRepeatingPut() = runBlocking {
+        session.save(jwt())
+        val data = "data:image/jpeg;base64,exemplo"
+        val responses = listOf(Response(204, ""), Response(200, JSONObject().put("fotoPerfil", data).toString()))
+        var calls = 0
+        val service = ApiService(session, "https://test.invalid", { responses[calls++] })
+        assertEquals(data, service.saveAccountPhoto(data))
+        assertEquals(2, calls)
+        assertEquals("PUT", responses[0].requestMethod)
+        assertEquals("GET", responses[1].requestMethod)
+    }
+
+    @Test fun photoGetReturningOldPhotoDoesNotReportSuccess() = runBlocking {
+        session.save(jwt())
+        val responses = listOf(Response(200, "Foto salva"),
+            Response(200, JSONObject().put("fotoPerfil", "data:image/jpeg;base64,antiga").toString()))
+        var calls = 0
+        val service = ApiService(session, "https://test.invalid", { responses[calls++] })
+        try {
+            service.saveAccountPhoto("data:image/jpeg;base64,nova")
+            fail("Não pode confirmar sucesso com a foto antiga")
+        } catch (_: PhotoConfirmationException) { assertEquals(2, calls) }
+    }
+
+    @Test fun missingPhotoEndpointKeepsItsSpecificError() = runBlocking {
+        session.save(jwt())
+        try {
+            api(Response(404, "")).saveAccountPhoto("data:image/jpeg;base64,exemplo")
+            fail()
+        } catch (e: ApiException) {
+            assertEquals(404, e.status)
+            assertTrue(photoFailureMessage(e).contains("404"))
+        }
+    }
 }

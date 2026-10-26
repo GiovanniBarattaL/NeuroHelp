@@ -64,7 +64,7 @@ class AuthSubmissionViewModel : ViewModel() {
 }
 
 // A requisição sobrevive à rotação; o ViewModel não mantém referências às telas.
-fun AppCompatActivity.bindSubmission(button: Button, stateChange: (SubmissionState) -> Unit = {}, success: () -> Unit) {
+fun AppCompatActivity.bindSubmission(button: Button, success: () -> Unit) {
     val model = ViewModelProvider(this)[AuthSubmissionViewModel::class.java]
     val label = button.text
     val parent = button.parent as ViewGroup
@@ -73,11 +73,17 @@ fun AppCompatActivity.bindSubmission(button: Button, stateChange: (SubmissionSta
         isIndeterminate = true
         visibility = View.GONE
     }
-    parent.addView(progress, parent.indexOfChild(button) + 1, ViewGroup.LayoutParams(48, 48))
+    val tamanho = (32 * resources.displayMetrics.density).toInt()
+    val progressParams = if (parent is android.widget.LinearLayout) {
+        android.widget.LinearLayout.LayoutParams(tamanho, tamanho).apply {
+            gravity = android.view.Gravity.CENTER_HORIZONTAL
+            topMargin = (8 * resources.displayMetrics.density).toInt()
+        }
+    } else ViewGroup.LayoutParams(tamanho, tamanho)
+    parent.addView(progress, parent.indexOfChild(button) + 1, progressParams)
     lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
             model.state.collect { state ->
-                stateChange(state)
                 button.isEnabled = !state.busy
                 button.text = if (state.busy) "Aguarde…" else label
                 progress.visibility = if (state.busy) View.VISIBLE else View.GONE
@@ -97,8 +103,11 @@ fun AppCompatActivity.registrationFields(): Map<String, String> = mapOf(
 )
 fun AppCompatActivity.validatePersonal(): Boolean {
     val name = validate(R.id.etNome, input(R.id.etNome).isNotBlank(), "Informe o nome")
-    val cpf = validate(R.id.etCpf, Cpf.valido(input(R.id.etCpf)), "CPF inválido. Confira os números informados.")
-    return name && cpf
+    val cpf = validate(R.id.etCpf, input(R.id.etCpf).replace(Regex("[^0-9]"), "").length == 11, "Informe um CPF com 11 dígitos")
+    val telefone = input(R.id.etTelefone)
+    val phoneOk = validate(R.id.etTelefone, telefone.isBlank() || telefone.length in 10..11,
+        "Informe o telefone com DDD (10 ou 11 dígitos)")
+    return name && cpf && phoneOk
 }
 fun AppCompatActivity.hideFields(vararg ids: Int) {
     ids.forEach { id ->
@@ -111,3 +120,21 @@ fun AppCompatActivity.hideFields(vararg ids: Int) {
 }
 
 fun goLoginFromPrincipal(activity: AppCompatActivity) { activity.goLogin() }
+
+// Mesmas chaves no Intent entre etapas e no corpo de cadastro da API.
+val ADDRESS_KEYS = listOf("cep", "estado", "cidade", "bairro", "logradouro", "numero")
+fun AppCompatActivity.addressFields(): Map<String, String> = mapOf(
+    "cep" to input(R.id.etCep).filter { it.isDigit() },
+    "estado" to input(R.id.etUf).uppercase(java.util.Locale.ROOT),
+    "cidade" to input(R.id.etCidade), "bairro" to input(R.id.etBairro),
+    "logradouro" to input(R.id.etLogradouro), "numero" to input(R.id.etNumero)
+)
+fun AppCompatActivity.validateAddress(): Boolean {
+    val cep = validate(R.id.etCep, input(R.id.etCep).filter { it.isDigit() }.length == 8, "Informe um CEP com 8 dígitos")
+    val ufs = setOf("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
+    val uf = validate(R.id.etUf, input(R.id.etUf).uppercase(java.util.Locale.ROOT) in ufs, "Informe uma UF válida")
+    val required = listOf(R.id.etCidade to "Informe a cidade", R.id.etBairro to "Informe o bairro",
+        R.id.etLogradouro to "Informe o logradouro", R.id.etNumero to "Informe o número residencial")
+    val complete = required.map { (id, message) -> validate(id, input(id).isNotBlank(), message) }.all { it }
+    return cep && uf && complete
+}

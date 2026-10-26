@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Tela de visualização do perfil de um profissional — layout conforme o Figma -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/perfilProfissionalRoot"
@@ -45,7 +45,8 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="14dp"
                 android:baselineAligned="false"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/topoPerfilProfissional">
 
                 <ImageView
                     android:id="@+id/imgFotoProfissional"
@@ -72,7 +73,8 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:minHeight="48dp">
 
                         <TextView
                             android:id="@+id/txtFavoritar"
@@ -248,14 +250,15 @@
             <LinearLayout
                 android:id="@+id/btnAgendarConsulta"
                 android:layout_width="match_parent"
-                android:layout_height="34dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="22dp"
                 android:background="@drawable/botao_gradiente"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:minHeight="48dp">
 
                 <ImageView
                     android:layout_width="18dp"
@@ -291,7 +294,7 @@
                 <EditText
                     android:id="@+id/edtComentario"
                     android:layout_width="0dp"
-                    android:layout_height="32dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_linha_comentario"
@@ -305,7 +308,8 @@
                     android:singleLine="true"
                     android:textColor="@color/azul_titulo"
                     android:textColorHint="#1F2D3D"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"
+                    android:minHeight="48dp" />
             </LinearLayout>
 
             <!-- ====================== NOTA MÉDIA + FILTROS ====================== -->
@@ -355,14 +359,15 @@
                 <LinearLayout
                     android:id="@+id/btnFiltrosAvaliacoes"
                     android:layout_width="104dp"
-                    android:layout_height="38dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:background="@drawable/bg_card_branco"
                     android:clickable="true"
                     android:elevation="1dp"
                     android:focusable="true"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:minHeight="48dp">
 
                     <ImageView
                         android:layout_width="16dp"
@@ -402,7 +407,10 @@
                 android:padding="10dp"
                 android:text="Ver mais"
                 android:textColor="#6B6B6B"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:minHeight="48dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
 
         </LinearLayout>
     </ScrollView>

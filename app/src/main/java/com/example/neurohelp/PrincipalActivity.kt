@@ -56,6 +56,20 @@ class PrincipalActivity : AppCompatActivity() {
         aplicarInsetsLateraisNaRaiz(findViewById(R.id.principalRoot))
 
         bottomNavigation = findViewById(R.id.bottomNavigation)
+        onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val insets = androidx.core.view.ViewCompat.getRootWindowInsets(window.decorView)
+                when {
+                    insets?.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime()) == true -> fecharTeclado()
+                    supportFragmentManager.backStackEntryCount > 0 -> supportFragmentManager.popBackStack()
+                    !supportFragmentManager.isStateSaved &&
+                        supportFragmentManager.findFragmentByTag(ConfirmarSaidaDialog.TAG) == null ->
+                        ConfirmarSaidaDialog().show(supportFragmentManager, ConfirmarSaidaDialog.TAG)
+                }
+            }
+        })
+
+        supportFragmentManager.addOnBackStackChangedListener { fecharTeclado() }
 
         // Sempre que uma tela fica visível (aba, botão da Home, seta de voltar...)
         // o ícone verde do menu de baixo acompanha a tela que está aberta.
@@ -107,6 +121,7 @@ class PrincipalActivity : AppCompatActivity() {
             else -> return false
         }
 
+        fecharTeclado()
         supportFragmentManager.popBackStack(
             null,
             FragmentManager.POP_BACK_STACK_INCLUSIVE
@@ -120,12 +135,19 @@ class PrincipalActivity : AppCompatActivity() {
         return true
     }
 
+    private fun fecharTeclado() {
+        val foco = currentFocus
+        foco?.clearFocus()
+        androidx.core.view.WindowCompat.getInsetsController(window, window.decorView)
+            .hide(androidx.core.view.WindowInsetsCompat.Type.ime())
+    }
+
     /** Qual aba do menu de baixo "é dona" de cada tela. */
     private fun abaDoFragment(fragment: Fragment): Int? = when (fragment) {
         is FragmentHome,
         is FragmentHomeProfissional -> R.id.nav_inicio
 
-        is FragmentProfissionais,
+        is FragmentProfissionais -> if (fragment.somenteFavoritos) R.id.nav_perfil else R.id.nav_profissionais
         is FragmentPerfilProfissional -> R.id.nav_profissionais
 
         is FragmentAgenda,

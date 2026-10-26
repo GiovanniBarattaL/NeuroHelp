@@ -19,42 +19,32 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
         session.save(token)
     }
     suspend fun register(profissional: Boolean, fields: Map<String, String>) {
-        val cpf = fields["cpf"]
-        if (cpf != null && cpf.isNotBlank() && !Cpf.valido(cpf))
-            throw ApiException(400, "CPF inválido. Confira os números informados.")
-        val accepted = setOf("nome", "email", "senha", "cpf", "telefone", "estado", "codigoEmail") +
-                if (profissional) setOf("numRegistro") else emptySet()
+        val accepted = setOf("nome", "email", "senha", "cpf", "telefone", "estado") +
+                ADDRESS_KEYS.toSet() + (if (profissional) setOf("numRegistro", "profissao") else emptySet())
         require(fields.keys.all { it in accepted })
-        if (!Regex("[0-9]{8}").matches(fields["codigoEmail"].orEmpty()))
-            throw ApiException(422, "Informe os 8 dígitos do código enviado ao seu e-mail.")
-        try {
-            request(if (profissional) "/cadastro/profissional" else "/cadastro/responsavel", "POST", JSONObject(fields))
-        } catch (e: ApiException) {
-            if (e.status == 422) throw ApiException(422, "E-mail não confirmado. Código inválido, expirado ou já utilizado. Confira o código ou solicite outro.")
-            throw e
-        }
+        request(if (profissional) "/cadastro/profissional" else "/cadastro/responsavel", "POST", JSONObject(fields))
     }
-    suspend fun requestRegistrationEmail(email: String) {
-        request("/cadastro/email/solicitar", "POST", JSONObject().put("email", email.trim().lowercase(java.util.Locale.ROOT)))
-    }
+    /**
+     * Pede o e-mail de redefinição de senha.
+     * CONFIRME COM O BACK-END: aqui usa POST /auth/esqueci-senha com {"email": ...}.
+     * Se o caminho ou o formato forem outros, ajuste só esta função.
+     */
     suspend fun requestPasswordReset(email: String) {
         request("/auth/esqueci-senha", "POST", JSONObject().put("email", email))
     }
-    suspend fun requestOwnPasswordReset() {
-        request("/api/conta/recuperacao-senha", "POST", null, true)
-    }
-    suspend fun resetPassword(email: String, codigo: String, novaSenha: String) {
-        try {
-            request("/auth/redefinir-senha", "POST", JSONObject().put("email", email)
-                .put("codigo", codigo).put("novaSenha", novaSenha))
-        } catch (e: ApiException) {
-            if (e.status == 400) throw ApiException(400, "Código inválido ou expirado. Confira a senha e o código; após cinco tentativas, solicite outro respeitando o intervalo mínimo de 60 segundos e os limites por período.")
-            throw e
-        }
-        session.clear()
-    }
     suspend fun protectedRequest(path: String, method: String = "GET", body: JSONObject? = null): String =
         request(path, method, body, true)
+    /** Aceita confirmação com foto, ou consulta o recurso após um PUT sem foto no corpo. */
+    suspend fun saveAccountPhoto(data: String): String {
+        val response = protectedRequest("/api/conta/foto", "PUT", JSONObject().put("fotoPerfil", data))
+        val returned = photoData(response)
+        if (returned != null) return returned
+        // Não repete PUT: uma resposta vazia/texto pode representar um envio concluído.
+        val persisted = photoData(protectedRequest("/api/conta/foto"))
+        if (persisted == null || persisted != data) throw PhotoConfirmationException()
+        return persisted
+    }
+
     suspend fun publicRequest(path: String): String = request(path, "GET", null)
 
     suspend fun professionalPhoto(path: String): ByteArray = withContext(Dispatchers.IO) {
@@ -127,4 +117,33 @@ internal fun java.io.InputStream.readBytesLimited(limit: Int): ByteArray {
         output.write(buffer, 0, count)
     }
     return output.toByteArray()
+}
+
+/** PUT aceito, mas a leitura não confirmou a foto enviada. */
+class PhotoConfirmationException : java.io.IOException()
+internal fun photoData(response: String): String? {
+    val value = response.trim()
+    val data = if (value.startsWith("data:image/")) value else try {
+        JSONObject(value).optString("fotoPerfil")
+    } catch (_: org.json.JSONException) { "" }
+    return data.takeIf { it.startsWith("data:image/") }
+}
+
+fun photoFailureMessage(error: Exception): String = when (error) {
+    is ApiException -> when (error.status) {
+        401 -> "Sua sessão expirou. Entre novamente para alterar a foto."
+        403 -> "O servidor não autorizou a alteração da foto nesta conta (403)."
+        404, 405 -> "O recurso de foto não está disponível no servidor (${error.status}). Informe esse código ao suporte."
+        413 -> "O servidor recusou o tamanho da foto. Tente uma imagem menor."
+        400, 415, 422 -> "O servidor recusou o formato enviado (${error.status}). Informe esse código ao suporte."
+        429 -> "Muitas tentativas. Aguarde um pouco antes de tentar novamente."
+        in 500..599 -> "O servidor apresentou uma falha ao salvar a foto (${error.status}). Tente novamente mais tarde."
+        else -> "Não foi possível salvar a foto (${error.status}). Tente novamente."
+    }
+    is PhotoConfirmationException -> "O envio foi aceito, mas não foi possível confirmar a foto salva na conta. Reabra o perfil para conferir antes de tentar de novo."
+    is SecurityException -> "Não foi possível acessar a foto escolhida. Abra a galeria e selecione a foto novamente."
+    is java.net.SocketTimeoutException -> "A conexão demorou demais. Reabra o perfil para conferir se a foto foi salva antes de tentar novamente."
+    is IllegalArgumentException -> "Não foi possível processar a imagem. Escolha outra foto de até 15 MB."
+    is java.io.IOException -> "Falha de conexão ou de leitura da foto. Verifique sua internet e selecione a imagem novamente."
+    else -> "Não foi possível concluir a alteração da foto. Tente outra imagem."
 }

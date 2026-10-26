@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import com.example.neurohelp.PrincipalActivity
 import com.example.neurohelp.R
 import com.example.neurohelp.agenda.Consulta
@@ -85,7 +87,7 @@ fun Fragment.ouvirResultadoDetalhesConsulta() {
         when (resultado.getString(DetalhesConsultaDialogFragment.EXTRA_ACAO)) {
             DetalhesConsultaDialogFragment.ACAO_CONFIRMAR ->
                 // TODO: confirmar presença na API
-                Toast.makeText(requireContext(), "Consulta confirmada!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, Toast.LENGTH_LONG).show()
             DetalhesConsultaDialogFragment.ACAO_ALTERAR_CANCELAR ->
                 abrirDetalheConsulta(resultado.toConsulta())
         }
@@ -99,7 +101,23 @@ private fun Fragment.confirmarCancelamentoConsulta() {
         .setNegativeButton("Voltar", null)
         .setPositiveButton("Cancelar consulta") { _, _ ->
             // TODO: cancelar na API (consulta.id)
-            Toast.makeText(requireContext(), "Consulta cancelada", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, Toast.LENGTH_LONG).show()
         }
         .show()
+}
+
+/** Reaproveita o endpoint de perfil já usado no app, sem manter referências após sair da tela. */
+fun Fragment.carregarSaudacao(raiz: View, tituloId: Int) {
+    viewLifecycleOwner.lifecycleScope.launch {
+        try {
+            val api = com.example.neurohelp.auth.ApiService(com.example.neurohelp.auth.SessionStore(requireContext()))
+            val conta = org.json.JSONObject(api.protectedRequest("/api/auth/me"))
+            val nome = conta.optString("nome").trim().takeIf { it.isNotEmpty() && it != "null" }
+            if (nome != null) raiz.findViewById<android.widget.TextView>(tituloId).text = "Olá, ${nome.substringBefore(' ')}!"
+        } catch (e: kotlinx.coroutines.CancellationException) {
+            throw e
+        } catch (_: Exception) {
+            // Sem resposta, mantém a saudação genérica em vez de inventar um nome.
+        }
+    }
 }

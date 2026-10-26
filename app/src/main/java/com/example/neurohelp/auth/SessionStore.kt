@@ -38,7 +38,7 @@ class SessionStore(context: Context) {
             if (isValid(value)) value else { clear(); null }
         }
     } catch (_: Exception) { clear(); null }
-    fun clear() { prefs.edit().clear().commit() }
+    fun clear() { prefs.edit().clear().commit(); ProfilePhoto.clear() }
 
     // Papel (responsável/profissional): não é segredo, mas some junto com a sessão (clear()).
     fun papel(): PapelUsuario = try {

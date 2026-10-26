@@ -37,6 +37,7 @@ fun ComponentActivity.ativarTelaCheia() {
  * padding da raiz, então nada fica escondido nem atrás do teclado.
  */
 fun Activity.aplicarInsetsNaRaiz(raiz: View) {
+    raiz.configurarCamposNumericos()
     val padL = raiz.paddingLeft
     val padT = raiz.paddingTop
     val padR = raiz.paddingRight
@@ -59,17 +60,39 @@ fun Activity.aplicarInsetsNaRaiz(raiz: View) {
 }
 
 /**
- * Para a tela principal (que tem menu inferior): só as laterais (notch em paisagem) e o teclado.
- * O topo é tratado pelo cabeçalho de cada tela e a base pelo próprio BottomNavigationView.
+ * A raiz é a única responsável pelas laterais e pela base da tela principal.
+ * O menu Material não deve reaplicar o mesmo espaço do sistema/teclado.
+ * Ao editar, o menu some e o formulário usa toda a área acima do teclado.
+ * O topo continua sendo tratado pelo cabeçalho de cada fragment.
  */
 fun Activity.aplicarInsetsLateraisNaRaiz(raiz: View) {
     val padL = raiz.paddingLeft
+    val padT = raiz.paddingTop
     val padR = raiz.paddingRight
+    val padB = raiz.paddingBottom
+    val menu = raiz.findViewById<View>(R.id.bottomNavigation)
+    val menuPadL = menu.paddingLeft
+    val menuPadT = menu.paddingTop
+    val menuPadR = menu.paddingRight
+    val menuPadB = menu.paddingBottom
+
+    // Substitui o listener automático do Material, que em versões antigas do
+    // Android pode interpretar o inset inferior do teclado como barra do sistema.
+    ViewCompat.setOnApplyWindowInsetsListener(menu) { v, insets ->
+        v.setPadding(menuPadL, menuPadT, menuPadR, menuPadB)
+        insets
+    }
     ViewCompat.setOnApplyWindowInsetsListener(raiz) { v, insets ->
-        val laterais = insets.getInsets(
+        val barras = insets.getInsets(
             WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout()
         )
-        v.setPadding(padL + laterais.left, v.paddingTop, padR + laterais.right, v.paddingBottom)
+        val teclado = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+        val digitando = insets.isVisible(WindowInsetsCompat.Type.ime())
+        menu.visibility = if (digitando) View.GONE else View.VISIBLE
+        v.setPadding(
+            padL + barras.left, padT, padR + barras.right,
+            padB + maxOf(barras.bottom, teclado)
+        )
         insets
     }
     ViewCompat.requestApplyInsets(raiz)
@@ -80,6 +103,8 @@ fun Activity.aplicarInsetsLateraisNaRaiz(raiz: View) {
  * view, assim o fundo branco do cabeçalho cobre a barra e o conteúdo (logo, sino) fica abaixo dela.
  */
 fun View.aplicarInsetNoTopo() {
+    if (getTag(R.id.tag_inset_topo) == true) return
+    setTag(R.id.tag_inset_topo, true)
     val padTopOriginal = paddingTop
     val alturaOriginal = layoutParams?.height ?: 0
     ViewCompat.setOnApplyWindowInsetsListener(this) { v, insets ->
@@ -103,6 +128,8 @@ fun View.aplicarInsetNoTopo() {
  * que o máximo, então nada muda.
  */
 fun View.limitarLargura(maxPx: Int) {
+    if (getTag(R.id.tag_limite_largura) == true) return
+    setTag(R.id.tag_limite_largura, true)
     val padEsq = paddingLeft
     val padDir = paddingRight
     addOnLayoutChangeListener { v, left, _, right, _, _, _, _, _ ->

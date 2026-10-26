@@ -14,8 +14,13 @@ import com.example.neurohelp.R
  * @param whatsapp número com DDI + DDD + número (ex.: 5511999999999)
  */
 fun Fragment.abrirWhatsAppProfissional(nome: String, whatsapp: String) {
+    val numero = whatsapp.filter { it.isDigit() }
+    if (numero.length !in 10..15) {
+        Toast.makeText(requireContext(), "Este profissional ainda não informou um contato para agendamento.", Toast.LENGTH_LONG).show()
+        return
+    }
     val mensagem = getString(R.string.profissional_mensagem_whatsapp, nome)
-    val uri = Uri.parse("https://wa.me/$whatsapp?text=${Uri.encode(mensagem)}")
+    val uri = Uri.parse("https://wa.me/$numero?text=${Uri.encode(mensagem)}")
 
     try {
         startActivity(Intent(Intent.ACTION_VIEW, uri))

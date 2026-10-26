@@ -22,9 +22,9 @@ A URL padrão é https://espectrocare.onrender.com. Alterar com a propriedade ES
 | Responsável | POST /cadastro/responsavel | nome, email, senha, cpf, telefone, estado | 200 texto |
 | Profissional | POST /cadastro/profissional | anteriores + numRegistro | 200 texto |
 
-Os cadastros recebem UserResp/UserProf diretamente, não DTOs. email, senha e cpf têm restrições NOT NULL no banco; nome também é solicitado no formulário. Não foram inventadas exigências de tamanho de senha ou formatos de registro. CPF tem verificação de 11 dígitos, sem validação de dígitos verificadores. Não enviar id, authorities, confirmação de senha/e-mail ou campos adicionais.
+Os cadastros recebem UserResp/UserProf diretamente, não DTOs. email, senha e cpf têm restrições NOT NULL no banco; nome também é solicitado no formulário. Não foram inventadas exigências de tamanho de senha ou formatos de registro. CPF tem verificação de 11 dígitos, sem validação de dígitos verificadores. Não enviar id, authorities ou confirmação de senha/e-mail. Os campos adicionais desta atualização estão descritos ao final.
 
-No profissional, a primeira etapa coleta nome, CPF (campo adicionado), telefone e UF. E-mail e senha são coletados somente na segunda etapa. Apenas dados não secretos passam por Intent; senhas não são persistidas nem incluídas em extras. A morte do processo exige redigitar a senha. Campos sem suporte no contrato foram ocultados: endereço detalhado, nascimento, sexo, vínculo, profissão e especialidade. O estilo visual dos campos e das telas foi mantido. Uma nota informa o escopo dos dados salvos.
+No profissional, a primeira etapa coleta nome, CPF, telefone e endereço completo. E-mail e senha são coletados somente na segunda etapa. Apenas dados não secretos passam por Intent; senhas não são persistidas nem incluídas em extras. A morte do processo exige redigitar a senha. Nascimento, sexo e especialidade permanecem ocultos. O tipo de vínculo foi removido conforme solicitado. O cadastro profissional mostra profissão e número do registro.
 
 O seletor pai/mãe ou profissional do login mantém seu estilo, mas não determina autorização: a API não recebe perfil nem o retorna no login. Ambos usam a tela principal existente. Não foi criada uma área exclusiva de profissional ou uma regra de perfil.
 
@@ -58,3 +58,19 @@ Limitações encontradas no backend atual:
 - CORS atual permite padrões '*', e controllers usam CrossOrigin '*'. Recomenda-se restringir às origens web necessárias em trabalho separado, após listar os domínios reais do site. Isso não foi modificado para evitar impacto sem confirmação.
 
 Para desfazer, retirar a branch/PR antes do merge ou reverter o commit da integração após o merge. Não é necessária migração no banco.
+
+
+## Campos adicionados aos cadastros
+
+O aplicativo envia `cep` (8 dígitos), `estado` (UF em maiúsculas), `cidade`,
+`bairro`, `logradouro` e `numero` em ambos os cadastros.
+O cadastro profissional também envia `profissao` e `numRegistro`.
+O cadastro do responsável não solicita nem envia tipo de vínculo.
+
+Esses campos são obrigatórios no aplicativo. O endereço do profissional é
+preservado entre a primeira e a segunda etapa. As credenciais continuam sendo
+coletadas somente na segunda etapa.
+
+O backend não está incluído neste projeto. Seus DTOs, entidades e banco devem
+aceitar e persistir esses campos; não foi possível verificar a persistência no
+servidor nesta entrega. Os termos continuam exigindo aceite explícito.

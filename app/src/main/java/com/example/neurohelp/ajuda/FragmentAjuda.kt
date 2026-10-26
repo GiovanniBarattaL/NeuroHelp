@@ -32,7 +32,6 @@ class FragmentAjuda : Fragment() {
 
         val rvFaq = view.findViewById<RecyclerView>(R.id.rvFaq)
         val itemEmailSuporte = view.findViewById<LinearLayout>(R.id.itemEmailSuporte)
-        val itemInstagramSuporte = view.findViewById<LinearLayout>(R.id.itemInstagramSuporte)
 
         // Cabeçalho padrão (voltar fecha esse fragment e volta pro anterior na back stack)
         configurarCabecalhoPadrao(view)
@@ -41,15 +40,15 @@ class FragmentAjuda : Fragment() {
         val listaFaq = mutableListOf(
             FaqItem(
                 pergunta = "Como faço para agendar uma consulta?",
-                resposta = "Acesse a aba Agenda, escolha o profissional desejado e selecione um horário disponível."
+                resposta = "Acesse a aba Profissionais e use Agendar Consulta para entrar em contato, quando o profissional tiver um contato disponível."
             ),
             FaqItem(
                 pergunta = "Como funciona a consulta online?",
-                resposta = "As consultas online acontecem por videochamada, direto pelo app, no horário marcado."
+                resposta = "O formato, o horário e o meio de atendimento são combinados com o profissional."
             ),
             FaqItem(
                 pergunta = "Posso cancelar ou remarcar uma consulta?",
-                resposta = "Sim, você pode cancelar ou remarcar até 24h antes pela tela de detalhes da consulta."
+                resposta = "Entre em contato com o profissional para combinar um cancelamento ou uma nova data."
             ),
             FaqItem(
                 pergunta = "Profissão",
@@ -63,15 +62,14 @@ class FragmentAjuda : Fragment() {
         // Abre o app de e-mail com o destinatário já preenchido
         itemEmailSuporte.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO).apply {
-                data = Uri.parse("mailto:neurohelp.suporte@gmail.com")
+                data = Uri.parse("mailto:" + getString(R.string.email_suporte))
             }
-            startActivity(intent)
+            try {
+                startActivity(intent)
+            } catch (_: android.content.ActivityNotFoundException) {
+                android.widget.Toast.makeText(requireContext(), "Nenhum aplicativo disponível para abrir este link.", android.widget.Toast.LENGTH_LONG).show()
+            }
         }
 
-        // Abre o perfil do Instagram no navegador/app
-        itemInstagramSuporte.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://instagram.com/neurohelp"))
-            startActivity(intent)
-        }
     }
 }

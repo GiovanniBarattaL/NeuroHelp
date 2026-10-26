@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cadastroProfissionalRoot"
@@ -28,9 +29,7 @@
             android:paddingBottom="24dp">
 
             <!-- VOLTAR (padrão em todas as telas) -->
-            <ImageView
-                android:id="@+id/btnVoltar"
-                style="@style/BotaoVoltar" />
+            <ImageView android:id="@+id/btnVoltar" style="@style/BotaoVoltar"/>
 
             <!-- LOGO -->
             <ImageView
@@ -64,14 +63,6 @@
                 android:textColor="#04344E"
                 android:textSize="14sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="8dp"
-                android:text="Nesta etapa são salvos os dados de identificação, contato e acesso. Informações adicionais estarão disponíveis em uma atualização futura."
-                android:textColor="#04344E"
-                android:textSize="12sp" />
 
             <!-- BARRA DE ETAPAS -->
             <ImageView
@@ -98,14 +89,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:hint="Profissão">
+                android:hint="Profissão"
+                app:endIconMode="dropdown_menu">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
                     android:id="@+id/etProfissao"
                     style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapWords" />
+                    android:inputType="none"
+                    android:importantForAutofill="no"
+                    android:dropDownHeight="wrap_content"
+                    android:singleLine="true"
+                    android:minHeight="48dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- ÁREA DE ATUAÇÃO -->
@@ -122,7 +118,9 @@
                     style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapSentences" />
+                    android:inputType="textCapSentences"
+                    android:singleLine="true"
+                    android:minHeight="48dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- REGISTRO PROFISSIONAL -->
@@ -132,14 +130,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:hint="Nº de Registro Profissional">
+                android:hint="Nº de registro profissional">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etRegistroProfissional"
                     style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:minHeight="48dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- SEGURANÇA -->
@@ -165,7 +165,10 @@
                     style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:minHeight="48dp"     android:maxLength="254"
+                />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- SENHA -->
@@ -183,7 +186,9 @@
                     style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:minHeight="48dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- CONFIRMAR SENHA -->
@@ -201,7 +206,9 @@
                     style="@style/Widget.App.TextInputEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:minHeight="48dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <!-- BOTÃO CADASTRAR -->
@@ -218,7 +225,14 @@
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:backgroundTint="@null"
-                app:cornerRadius="10dp" />
+                app:cornerRadius="10dp"
+                android:minHeight="48dp"
+                android:minWidth="0dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:gravity="center" />
 
             <!-- RODAPÉ -->
             <LinearLayout

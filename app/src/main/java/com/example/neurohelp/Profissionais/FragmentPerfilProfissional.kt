@@ -18,6 +18,7 @@ import androidx.core.os.bundleOf
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.fragment.app.Fragment
+import com.example.neurohelp.auth.ehProfissional
 import com.example.neurohelp.R
 import com.example.neurohelp.configurarCabecalhoPadrao
 import java.util.Locale
@@ -129,17 +130,17 @@ class FragmentPerfilProfissional : Fragment() {
         val txtFavoritar = view.findViewById<TextView>(R.id.txtFavoritar)
         val imgFavoritar = view.findViewById<ImageView>(R.id.imgFavoritar)
 
+        val store = FavoritosStore(requireContext())
+        favoritado = store.contem(profissional.id)
+        fun atualizar() {
+            txtFavoritar.text = getString(if (favoritado) R.string.profissional_favoritado else R.string.profissional_favoritar)
+            imgFavoritar.setImageResource(if (favoritado) R.drawable.ic_favorito_cheio else R.drawable.ic_favorito)
+        }
+        atualizar()
         btnFavoritar.setOnClickListener {
             favoritado = !favoritado
-
-            if (favoritado) {
-                txtFavoritar.text = getString(R.string.profissional_favoritado)
-                imgFavoritar.setImageResource(R.drawable.ic_favorito_cheio)
-            } else {
-                txtFavoritar.text = getString(R.string.profissional_favoritar)
-                imgFavoritar.setImageResource(R.drawable.ic_favorito)
-            }
-            // TODO: salvar/remover o favorito na API/Firestore/Room
+            store.definir(profissional.id, favoritado)
+            atualizar()
         }
     }
 
@@ -147,8 +148,10 @@ class FragmentPerfilProfissional : Fragment() {
     // Agendar consulta (abre o WhatsApp do profissional)
     // ---------------------------------------------------------------
     private fun configurarAgendar(view: View) {
-        view.findViewById<View>(R.id.btnAgendarConsulta).setOnClickListener {
-            abrirWhatsAppProfissional(profissional.nome, profissional.whatsapp)
+        view.findViewById<View>(R.id.btnAgendarConsulta).apply {
+            isEnabled = !ehProfissional()
+            if (!isEnabled) setBackgroundResource(R.drawable.botao_desabilitado)
+            else setOnClickListener { abrirWhatsAppProfissional(profissional.nome, profissional.whatsapp) }
         }
     }
 
@@ -193,7 +196,13 @@ class FragmentPerfilProfissional : Fragment() {
 
         recarregar()
 
-        // TODO: enviar o comentário digitado em R.id.edtComentario (actionSend)
+        view.findViewById<android.widget.EditText>(R.id.edtComentario).setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_SEND) {
+                android.widget.Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, android.widget.Toast.LENGTH_LONG).show()
+                true
+            } else false
+        }
+        // TODO: enviar o comentário quando o endpoint estiver disponível.
     }
 
     private fun avaliacoesFiltradas(): List<Avaliacao> =
@@ -228,8 +237,13 @@ class FragmentPerfilProfissional : Fragment() {
             nota to conteudo.findViewById<CheckBox>(idCheck).also { it.isChecked = nota in notasFiltradas }
         }
 
-        val largura = dp(200)
-        val popup = PopupWindow(conteudo, largura, ViewGroup.LayoutParams.WRAP_CONTENT, true).apply {
+        val quadro = android.graphics.Rect()
+        requireActivity().window.decorView.getWindowVisibleDisplayFrame(quadro)
+        val largura = minOf(dp(300), (quadro.width() - dp(32)).coerceAtLeast(1))
+        val alturaMax = (quadro.height() * 0.75f).toInt().coerceAtLeast(1)
+        conteudo.measure(View.MeasureSpec.makeMeasureSpec(largura, View.MeasureSpec.EXACTLY),
+            View.MeasureSpec.makeMeasureSpec(alturaMax, View.MeasureSpec.AT_MOST))
+        val popup = PopupWindow(conteudo, largura, minOf(conteudo.measuredHeight, alturaMax), true).apply {
             elevation = dp(8).toFloat()
             isOutsideTouchable = true
             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

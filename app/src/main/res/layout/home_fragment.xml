@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/homeRoot"
@@ -64,7 +65,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nunito_black"
-                        android:text="Olá, Ana!"
+                        android:id="@+id/txtBoasVindasResponsavel"
+                        android:text="Olá!"
                         android:textColor="#04344E"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -255,30 +257,29 @@
             </LinearLayout>
 
             <!-- CARDS (todos com a mesma altura, borda clara) -->
-            <HorizontalScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:id="@+id/listaConteudosResponsavel"
                 android:paddingStart="20dp"
+                android:paddingEnd="20dp"
                 android:paddingTop="12dp"
-                android:paddingEnd="8dp"
-                android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                android:baselineAligned="false">
 
                     <!-- CARD 1 -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="12dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
                         app:cardBackgroundColor="#F2FAFF"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp"
                         app:strokeColor="#DCEFFA"
-                        app:strokeWidth="1dp">
+                        app:strokeWidth="1dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -316,14 +317,17 @@
 
                     <!-- CARD 2 -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="12dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
                         app:cardBackgroundColor="#F0FFF6"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp"
                         app:strokeColor="#D6F5E2"
-                        app:strokeWidth="1dp">
+                        app:strokeWidth="1dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -361,14 +365,17 @@
 
                     <!-- CARD 3 -->
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="12dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="0dp"
                         app:cardBackgroundColor="#F2FAFF"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp"
                         app:strokeColor="#DCEFFA"
-                        app:strokeWidth="1dp">
+                        app:strokeWidth="1dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -405,53 +412,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <!-- CARD 4 -->
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="12dp"
-                        app:cardBackgroundColor="#F2FAFF"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="#DCEFFA"
-                        app:strokeWidth="1dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="12dp">
-
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/ic_escola" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:fontFamily="@font/nunito_black"
-                                android:text="Inclusão escolar"
-                                android:textColor="#04344E"
-                                android:textSize="13sp" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:fontFamily="@font/nunito"
-                                android:text="Como apoiar o desenvolvimento da criança na escola."
-                                android:textColor="#555555"
-                                android:textSize="11sp" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
+                    </LinearLayout>
 
             <!-- PRÓXIMAS CONSULTAS -->
             <LinearLayout
@@ -652,4 +613,4 @@
 
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -89,6 +89,13 @@ class Login : AppCompatActivity() {
             submit(btnEntrar) { it.login(email, senha) }
         }
 
+        findViewById<EditText>(R.id.edtSenha).setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_DONE) {
+                btnEntrar.performClick()
+                true
+            } else false
+        }
+
         findViewById<TextView>(R.id.txtEsqueciSenha).setOnClickListener {
             startActivity(Intent(this, RecuperarSenha::class.java))
         }

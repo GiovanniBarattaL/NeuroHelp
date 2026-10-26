@@ -1,15 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/cardProfissional1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                app:cardBackgroundColor="#FFFFFF"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="0dp"
-                app:strokeColor="#F2F2F2"
-                app:strokeWidth="1dp">
+<?xml version='1.0' encoding='utf-8'?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardProfissional1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="8dp"
+    app:cardBackgroundColor="#FFFFFF"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="0dp"
+    app:strokeColor="#F2F2F2"
+    app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -18,9 +20,7 @@
                     android:padding="12dp">
 
                     <!-- CONTEÚDO SUPERIOR -->
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content">
 
                         <!-- FOTO -->
                         <ImageView
@@ -31,7 +31,7 @@
                             android:scaleType="fitCenter"
                             android:src="@drawable/avatar_verde"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@id/layoutFavorito1" />
 
                         <!-- FAVORITO -->
                         <LinearLayout
@@ -71,7 +71,7 @@
                             android:orientation="vertical"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@id/imgAvatar1"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toBottomOf="@id/layoutFavorito1">
 
                             <!-- CRP -->
                             <TextView
@@ -180,14 +180,12 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/txtEstrelas1"
+                            <LinearLayout
+                                android:id="@+id/estrelasLista"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/nunito"
-                                android:text="★★★★☆"
-                                android:textColor="#FFA914"
-                                android:textSize="13sp" />
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal" />
 
                             <TextView
                                 android:id="@+id/txtAvaliacao1"
@@ -206,14 +204,14 @@
                     <!-- BOTÕES -->
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/btnPerfil1"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/bg_btn_perfil"
@@ -221,15 +219,17 @@
                             android:focusable="true"
                             android:fontFamily="@font/nunito_black"
                             android:gravity="center"
-                            android:maxLines="1"
                             android:text="Ver Perfil"
                             android:textColor="#073B5C"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:minHeight="48dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp" />
 
                         <TextView
                             android:id="@+id/btnAgendar1"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/botao_gradiente"
@@ -237,10 +237,12 @@
                             android:focusable="true"
                             android:fontFamily="@font/nunito_black"
                             android:gravity="center"
-                            android:maxLines="1"
                             android:text="Agendar Consulta"
                             android:textColor="#FFFFFF"
-                            android:textSize="13sp" />
+                            android:textSize="13sp"
+                            android:minHeight="48dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp" />
 
                     </LinearLayout>
 

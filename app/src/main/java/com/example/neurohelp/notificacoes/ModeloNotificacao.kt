@@ -17,10 +17,15 @@ data class Notificacao(
 enum class FiltroNotificacao { NAO_VISTO, ESSA_SEMANA, TODOS }
 
 fun Date.estaNaSemanaAtual(): Boolean {
-    val agora = Calendar.getInstance()
-    val data = Calendar.getInstance().apply { time = this@estaNaSemanaAtual }
-    return agora.get(Calendar.YEAR) == data.get(Calendar.YEAR) &&
-        agora.get(Calendar.WEEK_OF_YEAR) == data.get(Calendar.WEEK_OF_YEAR)
+    val inicio = Calendar.getInstance().apply {
+        set(Calendar.DAY_OF_WEEK, firstDayOfWeek)
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }
+    val fim = (inicio.clone() as Calendar).apply { add(Calendar.WEEK_OF_YEAR, 1) }
+    return time >= inicio.timeInMillis && time < fim.timeInMillis
 }
 
 /**

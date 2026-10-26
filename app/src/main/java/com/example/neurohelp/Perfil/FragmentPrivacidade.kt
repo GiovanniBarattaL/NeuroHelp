@@ -10,6 +10,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.neurohelp.configurarDataNascimento
 import com.example.neurohelp.R
 import com.example.neurohelp.configurarCabecalhoPadrao
 
@@ -32,6 +33,9 @@ class FragmentPrivacidade : Fragment() {
 
         // Cabeçalho padrão (voltar fecha esse fragment e volta pro anterior na back stack)
         configurarCabecalhoPadrao(view)
+        configurarDataNascimento(view, R.id.etRespDataNasc)
+        configurarDataNascimento(view, R.id.etDepDataNasc)
+        view.findViewById<EditText>(R.id.etSenha).isSaveEnabled = false
 
         // ---------- Responsável ----------
         val camposResponsavel = listOf<View>(
@@ -55,14 +59,18 @@ class FragmentPrivacidade : Fragment() {
 
         // Só uma opção de diagnóstico pode ficar marcada por vez
         val opcoesDiagnostico = listOf(checkSim, checkAnalise, checkNao)
+        var atualizandoDiagnostico = false
         opcoesDiagnostico.forEach { escolhida ->
             escolhida.setOnCheckedChangeListener { _, marcado ->
+                if (atualizandoDiagnostico) return@setOnCheckedChangeListener
+                atualizandoDiagnostico = true
                 if (marcado) {
                     opcoesDiagnostico.filter { it !== escolhida }.forEach { it.isChecked = false }
                 } else if (opcoesDiagnostico.none { it.isChecked }) {
                     // não deixa ficar sem nenhuma marcada
                     escolhida.isChecked = true
                 }
+                atualizandoDiagnostico = false
             }
         }
 
@@ -98,6 +106,10 @@ class FragmentPrivacidade : Fragment() {
         var editando = false
 
         botao.setOnClickListener {
+            if (editando) {
+                android.widget.Toast.makeText(requireContext(), R.string.recurso_nao_disponivel, android.widget.Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
             editando = !editando
 
             campos.forEach { it.isEnabled = editando }
