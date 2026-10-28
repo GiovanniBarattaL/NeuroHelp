@@ -29,7 +29,7 @@ import org.json.JSONObject
  * A versão do responsável é a [FragmentPrivacidade].
  *
  * Cada seção tem o seu botão: "Editar" libera os campos e vira "Salvar"; "Salvar" trava de novo.
- * Os dados vêm de GET /api/auth/me (nome, e-mail e, se a API informar, telefone/CPF/endereço);
+ * Os dados vêm de GET /api/conta/privacidade (nome, e-mail e, se a API informar, telefone/CPF/endereço);
  * o que a API ainda não devolve fica como dica (hint) em cinza.
  *
  * TODO: enviar as alterações para a API quando existir o endpoint de atualização de perfil
@@ -117,7 +117,7 @@ class FragmentPrivacidadeProfissional : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val api = ApiService(SessionStore(requireContext()))
-                val conta = JSONObject(api.protectedRequest("/api/auth/me"))
+                val conta = JSONObject(api.protectedRequest("/api/conta/privacidade"))
 
                 preencher(view, R.id.etProfNome, conta.optString("nome"))
                 preencher(view, R.id.etProfTelefone, conta.optString("telefone").filter { it in '0'..'9' })
@@ -130,7 +130,7 @@ class FragmentPrivacidadeProfissional : Fragment() {
                 preencher(view, R.id.etProfLogradouro, conta.optString("logradouro"))
                 preencher(view, R.id.etProfNumero, conta.optString("numero"))
 
-                val formacao = listOf(conta.optString("profissao"), conta.optString("numRegistro"))
+                val formacao = listOf(conta.optString("formacao"), conta.optString("numRegistro"))
                     .filter { it.isNotBlank() }
                     .joinToString(" · ")
                 preencher(view, R.id.etProfFormacao, formacao)
@@ -140,7 +140,7 @@ class FragmentPrivacidadeProfissional : Fragment() {
             } catch (e: CancellationException) {
                 throw e
             } catch (_: Exception) {
-                // Sem conexão/sessão expirada: a tela continua mostrando as dicas em cinza
+                Toast.makeText(requireContext(), "Não foi possível carregar seus dados. Volte e tente novamente.", Toast.LENGTH_LONG).show()
             }
         }
     }

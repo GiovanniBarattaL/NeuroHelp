@@ -20,7 +20,7 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
     }
     suspend fun register(profissional: Boolean, fields: Map<String, String>) {
         val accepted = setOf("nome", "email", "senha", "cpf", "telefone", "estado", "codigoEmail") +
-                ADDRESS_KEYS.toSet() + (if (profissional) setOf("numRegistro", "profissao") else emptySet())
+                ADDRESS_KEYS.toSet() + (if (profissional) setOf("numRegistro", "formacao") else emptySet())
         require(fields.keys.all { it in accepted })
         request(if (profissional) "/cadastro/profissional" else "/cadastro/responsavel", "POST", JSONObject(fields))
     }
@@ -100,13 +100,34 @@ class ApiService(private val session: SessionStore, private val baseUrl: String 
             val response = stream?.bufferedReader(Charsets.UTF_8)?.use { it.readText() }.orEmpty()
             if (status !in 200..299) {
                 if (isProtected && status == 401) session.clear()
-                throw ApiException(status, errorMessage(status, isProtected))
+                throw ApiException(status, validationMessage(status, response) ?: errorMessage(status, isProtected))
             }
             response
         } finally { connection.disconnect() }
     }
     companion object {
-        // Não exibir corpos de erro: podem conter dados pessoais ou detalhes internos.
+        // Somente mensagens de validação conhecidas; nunca exibir payloads, valores ou stack traces.
+        fun validationMessage(status: Int, response: String): String? {
+            if (status == 422) return "E-mail não confirmado. Confira o código de 8 dígitos ou solicite outro."
+            if (status != 400) return null
+            val known = setOf("CPF inválido. Confira o número informado.", "A senha deve ocupar no máximo 72 bytes.",
+                "Informe CRM-SP 1234567: UF e número de até 7 dígitos (sufixo -P se provisório).",
+                "Informe nome completo, UF e número de 1 a 7 dígitos, diferente de zero.")
+            if (response.trim() in known) return response.trim()
+            val fields = try { JSONObject(response).optJSONObject("campos") } catch (_: Exception) { null } ?: return null
+            val labels = mapOf("nome" to "Nome", "email" to "E-mail", "senha" to "Senha", "cpf" to "CPF",
+                "telefone" to "Telefone", "cep" to "CEP", "estado" to "Estado", "cidade" to "Cidade",
+                "bairro" to "Bairro", "logradouro" to "Logradouro", "numero" to "Número",
+                "formacao" to "Profissão", "numRegistro" to "Registro", "codigoEmail" to "Código de e-mail")
+            val allowed = setOf("Preencha este campo.", "O tamanho informado não é permitido.",
+                "Confira este campo.", "CPF deve possuir exatamente 11 dígitos.",
+                "Telefone deve possuir 10 ou 11 dígitos.", "CEP deve possuir 8 dígitos.",
+                "A senha deve ter ao menos 8 caracteres, com maiúscula, minúscula, número e caractere especial.")
+            return labels.mapNotNull { (key, label) ->
+                fields.optString(key).takeIf { it in allowed }?.let { "$label: $it" }
+            }.joinToString("\n").takeIf { it.isNotBlank() }
+        }
+
         fun errorMessage(status: Int, isProtected: Boolean): String = when (status) {
             401 -> if (isProtected) "Sua sessão expirou. Entre novamente." else "E-mail ou senha inválidos."
             403 -> "Você não tem permissão para acessar este recurso."

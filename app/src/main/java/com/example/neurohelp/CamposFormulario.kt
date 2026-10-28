@@ -54,6 +54,8 @@ fun View.configurarCamposNumericos() {
             }
             if (numeros == entrada.toString()) null else numeros
         }
-        campo.filters = arrayOf(normalizador, *campo.filters)
+        val limite = if (id == R.id.etCep || id == R.id.etProfCep) 8 else 11
+        campo.filters = arrayOf(normalizador, *campo.filters.filterNot { it is android.text.InputFilter.LengthFilter }.toTypedArray(),
+            android.text.InputFilter.LengthFilter(limite))
     }
 }

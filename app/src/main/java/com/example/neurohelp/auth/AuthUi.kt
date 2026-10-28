@@ -31,7 +31,9 @@ fun AppCompatActivity.validate(id: Int, condition: Boolean, message: String): Bo
 fun AppCompatActivity.credentials(emailId: Int, passwordId: Int, confirmation: Int? = null): Boolean {
     val email = validate(emailId, android.util.Patterns.EMAIL_ADDRESS.matcher(input(emailId)).matches(), "Informe um e-mail válido")
     val senha = findViewById<EditText>(passwordId).text.toString()
-    val pass = validate(passwordId, senha.isNotBlank(), "Informe a senha")
+    val pass = validate(passwordId, if (confirmation == null) senha.isNotBlank() else
+        Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z\\d\\s]).{8,}$").matches(senha) && senha.toByteArray(Charsets.UTF_8).size <= 72,
+        if (confirmation == null) "Informe a senha" else "Use ao menos 8 caracteres com maiúscula, minúscula, número e símbolo (até 72 bytes)")
     val confirm = confirmation?.let { validate(it, findViewById<EditText>(it).text.toString() == senha, "As senhas não coincidem") } ?: true
     return email && pass && confirm
 }

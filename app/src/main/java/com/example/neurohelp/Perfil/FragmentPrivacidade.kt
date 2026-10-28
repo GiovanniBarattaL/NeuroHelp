@@ -10,6 +10,8 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import com.example.neurohelp.configurarDataNascimento
 import com.example.neurohelp.R
 import com.example.neurohelp.configurarCabecalhoPadrao
@@ -36,6 +38,8 @@ class FragmentPrivacidade : Fragment() {
         configurarDataNascimento(view, R.id.etRespDataNasc)
         configurarDataNascimento(view, R.id.etDepDataNasc)
         view.findViewById<EditText>(R.id.etSenha).isSaveEnabled = false
+
+        carregarDados(view)
 
         // ---------- Responsável ----------
         val camposResponsavel = listOf<View>(
@@ -96,6 +100,24 @@ class FragmentPrivacidade : Fragment() {
                 view.findViewById<View>(R.id.etSenha)
             )
         )
+    }
+
+    private fun carregarDados(raiz: View) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val api = com.example.neurohelp.auth.ApiService(com.example.neurohelp.auth.SessionStore(requireContext()))
+                val dados = org.json.JSONObject(api.protectedRequest("/api/conta/privacidade"))
+                val campos = mapOf(R.id.etRespNome to "nome", R.id.etRespTelefone to "telefone",
+                    R.id.etRespCpf to "cpf", R.id.etRespCidade to "cidade", R.id.etRespUf to "estado", R.id.etEmail to "email")
+                campos.forEach { (id, chave) ->
+                    val campo = raiz.findViewById<EditText>(id)
+                    if (!campo.isEnabled) campo.setText(if (dados.isNull(chave)) "" else dados.optString(chave))
+                }
+            } catch (e: kotlinx.coroutines.CancellationException) { throw e
+            } catch (_: Exception) {
+                android.widget.Toast.makeText(requireContext(), "Não foi possível carregar seus dados. Volte e tente novamente.", android.widget.Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     /**

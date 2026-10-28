@@ -74,7 +74,7 @@ class Cadastro_Profissional2 : AppCompatActivity() {
                 "estado" to intent.getStringExtra("estado").orEmpty(),
                 "email" to input(R.id.etEmail), "senha" to password(),
                 "numRegistro" to input(R.id.etRegistroProfissional),
-                "profissao" to input(R.id.etProfissao)
+                "formacao" to input(R.id.etProfissao)
             )
             val completeFields = fields + ADDRESS_KEYS.associateWith { intent.getStringExtra(it).orEmpty() }
             iniciarConfirmacaoCadastro(true, completeFields)

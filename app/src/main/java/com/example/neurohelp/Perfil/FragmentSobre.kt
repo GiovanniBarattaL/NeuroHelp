@@ -52,7 +52,7 @@ class FragmentSobre : Fragment() {
         }
 
         txtLgpd.setOnClickListener {
-            abrirLink("https://www.neurohelp.com/lgpd")
+            abrirLink("https://www.gov.br/anpd/pt-br/acesso-a-informacao/perguntas-frequentes")
         }
     }
 
