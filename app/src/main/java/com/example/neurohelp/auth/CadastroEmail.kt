@@ -32,8 +32,14 @@ class CadastroEmailViewModel : ViewModel() {
     fun iniciar(api: ApiService, profissional: Boolean, dados: Map<String, String>) {
         if (state.value.ocupado || state.value.etapa != EtapaCadastro.DADOS) return
         this.profissional = profissional; campos = dados.toMap()
-        mutableState.value = CadastroEmailState(etapa = EtapaCadastro.CODIGO, email = dados["email"].orEmpty())
-        reenviar(api)
+        // Temporário: cadastro direto enquanto o envio de e-mail é corrigido.
+        // Exige que o backend também esteja configurado para dispensar a confirmação.
+        mutableState.value = CadastroEmailState(email = dados["email"].orEmpty())
+        executar {
+            api.register(profissional, campos)
+            campos = emptyMap()
+            mutableState.value = state.value.copy(etapa = EtapaCadastro.CONCLUIDO)
+        }
     }
     fun reenviar(api: ApiService) {
         val atual = state.value
@@ -152,7 +158,7 @@ fun AppCompatActivity.bindCadastroEmail(button: Button) {
                     render(state)
                     if (state.etapa == EtapaCadastro.CONCLUIDO) {
                         codigo.text.clear(); model.consumirSucesso()
-                        Toast.makeText(this@bindCadastroEmail, "E-mail confirmado e cadastro realizado. Entre com seu e-mail e senha.", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@bindCadastroEmail, "Cadastro realizado. Entre com seu e-mail e senha.", Toast.LENGTH_LONG).show()
                         goLogin()
                     }
                 }
